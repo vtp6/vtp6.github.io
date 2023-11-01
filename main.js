@@ -10,7 +10,7 @@ function random_choice(arr) {
 
 function check_input() {
     total++;
-    if (answer.split("/").includes(document.getElementById("inp").value)) {
+    if (answer.toLowerCase().split("/").includes(document.getElementById("inp").value.toLowerCase())) {
         correct++;
         document.getElementById("msg").innerHTML = "Correct!";
     } else {
@@ -18,8 +18,12 @@ function check_input() {
     }
     document.getElementById("sb").innerHTML = correct + "/" + total +
         " (" + (correct / total * 100).toFixed(2) + "%)";
-    if (lst.length > 0) {
+    if (total < +document.getElementById("sld").value) {
         new_question();
+    } else {
+        document.getElementById("inp").hidden = true;
+        document.getElementById("qs").hidden = true;
+        document.getElementById("msg").hidden = true;
     }
 }
 
@@ -33,6 +37,9 @@ function new_question() {
 function start() {
     document.getElementById("tbl").hidden = true;
     document.getElementById("btn").hidden = true;
+    document.getElementById("lbl").hidden = true;
+    document.getElementById("sld").hidden = true;
+    document.getElementById("num").hidden = true;
     br1.hidden = true; br2.hidden = true;
 
     let scorebar = document.createElement("b");
@@ -64,6 +71,29 @@ function start() {
         }
     });
 }
+
+let slider = document.createElement("input");
+slider.setAttribute("type", "range");
+slider.setAttribute("value", lst.length);
+slider.min = 1;
+slider.max = lst.length;
+slider.id = "sld";
+slider.name = "sld";
+document.body.appendChild(slider);
+
+let label = document.createElement("label");
+label.setAttribute("for", "sld");
+label.innerHTML = "Words: "
+label.id = "lbl";
+document.body.insertBefore(label, slider);
+
+let num = document.createElement("el");
+num.innerHTML = lst.length + " &emsp;";
+slider.oninput = () => {
+    num.innerHTML = slider.value + " &emsp;";
+}
+num.id = "num"
+document.body.appendChild(num);
 
 let btn = document.createElement("input");
 btn.setAttribute("type", "button");
