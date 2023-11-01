@@ -1,7 +1,7 @@
 let lst = words.split("\n").map(l => l.split("\t"));
 
 let h1 = document.querySelector("h1");
-h1.innerHTML = `<a href=".../">VTP6</a>`
+h1.innerHTML = `<a href=".../">VTP6</a>`;
 
 let answer = "";
 let correct = 0;
@@ -48,23 +48,23 @@ function start() {
     let scorebar = document.createElement("b");
     scorebar.id = "sb";
     scorebar.innerHTML = "0/0 (0.00%)";
-    document.body.appendChild(scorebar);
+    document.body.insertBefore(scorebar, sub);
 
     let question = document.createElement("h3");
     question.id = "qs";
-    document.body.appendChild(question);
+    document.body.insertBefore(question, sub);
 
     let inp = document.createElement("input");
     inp.setAttribute("type", "text");
     inp.id = "inp";
-    document.body.appendChild(inp);
+    document.body.insertBefore(inp, sub);
     inp.focus();
 
-    document.body.appendChild(document.createElement("br"));
+    document.body.insertBefore(document.createElement("br"), sub);
 
     let messagebar = document.createElement("i");
     messagebar.id = "msg";
-    document.body.appendChild(messagebar);
+    document.body.insertBefore(messagebar, sub);
 
     new_question();
 
@@ -129,3 +129,9 @@ lst.forEach(x => {
 })
 
 document.body.appendChild(table);
+
+let sub = document.createElement("br");
+document.body.appendChild(sub);
+let sub2 = document.createElement("sub")
+sub2.innerHTML = "© 2023 Rujul Nayak"
+document.body.appendChild(sub2);
