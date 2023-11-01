@@ -132,6 +132,6 @@ document.body.appendChild(table);
 
 let sub = document.createElement("br");
 document.body.appendChild(sub);
-let sub2 = document.createElement("sub")
-sub2.innerHTML = "© 2023 Rujul Nayak"
+let sub2 = document.createElement("sub");
+sub2.innerHTML = "© 2023 Rujul Nayak";
 document.body.appendChild(sub2);
