@@ -1,7 +1,7 @@
 let lst = words.split("\n").map(l => l.split("\t"));
 
 let h1 = document.querySelector("h1");
-h1.innerHTML = `<a href="../">VTP6</a>`
+h1.innerHTML = `<a href=".../">VTP6</a>`
 
 let answer = "";
 let correct = 0;
