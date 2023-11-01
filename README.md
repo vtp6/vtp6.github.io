@@ -7,4 +7,6 @@ Just head over to [vtp6.github.io](https://vtp6.github.io/) and
 select your study set. Then, select the number of words you want
 to revise using the slider and press start.
 
+Email any feedback or suggestions to vtp6_feedback@outlook.com.
+
 <sub>© 2023 Rujul Nayak</sub>
