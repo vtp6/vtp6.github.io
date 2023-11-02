@@ -44,7 +44,8 @@ function start_classic() {
     document.getElementById("lbl").hidden = true;
     document.getElementById("sld").hidden = true;
     document.getElementById("num").hidden = true;
-    br1.hidden = true; br2.hidden = true;
+    document.getElementById("game").hidden = true;
+    br1.hidden = true; br2.hidden = true; sp.hidden = true;
 
     let scorebar = document.createElement("b");
     scorebar.id = "sb";
@@ -76,6 +77,14 @@ function start_classic() {
     });
 }
 
+function start() {
+    if (document.getElementById("game").value === "classic") {
+        start_classic();
+    } else {
+        alert("Unimplemented.");
+    }
+}
+
 let slider = document.createElement("input");
 slider.setAttribute("type", "range");
 slider.setAttribute("value", lst.length);
@@ -87,7 +96,7 @@ document.body.appendChild(slider);
 
 let label = document.createElement("label");
 label.setAttribute("for", "sld");
-label.innerHTML = "Words: "
+label.innerHTML = "Words: ";
 label.id = "lbl";
 document.body.insertBefore(label, slider);
 
@@ -96,14 +105,30 @@ num.innerHTML = lst.length + " &emsp;";
 slider.oninput = () => {
     num.innerHTML = slider.value + " &emsp;";
 }
-num.id = "num"
+num.id = "num";
 document.body.appendChild(num);
+
+let select = document.createElement("select");
+let optn1 = document.createElement("option");
+optn1.value = "classic";
+optn1.innerHTML = "Classic";
+select.appendChild(optn1);
+let optn2 = document.createElement("option");
+optn2.value = "match";
+optn2.innerHTML = "Match";
+select.appendChild(optn2);
+select.id = "game";
+document.body.appendChild(select);
+
+let sp = document.createElement("el");
+sp.innerHTML = "&emsp;";
+document.body.appendChild(sp);
 
 let btn = document.createElement("input");
 btn.setAttribute("type", "button");
 btn.setAttribute("value", "Start");
-btn.onclick = start_classic;
-btn.id = "btn"
+btn.onclick = start;
+btn.id = "btn";
 document.body.appendChild(btn);
 
 document.body.appendChild(br1 = document.createElement("br"));
@@ -113,7 +138,7 @@ let table = document.createElement("table");
 table.id = "tbl";
 
 let head = document.createElement("tr");
-head.innerHTML = `<th>Term</th> <th>Definition</th>`
+head.innerHTML = `<th>Term</th> <th>Definition</th>`;
 table.appendChild(head);
 
 lst.forEach(x => {
