@@ -73,7 +73,10 @@ function check_input_classic() {
             if (w.length > 18) {
                 w = w.slice(0, 15) + "...";
             }
-            tr.innerHTML = `<td>` + u + `</td> <td>` + v + `</td> <td>` + w + `</td>`;
+            tr.innerHTML = `<td title="` + trp[0] + `">` +
+                u + `</td> <td title="` + trp[1] + `">` +
+                v + `</td> <td title="` + trp[2] + `">` +
+                w + `</td>`;
             wrongtbl.appendChild(tr);
         });
 
@@ -208,7 +211,8 @@ lst.forEach(x => {
     if (b.length > 20) {
         b = b.slice(0, 17) + "...";
     }
-    row.innerHTML = `<td>` + a + `</td> <td>` + b + `</td>`;
+    row.innerHTML = `<td title="` + x[0] + `">` + a +
+        `</td> <td title="` + x[1] + `">` + b + `</td>`;
     table.appendChild(row);
 })
 
