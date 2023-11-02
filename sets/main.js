@@ -179,5 +179,5 @@ let sub = document.createElement("br");
 document.body.appendChild(sub);
 document.body.append(document.createElement("br"));
 let sub2 = document.createElement("sub");
-sub2.innerHTML = "© 2023 Rujul Nayak";
+sub2.innerHTML = `© Rujul Nayak 2023 - <a href="mailto:vtp6_feedback@outlook.com">Feedback</a>`;
 document.body.appendChild(sub2);
