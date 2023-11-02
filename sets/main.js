@@ -7,6 +7,8 @@ let answer = "";
 let correct = 0;
 let total = 0;
 
+let wrong = [];
+
 function random_choice(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -30,6 +32,11 @@ function check_input_classic() {
         document.getElementById("msg").innerHTML = "Correct!";
     } else {
         document.getElementById("msg").innerHTML = "Wrong: " + answer;
+        wrong.push([
+            document.getElementById("qs").innerHTML, 
+            answer.toLowerCase(), 
+            document.getElementById("inp").value.toLowerCase()
+        ]);
     }
     document.getElementById("sb").innerHTML = correct + "/" + total +
         " (" + (correct / total * 100).toFixed(2) + "%)";
@@ -40,6 +47,38 @@ function check_input_classic() {
         document.getElementById("inp").disabled = true;
         document.getElementById("qs").innerHTML =
             `<input type=button onclick="javascript:location.reload();" value="Restart" />`;
+
+        document.body.insertBefore(document.createElement("br"), sub);
+        document.body.insertBefore(document.createElement("br"), sub);
+
+        let txt = document.createElement("h3");
+        txt.innerHTML = "Mistakes:";
+        document.body.insertBefore(txt, sub);
+
+        let wrongtbl = document.createElement("table");
+
+        let hd = document.createElement("tr");
+        hd.innerHTML = `<th>Term</th> <th>Definition</th> <th>Your answer</th>`;
+        wrongtbl.appendChild(hd);
+
+        wrong.forEach(trp => {
+            let [u, v, w] = trp;
+            let tr = document.createElement("tr");
+            if (u.length > 18) {
+                u = u.slice(0, 15) + "...";
+            }
+            if (v.length > 18) {
+                v = v.slice(0, 15) + "...";
+            }
+            if (w.length > 18) {
+                w = w.slice(0, 15) + "...";
+            }
+            tr.innerHTML = `<td>` + u + `</td> <td>` + v + `</td> <td>` + w + `</td>`;
+            wrongtbl.appendChild(tr);
+        });
+
+        document.body.insertBefore(wrongtbl, sub);
+
     }
 }
 
