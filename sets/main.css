@@ -32,3 +32,10 @@ input, select {
     color: #bbbbbb;
     font-size: 20px;
 }
+
+.bigbutton {
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    text-wrap: wrap;
+}

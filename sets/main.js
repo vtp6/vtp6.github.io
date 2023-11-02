@@ -132,7 +132,36 @@ function start_classic() {
 }
 
 function start_match() {
-    console.log(random_shuffle(lst).slice(0, 6));
+    document.getElementById("tbl").hidden = true;
+    document.getElementById("btn").hidden = true;
+    document.getElementById("lbl").hidden = true;
+    document.getElementById("sld").hidden = true;
+    document.getElementById("num").hidden = true;
+    document.getElementById("game").hidden = true;
+    br1.hidden = true; br2.hidden = true; sp.hidden = true;
+
+    const PAIRS = 6;
+
+    let pairs = random_shuffle(random_shuffle(lst).slice(0, PAIRS).flat());
+
+    let matchtbl = document.createElement("table");
+    matchtbl.id = "mt";
+
+    [...Array(PAIRS).keys()].forEach(n => {
+        let c = pairs[n * 2]; let d = pairs[n * 2 + 1];
+
+        let div = document.createElement("tr");
+
+        div.innerHTML = `<td><input type="button" class="bigbutton" value="` + c +
+            `" /></td> <td><input type="button" class="bigbutton" value="` + d +
+            `" /></td>`;
+
+        matchtbl.appendChild(div);
+
+    });
+
+    document.body.insertBefore(matchtbl, sub);
+
 }
 
 function start() {
@@ -143,6 +172,7 @@ function start() {
     //     start_match();
     } else {
         alert("Unimplemented.");
+        document.getElementById("game").value = "classic";
     }
 }
 
