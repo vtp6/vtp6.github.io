@@ -11,7 +11,7 @@ function random_choice(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function check_input() {
+function check_input_classic() {
     total++;
     if (answer.toLowerCase().split("/").includes(document.getElementById("inp").value.toLowerCase())) {
         correct++;
@@ -22,22 +22,23 @@ function check_input() {
     document.getElementById("sb").innerHTML = correct + "/" + total +
         " (" + (correct / total * 100).toFixed(2) + "%)";
     if (total < +document.getElementById("sld").value) {
-        new_question();
+        new_question_classic();
     } else {
-        document.getElementById("inp").hidden = true;
-        document.getElementById("qs").hidden = true;
-        document.getElementById("msg").hidden = true;
+        document.getElementById("inp").value = "";
+        document.getElementById("inp").disabled = true;
+        document.getElementById("qs").innerHTML =
+            `<input type=button onclick="javascript:location.reload();" value="Restart" />`;
     }
 }
 
-function new_question() {
+function new_question_classic() {
     document.getElementById("inp").value = "";
     document.getElementById("inp").focus();
     [document.getElementById("qs").innerHTML, answer] = random_choice(lst);
     lst.splice([document.getElementById("qs").innerHTML, answer], 1);
 }
 
-function start() {
+function start_classic() {
     document.getElementById("tbl").hidden = true;
     document.getElementById("btn").hidden = true;
     document.getElementById("lbl").hidden = true;
@@ -66,11 +67,11 @@ function start() {
     messagebar.id = "msg";
     document.body.insertBefore(messagebar, sub);
 
-    new_question();
+    new_question_classic();
 
     inp.addEventListener("keyup", ({key}) => {
         if (key === "Enter") {
-            check_input();
+            check_input_classic();
         }
     });
 }
@@ -101,7 +102,7 @@ document.body.appendChild(num);
 let btn = document.createElement("input");
 btn.setAttribute("type", "button");
 btn.setAttribute("value", "Start");
-btn.onclick = start;
+btn.onclick = start_classic;
 btn.id = "btn"
 document.body.appendChild(btn);
 
@@ -132,6 +133,7 @@ document.body.appendChild(table);
 
 let sub = document.createElement("br");
 document.body.appendChild(sub);
+document.body.append(document.createElement("br"));
 let sub2 = document.createElement("sub");
 sub2.innerHTML = "© 2023 Rujul Nayak";
 document.body.appendChild(sub2);
