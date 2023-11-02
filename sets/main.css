@@ -39,3 +39,11 @@ input, select {
     text-align: center;
     text-wrap: wrap;
 }
+
+.bigbutton:hover {
+    background-color: #707070;
+}
+
+.bigbutton.selected {
+    background-color: #505050;
+}

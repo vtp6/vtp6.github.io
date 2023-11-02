@@ -153,8 +153,8 @@ function start_match() {
         let div = document.createElement("tr");
 
         div.innerHTML = `<td><input type="button" class="bigbutton" value="` + c +
-            `" /></td> <td><input type="button" class="bigbutton" value="` + d +
-            `" /></td>`;
+            `" onclick="javascript:clicked(this)" /></td> <td><input type="button" ` +
+            `class="bigbutton" value="` + d + `" onclick="javascript:clicked(this)" /></td>`;
 
         matchtbl.appendChild(div);
 
@@ -162,6 +162,14 @@ function start_match() {
 
     document.body.insertBefore(matchtbl, sub);
 
+}
+
+function clicked(elem) {
+    if ([...elem.classList].includes("selected")) {
+        elem.classList.remove("selected");
+    } else {
+        elem.classList.add("selected");
+    }
 }
 
 function start() {
