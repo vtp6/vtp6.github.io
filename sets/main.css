@@ -47,3 +47,11 @@ input, select {
 .bigbutton.selected {
     background-color: #505050;
 }
+
+.bigbutton.done {
+    background-color: #404040;
+    background: url("../logo.png");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}

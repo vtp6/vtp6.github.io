@@ -9,6 +9,10 @@ let total = 0;
 
 let wrong = [];
 
+let id = 0;
+
+const PAIRS = 6;
+
 function random_choice(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -140,15 +144,26 @@ function start_match() {
     document.getElementById("game").hidden = true;
     br1.hidden = true; br2.hidden = true; sp.hidden = true;
 
-    const PAIRS = 6;
+    let pairs = random_shuffle(random_shuffle(lst).slice(0, PAIRS));
+    let pa = random_shuffle(pairs.map(i => i[0]));
+    let pb = random_shuffle(pairs.map(j => j[1]));
 
-    let pairs = random_shuffle(random_shuffle(lst).slice(0, PAIRS).flat());
+    let timer = document.createElement("h3");
+    timer.innerHTML = "0.0s";
+    timer.id = "timer";
+    document.body.insertBefore(timer, sub);
+
+    let time = 0
+    id = setInterval(() => {
+        let tmr = document.getElementById("timer");
+        tmr.innerText = (++time / 10).toFixed(1) + "s";
+    }, 100)
 
     let matchtbl = document.createElement("table");
     matchtbl.id = "mt";
 
     [...Array(PAIRS).keys()].forEach(n => {
-        let c = pairs[n * 2]; let d = pairs[n * 2 + 1];
+        let c = pa[n]; let d = pb[n];
 
         let div = document.createElement("tr");
 
@@ -165,10 +180,34 @@ function start_match() {
 }
 
 function clicked(elem) {
+    if ([...elem.classList].includes("done")) {
+        return;
+    }
     if ([...elem.classList].includes("selected")) {
         elem.classList.remove("selected");
     } else {
         elem.classList.add("selected");
+        let q = [...document.querySelectorAll(".selected")]
+        if (q.length >= 2) {
+            q.forEach(qq => qq.classList.remove("selected"));
+            let [qt, qd] = q.slice(0, 2);
+            if (
+                lst.find(elm =>
+                    (elm + "" === [qt.value, qd.value] + "")
+                    || (elm + "" === [qd.value, qt.value] + "")
+                )
+            ) {
+                qt.classList.add("done");
+                qd.classList.add("done");
+                qt.value = "";
+                qd.value = "";
+            }
+
+            if ([...document.querySelectorAll(".done")].length >= PAIRS * 2) {
+                clearInterval(id);
+            }
+
+        }
     }
 }
 
@@ -176,8 +215,8 @@ function start() {
     let selected = document.getElementById("game").value;
     if (selected === "classic") {
         start_classic();
-    // } else if (selected === "match") {
-    //     start_match();
+    } else if (selected === "match") {
+        start_match();
     } else {
         alert("Unimplemented.");
         document.getElementById("game").value = "classic";
