@@ -11,9 +11,21 @@ function random_choice(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
 }
 
+function random_shuffle(ls) {
+    let a = [];
+    let l = [...ls];
+    [...l].forEach(_ => {
+        let x = random_choice(l);
+        a.push(x);
+        l.splice(l.indexOf(x), 1);
+    });
+    return a;
+}
+
 function check_input_classic() {
     total++;
-    if (answer.toLowerCase().split("/").includes(document.getElementById("inp").value.toLowerCase())) {
+    if (answer.toLowerCase().split("/").map(q => q.split(", ")).flat()
+        .includes(document.getElementById("inp").value.toLowerCase())) {
         correct++;
         document.getElementById("msg").innerHTML = "Correct!";
     } else {
@@ -34,8 +46,8 @@ function check_input_classic() {
 function new_question_classic() {
     document.getElementById("inp").value = "";
     document.getElementById("inp").focus();
-    [document.getElementById("qs").innerHTML, answer] = random_choice(lst);
-    lst.splice([document.getElementById("qs").innerHTML, answer], 1);
+    [document.getElementById("qs").innerHTML, answer] = temp = random_choice(lst);
+    lst.splice(lst.indexOf(temp), 1);
 }
 
 function start_classic() {
@@ -77,9 +89,16 @@ function start_classic() {
     });
 }
 
+function start_match() {
+    console.log(random_shuffle(lst).slice(0, 6));
+}
+
 function start() {
-    if (document.getElementById("game").value === "classic") {
+    let selected = document.getElementById("game").value;
+    if (selected === "classic") {
         start_classic();
+    // } else if (selected === "match") {
+    //     start_match();
     } else {
         alert("Unimplemented.");
     }
