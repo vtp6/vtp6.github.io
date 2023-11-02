@@ -205,6 +205,12 @@ function clicked(elem) {
 
             if ([...document.querySelectorAll(".done")].length >= PAIRS * 2) {
                 clearInterval(id);
+
+                let restart = document.createElement("input");
+                restart.setAttribute("type", "button");
+                restart.value = "Restart";
+                restart.onclick = () => location.reload();
+                document.body.insertBefore(restart, document.getElementById("mt"));
             }
 
         }
@@ -220,6 +226,16 @@ function start() {
     } else {
         alert("Unimplemented.");
         document.getElementById("game").value = "classic";
+    }
+}
+
+function update_slider() {
+    let selected = document.getElementById("game").value;
+    let sldr = document.getElementById("sld");
+    if (selected === "classic") {
+        sldr.disabled = false;
+    } else {
+        sldr.disabled = true;
     }
 }
 
@@ -256,6 +272,7 @@ optn2.value = "match";
 optn2.innerHTML = "Match";
 select.appendChild(optn2);
 select.id = "game";
+select.oninput = update_slider;
 document.body.appendChild(select);
 
 let sp = document.createElement("el");
