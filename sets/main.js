@@ -354,6 +354,7 @@ function check_input_hangman() {
     if (hangman_num >= 8) {
       document.getElementById("img").src = "../Hangman/Slide8.png";
       create_wrongtbl();
+      return;
     }
   }
   if (total < +document.getElementById("sld").value) {
