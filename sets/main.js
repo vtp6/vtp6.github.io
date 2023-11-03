@@ -282,9 +282,9 @@ function update_slider() {
 
 let slider = document.createElement("input");
 slider.setAttribute("type", "range");
-slider.setAttribute("value", lst.length);
 slider.min = 1;
 slider.max = lst.length;
+slider.setAttribute("value", lst.length);
 slider.id = "sld";
 slider.name = "sld";
 document.body.appendChild(slider);
