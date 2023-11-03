@@ -26,6 +26,8 @@ let wrong = [];
 
 let id = 0;
 
+let hangman_num = 1;
+
 const PAIRS = 6;
 
 function random_choice(arr) {
@@ -70,7 +72,7 @@ function generate_options(str) {
   return ret;
 }
 
-function check_input_classic() {
+function check_input() {
   total++;
   /* Easy mode: (document.getElementById("inp").value.toLowerCase().split(" ").map(q => 
         answer.toLowerCase().split("/").map(j => j.split(", ")).flat()
@@ -93,6 +95,7 @@ function check_input_classic() {
   ) {
     correct++;
     document.getElementById("msg").innerHTML = "Correct!";
+    return true;
   } else {
     document.getElementById("msg").innerHTML = "Wrong: " + answer;
     wrong.push([
@@ -100,62 +103,71 @@ function check_input_classic() {
       answer.toLowerCase(),
       document.getElementById("inp").value.toLowerCase(),
     ]);
+    return false;
   }
+}
+
+function check_input_classic() {
+  check_input();
   document.getElementById("sb").innerHTML =
     correct + "/" + total + " (" + ((correct / total) * 100).toFixed(2) + "%)";
   if (total < +document.getElementById("sld").value) {
     new_question_classic();
   } else {
-    document.getElementById("inp").value = "";
-    document.getElementById("inp").disabled = true;
-    document.getElementById(
-      "qs",
-    ).innerHTML = `<input type=button onclick="javascript:location.reload();" value="Restart" />`;
-
-    document.body.insertBefore(document.createElement("br"), sub);
-    document.body.insertBefore(document.createElement("br"), sub);
-
-    let txt = document.createElement("h3");
-    txt.innerHTML = "Mistakes:";
-    document.body.insertBefore(txt, sub);
-
-    let wrongtbl = document.createElement("table");
-
-    let hd = document.createElement("tr");
-    hd.innerHTML = `<th>Term</th> <th>Definition</th> <th>Your answer</th>`;
-    wrongtbl.appendChild(hd);
-
-    wrong.forEach((trp) => {
-      let [u, v, w] = trp;
-      let tr = document.createElement("tr");
-      if (u.length > 18) {
-        u = u.slice(0, 15) + "...";
-      }
-      if (v.length > 18) {
-        v = v.slice(0, 15) + "...";
-      }
-      if (w.length > 18) {
-        w = w.slice(0, 15) + "...";
-      }
-      tr.innerHTML =
-        `<td title="` +
-        trp[0] +
-        `">` +
-        u +
-        `</td> <td title="` +
-        trp[1] +
-        `">` +
-        v +
-        `</td> <td title="` +
-        trp[2] +
-        `">` +
-        w +
-        `</td>`;
-      wrongtbl.appendChild(tr);
-    });
-
-    document.body.insertBefore(wrongtbl, sub);
+    create_wrongtbl();
   }
+}
+
+function create_wrongtbl() {
+  document.getElementById("inp").value = "";
+  document.getElementById("inp").disabled = true;
+  document.getElementById(
+    "qs",
+  ).innerHTML = `<input type=button onclick="javascript:location.reload();" value="Restart" />`;
+
+  document.body.insertBefore(document.createElement("br"), sub);
+  document.body.insertBefore(document.createElement("br"), sub);
+
+  let txt = document.createElement("h3");
+  txt.innerHTML = "Mistakes:";
+  document.body.insertBefore(txt, sub);
+
+  let wrongtbl = document.createElement("table");
+
+  let hd = document.createElement("tr");
+  hd.innerHTML = `<th>Term</th> <th>Definition</th> <th>Your answer</th>`;
+  wrongtbl.appendChild(hd);
+
+  wrong.forEach((trp) => {
+    let [u, v, w] = trp;
+    let tr = document.createElement("tr");
+    if (u.length > 18) {
+      u = u.slice(0, 15) + "...";
+    }
+    if (v.length > 18) {
+      v = v.slice(0, 15) + "...";
+    }
+    if (w.length > 18) {
+      w = w.slice(0, 15) + "...";
+    }
+    tr.innerHTML =
+      `<td title="` +
+      trp[0] +
+      `">` +
+      u +
+      `</td> <td title="` +
+      trp[1] +
+      `">` +
+      v +
+      `</td> <td title="` +
+      trp[2] +
+      `">` +
+      w +
+      `</td>`;
+    wrongtbl.appendChild(tr);
+  });
+
+  document.body.insertBefore(wrongtbl, sub);
 }
 
 function new_question_classic() {
@@ -293,12 +305,72 @@ function clicked(elem) {
   }
 }
 
+function start_hangman() {
+  document.getElementById("tbl").hidden = true;
+  document.getElementById("btn").hidden = true;
+  document.getElementById("lbl").hidden = true;
+  document.getElementById("sld").hidden = true;
+  document.getElementById("num").hidden = true;
+  document.getElementById("game").hidden = true;
+  br1.hidden = true;
+  br2.hidden = true;
+  sp.hidden = true;
+
+  let image = document.createElement("img");
+  image.src = "../Hangman/Slide1.png";
+  image.id = "img";
+  document.body.insertBefore(image, sub);
+
+  let question = document.createElement("h3");
+  question.id = "qs";
+  document.body.insertBefore(question, sub);
+
+  let inp = document.createElement("input");
+  inp.setAttribute("type", "text");
+  inp.id = "inp";
+  document.body.insertBefore(inp, sub);
+  inp.focus();
+
+  document.body.insertBefore(document.createElement("br"), sub);
+
+  let messagebar = document.createElement("i");
+  messagebar.id = "msg";
+  document.body.insertBefore(messagebar, sub);
+
+  new_question_classic();
+
+  inp.addEventListener("keyup", ({ key }) => {
+    if (key === "Enter") {
+      check_input_hangman();
+    }
+  });
+}
+
+function check_input_hangman() {
+  let res = check_input();
+  if (!res) {
+    hangman_num++;
+    document.getElementById("img").src = "../Hangman/Slide" + hangman_num + ".png";
+    if (hangman_num >= 8) {
+      document.getElementById("img").src = "../Hangman/Slide8.png";
+      create_wrongtbl();
+    }
+  }
+  if (total < +document.getElementById("sld").value) {
+    new_question_classic();
+  } else {
+    create_wrongtbl();
+  }
+}
+
 function start() {
   let selected = document.getElementById("game").value;
   if (selected === "classic") {
     start_classic();
   } else if (selected === "match") {
     start_match();
+  } else if (selected === "hangman") {
+    start_hangman();
   } else {
     alert("Unimplemented.");
     document.getElementById("game").value = "classic";
@@ -308,10 +380,10 @@ function start() {
 function update_slider() {
   let selected = document.getElementById("game").value;
   let sldr = document.getElementById("sld");
-  if (selected === "classic") {
-    sldr.disabled = false;
-  } else {
+  if (selected === "match") {
     sldr.disabled = true;
+  } else {
+    sldr.disabled = false;
   }
 }
 
@@ -347,6 +419,10 @@ let optn2 = document.createElement("option");
 optn2.value = "match";
 optn2.innerHTML = "Match";
 select.appendChild(optn2);
+let optn3 = document.createElement("option");
+optn3.value = "hangman";
+optn3.innerHTML = "Hangman";
+select.appendChild(optn3);
 select.id = "game";
 select.oninput = update_slider;
 document.body.appendChild(select);
