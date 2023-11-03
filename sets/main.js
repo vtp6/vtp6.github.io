@@ -28,10 +28,26 @@ function random_shuffle(ls) {
     return a;
 }
 
+function remove_punctuation(string) {
+    return [...string].map(c => {
+        let ord = c.charCodeAt(0)
+        return ((64 < ord && ord < 91) ||
+            (96 < ord && ord < 123)) ? c : "";
+    }).join("");
+}
+
 function check_input_classic() {
     total++;
+    /* Easy mode: (document.getElementById("inp").value.toLowerCase().split(" ").map(q => 
+        answer.toLowerCase().split("/").map(j => j.split(", ")).flat()
+        .map(k => k.split(" ")).flat().map(r => 
+            remove_punctuation(r) === remove_punctuation(q)
+        )
+    ).flat().includes(true)) */
     if (answer.toLowerCase().split("/").map(q => q.split(", ")).flat()
-        .includes(document.getElementById("inp").value.toLowerCase())) {
+        .map(r => remove_punctuation(r))
+        .includes(remove_punctuation(
+            document.getElementById("inp").value.toLowerCase()))) {
         correct++;
         document.getElementById("msg").innerHTML = "Correct!";
     } else {
