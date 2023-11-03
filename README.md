@@ -36,6 +36,17 @@ to tell you how long it took.
 ![Match Mode Recording](https://github.com/vtp6/vtp6.github.io/assets/55329600/a01e0522-9f7e-4731-8755-2d820302e1d6)
 
 
+## Hangman Mode
+
+Just like the Hangman game, each time you get something
+wrong, the hangman picture progresses to the next stage.
+Choose the number of words you want to revise and
+complete them before the hangman is fully formed.
+
+![Hangman Mode Recording](https://github.com/vtp6/vtp6.github.io/assets/55329600/13f5949c-8c41-44f8-b2a1-f5ad72c3b359)
+
+
+
 <sub>© Rujul Nayak 2023</sub>
 
 [VTP6]: https://vtp6.github.io/
