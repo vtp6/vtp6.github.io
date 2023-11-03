@@ -1,3 +1,18 @@
+let meta1 = document.createElement("meta");
+meta1.property = "og:image";
+meta1.content = "../../icon.jpg";
+document.head.appendChild(meta1);
+
+let meta2 = document.createElement("meta");
+meta2.property = "og:image:width";
+meta2.content = "256";
+document.head.appendChild(meta2);
+
+let meta3 = document.createElement("meta");
+meta3.property = "og:image:height";
+meta3.content = "256";
+document.head.appendChild(meta3);
+
 let lst = words.split("\n").map((l) => l.split("\t"));
 
 let h1 = document.querySelector("h1");
@@ -37,6 +52,24 @@ function remove_punctuation(string) {
     .join("");
 }
 
+function generate_options(str) {
+  if (![...str].includes("(")) {
+    return [str];
+  }
+  let ret = [str];
+  for (let ind = 0; ind < str.length; ind++) {
+    let chr = str[ind];
+    if (chr === "(") {
+      let prev = str.slice(0, ind);
+      while (str[ind] !== ")") {
+        ind++
+      }
+      ret.push(prev + str.slice(ind + 1));
+    }
+  }
+  return ret;
+}
+
 function check_input_classic() {
   total++;
   /* Easy mode: (document.getElementById("inp").value.toLowerCase().split(" ").map(q => 
@@ -50,6 +83,8 @@ function check_input_classic() {
       .toLowerCase()
       .split("/")
       .map((q) => q.split(", "))
+      .flat()
+      .map((p) => generate_options(p))
       .flat()
       .map((r) => remove_punctuation(r))
       .includes(
