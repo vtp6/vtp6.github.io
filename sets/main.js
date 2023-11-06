@@ -433,8 +433,10 @@ select.oninput = update_slider;
 let args = location.search.slice(1);
 let params = {};
 args.split("&").forEach(function (pair) {
-  pair = pair.split("=");
-  params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+  if (pair !== "") {
+    pair = pair.split("=");
+    params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+  }
 });
 if ("mode" in params && ["classic", "match", "hangman"].includes(params["mode"])) {
   select.value = params["mode"];
