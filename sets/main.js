@@ -123,7 +123,9 @@ function create_wrongtbl() {
   document.getElementById("inp").disabled = true;
   document.getElementById(
     "qs",
-  ).innerHTML = `<input type=button onclick="javascript:location.reload();" value="Restart" />`;
+  ).innerHTML = 
+    `<input type=button onclick="javascript:window.location.replace(location.href.split('?')[0] + '?mode=` +
+    document.getElementById("game").value + `');" value="Restart" />`;
 
   document.body.insertBefore(document.createElement("br"), sub);
   document.body.insertBefore(document.createElement("br"), sub);
@@ -298,7 +300,9 @@ function clicked(elem) {
         let restart = document.createElement("input");
         restart.setAttribute("type", "button");
         restart.value = "Restart";
-        restart.onclick = () => location.reload();
+        restart.onclick = () => window.location.replace(
+          location.href.split('?')[0] + '?mode=' +
+          document.getElementById("game").value);
         document.body.insertBefore(restart, document.getElementById("mt"));
       }
     }
@@ -426,6 +430,15 @@ optn3.innerHTML = "Hangman";
 select.appendChild(optn3);
 select.id = "game";
 select.oninput = update_slider;
+let args = location.search.slice(1);
+let params = {};
+args.split("&").forEach(function (pair) {
+  pair = pair.split("=");
+  params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+});
+if ("mode" in params && ["classic", "match", "hangman"].includes(params["mode"])) {
+  select.value = params["mode"];
+}
 document.body.appendChild(select);
 
 let sp = document.createElement("el");
