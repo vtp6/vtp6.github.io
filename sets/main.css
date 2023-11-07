@@ -55,3 +55,10 @@ input, select {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+sub {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #404040;
+}
