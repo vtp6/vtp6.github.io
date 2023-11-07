@@ -50,8 +50,8 @@ input, select {
 
 .bigbutton.done {
     background-color: #404040;
-    background: url("../logo.png");
-    background-size: auto 100%;
+    background: url("done.svg");
+    background-size: auto 90%;
     background-repeat: no-repeat;
     background-position: center;
 }
