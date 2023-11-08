@@ -172,6 +172,20 @@ function create_wrongtbl() {
   document.body.insertBefore(wrongtbl, sub);
 }
 
+function hide_stuff() {
+  document.getElementById("tbl").hidden = true;
+  document.getElementById("btn").hidden = true;
+  document.getElementById("lbl").hidden = true;
+  document.getElementById("sld").hidden = true;
+  document.getElementById("num").hidden = true;
+  document.getElementById("swap").hidden = true;
+  document.getElementById("game").hidden = true;
+  br1.hidden = true;
+  br2.hidden = true;
+  sp1.hidden = true;
+  sp2.hidden = true;
+}
+
 function new_question_classic() {
   document.getElementById("inp").value = "";
   document.getElementById("inp").focus();
@@ -180,15 +194,7 @@ function new_question_classic() {
 }
 
 function start_classic() {
-  document.getElementById("tbl").hidden = true;
-  document.getElementById("btn").hidden = true;
-  document.getElementById("lbl").hidden = true;
-  document.getElementById("sld").hidden = true;
-  document.getElementById("num").hidden = true;
-  document.getElementById("game").hidden = true;
-  br1.hidden = true;
-  br2.hidden = true;
-  sp.hidden = true;
+  hide_stuff();
 
   let scorebar = document.createElement("b");
   scorebar.id = "sb";
@@ -223,15 +229,7 @@ function start_classic() {
 }
 
 function start_match() {
-  document.getElementById("tbl").hidden = true;
-  document.getElementById("btn").hidden = true;
-  document.getElementById("lbl").hidden = true;
-  document.getElementById("sld").hidden = true;
-  document.getElementById("num").hidden = true;
-  document.getElementById("game").hidden = true;
-  br1.hidden = true;
-  br2.hidden = true;
-  sp.hidden = true;
+  hide_stuff();
 
   let pairs = random_shuffle(random_shuffle(lst).slice(0, PAIRS));
   let pa = random_shuffle(pairs.map((i) => i[0]));
@@ -312,15 +310,7 @@ function clicked(elem) {
 }
 
 function start_hangman() {
-  document.getElementById("tbl").hidden = true;
-  document.getElementById("btn").hidden = true;
-  document.getElementById("lbl").hidden = true;
-  document.getElementById("sld").hidden = true;
-  document.getElementById("num").hidden = true;
-  document.getElementById("game").hidden = true;
-  br1.hidden = true;
-  br2.hidden = true;
-  sp.hidden = true;
+  hide_stuff();
 
   let image = document.createElement("img");
   image.src = "../Hangman/Slide1.png";
@@ -396,6 +386,11 @@ function update_slider() {
   }
 }
 
+function swaptd() {
+  lst = lst.map(pair => [pair[1], pair[0]]);
+  draw_table();
+}
+
 let slider = document.createElement("input");
 slider.setAttribute("type", "range");
 slider.min = 1;
@@ -447,9 +442,22 @@ if ("mode" in params && ["classic", "match", "hangman"].includes(params["mode"])
 }
 document.body.appendChild(select);
 
-let sp = document.createElement("el");
-sp.innerHTML = "&emsp;";
-document.body.appendChild(sp);
+update_slider();
+
+let sp1 = document.createElement("el");
+sp1.innerHTML = "&emsp;";
+document.body.appendChild(sp1);
+
+let swp = document.createElement("input");
+swp.setAttribute("type", "button");
+swp.setAttribute("value", "Swap");
+swp.onclick = swaptd;
+swp.id = "swap";
+document.body.appendChild(swp);
+
+let sp2 = document.createElement("el");
+sp2.innerHTML = "&emsp;";
+document.body.appendChild(sp2);
 
 let btn = document.createElement("input");
 btn.setAttribute("type", "button");
@@ -461,36 +469,42 @@ document.body.appendChild(btn);
 document.body.appendChild((br1 = document.createElement("br")));
 document.body.appendChild((br2 = document.createElement("br")));
 
-let table = document.createElement("table");
-table.id = "tbl";
-
-let head = document.createElement("tr");
-head.innerHTML = `<th>Term</th> <th>Definition</th>`;
-table.appendChild(head);
-
-lst.forEach((x) => {
-  let [a, b] = x;
-  let row = document.createElement("tr");
-  if (a.length > 20) {
-    a = a.slice(0, 17) + "...";
+function draw_table() {
+  if (old_table = document.getElementById("tbl")) {
+    old_table.remove();
   }
-  if (b.length > 20) {
-    b = b.slice(0, 17) + "...";
-  }
-  row.innerHTML =
-    `<td title="` +
-    x[0] +
-    `">` +
-    a +
-    `</td> <td title="` +
-    x[1] +
-    `">` +
-    b +
-    `</td>`;
-  table.appendChild(row);
-});
 
-document.body.appendChild(table);
+  let table = document.createElement("table");
+  table.id = "tbl";
+
+  let head = document.createElement("tr");
+  head.innerHTML = `<th>Term</th> <th>Definition</th>`;
+  table.appendChild(head);
+
+  lst.forEach((x) => {
+    let [a, b] = x;
+    let row = document.createElement("tr");
+    if (a.length > 20) {
+      a = a.slice(0, 17) + "...";
+    }
+    if (b.length > 20) {
+      b = b.slice(0, 17) + "...";
+    }
+    row.innerHTML =
+      `<td title="` +
+      x[0] +
+      `">` +
+      a +
+      `</td> <td title="` +
+      x[1] +
+      `">` +
+      b +
+      `</td>`;
+    table.appendChild(row);
+  });
+
+  document.body.insertBefore(table, sub);
+}
 
 let sub = document.createElement("br");
 document.body.appendChild(sub);
@@ -501,3 +515,5 @@ sub2.innerHTML = `<el>© Rujul Nayak 2023</el> ` +
   `<a href="https://github.com/vtp6/vtp6.github.io"><img src="../logosmall.png" class="logo" /></a>`;
 sub2.id = "sub";
 document.body.appendChild(sub2);
+
+draw_table();
