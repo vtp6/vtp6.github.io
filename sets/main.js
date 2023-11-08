@@ -18,12 +18,6 @@ let lst = words.split("\n").map((l) => l.split("\t"));
 let h1 = document.querySelector("h1");
 h1.innerHTML = `<a href="../../">VTP6</a>`;
 
-let logo = document.createElement("img");
-logo.src = "../logosmall.png";
-logo.classList.add("logo");
-logo.onclick = () => location.href = "https://github.com/vtp6/vtp6.github.io"
-document.body.appendChild(logo);
-
 let answer = "";
 let correct = 0;
 let total = 0;
@@ -501,6 +495,9 @@ document.body.appendChild(table);
 let sub = document.createElement("br");
 document.body.appendChild(sub);
 document.body.append(document.createElement("br"));
-let sub2 = document.createElement("sub");
-sub2.innerHTML = `© Rujul Nayak 2023 - <a href="mailto:vtp6_feedback@outlook.com">Feedback</a>`;
+let sub2 = document.createElement("div");
+sub2.innerHTML = `<el>© Rujul Nayak 2023</el> ` +
+  `| <a href="mailto:vtp6_feedback@outlook.com" class="feedback">Feedback</a> ` +
+  `<a href="https://github.com/vtp6/vtp6.github.io"><img src="../logosmall.png" class="logo" /></a>`;
+sub2.id = "sub";
 document.body.appendChild(sub2);
