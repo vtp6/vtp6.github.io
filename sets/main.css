@@ -59,6 +59,16 @@ input, select {
 sub {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: calc(100vw - 100px);
     background-color: #404040;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.logo {
+    background-color: #404040;
+    position: fixed;
+    height: 30px;
+    bottom: 0px;
+    right: 0px;
 }

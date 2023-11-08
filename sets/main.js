@@ -18,6 +18,11 @@ let lst = words.split("\n").map((l) => l.split("\t"));
 let h1 = document.querySelector("h1");
 h1.innerHTML = `<a href="../../">VTP6</a>`;
 
+let logo = document.createElement("img");
+logo.src = "../logosmall.png";
+logo.classList.add("logo");
+document.body.appendChild(logo);
+
 let answer = "";
 let correct = 0;
 let total = 0;
@@ -201,6 +206,8 @@ function start_classic() {
 
   let inp = document.createElement("input");
   inp.setAttribute("type", "text");
+  inp.setAttribute("autocorrect", "off");
+  inp.setAttribute("spellcheck", "off");
   inp.id = "inp";
   document.body.insertBefore(inp, sub);
   inp.focus();
@@ -331,6 +338,8 @@ function start_hangman() {
 
   let inp = document.createElement("input");
   inp.setAttribute("type", "text");
+  inp.setAttribute("autocorrect", "off");
+  inp.setAttribute("spellcheck", "off");
   inp.id = "inp";
   document.body.insertBefore(inp, sub);
   inp.focus();
