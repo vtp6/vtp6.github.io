@@ -21,6 +21,7 @@ h1.innerHTML = `<a href="../../">VTP6</a>`;
 let logo = document.createElement("img");
 logo.src = "../logosmall.png";
 logo.classList.add("logo");
+logo.onclick = () => location.href = "https://github.com/vtp6/vtp6.github.io"
 document.body.appendChild(logo);
 
 let answer = "";
