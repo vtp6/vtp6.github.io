@@ -45,7 +45,9 @@ complete them before the hangman is fully formed.
 
 ![Hangman Mode Recording](https://github.com/vtp6/vtp6.github.io/assets/55329600/13f5949c-8c41-44f8-b2a1-f5ad72c3b359)
 
+***
 
+![Logo](https://github.com/vtp6/vtp6.github.io/assets/55329600/d7b16a93-0efc-4ecb-9990-2fdf45c52b37)
 
 <sub>© Rujul Nayak 2023</sub>
 
