@@ -131,8 +131,38 @@ function create_wrongtbl() {
   document.body.insertBefore(document.createElement("br"), sub);
   document.body.insertBefore(document.createElement("br"), sub);
 
+  let retry = document.createElement("input");
+  retry.setAttribute("type", "button");
+  retry.setAttribute("value", "Retry mistakes");
+  retry.id = "rty";
+  retry.onclick = () => {
+    try {document.getElementById("sb").remove();} catch {}
+    try {document.getElementById("img").remove();} catch {}
+    document.getElementById("qs").remove();
+    document.getElementById("rmn").remove();
+    document.getElementById("inp").remove();
+    document.getElementById("msg").remove();
+    document.getElementById("rty").remove();
+    document.getElementById("txt").remove();
+    document.getElementById("wtb").remove();
+    lst = wrong.map(triplet => [triplet[0], triplet[1]]);
+    document.getElementById("sld").value = lst.length;
+    [...document.querySelectorAll("br:not(.exempt)")].map(br => br.remove());
+    correct = 0;
+    total = 0;
+    wrong = [];
+    id = 0;
+    hangman_num = 1;
+    start();
+  };
+  if (wrong.length === 0) {
+    retry.disabled = true;
+  }
+  document.body.insertBefore(retry, sub);
+
   let txt = document.createElement("h3");
   txt.innerHTML = "Mistakes:";
+  txt.id = "txt";
   document.body.insertBefore(txt, sub);
 
   let wrongtbl = document.createElement("table");
@@ -169,6 +199,8 @@ function create_wrongtbl() {
       `</td>`;
     wrongtbl.appendChild(tr);
   });
+
+  wrongtbl.id = "wtb";
 
   document.body.insertBefore(wrongtbl, sub);
 }
@@ -524,6 +556,7 @@ function draw_table() {
 }
 
 let sub = document.createElement("br");
+sub.classList.add("exempt");
 document.body.appendChild(sub);
 document.body.append(document.createElement("br"));
 let sub2 = document.createElement("div");
