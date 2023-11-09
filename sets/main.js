@@ -111,8 +111,7 @@ function check_input_classic() {
   check_input();
   document.getElementById("sb").innerHTML =
     correct + "/" + total + " (" + ((correct / total) * 100).toFixed(2) + "%)";
-  document.getElementById("rmn").innerHTML =
-    (document.getElementById("sld").value - total) + " questions remaining.";
+  document.getElementById("rmn").innerHTML = rmntext(total);
   if (total < +document.getElementById("sld").value) {
     new_question_classic();
   } else {
@@ -205,8 +204,7 @@ function start_classic() {
 
   let remaining = document.createElement("p");
   remaining.id = "rmn";
-  remaining.innerHTML = document.getElementById("sld").value +
-    " questions remaining."
+  remaining.innerHTML = rmntext();
   document.body.insertBefore(remaining, sub);
 
   let question = document.createElement("h3");
@@ -317,6 +315,11 @@ function clicked(elem) {
   }
 }
 
+function rmntext(n = 0) {
+  return (sval = (document.getElementById("sld").value - n)) +
+    " question" + (sval !== 1 ? "s" : "") + " remaining.";
+}
+
 function start_hangman() {
   hide_stuff();
 
@@ -327,8 +330,7 @@ function start_hangman() {
 
   let remaining = document.createElement("p");
   remaining.id = "rmn";
-  remaining.innerHTML = document.getElementById("sld").value +
-    " questions remaining."
+  remaining.innerHTML = rmntext();
   document.body.insertBefore(remaining, sub);
 
   let question = document.createElement("h3");
@@ -369,8 +371,7 @@ function check_input_hangman() {
       return;
     }
   }
-  document.getElementById("rmn").innerHTML =
-    (document.getElementById("sld").value - total) + " questions remaining.";
+  document.getElementById("rmn").innerHTML = rmntext(total);
   if (total < +document.getElementById("sld").value) {
     new_question_classic();
   } else {
