@@ -562,8 +562,6 @@ document.body.append(document.createElement("br"));
 let sub2 = document.createElement("div");
 sub2.innerHTML = `<el>© Rujul Nayak 2023</el> ` +
   `| <a href="mailto:vtp6_feedback@outlook.com" class="feedback">Feedback</a> ` +
-  `| <a href="../../about/" class="about">About</a> ` +
-  `| <a href="../../credits/" class="credits">Credits</a> ` +
   `<a href="https://github.com/vtp6/vtp6.github.io"><img src="../logosmall.png" class="logo" /></a>`;
 sub2.id = "sub";
 document.body.appendChild(sub2);
