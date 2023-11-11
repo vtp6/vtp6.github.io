@@ -81,7 +81,10 @@ function check_input() {
         )
     ).flat().includes(true)) */
   if (
-    answer
+    (remove_punctuation(answer) === remove_punctuation(
+      document.getElementById("inp").value.toLowerCase()))
+    ||
+    (answer
       .toLowerCase()
       .split("/")
       .map((q) => q.split(", "))
@@ -92,6 +95,7 @@ function check_input() {
       .includes(
         remove_punctuation(document.getElementById("inp").value.toLowerCase()),
       )
+    )
   ) {
     correct++;
     document.getElementById("msg").innerHTML = "Correct!";
