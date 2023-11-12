@@ -27,7 +27,7 @@ td, th {
     padding-top: 5px;
 }
 
-input, select {
+input:not([type=file]), select {
     background-color: #606060;
     color: #bbbbbb;
     font-size: 20px;
@@ -70,4 +70,10 @@ input, select {
     height: 40px;
     bottom: 0px;
     right: 0px;
+}
+
+input[type=file]::file-selector-button {
+    background-color: #aaaaaa;
+    border-radius: 5px;
+    border: 1px solid #dddddd;
 }

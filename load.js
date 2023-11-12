@@ -1,6 +1,7 @@
 // Load the links onto the main page
 
 const sub = document.getElementById("sub");
+const cstm = document.getElementById("custom");
 
 LIST_OF_LINKS.forEach(([a, b]) => {
   let det = document.createElement("details");
@@ -15,7 +16,7 @@ LIST_OF_LINKS.forEach(([a, b]) => {
     ul.appendChild(newli);
   });
   det.appendChild(ul);
-  document.body.insertBefore(det, sub);
-  document.body.insertBefore(document.createElement("br"), sub);
-  document.body.insertBefore(document.createElement("br"), sub);
+  document.body.insertBefore(det, cstm);
+  document.body.insertBefore(document.createElement("br"), cstm);
+  document.body.insertBefore(document.createElement("br"), cstm);
 });

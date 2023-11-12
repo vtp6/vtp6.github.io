@@ -13,8 +13,6 @@ meta3.property = "og:image:height";
 meta3.content = "256";
 document.head.appendChild(meta3);
 
-let lst = words.split("\n").map((l) => l.split("\t"));
-
 let h1 = document.querySelector("h1");
 h1.innerHTML = `<a href="../../">VTP6</a>`;
 
@@ -444,83 +442,108 @@ function swaptd() {
   draw_table();
 }
 
-let slider = document.createElement("input");
-slider.setAttribute("type", "range");
-slider.min = 1;
-slider.max = lst.length;
-slider.setAttribute("value", lst.length);
-slider.id = "sld";
-slider.name = "sld";
-document.body.appendChild(slider);
+function draw_stuff() {
 
-let label = document.createElement("label");
-label.setAttribute("for", "sld");
-label.innerHTML = "Words: ";
-label.id = "lbl";
-document.body.insertBefore(label, slider);
+  let slider = document.createElement("input");
+  slider.setAttribute("type", "range");
+  slider.min = 1;
+  slider.max = lst.length;
+  slider.setAttribute("value", lst.length);
+  slider.id = "sld";
+  slider.name = "sld";
+  document.body.appendChild(slider);
 
-let num = document.createElement("el");
-num.innerHTML = lst.length + " &emsp;";
-slider.oninput = () => {
-  num.innerHTML = slider.value + " &emsp;";
-};
-num.id = "num";
-document.body.appendChild(num);
+  let label = document.createElement("label");
+  label.setAttribute("for", "sld");
+  label.innerHTML = "Words: ";
+  label.id = "lbl";
+  document.body.insertBefore(label, slider);
 
-let select = document.createElement("select");
-let optn1 = document.createElement("option");
-optn1.value = "classic";
-optn1.innerHTML = "Classic";
-select.appendChild(optn1);
-let optn2 = document.createElement("option");
-optn2.value = "match";
-optn2.innerHTML = "Match";
-select.appendChild(optn2);
-let optn3 = document.createElement("option");
-optn3.value = "hangman";
-optn3.innerHTML = "Hangman";
-select.appendChild(optn3);
-select.id = "game";
-select.oninput = update_slider;
-let args = location.search.slice(1);
-let params = {};
-args.split("&").forEach(function (pair) {
-  if (pair !== "") {
-    pair = pair.split("=");
-    params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+  let num = document.createElement("el");
+  num.innerHTML = lst.length + " &emsp;";
+  slider.oninput = () => {
+    num.innerHTML = slider.value + " &emsp;";
+  };
+  num.id = "num";
+  document.body.appendChild(num);
+
+  let select = document.createElement("select");
+  let optn1 = document.createElement("option");
+  optn1.value = "classic";
+  optn1.innerHTML = "Classic";
+  select.appendChild(optn1);
+  let optn2 = document.createElement("option");
+  optn2.value = "match";
+  optn2.innerHTML = "Match";
+  select.appendChild(optn2);
+  let optn3 = document.createElement("option");
+  optn3.value = "hangman";
+  optn3.innerHTML = "Hangman";
+  select.appendChild(optn3);
+  select.id = "game";
+  select.oninput = update_slider;
+  let args = location.search.slice(1);
+  let params = {};
+  args.split("&").forEach(function (pair) {
+    if (pair !== "") {
+      pair = pair.split("=");
+      params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+    }
+  });
+  if ("mode" in params && ["classic", "match", "hangman"].includes(params["mode"])) {
+    select.value = params["mode"];
   }
-});
-if ("mode" in params && ["classic", "match", "hangman"].includes(params["mode"])) {
-  select.value = params["mode"];
+  document.body.appendChild(select);
+
+  update_slider();
+
+  sp1 = document.createElement("el");
+  sp1.innerHTML = "&emsp;";
+  document.body.appendChild(sp1);
+
+  let swp = document.createElement("input");
+  swp.setAttribute("type", "button");
+  swp.setAttribute("value", "Swap");
+  swp.onclick = swaptd;
+  swp.id = "swap";
+  document.body.appendChild(swp);
+
+  sp2 = document.createElement("el");
+  sp2.innerHTML = "&emsp;";
+  document.body.appendChild(sp2);
+
+  let btn = document.createElement("input");
+  btn.setAttribute("type", "button");
+  btn.setAttribute("value", "Start");
+  btn.onclick = start;
+  btn.id = "btn";
+  document.body.appendChild(btn);
+
+  document.body.appendChild((br1 = document.createElement("br")));
+  document.body.appendChild((br2 = document.createElement("br")));
+
+  draw_sub();
+
+  draw_table();
+
 }
-document.body.appendChild(select);
 
-update_slider();
+let sub = 0;
+let sp1 = 0;
+let sp2 = 0;
 
-let sp1 = document.createElement("el");
-sp1.innerHTML = "&emsp;";
-document.body.appendChild(sp1);
-
-let swp = document.createElement("input");
-swp.setAttribute("type", "button");
-swp.setAttribute("value", "Swap");
-swp.onclick = swaptd;
-swp.id = "swap";
-document.body.appendChild(swp);
-
-let sp2 = document.createElement("el");
-sp2.innerHTML = "&emsp;";
-document.body.appendChild(sp2);
-
-let btn = document.createElement("input");
-btn.setAttribute("type", "button");
-btn.setAttribute("value", "Start");
-btn.onclick = start;
-btn.id = "btn";
-document.body.appendChild(btn);
-
-document.body.appendChild((br1 = document.createElement("br")));
-document.body.appendChild((br2 = document.createElement("br")));
+function draw_sub() {
+  sub = document.createElement("br");
+  sub.classList.add("exempt");
+  document.body.appendChild(sub);
+  document.body.append(document.createElement("br"));
+  let sub2 = document.createElement("div");
+  sub2.innerHTML = `<el>© Rujul Nayak 2023</el> ` +
+    `| <a href="mailto:vtp6_feedback@outlook.com" class="feedback">Feedback</a> ` +
+    `<a href="https://github.com/vtp6/vtp6.github.io"><img src="../logosmall.png" class="logo" /></a>`;
+  sub2.id = "sub";
+  document.body.appendChild(sub2);
+}
 
 function draw_table() {
   if (old_table = document.getElementById("tbl")) {
@@ -559,15 +582,32 @@ function draw_table() {
   document.body.insertBefore(table, sub);
 }
 
-let sub = document.createElement("br");
-sub.classList.add("exempt");
-document.body.appendChild(sub);
-document.body.append(document.createElement("br"));
-let sub2 = document.createElement("div");
-sub2.innerHTML = `<el>© Rujul Nayak 2023</el> ` +
-  `| <a href="mailto:vtp6_feedback@outlook.com" class="feedback">Feedback</a> ` +
-  `<a href="https://github.com/vtp6/vtp6.github.io"><img src="../logosmall.png" class="logo" /></a>`;
-sub2.id = "sub";
-document.body.appendChild(sub2);
+let lst = [];
 
-draw_table();
+try {
+  flagvar;
+  document.getElementById("start").addEventListener("click", async function() {
+    let reader = new FileReader();
+    let [file] = document.getElementById("txtx").files;
+    reader.addEventListener(
+        "load",
+        () => {
+          console.log(words = reader.result);
+          lst = words.split("\n").map((l) => l.split("\t"));
+          document.getElementById("wlbl").hidden = true;
+          document.getElementById("txtx").hidden = true;
+          document.getElementById("brk1").hidden = true;
+          document.getElementById("brk2").hidden = true;
+          document.getElementById("start").hidden = true;
+          draw_stuff();
+        },
+        false,
+    );
+    if (file) {
+        reader.readAsText(file);
+    }
+});
+} catch {
+  lst = words.split("\n").map((l) => l.split("\t"));
+  draw_stuff();
+}
