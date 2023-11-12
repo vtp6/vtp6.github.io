@@ -44,8 +44,18 @@ Term	Definition
 
 ### CSV format
 
-This is **not implemented yet**, but may be added in a
-future update.
+Comma-separated value (CSV) files are also supported. You do
+not have to select anything: it will automatically recognise
+a CSV file and change its behaviour appropriately. The
+format of a CSV file is as follows:
+
+```c
+Term, Definition
+Term, Definition
+```
+
+If the term or definition contains a comma, put quotes around
+it.
 
 ***
 

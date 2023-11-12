@@ -584,17 +584,59 @@ function draw_table() {
 
 let lst = [];
 
+function parseCSVLine(line) {
+  let result = [];
+  let curr = "";
+  let quotes = "";
+  let escaped = false;
+  for (let ind = 0; ind < line.length; ind++) {
+    let char = line[ind];
+    if (escaped) {
+      curr += char;
+      escaped = false;
+      continue;
+    }
+    if (char === "," && quotes === "") {
+      result.push(curr);
+      curr = "";
+      continue;
+    }
+    if (char === "'" || '"' === char) {
+      if (quotes === char && !escaped) {
+        quotes = "";
+      } else {
+        quotes = char;
+      }
+      continue;
+    }
+    if (char === "\\") {
+      escaped = true;
+      continue;
+    }
+    curr += char;
+  }
+  result.push(curr);
+  return result;
+}
+
 try {
   flagvar;
   let typ = document.getElementById("inputtype");
   document.getElementById("start").addEventListener("click", async function() {
     let reader = new FileReader();
     let [file] = document.getElementById("txtx").files;
+    let ext = file.name.split('.').pop();
     reader.addEventListener(
         "load",
         () => {
           console.log(words = reader.result);
-          if (typ.value === "vtp6") {
+          if (ext === "csv") {
+            lst = words.split("\n").map((l) => {
+              let temp = parseCSVLine(l);
+              console.log(temp);
+              return temp;
+            });
+          } else if (typ.value === "vtp6") {
             lst = words.split("\n").map((l) => {
               let next = l.split("\t");
               if (next.length === 2) {
@@ -613,7 +655,7 @@ try {
                 alert("Invalid format");
                 throw new Error();
               }
-            })
+            });
           }
           document.getElementById("wlbl").hidden = true;
           document.getElementById("txtx").hidden = true;
