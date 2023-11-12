@@ -11,7 +11,11 @@
     <body>
         <h1>VTP6</h1>
         <label for="txtx" id="wlbl">Words list:</label>
-        <input type="file" id="txtx" name="txtx" accept=".txt, .csv" /> <br id="brk1" /> <br id="brk2" />
+        <input type="file" id="txtx" name="txtx" accept=".txt, .csv" />
+        <br id="brk1" /> <br id="brk2" /> <select id="inputtype">
+            <option value="vtp5">VTP5 format</option>
+            <option value="vtp6">VTP6 format</option>
+        </select> <br id="brk3" /> <br id="brk4" />
         <input type="button" id="start" value="Upload" />
         <script>
             const flagvar = true;

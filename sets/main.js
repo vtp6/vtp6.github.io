@@ -586,6 +586,7 @@ let lst = [];
 
 try {
   flagvar;
+  let typ = document.getElementById("inputtype");
   document.getElementById("start").addEventListener("click", async function() {
     let reader = new FileReader();
     let [file] = document.getElementById("txtx").files;
@@ -593,12 +594,35 @@ try {
         "load",
         () => {
           console.log(words = reader.result);
-          lst = words.split("\n").map((l) => l.split("\t"));
+          if (typ.value === "vtp6") {
+            lst = words.split("\n").map((l) => {
+              let next = l.split("\t");
+              if (next.length === 2) {
+                return next;
+              } else {
+                alert("Invalid format");
+                throw new Error();
+              }
+            });
+          } else {
+            lst = words.split("\n")
+            lst = lst.reduce((acc, _, i) =>
+              (i % 2 === 0 ? acc.push(lst.slice(i, i + 2)) && acc : acc), []);
+            lst.forEach(pair => {
+              if (pair.length !== 2) {
+                alert("Invalid format");
+                throw new Error();
+              }
+            })
+          }
           document.getElementById("wlbl").hidden = true;
           document.getElementById("txtx").hidden = true;
           document.getElementById("brk1").hidden = true;
           document.getElementById("brk2").hidden = true;
+          document.getElementById("brk3").hidden = true;
+          document.getElementById("brk4").hidden = true;
           document.getElementById("start").hidden = true;
+          typ.hidden = true;
           draw_stuff();
         },
         false,
