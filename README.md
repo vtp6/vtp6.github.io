@@ -10,7 +10,48 @@ the slider and press start.
 Email any feedback or suggestions to
 **vtp6_feedback@outlook.com**.
 
-## Classic Mode
+***
+
+## Import your own set
+
+In case you want to study something other than the
+pre-loaded sets on VTP6, you can study your own custom set.
+Click "Import custom set" on the homepage to load in your
+own set. Then, choose your file and format and click
+"Upload".
+
+### VTP5 format
+
+VTP6 is backwards-compatible with VTP5 TXT files, which
+are in the following format:
+
+```c
+Term
+Definition
+Term
+Definition
+```
+
+### VTP6 format
+
+VTP6 also has its own format, with terms and definitions
+separated on the same line by a tab character:
+
+```c
+Term	Definition
+Term	Definition
+```
+
+### CSV format
+
+This is **not implemented yet**, but may be added in a
+future update.
+
+***
+
+## Modes
+
+### Classic Mode
 
 Classic mode is the basic VTP6 option. You can choose the
 number of words you want to revise using the slider and then
@@ -23,7 +64,7 @@ punctuation**_.
 ![Classic Mode Recording](https://github.com/vtp6/vtp6.github.io/assets/55329600/ba21fc88-af3e-45b0-a12a-9b77893b2833)
 
 
-## Match Mode
+### Match Mode
 
 When you press start, twelve boxes will appear on your
 screen. The six on the left are terms; the six on the right
@@ -36,7 +77,7 @@ to tell you how long it took.
 ![Match Mode Recording](https://github.com/vtp6/vtp6.github.io/assets/55329600/a01e0522-9f7e-4731-8755-2d820302e1d6)
 
 
-## Hangman Mode
+### Hangman Mode
 
 Just like the Hangman game, each time you get something
 wrong, the hangman picture progresses to the next stage.
