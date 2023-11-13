@@ -47,7 +47,7 @@ function remove_punctuation(string) {
   return [...string]
     .map((c) => {
       let ord = c.charCodeAt(0);
-      return (64 < ord && ord < 91) || (96 < ord && ord < 123) ? c : "";
+      return (47 < ord && ord < 58) || (64 < ord && ord < 91) || (96 < ord && ord < 123) ? c : "";
     })
     .join("");
 }
