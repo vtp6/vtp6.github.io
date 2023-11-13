@@ -50,8 +50,8 @@ a CSV file and change its behaviour appropriately. The
 format of a CSV file is as follows:
 
 ```c
-Term, Definition
-Term, Definition
+Term,Definition
+Term,Definition
 ```
 
 If the term or definition contains a comma, put quotes around
