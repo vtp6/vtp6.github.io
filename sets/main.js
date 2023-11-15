@@ -657,6 +657,8 @@ function readerfunc(rdr) {
   if (counter === files.length) {
     document.getElementById("wlbl").hidden = true;
     document.getElementById("txtx").hidden = true;
+    document.getElementById("msgs").hidden = true;
+    document.getElementById("brk0").hidden = true;
     document.getElementById("brk1").hidden = true;
     document.getElementById("brk2").hidden = true;
     document.getElementById("brk3").hidden = true;
