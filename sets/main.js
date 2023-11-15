@@ -619,59 +619,73 @@ function parseCSVLine(line) {
   return result;
 }
 
+let ext = "";
+let typ = document.getElementById("inputtype");
+let counter = 0;
+
+function readerfunc(rdr) {
+  console.log(words = rdr.result);
+  if (ext === "csv") {
+    lst.push(...words.split("\n").map((l) => {
+      let temp = parseCSVLine(l);
+      console.log(temp);
+      return temp;
+    }));
+  } else if (typ.value === "vtp6") {
+    lst.push(...words.split("\n").map((l) => {
+      let next = l.split("\t");
+      if (next.length === 2) {
+        return next;
+      } else {
+        alert("Invalid format");
+        throw new Error();
+      }
+    }));
+  } else {
+    let tmp = words.split("\n");
+    tmp = tmp.reduce((acc, _, i) =>
+      (i % 2 === 0 ? acc.push(tmp.slice(i, i + 2)) && acc : acc), []);
+    tmp.forEach(pair => {
+      if (pair.length !== 2) {
+        alert("Invalid format");
+        throw new Error();
+      }
+    });
+    lst.push(...tmp);
+  }
+  counter++;
+  if (counter === files.length) {
+    document.getElementById("wlbl").hidden = true;
+    document.getElementById("txtx").hidden = true;
+    document.getElementById("brk1").hidden = true;
+    document.getElementById("brk2").hidden = true;
+    document.getElementById("brk3").hidden = true;
+    document.getElementById("brk4").hidden = true;
+    document.getElementById("start").hidden = true;
+    typ.hidden = true;
+    draw_stuff();
+  }
+}
+
+let files = [];
+
 try {
   flagvar;
-  let typ = document.getElementById("inputtype");
   document.getElementById("start").addEventListener("click", async function() {
-    let reader = new FileReader();
-    let [file] = document.getElementById("txtx").files;
-    let ext = file.name.split('.').pop();
-    reader.addEventListener(
-        "load",
-        () => {
-          console.log(words = reader.result);
-          if (ext === "csv") {
-            lst = words.split("\n").map((l) => {
-              let temp = parseCSVLine(l);
-              console.log(temp);
-              return temp;
-            });
-          } else if (typ.value === "vtp6") {
-            lst = words.split("\n").map((l) => {
-              let next = l.split("\t");
-              if (next.length === 2) {
-                return next;
-              } else {
-                alert("Invalid format");
-                throw new Error();
-              }
-            });
-          } else {
-            lst = words.split("\n")
-            lst = lst.reduce((acc, _, i) =>
-              (i % 2 === 0 ? acc.push(lst.slice(i, i + 2)) && acc : acc), []);
-            lst.forEach(pair => {
-              if (pair.length !== 2) {
-                alert("Invalid format");
-                throw new Error();
-              }
-            });
-          }
-          document.getElementById("wlbl").hidden = true;
-          document.getElementById("txtx").hidden = true;
-          document.getElementById("brk1").hidden = true;
-          document.getElementById("brk2").hidden = true;
-          document.getElementById("brk3").hidden = true;
-          document.getElementById("brk4").hidden = true;
-          document.getElementById("start").hidden = true;
-          typ.hidden = true;
-          draw_stuff();
-        },
-        false,
-    );
-    if (file) {
+    files = [...document.getElementById("txtx").files];
+    console.log(files);
+    files.forEach(file => {
+      if (file) {
+        ext = file.name.split('.').pop();
+        let reader = new FileReader();
+        reader.addEventListener(
+          "load",
+          () => readerfunc(reader),
+          false,
+        );
         reader.readAsText(file);
-    }
+      }
+    });
 });
 } catch {
   lst = words.split("\n").map((l) => l.split("\t"));
