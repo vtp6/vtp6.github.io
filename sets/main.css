@@ -79,6 +79,5 @@ input[type=file]::file-selector-button {
 }
 
 #acbr * {
-    display: none;
     margin-right: 10px;
 }

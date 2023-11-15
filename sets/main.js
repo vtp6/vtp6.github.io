@@ -47,7 +47,11 @@ function remove_punctuation(string) {
   return [...string]
     .map((c) => {
       let ord = c.charCodeAt(0);
-      return (47 < ord && ord < 58) || (64 < ord && ord < 91) || (96 < ord && ord < 123) ? c : "";
+      return (
+        (47 < ord && ord < 58) || 
+        (64 < ord && ord < 91) || 
+        (96 < ord && ord < 123)
+        || (ord > 127)) ? c : "";
     })
     .join("");
 }
@@ -227,6 +231,129 @@ function new_question_classic() {
   lst.splice(lst.indexOf(temp), 1);
 }
 
+function showacbr(ix) {
+  // 0 = reset
+
+  // 10 = es:
+  //  11 = á
+  //  12 = é
+  //  13 = í
+  //  14 = ñ
+  //  15 = ó
+  //  16 = ú
+  //  17 = ü
+
+  // 20 = de:
+  //  21 = ä
+  //  22 = ö
+  //  23 = ß
+  //  24 = ü
+
+  // 30 = fr:
+  //  31 = à
+  //  32 = â
+  //  33 = ç
+  //  34 = é
+  //  35 = è
+  //  36 = ê
+  //  37 = ë
+  //  38 = î
+  //  39 = ï
+  //  40 = ô
+  //  41 = ù
+  //  42 = û
+  //  43 = ü
+
+  let accentbar = document.createElement("div");
+  accentbar.id = "acbr";
+
+  if (ix === 0) {
+    ["ES", "DE", "FR"].forEach((lang, indx) => {
+      let langbtn = document.createElement("input");
+      langbtn.setAttribute("type", "button");
+      langbtn.value = lang;
+      langbtn.classList.add("accentbtn");
+      langbtn.onclick = () => showacbr((indx + 1) * 10);
+      accentbar.appendChild(langbtn);
+    });
+  }
+
+  if (ix === 10) {
+    [`á`, `é`, `í`, `ñ`, `ó`, `ú`, `ü`].forEach((acc, indx) => {
+      let accbtn = document.createElement("input");
+      accbtn.setAttribute("type", "button");
+      accbtn.value = acc;
+      accbtn.classList.add("accentbtn");
+      accbtn.onclick = () => showacbr(11 + indx);
+      accentbar.appendChild(accbtn);
+    });
+    let resetbtn = document.createElement("input");
+    resetbtn.setAttribute("type", "button");
+    resetbtn.value = "Back";
+    resetbtn.classList.add("accentbtn");
+    resetbtn.onclick = () => showacbr(0);
+    accentbar.appendChild(resetbtn);
+  }
+
+  if (ix === 20) {
+    [`ä`, `ö`, `ß`, `ü`].forEach((acc, indx) => {
+      let accbtn = document.createElement("input");
+      accbtn.setAttribute("type", "button");
+      accbtn.value = acc;
+      accbtn.classList.add("accentbtn");
+      accbtn.onclick = () => showacbr(21 + indx);
+      accentbar.appendChild(accbtn);
+    });
+    let resetbtn = document.createElement("input");
+    resetbtn.setAttribute("type", "button");
+    resetbtn.value = "Back";
+    resetbtn.classList.add("accentbtn");
+    resetbtn.onclick = () => showacbr(0);
+    accentbar.appendChild(resetbtn);
+  }
+
+  if (ix === 30) {
+    [`à`, `â`, `ç`, `é`, `è`, `ê`, `ë`, `î`,
+      `ï`, `ô`, `ù`, `û`, `ü`].forEach((acc, indx) => {
+      let accbtn = document.createElement("input");
+      accbtn.setAttribute("type", "button");
+      accbtn.value = acc;
+      accbtn.classList.add("accentbtn");
+      accbtn.onclick = () => showacbr(31 + indx);
+      accentbar.appendChild(accbtn);
+    });
+    let resetbtn = document.createElement("input");
+    resetbtn.setAttribute("type", "button");
+    resetbtn.value = "Back";
+    resetbtn.classList.add("accentbtn");
+    resetbtn.onclick = () => showacbr(0);
+    accentbar.appendChild(resetbtn);
+  }
+
+  let inputbox = document.getElementById("inp");
+
+  if (10 < ix && ix < 18) {
+    inputbox.value += [`á`, `é`, `í`, `ñ`, `ó`, `ú`, `ü`][ix - 11];
+    accentbar = document.getElementById("acbr");
+  }
+
+  if (20 < ix && ix < 25) {
+    inputbox.value += [`ä`, `ö`, `ß`, `ü`][ix - 21];
+    accentbar = document.getElementById("acbr");
+  }
+
+  if (30 < ix && ix < 44) {
+    inputbox.value += [`à`, `â`, `ç`, `é`, `è`, `ê`, `ë`, `î`,
+      `ï`, `ô`, `ù`, `û`, `ü`][ix - 31];
+    accentbar = document.getElementById("acbr");
+  }
+
+  inputbox.focus();
+
+  document.getElementById("acbr").replaceWith(accentbar);
+
+} 
+
 function start_classic() {
   hide_stuff();
 
@@ -263,11 +390,12 @@ function start_classic() {
 
   let accentbar = document.createElement("div");
   accentbar.id = "acbr";
-  ["ES", "DE", "FR"].forEach(lang => {
+  ["ES", "DE", "FR"].forEach((lang, indx) => {
     let langbtn = document.createElement("input");
     langbtn.setAttribute("type", "button");
     langbtn.value = lang;
     langbtn.classList.add("accentbtn");
+    langbtn.onclick = () => showacbr((indx + 1) * 10);
     accentbar.appendChild(langbtn);
   });
   document.body.insertBefore(accentbar, sub);
@@ -403,11 +531,12 @@ function start_hangman() {
 
   let accentbar = document.createElement("div");
   accentbar.id = "acbr";
-  ["ES", "DE", "FR"].forEach(lang => {
+  ["ES", "DE", "FR"].forEach((lang, indx) => {
     let langbtn = document.createElement("input");
     langbtn.setAttribute("type", "button");
     langbtn.value = lang;
     langbtn.classList.add("accentbtn");
+    langbtn.onclick = () => showacbr((indx + 1) * 10);
     accentbar.appendChild(langbtn);
   });
   document.body.insertBefore(accentbar, sub);
