@@ -130,8 +130,7 @@ function create_wrongtbl() {
     `<input type=button onclick="javascript:window.location.replace(location.href.split('?')[0] + '?mode=` +
     document.getElementById("game").value + `');" value="Restart" />`;
 
-  document.body.insertBefore(document.createElement("br"), sub);
-  document.body.insertBefore(document.createElement("br"), sub);
+  document.getElementById("acbr").remove();
 
   let retry = document.createElement("input");
   retry.setAttribute("type", "button");
@@ -259,6 +258,20 @@ function start_classic() {
   messagebar.id = "msg";
   document.body.insertBefore(messagebar, sub);
 
+  document.body.insertBefore(document.createElement("br"), sub);
+  document.body.insertBefore(document.createElement("br"), sub);
+
+  let accentbar = document.createElement("div");
+  accentbar.id = "acbr";
+  ["ES", "DE", "FR"].forEach(lang => {
+    let langbtn = document.createElement("input");
+    langbtn.setAttribute("type", "button");
+    langbtn.value = lang;
+    langbtn.classList.add("accentbtn");
+    accentbar.appendChild(langbtn);
+  });
+  document.body.insertBefore(accentbar, sub);
+
   new_question_classic();
 
   inp.addEventListener("keyup", ({ key }) => {
@@ -384,6 +397,20 @@ function start_hangman() {
   let messagebar = document.createElement("i");
   messagebar.id = "msg";
   document.body.insertBefore(messagebar, sub);
+
+  document.body.insertBefore(document.createElement("br"), sub);
+  document.body.insertBefore(document.createElement("br"), sub);
+
+  let accentbar = document.createElement("div");
+  accentbar.id = "acbr";
+  ["ES", "DE", "FR"].forEach(lang => {
+    let langbtn = document.createElement("input");
+    langbtn.setAttribute("type", "button");
+    langbtn.value = lang;
+    langbtn.classList.add("accentbtn");
+    accentbar.appendChild(langbtn);
+  });
+  document.body.insertBefore(accentbar, sub);
 
   new_question_classic();
 

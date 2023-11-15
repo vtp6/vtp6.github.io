@@ -77,3 +77,8 @@ input[type=file]::file-selector-button {
     border-radius: 5px;
     border: 1px solid #dddddd;
 }
+
+#acbr * {
+    display: none;
+    margin-right: 10px;
+}
