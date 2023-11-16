@@ -28,6 +28,8 @@ let hangman_num = 1;
 
 const PAIRS = 6;
 
+const LEVTHRESHOLD = 0.8;
+
 function random_choice(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -82,6 +84,7 @@ function check_input() {
             remove_punctuation(r) === remove_punctuation(q)
         )
     ).flat().includes(true)) */
+  let dsts = [];
   if (
     (remove_punctuation(answer) === remove_punctuation(
       document.getElementById("inp").value.toLowerCase()))
@@ -102,7 +105,31 @@ function check_input() {
     correct++;
     document.getElementById("msg").innerHTML = "Correct!";
     return true;
+  } else if (
+    document.getElementById("msg").innerHTML !== "Are you sure?" &&
+    answer
+      .toLowerCase()
+      .split("/")
+      .map((q) => q.split(", "))
+      .flat()
+      .map((p) => generate_options(p))
+      .flat()
+      .some((r) => {
+        let dst = levDist(remove_punctuation(r),
+          remove_punctuation(document.getElementById("inp").value.toLowerCase())
+        ) / Math.max(remove_punctuation(r).length, remove_punctuation(
+          document.getElementById("inp").value.toLowerCase()).length
+        );
+        dsts.push(dst);
+        return dst < (1 - LEVTHRESHOLD);
+      })
+  ) {
+    console.log(dsts);
+    document.getElementById("msg").innerHTML = "Are you sure?";
+    total--;
+    return undefined;
   } else {
+    console.log(dsts);
     document.getElementById("msg").innerHTML = "Wrong: " + answer;
     wrong.push([
       document.getElementById("qs").innerHTML,
@@ -114,14 +141,15 @@ function check_input() {
 }
 
 function check_input_classic() {
-  check_input();
-  document.getElementById("sb").innerHTML =
-    correct + "/" + total + " (" + ((correct / total) * 100).toFixed(2) + "%)";
-  document.getElementById("rmn").innerHTML = rmntext(total);
-  if (total < +document.getElementById("sld").value) {
-    new_question_classic();
-  } else {
-    create_wrongtbl();
+  if (check_input() !== undefined) {
+    document.getElementById("sb").innerHTML =
+      correct + "/" + total + " (" + ((correct / total) * 100).toFixed(2) + "%)";
+    document.getElementById("rmn").innerHTML = rmntext(total);
+    if (total < +document.getElementById("sld").value) {
+      new_question_classic();
+    } else {
+      create_wrongtbl();
+    }
   }
 }
 
@@ -552,20 +580,22 @@ function start_hangman() {
 
 function check_input_hangman() {
   let res = check_input();
-  if (!res) {
-    hangman_num++;
-    document.getElementById("img").src = "../Hangman/Slide" + hangman_num + ".png";
-    if (hangman_num >= 8) {
-      document.getElementById("img").src = "../Hangman/Slide8.png";
-      create_wrongtbl();
-      return;
+  if (res !== undefined) {
+    if (!res) {
+      hangman_num++;
+      document.getElementById("img").src = "../Hangman/Slide" + hangman_num + ".png";
+      if (hangman_num >= 8) {
+        document.getElementById("img").src = "../Hangman/Slide8.png";
+        create_wrongtbl();
+        return;
+      }
     }
-  }
-  document.getElementById("rmn").innerHTML = rmntext(total);
-  if (total < +document.getElementById("sld").value) {
-    new_question_classic();
-  } else {
-    create_wrongtbl();
+    document.getElementById("rmn").innerHTML = rmntext(total);
+    if (total < +document.getElementById("sld").value) {
+      new_question_classic();
+    } else {
+      create_wrongtbl();
+    }
   }
 }
 
@@ -826,6 +856,57 @@ function readerfunc(rdr) {
 }
 
 let files = [];
+
+function levDist(s, t) {
+  var d = []; //2d matrix
+
+  // Step 1
+  var n = s.length;
+  var m = t.length;
+
+  if (n == 0) return m;
+  if (m == 0) return n;
+
+  //Create an array of arrays in javascript (a descending loop is quicker)
+  for (var i = n; i >= 0; i--) d[i] = [];
+
+  // Step 2
+  for (var i = n; i >= 0; i--) d[i][0] = i;
+  for (var j = m; j >= 0; j--) d[0][j] = j;
+
+  // Step 3
+  for (var i = 1; i <= n; i++) {
+      var s_i = s.charAt(i - 1);
+
+      // Step 4
+      for (var j = 1; j <= m; j++) {
+
+          //Check the jagged ld total so far
+          if (i == j && d[i][j] > 4) return n;
+
+          var t_j = t.charAt(j - 1);
+          var cost = (s_i == t_j) ? 0 : 1; // Step 5
+
+          //Calculate the minimum
+          var mi = d[i - 1][j] + 1;
+          var b = d[i][j - 1] + 1;
+          var c = d[i - 1][j - 1] + cost;
+
+          if (b < mi) mi = b;
+          if (c < mi) mi = c;
+
+          d[i][j] = mi; // Step 6
+
+          //Damerau transposition
+          if (i > 1 && j > 1 && s_i == t.charAt(j - 2) && s.charAt(i - 2) == t_j) {
+              d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + cost);
+          }
+      }
+  }
+
+  // Step 7
+  return d[n][m];
+}
 
 try {
   flagvar;
