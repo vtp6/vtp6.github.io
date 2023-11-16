@@ -428,6 +428,14 @@ function start_classic() {
   });
   document.body.insertBefore(accentbar, sub);
 
+  if (location.href.includes("Spanish")) {
+    showacbr(10);
+  } else if (location.href.includes("German")) {
+    showacbr(20);
+  } else if (location.href.includes("French")) {
+    showacbr(30);
+  }
+
   new_question_classic();
 
   inp.addEventListener("keyup", ({ key }) => {
@@ -568,6 +576,14 @@ function start_hangman() {
     accentbar.appendChild(langbtn);
   });
   document.body.insertBefore(accentbar, sub);
+
+  if (location.href.includes("Spanish")) {
+    showacbr(10);
+  } else if (location.href.includes("German")) {
+    showacbr(20);
+  } else if (location.href.includes("French")) {
+    showacbr(30);
+  }
 
   new_question_classic();
 
