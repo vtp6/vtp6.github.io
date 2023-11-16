@@ -35,7 +35,9 @@ input:not([type=file]), select {
 
 .bigbutton {
     width: 175px;
+    max-width: 45vw;
     height: 75px;
+    max-height: 15vh;
     text-align: center;
     text-wrap: wrap;
 }
