@@ -28,7 +28,7 @@ let hangman_num = 1;
 
 const PAIRS = 6;
 
-const LEVTHRESHOLD = 0.8;
+const LEVTHRESHOLD = 80;
 
 function random_choice(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -120,16 +120,16 @@ function check_input() {
         ) / Math.max(remove_punctuation(r).length, remove_punctuation(
           document.getElementById("inp").value.toLowerCase()).length
         );
-        dsts.push(dst);
-        return dst < (1 - LEVTHRESHOLD);
+        dsts.push(((1 - dst) * 100).toFixed(2) + "%");
+        return dst <= (100 - LEVTHRESHOLD) / 100;
       })
   ) {
-    console.log(dsts);
+    console.log(dsts.join("; "));
     document.getElementById("msg").innerHTML = "Are you sure?";
     total--;
     return undefined;
   } else {
-    console.log(dsts);
+    console.log(dsts.join("; "));
     document.getElementById("msg").innerHTML = "Wrong: " + answer;
     wrong.push([
       document.getElementById("qs").innerHTML,
