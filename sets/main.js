@@ -16,7 +16,11 @@ document.head.appendChild(meta3);
 let h1 = document.querySelector("h1");
 h1.innerHTML = `<a href="../../">VTP6</a>`;
 
-let answer = "";
+let realanswer = "";
+let answer = [];
+let done = [];
+let question = "";
+
 let correct = 0;
 let total = 0;
 
@@ -86,43 +90,33 @@ function check_input() {
     ).flat().includes(true)) */
   let dsts = [];
   if (
-    (remove_punctuation(answer) === remove_punctuation(
+    /* (remove_punctuation(answer) === remove_punctuation(
       document.getElementById("inp").value.toLowerCase()))
-    ||
-    (answer
-      .toLowerCase()
-      .split("/")
-      .map((q) => q.split(", "))
-      .flat()
-      .map((p) => generate_options(p))
-      .flat()
-      .map((r) => remove_punctuation(r))
-      .includes(
-        remove_punctuation(document.getElementById("inp").value.toLowerCase()),
+    || // (no need) */
+    answer.includes(
+      userans = remove_punctuation(
+        document.getElementById("inp").value.toLowerCase()
       )
     )
   ) {
-    correct++;
+    answer.splice(answer.indexOf(userans), 1);
+    done.push(document.getElementById("inp").value.toLowerCase());
+    if (answer.length === 0) {
+      correct++;
+    } else {
+      total--;
+    }
     document.getElementById("msg").innerHTML = "Correct!";
     return true;
   } else if (
     document.getElementById("msg").innerHTML !== "Are you sure?" &&
-    answer
-      .toLowerCase()
-      .split("/")
-      .map((q) => q.split(", "))
-      .flat()
-      .map((p) => generate_options(p))
-      .flat()
-      .some((r) => {
-        let dst = levDist(remove_punctuation(r),
-          remove_punctuation(document.getElementById("inp").value.toLowerCase())
-        ) / Math.max(remove_punctuation(r).length, remove_punctuation(
-          document.getElementById("inp").value.toLowerCase()).length
-        );
-        dsts.push(((1 - dst) * 100).toFixed(2) + "%");
-        return dst <= (100 - LEVTHRESHOLD) / 100;
-      })
+    answer.some((r) => {
+      let dst = levDist(r, userans) / Math.max(
+        r.length, userans.length
+      );
+      dsts.push(((1 - dst) * 100).toFixed(2) + "%");
+      return dst <= (100 - LEVTHRESHOLD) / 100;
+    })
   ) {
     console.log(dsts.join("; "));
     document.getElementById("msg").innerHTML = "Are you sure?";
@@ -130,20 +124,25 @@ function check_input() {
     return undefined;
   } else {
     console.log(dsts.join("; "));
-    document.getElementById("msg").innerHTML = "Wrong: " + answer;
+    document.getElementById("msg").innerHTML = "Wrong: " + realanswer;
     wrong.push([
       document.getElementById("qs").innerHTML,
-      answer.toLowerCase(),
+      realanswer.toLowerCase(),
       document.getElementById("inp").value.toLowerCase(),
     ]);
+    answer = [];
     return false;
   }
 }
 
 function check_input_classic() {
   if (check_input() !== undefined) {
+    let perc = ((correct / total) * 100).toFixed(2);
+    if (perc === "NaN") {
+      perc = "0.00";
+    }
     document.getElementById("sb").innerHTML =
-      correct + "/" + total + " (" + ((correct / total) * 100).toFixed(2) + "%)";
+      correct + "/" + total + " (" + perc + "%)";
     document.getElementById("rmn").innerHTML = rmntext(total);
     if (total < +document.getElementById("sld").value) {
       new_question_classic();
@@ -163,6 +162,9 @@ function create_wrongtbl() {
     document.getElementById("game").value + `');" value="Restart" />`;
 
   document.getElementById("acbr").remove();
+  document.getElementById("brx").remove();
+  document.getElementById("bry").remove();
+  document.getElementById("done").remove();
 
   let retry = document.createElement("input");
   retry.setAttribute("type", "button");
@@ -255,8 +257,25 @@ function hide_stuff() {
 function new_question_classic() {
   document.getElementById("inp").value = "";
   document.getElementById("inp").focus();
-  [document.getElementById("qs").innerHTML, answer] = temp = random_choice(lst);
-  lst.splice(lst.indexOf(temp), 1);
+  if (answer.length === 0) {
+    [question, realanswer] = temp = random_choice(lst);
+    answer =
+      realanswer
+        .toLowerCase()
+        .split("/")
+        .map((q) => q.split(", "))
+        .flat()
+        .map((p) => generate_options(p))
+        .flat()
+        .map((r) => remove_punctuation(r));
+    document.getElementById("qs").innerHTML = question + " (0/" + answer.length + ")";
+    lst.splice(lst.indexOf(temp), 1);
+    done = [];
+  } else {
+    document.getElementById("qs").innerHTML =
+      question + " (" + done.length + "/" + (answer.length + done.length) + ")";
+  }
+  document.getElementById("done").innerHTML = "Correct answers: " + done.join(", ");
 }
 
 function showacbr(ix) {
@@ -416,6 +435,19 @@ function start_classic() {
   document.body.insertBefore(document.createElement("br"), sub);
   document.body.insertBefore(document.createElement("br"), sub);
 
+  let donebar = document.createElement("p");
+  donebar.id = "done";
+  donebar.innerHTML = "&nbsp;"
+  document.body.insertBefore(donebar, sub)
+
+  let brx = document.createElement("br");
+  brx.id = "brx";
+  document.body.insertBefore(brx, sub);
+
+  let bry = document.createElement("br");
+  bry.id = "bry";
+  document.body.insertBefore(bry, sub);
+
   let accentbar = document.createElement("div");
   accentbar.id = "acbr";
   ["ES", "DE", "FR"].forEach((lang, indx) => {
@@ -564,6 +596,19 @@ function start_hangman() {
 
   document.body.insertBefore(document.createElement("br"), sub);
   document.body.insertBefore(document.createElement("br"), sub);
+
+  let donebar = document.createElement("p");
+  donebar.id = "done";
+  donebar.innerHTML = "&nbsp;"
+  document.body.insertBefore(donebar, sub)
+
+  let brx = document.createElement("br");
+  brx.id = "brx";
+  document.body.insertBefore(brx, sub);
+
+  let bry = document.createElement("br");
+  bry.id = "bry";
+  document.body.insertBefore(bry, sub);
 
   let accentbar = document.createElement("div");
   accentbar.id = "acbr";
