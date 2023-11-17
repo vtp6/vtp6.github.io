@@ -1,3 +1,9 @@
+let scr = document.createElement("script");
+scr.setAttribute("async", true);
+scr.setAttribute("data-id", "101434094");
+scr.setAttribute("src", "//static.getclicky.com/js");
+document.body.appendChild(scr);
+
 let meta1 = document.createElement("meta");
 meta1.property = "og:image";
 meta1.content = "../../icon.jpg";
@@ -89,18 +95,29 @@ function check_input() {
         )
     ).flat().includes(true)) */
   let dsts = [];
+  let userans = remove_punctuation(
+    document.getElementById("inp").value.toLowerCase()
+  );
   if (
     /* (remove_punctuation(answer) === remove_punctuation(
       document.getElementById("inp").value.toLowerCase()))
     || // (no need) */
-    answer.includes(
-      userans = remove_punctuation(
-        document.getElementById("inp").value.toLowerCase()
-      )
-    )
+    answer.some((poss, index) => {
+      tempvar = index;
+      return poss === userans;
+    })
   ) {
     answer.splice(answer.indexOf(userans), 1);
-    done.push(document.getElementById("inp").value.toLowerCase());
+    done.push(
+      realanswer
+        .toLowerCase()
+        .split("/")
+        .map((q) => q.split(", "))
+        .flat()
+        .map((p) => generate_options(p))
+        .flat()
+        [tempvar]
+    );
     if (answer.length === 0) {
       correct++;
     } else {
@@ -162,8 +179,6 @@ function create_wrongtbl() {
     document.getElementById("game").value + `');" value="Restart" />`;
 
   document.getElementById("acbr").remove();
-  document.getElementById("brx").remove();
-  document.getElementById("bry").remove();
   document.getElementById("done").remove();
 
   let retry = document.createElement("input");
@@ -433,20 +448,13 @@ function start_classic() {
   document.body.insertBefore(messagebar, sub);
 
   document.body.insertBefore(document.createElement("br"), sub);
-  document.body.insertBefore(document.createElement("br"), sub);
 
   let donebar = document.createElement("p");
   donebar.id = "done";
   donebar.innerHTML = "&nbsp;"
   document.body.insertBefore(donebar, sub)
 
-  let brx = document.createElement("br");
-  brx.id = "brx";
-  document.body.insertBefore(brx, sub);
-
-  let bry = document.createElement("br");
-  bry.id = "bry";
-  document.body.insertBefore(bry, sub);
+  document.body.insertBefore(document.createElement("br"), sub);
 
   let accentbar = document.createElement("div");
   accentbar.id = "acbr";
@@ -595,20 +603,13 @@ function start_hangman() {
   document.body.insertBefore(messagebar, sub);
 
   document.body.insertBefore(document.createElement("br"), sub);
-  document.body.insertBefore(document.createElement("br"), sub);
 
   let donebar = document.createElement("p");
   donebar.id = "done";
   donebar.innerHTML = "&nbsp;"
   document.body.insertBefore(donebar, sub)
 
-  let brx = document.createElement("br");
-  brx.id = "brx";
-  document.body.insertBefore(brx, sub);
-
-  let bry = document.createElement("br");
-  bry.id = "bry";
-  document.body.insertBefore(bry, sub);
+  document.body.insertBefore(document.createElement("br"), sub);
 
   let accentbar = document.createElement("div");
   accentbar.id = "acbr";
