@@ -1,8 +1,17 @@
-# [VTP6]
+<div align="center">
+    <!-- https://github.com/vtp6/vtp6.github.io/assets/55329600/3ef8c29f-f455-468a-9a42-8dcc6af51b9a -->
+    <a href="https://vtp6.github.io/">
+      <img
+        src="https://github.com/vtp6/vtp6.github.io/assets/55329600/9e5f6eda-afa5-44c0-bb06-0b72a6670878"
+        height="200px" alt="VTP6 logo" title="https://vtp6.github.io/" />
+    </a>
+    <br />
+    <img src="https://github.com/vtp6/vtp6.github.io/actions/workflows/jekyll-gh-pages.yml/badge.svg" />
+</div>
 
-![Deploy status](https://github.com/vtp6/vtp6.github.io/actions/workflows/jekyll-gh-pages.yml/badge.svg)
+<hr />
 
-An minimalistic online successor to the app-based
+**[VTP6]**: a minimalistic online successor to the app-based
 [VTP5](https://github.com/vtp5/vtp5) vocab-testing program.
 
 Just head over to **[vtp6.github.io][VTP6]** and select your study set.
