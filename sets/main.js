@@ -184,7 +184,7 @@ function check_input() {
     console.log(dsts.join("; "));
     document.getElementById("msg").innerHTML = "Wrong: " + realanswer;
     wrong.push([
-      document.getElementById("qs").innerHTML,
+      question,
       realanswer.toLowerCase(),
       document.getElementById("inp").value.toLowerCase(),
     ]);
