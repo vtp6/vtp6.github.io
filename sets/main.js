@@ -135,8 +135,16 @@ function check_input() {
     /* (remove_punctuation(answer) === remove_punctuation(
       document.getElementById("inp").value.toLowerCase()))
     || // (no need) */
-    answer.some((poss, index) => {
-      tempvar = index;
+    answer.some((poss) => {
+      tempvar = realanswer
+        .toLowerCase()
+        .split("/")
+        .map((q) => q.split(", "))
+        .flat()
+        .map((p) => generate_options(p))
+        .flat()
+        .map((r) => remove_punctuation(r))
+        .indexOf(poss);
       return poss === userans;
     })
   ) {
