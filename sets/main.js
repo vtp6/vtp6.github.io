@@ -19,6 +19,14 @@ meta3.property = "og:image:height";
 meta3.content = "256";
 document.head.appendChild(meta3);
 
+let meta4 = document.createElement("meta");
+meta4.name = "description";
+let tempx = location.href.substring(0, location.href.lastIndexOf('/')).split("/");
+meta4.content = "Revise " + tempx[tempx.length - 1] +
+  " on Vocabulary Testing Program 6 (VTP6), an online " +
+  "platform to help students revise vocabulary";
+document.head.appendChild(meta4);
+
 let h1 = document.querySelector("h1");
 h1.innerHTML = `<a href="../../">VTP6</a> &nbsp; <img id="dl" src="../download.svg" height="25px" onclick="javascript:downloadbar()" />`;
 
@@ -49,7 +57,6 @@ function download(i) {
   console.log(todl);
   let element = document.createElement('a');
   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(todl));
-  let tempx = location.href.substring(0, location.href.lastIndexOf('/')).split("/")
   element.setAttribute('download', tempx[tempx.length - 1] + ".txt");
   element.style.display = 'none';
   document.body.appendChild(element);
