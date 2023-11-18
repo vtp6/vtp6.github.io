@@ -1,5 +1,7 @@
 # [VTP6]
 
+![Deploy status](https://github.com/vtp6/vtp6.github.io/actions/workflows/jekyll-gh-pages.yml/badge.svg)
+
 An minimalistic online successor to the app-based
 [VTP5](https://github.com/vtp5/vtp5) vocab-testing program.
 
