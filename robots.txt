@@ -1,0 +1,6 @@
+# Decides which URLs Googlebot is allowed to crawl
+
+User-agent: *
+Allow: /
+
+Sitemap: https://vtp6.github.io/sitemap.txt
