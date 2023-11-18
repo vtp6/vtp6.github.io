@@ -83,3 +83,11 @@ input[type=file]::file-selector-button {
 #acbr * {
     margin-right: 10px;
 }
+
+#dl:hover {
+    filter: brightness(0.8);
+}
+
+.pad {
+    margin-right: 10px;
+}

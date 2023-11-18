@@ -20,7 +20,7 @@ meta3.content = "256";
 document.head.appendChild(meta3);
 
 let h1 = document.querySelector("h1");
-h1.innerHTML = `<a href="../../">VTP6</a>`;
+h1.innerHTML = `<a href="../../">VTP6</a> &nbsp; <img id="dl" src="../download.svg" height="25px" onclick="javascript:downloadbar()" />`;
 
 let realanswer = "";
 let answer = [];
@@ -39,6 +39,39 @@ let hangman_num = 1;
 const PAIRS = 6;
 
 const LEVTHRESHOLD = 80;
+
+function download(i) {
+  if (i === 0) {
+    todl = lstcopy.flat().join("\n");
+  } else {
+    todl = lstcopy.map(pair => pair.join("\t")).join("\n");
+  }
+  console.log(todl);
+  let element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(todl));
+  let tempx = location.href.substring(0, location.href.lastIndexOf('/')).split("/")
+  element.setAttribute('download', tempx[tempx.length - 1] + ".txt");
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+  document.getElementById("fmt0").remove();
+  document.getElementById("fmt1").remove();
+  document.getElementById("dl").hidden = false;
+}
+
+function downloadbar() {
+  document.getElementById("dl").hidden = true;
+  ["VTP5", "VTP6"].forEach((fmt, index) => {
+    let fmtbtn = document.createElement("input");
+    fmtbtn.setAttribute("type", "button");
+    fmtbtn.setAttribute("value", fmt);
+    fmtbtn.onclick = () => download(index);
+    fmtbtn.id = "fmt" + index;
+    fmtbtn.classList.add("pad");
+    h1.appendChild(fmtbtn);
+  });
+}
 
 function random_choice(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
@@ -903,6 +936,7 @@ function readerfunc(rdr) {
   }
   counter++;
   if (counter === files.length) {
+    lstcopy = [...lst];
     document.getElementById("wlbl").hidden = true;
     document.getElementById("txtx").hidden = true;
     document.getElementById("msgs").hidden = true;
@@ -918,6 +952,7 @@ function readerfunc(rdr) {
 }
 
 let files = [];
+let lstcopy = [];
 
 function levDist(s, t) {
   var d = []; //2d matrix
@@ -990,5 +1025,6 @@ try {
 });
 } catch {
   lst = words.split("\n").map((l) => l.split("\t"));
+  lstcopy = [...lst];
   draw_stuff();
 }
