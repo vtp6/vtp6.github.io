@@ -142,30 +142,16 @@ function check_input() {
     /* (remove_punctuation(answer) === remove_punctuation(
       document.getElementById("inp").value.toLowerCase()))
     || // (no need) */
-    answer.some((poss) => {
-      tempvar = realanswer
-        .toLowerCase()
-        .split("/")
-        .map((q) => q.split(", "))
-        .flat()
-        .map((p) => generate_options(p))
-        .flat()
-        .map((r) => remove_punctuation(r))
-        .indexOf(poss);
-      return poss === userans;
+    answer.some((poss, index) => {
+      tempvar = index;
+      console.log(tempvar);
+      return generate_options(poss).some(
+        (optn) => remove_punctuation(optn) === userans
+      );
     })
   ) {
-    answer.splice(answer.indexOf(userans), 1);
-    done.push(
-      realanswer
-        .toLowerCase()
-        .split("/")
-        .map((q) => q.split(", "))
-        .flat()
-        .map((p) => generate_options(p))
-        .flat()
-        [tempvar]
-    );
+    done.push(answer[tempvar]);
+    answer.splice(tempvar, 1);
     if (answer.length === 0) {
       correct++;
     } else {
@@ -327,10 +313,7 @@ function new_question_classic() {
         .toLowerCase()
         .split("/")
         .map((q) => q.split(", "))
-        .flat()
-        .map((p) => generate_options(p))
-        .flat()
-        .map((r) => remove_punctuation(r));
+        .flat();
     document.getElementById("qs").innerHTML = question + " (0/" + answer.length + ")";
     lst.splice(lst.indexOf(temp), 1);
     done = [];
