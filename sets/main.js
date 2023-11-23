@@ -161,13 +161,17 @@ function check_input() {
     return true;
   } else if (
     document.getElementById("msg").innerHTML !== "Are you sure?" &&
-    answer.some((r) => {
-      let dst = levDist(r, userans) / Math.max(
-        r.length, userans.length
-      );
-      dsts.push(((1 - dst) * 100).toFixed(2) + "%");
-      return dst <= (100 - LEVTHRESHOLD) / 100;
-    })
+    answer
+      .map((q) => generate_options(q))
+      .flat()
+      .map((s) => remove_punctuation(s))
+      .some((r) => {
+        let dst = levDist(r, userans) / Math.max(
+          r.length, userans.length
+        );
+        dsts.push(((1 - dst) * 100).toFixed(2) + "%");
+        return dst <= (100 - LEVTHRESHOLD) / 100;
+      })
   ) {
     console.log(dsts.join("; "));
     document.getElementById("msg").innerHTML = "Are you sure?";
