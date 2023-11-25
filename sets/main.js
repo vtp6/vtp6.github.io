@@ -126,7 +126,7 @@ function remove_punctuation(string) {
 }
 
 function generate_options(str) {
-  if (![...str].includes("(")) {
+  if ((![...str].includes("(")) || (![...str].includes(")"))) {
     return [str];
   }
   let ret = [str];
