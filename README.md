@@ -7,7 +7,9 @@
     </a>
     <br />
     <img src="https://github.com/vtp6/vtp6.github.io/actions/workflows/jekyll-gh-pages.yml/badge.svg" />
-    <img src="https://img.shields.io/website/https/vtp6.github.io/index.html.svg" />
+    <a href="https://vtp6.github.io" style="text-decoration: none;">
+        <img src="https://img.shields.io/website/https/vtp6.github.io/index.html.svg" />
+    </a>
     <br />
     <img src="https://img.shields.io/github/v/release/vtp6/vtp6.github.io?color=orange" />
     <a href="https://github.com/vtp6/vtp6.github.io/blob/main/LICENSE" style="text-decoration: none;">
