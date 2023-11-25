@@ -68,12 +68,22 @@ function download(i) {
   document.body.appendChild(element);
   element.click();
   document.body.removeChild(element);
-  document.getElementById("fmt0").remove();
-  document.getElementById("fmt1").remove();
-  document.getElementById("dl").hidden = false;
+  remove_buttons();
 }
 
-function downloadbar() {
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function remove_buttons() {
+  if (document.getElementById("dl").hidden) {
+    document.getElementById("fmt0").remove();
+    document.getElementById("fmt1").remove();
+    document.getElementById("dl").hidden = false;
+  }
+}
+
+async function downloadbar() {
   document.getElementById("dl").hidden = true;
   ["VTP5", "VTP6"].forEach((fmt, index) => {
     let fmtbtn = document.createElement("input");
@@ -84,6 +94,7 @@ function downloadbar() {
     fmtbtn.classList.add("pad");
     h1.appendChild(fmtbtn);
   });
+  timeout(3000).then(remove_buttons);
 }
 
 function random_choice(arr) {
