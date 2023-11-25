@@ -83,7 +83,7 @@ function remove_buttons() {
   }
 }
 
-async function downloadbar() {
+function downloadbar() {
   document.getElementById("dl").hidden = true;
   ["VTP5", "VTP6"].forEach((fmt, index) => {
     let fmtbtn = document.createElement("input");
