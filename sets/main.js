@@ -54,6 +54,10 @@ const PAIRS = 6;
 
 const LEVTHRESHOLD = 80;
 
+function sanitise(string) {
+  return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+}
+
 function download(i) {
   if (i === 0) {
     todl = lstcopy.flat().join("\n");
@@ -196,7 +200,7 @@ function check_input() {
     return undefined;
   } else {
     console.log(dsts.join("; "));
-    document.getElementById("msg").innerHTML = "Wrong: " + realanswer;
+    document.getElementById("msg").innerHTML = "Wrong: " + sanitise(realanswer);
     wrong.push([
       question,
       realanswer.toLowerCase(),
@@ -278,6 +282,9 @@ function create_wrongtbl() {
 
   wrong.forEach((trp) => {
     let [u, v, w] = trp;
+    u = sanitise(u);
+    v = sanitise(v);
+    w = sanitise(w);
     let tr = document.createElement("tr");
     if (u.length > 18) {
       u = u.slice(0, 15) + "...";
@@ -290,15 +297,15 @@ function create_wrongtbl() {
     }
     tr.innerHTML =
       `<td title="` +
-      trp[0] +
+      trp[0].replaceAll('"', '&quot;') +
       `">` +
       u +
       `</td> <td title="` +
-      trp[1] +
+      trp[1].replaceAll('"', '&quot;') +
       `">` +
       v +
       `</td> <td title="` +
-      trp[2] +
+      trp[2].replaceAll('"', '&quot;') +
       `">` +
       w +
       `</td>`;
@@ -335,12 +342,12 @@ function new_question_classic() {
         .split("/")
         .map((q) => q.split(", "))
         .flat();
-    document.getElementById("qs").innerHTML = question + " (0/" + answer.length + ")";
+    document.getElementById("qs").innerHTML = sanitise(question) + " (0/" + answer.length + ")";
     lst.splice(lst.indexOf(temp), 1);
     done = [];
   } else {
     document.getElementById("qs").innerHTML =
-      question + " (" + done.length + "/" + (answer.length + done.length) + ")";
+      sanitise(question) + " (" + done.length + "/" + (answer.length + done.length) + ")";
   }
   document.getElementById("done").innerHTML = "Correct answers: " + done.join(", ");
 }
@@ -859,6 +866,8 @@ function draw_table() {
 
   lst.forEach((x) => {
     let [a, b] = x;
+    a = sanitise(a);
+    b = sanitise(b);
     let row = document.createElement("tr");
     if (a.length > 20) {
       a = a.slice(0, 17) + "...";
@@ -868,11 +877,11 @@ function draw_table() {
     }
     row.innerHTML =
       `<td title="` +
-      x[0] +
+      x[0].replaceAll('"', '&quot;') +
       `">` +
       a +
       `</td> <td title="` +
-      x[1] +
+      x[1].replaceAll('"', '&quot;') +
       `">` +
       b +
       `</td>`;
