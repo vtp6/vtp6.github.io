@@ -16,7 +16,12 @@ a {
 
 a:hover {
     text-decoration: underline;
-    font-style: italic;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    a:hover {
+        font-style: italic;
+    }
 }
 
 th {
