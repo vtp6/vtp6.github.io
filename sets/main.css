@@ -91,3 +91,13 @@ input[type=file]::file-selector-button {
 .pad {
     margin-right: 10px;
 }
+
+details {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+details > details {
+    padding-top: 10px;
+    padding-left: 25px;
+}

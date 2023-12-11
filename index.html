@@ -17,45 +17,82 @@
             <a href="./">VTP6</a> &nbsp;
             <img id="dl" src="./sets/download.svg" height="25px" onclick="window.open('./vtp6_files.zip', '_blank').focus();" />
         </h1>
+        <el id="container"></el>
+        <br /> <br />
         <a href="./sets/custom" id="custom">Import custom set</a>
+        <br /> <br /> <br />
         <script>
-            const units = [
-                "Unit 1",
-                "Unit 2",
-                "Unit 3",
-                "Unit 4",
-                "Unit 5",
-                "Unit 6",
-                "Unit 7",
-                "Unit 8",
-                "Unit 9",
-                "Unit 10",
-                "Unit 11",
-                "Unit 12",
-            ];
+            function create_list(prefix, end) {
+                let ret = [];
+                for (i = 1; i <= end; i++) {
+                    ret.push(prefix + " " + i);
+                }
+                return ret
+            }
+
+            /* OLD
             const LIST_OF_LINKS = [
                 ["Latin GCSE", [
-                    "Page 1",
-                    "Page 2",
-                    "Page 3",
-                    "Page 4",
-                    "Page 5",
-                    "Page 6",
+                    ...create_list("Page", 6),
                     "Eng To Lat Page 1",
                     "Eng To Lat Page 2",
                 ]],
-                ["Spanish GCSE", units],
-                ["German GCSE", units],
-                ["French GCSE", units],
-                ["Latin KS3", [
-                    "Chapter 1",
-                    "Chapter 2",
-                    "Chapter 3",
-                    "Chapter 4",
-                    "Chapter 5",
-                    "Chapter 6",
+                ["Spanish GCSE", create_list("Unit", 12)],
+                ["German GCSE", create_list("Unit", 12)],
+                ["French GCSE", create_list("Unit", 12)],
+                ["Latin AS Level", create_list("Page", 15)],
+                ["Latin A Level Verse", [
+                    ...create_list("Checklist", 10),
+                    "Introductory Checklist"
                 ]],
-            ]; // Link creation is automated
+                ["Latin A Level Prose", [
+                    ...create_list("Checklist", 10),
+                    "Introductory Checklist"
+                ]],
+                ["Latin Entry Level", [
+                    ...create_list("Page", 5),
+                    "Additional Vocab"
+                ]],
+                ["Latin KS3", create_list("Chapter", 6)],
+            ];
+            */
+
+            const LIST_OF_LANGS = {
+                "Latin": {
+                    "GCSE": [
+                        ...create_list("Page", 6),
+                        "Eng To Lat Page 1",
+                        "Eng To Lat Page 2",
+                    ],
+                    "AS Level": create_list("Page", 15),
+                    "A Level": {
+                        "Prose": [
+                            ...create_list("Checklist", 10),
+                            "Introductory Checklist"
+                        ],
+                        "Verse": [
+                            ...create_list("Checklist", 10),
+                            "Introductory Checklist"
+                        ]
+                    },
+                    "Entry Level": [
+                        ...create_list("Page", 5),
+                        "Additional Vocab"
+                    ],
+                    "KS3": create_list("Chapter", 6)
+                },
+                "Spanish": {
+                    "GCSE": create_list("Unit", 12)
+                },
+                "German": {
+                    "GCSE": create_list("Unit", 12)
+                },
+                "French": {
+                    "GCSE": create_list("Unit", 12)
+                },
+            };
+            
+            // Link creation is automated
         </script>
         <script src="load.js"></script>
         <script async data-id="101434094" src="//static.getclicky.com/js"></script>
