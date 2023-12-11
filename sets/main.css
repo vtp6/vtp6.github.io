@@ -16,6 +16,7 @@ a {
 
 a:hover {
     text-decoration: underline;
+    font-style: italic;
 }
 
 th {
@@ -98,6 +99,16 @@ details {
 }
 
 details > details {
-    padding-top: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-left: 25px;
+}
+
+ul {
+    margin-top: 0px;
+}
+
+summary:hover {
+    font-weight: bold;
+    font-style: italic;
 }
