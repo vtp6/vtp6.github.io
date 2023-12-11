@@ -18,12 +18,6 @@ a:hover {
     text-decoration: underline;
 }
 
-@media (hover: hover) and (pointer: fine) {
-    a:hover {
-        font-style: italic;
-    }
-}
-
 th {
     text-align: left;
 }
@@ -111,9 +105,4 @@ details > details {
 
 ul {
     margin-top: 0px;
-}
-
-summary:hover {
-    font-weight: bold;
-    font-style: italic;
 }
