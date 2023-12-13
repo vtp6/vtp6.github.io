@@ -54,6 +54,15 @@ const PAIRS = 6;
 
 const LEVTHRESHOLD = 80;
 
+let args = location.search.slice(1);
+let params = {};
+args.split("&").forEach(function (pair) {
+  if (pair !== "") {
+    pair = pair.split("=");
+    params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+  }
+});
+
 function sanitise(string) {
   return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 }
@@ -228,14 +237,26 @@ function check_input_classic() {
   }
 }
 
+function restart() {
+  if (nm !== "Custom Set") {
+    window.location.replace(location.href.split('?')[0] + '?mode=' +
+      document.getElementById("game").value);
+  } else {
+    let data = encodeURIComponent(
+      lstcopy.map((il) => il.join("\t")).join("\n")
+    );
+    window.location.replace(location.href.split('?')[0] + '?mode=' +
+      document.getElementById("game").value + '&data=' + data);
+  }
+}
+
 function create_wrongtbl() {
   document.getElementById("inp").value = "";
   document.getElementById("inp").disabled = true;
   document.getElementById(
     "qs",
   ).innerHTML = 
-    `<input type=button onclick="javascript:window.location.replace(location.href.split('?')[0] + '?mode=` +
-    document.getElementById("game").value + `');" value="Restart" />`;
+    `<input type=button onclick="javascript:restart();" value="Restart" />`;
 
   document.getElementById("acbr").remove();
   document.getElementById("done").remove();
@@ -616,9 +637,7 @@ function clicked(elem) {
         let restart = document.createElement("input");
         restart.setAttribute("type", "button");
         restart.value = "Restart";
-        restart.onclick = () => window.location.replace(
-          location.href.split('?')[0] + '?mode=' +
-          document.getElementById("game").value);
+        restart.onclick = () => restart();
         document.body.insertBefore(restart, document.getElementById("mt"));
       }
     }
@@ -789,14 +808,6 @@ function draw_stuff() {
   select.appendChild(optn3);
   select.id = "game";
   select.oninput = update_slider;
-  let args = location.search.slice(1);
-  let params = {};
-  args.split("&").forEach(function (pair) {
-    if (pair !== "") {
-      pair = pair.split("=");
-      params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
-    }
-  });
   if ("mode" in params && ["classic", "match", "hangman"].includes(params["mode"])) {
     select.value = params["mode"];
   }
@@ -965,18 +976,22 @@ function readerfunc(rdr) {
   counter++;
   if (counter === files.length) {
     lstcopy = [...lst];
-    document.getElementById("wlbl").hidden = true;
-    document.getElementById("txtx").hidden = true;
-    document.getElementById("msgs").hidden = true;
-    document.getElementById("brk0").hidden = true;
-    document.getElementById("brk1").hidden = true;
-    document.getElementById("brk2").hidden = true;
-    document.getElementById("brk3").hidden = true;
-    document.getElementById("brk4").hidden = true;
-    document.getElementById("start").hidden = true;
-    typ.hidden = true;
+    hide_custom_stuff();
     draw_stuff();
   }
+}
+
+function hide_custom_stuff() {
+  document.getElementById("wlbl").hidden = true;
+  document.getElementById("txtx").hidden = true;
+  document.getElementById("msgs").hidden = true;
+  document.getElementById("brk0").hidden = true;
+  document.getElementById("brk1").hidden = true;
+  document.getElementById("brk2").hidden = true;
+  document.getElementById("brk3").hidden = true;
+  document.getElementById("brk4").hidden = true;
+  document.getElementById("start").hidden = true;
+  document.getElementById("inputtype").hidden = true;
 }
 
 let files = [];
@@ -1035,24 +1050,36 @@ function levDist(s, t) {
 
 try {
   flagvar;
-  document.getElementById("start").addEventListener("click", async function() {
-    files = [...document.getElementById("txtx").files];
-    console.log(files);
-    files.forEach(file => {
-      if (file) {
-        ext = file.name.split('.').pop();
-        let reader = new FileReader();
-        reader.addEventListener(
-          "load",
-          () => readerfunc(reader),
-          false,
-        );
-        reader.readAsText(file);
-      }
+  if ("data" in params) {
+    lst = decodeURIComponent(params["data"]).split("\n").map((l) => l.split("\t"));
+    console.log(decodeURIComponent(params["data"]));
+    lstcopy = [...lst];
+    hide_custom_stuff();
+    draw_stuff();
+  } else {
+    document.getElementById("start").addEventListener("click", async function() {
+      files = [...document.getElementById("txtx").files];
+      console.log(files);
+      files.forEach(file => {
+        if (file) {
+          ext = file.name.split('.').pop();
+          let reader = new FileReader();
+          reader.addEventListener(
+            "load",
+            () => readerfunc(reader),
+            false,
+          );
+          reader.readAsText(file);
+        }
+      });
     });
-});
-} catch {
-  lst = words.split("\n").map((l) => l.split("\t"));
-  lstcopy = [...lst];
-  draw_stuff();
+  }
+} catch (e) {
+  if (e instanceof ReferenceError) {
+    lst = words.split("\n").map((l) => l.split("\t"));
+    lstcopy = [...lst];
+    draw_stuff();
+  } else {
+    throw e;
+  }
 }
