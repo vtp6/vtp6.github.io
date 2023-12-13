@@ -63,7 +63,9 @@ args.split("&").forEach(function (pair) {
   }
 });
 
-window.history.pushState({}, document.title, window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split("?")[0]);
+let h = window.location.href;
+console.log(h.substring(0, h.lastIndexOf('/') + 1) + h.substring(h.lastIndexOf('/') + 1).split("?")[0]);
+window.history.pushState({}, document.title, h.substring(0, h.lastIndexOf('/') + 1) + h.substring(h.lastIndexOf('/') + 1).split("?")[0]);
 
 function sanitise(string) {
   return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
