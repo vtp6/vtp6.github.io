@@ -63,6 +63,8 @@ args.split("&").forEach(function (pair) {
   }
 });
 
+window.history.pushState({}, document.title, window.location.href.substring(window.location.href.lastIndexOf('/') + 1).split("?")[0]);
+
 function sanitise(string) {
   return string.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 }
@@ -634,11 +636,11 @@ function clicked(elem) {
       if ([...document.querySelectorAll(".done")].length >= PAIRS * 2) {
         clearInterval(id);
 
-        let restart = document.createElement("input");
-        restart.setAttribute("type", "button");
-        restart.value = "Restart";
-        restart.onclick = () => restart();
-        document.body.insertBefore(restart, document.getElementById("mt"));
+        let restartbtn = document.createElement("input");
+        restartbtn.setAttribute("type", "button");
+        restartbtn.value = "Restart";
+        restartbtn.onclick = () => restart();
+        document.body.insertBefore(restartbtn, document.getElementById("mt"));
       }
     }
   }
