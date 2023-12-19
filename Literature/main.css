@@ -1,0 +1,41 @@
+#list {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.monospace {
+    font-family: monospace;
+}
+
+textarea {
+    background-color: #505050;
+    color: #bbbbbb;
+    font-size: 20px;
+    height: 100px;
+    width: 90%;
+    resize: none;
+    border: none;
+}
+
+.emulate-h3 {
+    font-size: 1.17em;
+    padding-bottom: 0px;
+    font-style: italic;
+    margin-bottom: 0px;
+}
+
+.bottom-padding {
+    padding-bottom: 10px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
