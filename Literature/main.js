@@ -110,7 +110,7 @@ function show_numbers() {
   if ((query = [...document.querySelectorAll(".emulate-h3")]).length === 0) {
     let i = 0;
     question.split("\n").forEach((line, lineix) => {
-      let words = line.trim().split(" ");
+      let words = line.trim().replaceAll(/ +/g, " ").split(" ");
       let string = "";
       words.forEach(word => {
         // string += order[i] + "&nbsp;".repeat(word.length + 1 - order[i].length);
