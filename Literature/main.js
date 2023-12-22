@@ -102,6 +102,10 @@ function start() {
   inp.focus();
 }
 
+function at_least(n, m) {
+  return Math.max(n, m);
+}
+
 function show_numbers() {
   if ((query = [...document.querySelectorAll(".emulate-h3")]).length === 0) {
     let i = 0;
@@ -110,8 +114,8 @@ function show_numbers() {
       let string = "";
       words.forEach(word => {
         // string += order[i] + "&nbsp;".repeat(word.length + 1 - order[i].length);
-        let pre = Math.floor((word.length - order[i].length) / 2)
-        string += "&nbsp;".repeat(pre) + order[i] + "&nbsp;".repeat(word.length + 1 - order[i].length - pre);
+        let pre = at_least(Math.floor((word.length - order[i].length) / 2), 0)
+        string += "&nbsp;".repeat(pre) + order[i] + "&nbsp;".repeat(at_least(word.length + 1 - order[i].length - pre, 0));
         i++;
       });
       let p = document.createElement("p");
@@ -191,11 +195,17 @@ function levDist(s, t) {
 }
 
 function check() {
+  let old_score = prc.innerHTML;
   userans = remove_punctuation(inp.value);
   let score = 100 - (levDist(
     userans.toLowerCase(), r = remove_punctuation(answer).toLowerCase()
   ) / Math.max(r.length, userans.length)) * 100;
-  prc.innerHTML = score.toFixed(0) + "%";
+  prc.innerHTML = Math.floor(score) + "%";
+  if (prc.innerHTML !== old_score) {
+    prc.style.animation = "";
+    prc.offsetWidth;
+    prc.style.animation = "fadeIn 0.5s";
+  }
   if (score >= LEVTHRESHOLD) {
     inp.hidden = true;
     num.hidden = true;
