@@ -1,7 +1,3 @@
-if(performance.navigation.type == 2){
-  location.reload(true);
-}
-
 const lst = document.getElementById("list");
 const prv = document.getElementById("preview");
 const srt = document.getElementById("start");
@@ -10,6 +6,11 @@ const inp = document.getElementById("input");
 const ran = document.getElementById("realans");
 const rst = document.getElementById("restart");
 const num = document.getElementById("numbers");
+const prc = document.getElementById("percentage");
+
+if(performance.navigation.type == 2){
+  location.reload(true);
+}
 
 [docname, ...pages] = text.split("\n\n\n");
 
@@ -88,6 +89,7 @@ function start() {
   qsn.hidden = false;
   inp.hidden = false;
   num.hidden = false;
+  prc.hidden = false;
   
   question.split("\n").forEach((line, index) => {
     let h3 = document.createElement("h3");
@@ -190,11 +192,15 @@ function levDist(s, t) {
 
 function check() {
   userans = remove_punctuation(inp.value);
-  if (levDist(userans.toLowerCase(), r = remove_punctuation(answer).toLowerCase()
-  ) / Math.max(r.length, userans.length) <= (100 - LEVTHRESHOLD) / 100) {
+  let score = 100 - (levDist(
+    userans.toLowerCase(), r = remove_punctuation(answer).toLowerCase()
+  ) / Math.max(r.length, userans.length)) * 100;
+  prc.innerHTML = score.toFixed(0) + "%";
+  if (score >= LEVTHRESHOLD) {
     inp.hidden = true;
     num.hidden = true;
     ran.hidden = false;
+    prc.hidden = true;
     ran.innerHTML = answer;
     rst.hidden = false;
   }
@@ -215,7 +221,7 @@ window.history.pushState({}, document.title, h.substring(0, h.lastIndexOf('/') +
 
 let checked_list = [];
 if ("sections" in params) {
-  checked_list = decodeURIComponent(params["sections"]).split(",");
+  checked_list = decodeURIComponent(params["sections"]).split(",").filter(a => get_page_text(a) !== "");
 }
 
 section_names.forEach(el => {
