@@ -12,6 +12,8 @@ const ran = document.getElementById("realans");
 const rst = document.getElementById("restart");
 const num = document.getElementById("numbers");
 const prc = document.getElementById("percentage");
+const gup = document.getElementById("giveup");
+const spc = document.getElementById("spacing");
 
 if(performance.navigation.type == 2){
   location.reload(true);
@@ -95,6 +97,8 @@ function start() {
   inp.hidden = false;
   num.hidden = false;
   prc.hidden = false;
+  spc.hidden = false;
+  gup.hidden = false;
   
   question.split("\n").forEach((line, index) => {
     let h3 = document.createElement("h3");
@@ -221,9 +225,16 @@ function check() {
     num.hidden = true;
     ran.hidden = false;
     prc.hidden = true;
+    spc.hidden = true;
+    gup.hidden = true;
     ran.innerHTML = answer;
     rst.hidden = false;
   }
+}
+
+function give_up() {
+  inp.value = answer;
+  check();
 }
 
 let args = location.search.slice(1);
@@ -273,6 +284,7 @@ section_names.forEach(el => {
 srt.addEventListener("click", start);
 inp.addEventListener("input", check);
 num.addEventListener("click", show_numbers);
+gup.addEventListener("click", give_up);
 rst.addEventListener("click", () =>
   window.location.replace(location.href.split('?')[0] +
   "?sections=" + encodeURIComponent(checked_list))
