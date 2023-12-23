@@ -1,3 +1,8 @@
+console.log("%c Welcome to the VTP6 console!!! ",
+  "background-color: aqua; color: black; font-style: italic; border: 5px solid hotpink; font-size: 2em;");
+console.log("You'll just see some random debug stuff here");
+console.log(":D")
+
 const lst = document.getElementById("list");
 const prv = document.getElementById("preview");
 const srt = document.getElementById("start");
@@ -123,6 +128,11 @@ function show_numbers() {
       p.innerHTML = string;
       qsn.insertBefore(p, document.getElementById("heading" + lineix));
     });
+    if (i !== order.length) {
+      console.warn("Something went wrong. Please report to vtp6_feedback@outlook.com");
+    } else {
+      console.log("%cAll good :)", "font-style: italic; color: darkgreen");
+    }
     num.value = "Hide numbers";
   } else {
     query.forEach(elem => elem.remove());
@@ -200,7 +210,7 @@ function check() {
   let score = 100 - (levDist(
     userans.toLowerCase(), r = remove_punctuation(answer).toLowerCase()
   ) / Math.max(r.length, userans.length)) * 100;
-  prc.innerHTML = Math.floor(score) + "%";
+  prc.innerHTML = Math.floor(score * 100 / 90) + "%";
   if (prc.innerHTML !== old_score) {
     prc.style.animation = "";
     prc.offsetWidth;
