@@ -26,7 +26,7 @@ The website currently has all nine passages from the Prose B set text (Apuleius 
 
 Once you've loaded up the folder you want to revise from, tick the checkboxes of the passages you want to revise (you can select as many as you want) and press start.
 
-Each passage has been split into around five or six sub-sections (usually about 20 words long). When you press start, the site will give you a random sub-section from the passages that you selected. You then have to translate it into English. The site shows the percentage match with the real answer on the right. You need to hit 90% to get the answer correct.
+Each passage has been split into around five or six sub-sections (usually about 20 words long). When you press start, the site will give you a random sub-section from the passages that you selected. You then have to translate it into English. The site shows how far you are as a percentage on the right. You need to hit 100% to get the answer correct.
 
 As a hint, you can click "Show numbers". This shows the translation order above each Latin word to help you translate.
 
