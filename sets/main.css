@@ -106,3 +106,9 @@ details > details {
 ul {
     margin-top: 0px;
 }
+
+.smalllink {
+    font-size: 20px;
+    font-family: monospace;
+    vertical-align: middle;
+}
