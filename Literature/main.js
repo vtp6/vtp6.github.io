@@ -75,6 +75,39 @@ function zip(a, ...b) {
   return a.map((k, i) => [k, ...b.map(c => c[i])]);
 }
 
+// Self-diagnostics
+let failed = false;
+pages.forEach(bigtext => {
+  let [_, lat, __, nums] = bigtext.split("\n\n");
+  zip(lat.split("||"), nums.split("\n")).forEach(pair => {
+    if (
+      (aa =
+        pair[0]
+        .replaceAll("\n", " ")
+        .trim()
+        .split(" ")
+        .filter(pp => pp !== "")
+        .length
+      ) !== (bb =
+        pair[1]
+        .replaceAll("\n", " ")
+        .trim()
+        .split(" ")
+        .filter(qq => qq !== "")
+        .length
+      )
+    ) {
+      console.warn("Mismatch:", [pair[0], pair[1]], [aa, bb]);
+      failed = true;
+    }
+  });
+});
+if (!failed) {
+  console.log("%cSelf-diagnostics passed.", "font-style: italic; font-weight: bolder; color: lightgreen");
+} else {
+  console.error("Self-diagnostics failed. Please report to vtp6_feedback@outlook.com");
+}
+
 function start() {
   if (checked_list.length === 0) {
     return;
@@ -151,8 +184,9 @@ function remove_punctuation(string) {
       return (
         (47 < ord && ord < 58) || 
         (64 < ord && ord < 91) || 
-        (96 < ord && ord < 123)
-        || (ord > 127)) ? c : "";
+        (96 < ord && ord < 123) ||
+        (ord > 127) || (ord == 32)
+      ) ? c : "";
     })
     .join("");
 }
