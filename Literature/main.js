@@ -314,7 +314,7 @@ function check(del=1) {
     prc.hidden = true;
     spc.hidden = true;
     gup.hidden = true;
-    ran.innerHTML = answer;
+    ran.innerHTML = answer + " <b>(" + (time / 10).toFixed(1) + "s)</b>";
     rst.hidden = false;
     console.log(graph_points);
     draw_graph();
