@@ -14,6 +14,7 @@ const num = document.getElementById("numbers");
 const prc = document.getElementById("percentage");
 const gup = document.getElementById("giveup");
 const spc = document.getElementById("spacing");
+const grp = document.getElementById("graph");
 
 if(performance.navigation.type == 2){
   location.reload(true);
@@ -28,6 +29,11 @@ let answer = "";
 let order = [];
 
 const LEVTHRESHOLD = 90;
+
+let time = 0;
+let id = -1;
+
+let graph_points = [[0, 0]];
 
 function htmlify(string) {
   return string
@@ -141,6 +147,8 @@ function start() {
     qsn.appendChild(h3);
   });
 
+  id = setInterval(() => time++, 100);
+
   inp.focus();
 }
 
@@ -242,7 +250,51 @@ function levDist(s, t) {
   return d[n][m];
 }
 
-function check() {
+function draw_graph() {
+
+
+
+  const ctx = grp.getContext("2d");
+  let xscale = (grp.width - 10) / time;
+  let yscale = (grp.height - 10) / 100;
+
+  let points = graph_points.map(xy => {
+    let [x, y] = xy;
+    return [xscale * x, grp.height - yscale * y - 5];
+  });
+
+  console.log(points);
+  points.forEach(point => {
+    ctx.beginPath();
+    ctx.fillStyle = "#bbbbbb";
+    ctx.arc(...point, 1, 0, 2 * Math.PI);
+    ctx.fill();
+  });
+
+  zip(
+    points.slice(0, -1),
+    points.slice(1)
+  ).forEach(pts => {
+    let [xy1, xy2] = pts;
+    ctx.beginPath();
+    ctx.moveTo(...xy1);
+    ctx.lineTo(...xy2);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "#bbbbbb";
+    ctx.stroke();
+  });
+
+  ctx.beginPath();
+  ctx.moveTo(0, grp.height - 5);
+  ctx.lineTo(grp.width - 10, grp.height - 5);
+  ctx.moveTo(0, grp.height - 5);
+  ctx.lineTo(0, 5);
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = "#dddddd";
+  ctx.stroke();
+}
+
+function check(del=1) {
   let old_score = prc.innerHTML;
   userans = remove_punctuation(inp.value);
   let score = 100 - (levDist(
@@ -253,8 +305,12 @@ function check() {
     prc.style.animation = "";
     prc.offsetWidth;
     prc.style.animation = "fadeIn 0.5s";
+    if (del !== 0) {
+      graph_points.push([time, Math.min(prc.innerHTML.slice(0, -1), 100)]);
+    }
   }
   if (score >= LEVTHRESHOLD) {
+    clearInterval(id);
     inp.hidden = true;
     num.hidden = true;
     ran.hidden = false;
@@ -263,12 +319,15 @@ function check() {
     gup.hidden = true;
     ran.innerHTML = answer;
     rst.hidden = false;
+    console.log(graph_points);
+    draw_graph();
+    grp.hidden = false;
   }
 }
 
 function give_up() {
   inp.value = answer;
-  check();
+  check(0);
 }
 
 // From https://stackoverflow.com/a/11381730
