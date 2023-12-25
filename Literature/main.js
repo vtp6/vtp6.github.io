@@ -251,9 +251,6 @@ function levDist(s, t) {
 }
 
 function draw_graph() {
-
-
-
   const ctx = grp.getContext("2d");
   let xscale = (grp.width - 10) / time;
   let yscale = (grp.height - 10) / 100;
