@@ -22,7 +22,7 @@
 
 **[VTP6 Literature]**: A new way to revise Latin Literature set texts.
 
-The website currently has all nine passages from the Prose B set text (Apuleius & Cicero). This will be expanded to include Verse B (Virgil) soon.
+The website currently has all 18 passages from the Prose B set text (Apuleius & Cicero) and the Verse B set text (Virgil Aeneid 6) from 2023-24. This may be expanded to include set texts from 2025-26 in the future.
 
 Once you've loaded up the folder you want to revise from, tick the checkboxes of the passages you want to revise (you can select as many as you want) and press start.
 
