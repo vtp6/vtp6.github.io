@@ -50,6 +50,8 @@ let id = 0;
 
 let hangman_num = 1;
 
+let hint = true;
+
 const PAIRS = 6;
 
 const LEVTHRESHOLD = 80;
@@ -367,14 +369,29 @@ function new_question_classic() {
         .split("/")
         .map((q) => q.split(", "))
         .flat();
-    document.getElementById("qs").innerHTML = sanitise(question) + " (0/" + answer.length + ")";
+    document.getElementById("qs").innerHTML = sanitise(question) +
+      ` <el id="hint" onclick="javascript:hide_hint();">` + get_hint() + "</el>";
     lst.splice(lst.indexOf(temp), 1);
     done = [];
   } else {
     document.getElementById("qs").innerHTML =
-      sanitise(question) + " (" + done.length + "/" + (answer.length + done.length) + ")";
+      sanitise(question) + ` <el id="hint" onclick="javascript:hide_hint();">` +
+      get_hint() + "</el>";
   }
   document.getElementById("done").innerHTML = "Correct answers: " + done.join(", ");
+}
+
+function get_hint() {
+  if (hint) {
+    return "(" + done.length + "/" + (answer.length + done.length) + ")";
+  } else {
+    return "&nbsp;".repeat(5);
+  }
+}
+
+function hide_hint() {
+  hint = !hint;
+  document.getElementById("hint").innerHTML = get_hint();
 }
 
 function showacbr(ix) {
