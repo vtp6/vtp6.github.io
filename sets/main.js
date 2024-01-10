@@ -369,10 +369,10 @@ function new_question_classic() {
         .split("/")
         .map((q) => q.split(", "))
         .flat();
-    document.getElementById("qs").innerHTML = sanitise(question) +
-      ` <el id="hint" onclick="javascript:hide_hint();">` + get_hint() + "</el>";
     lst.splice(lst.indexOf(temp), 1);
     done = [];
+    document.getElementById("qs").innerHTML = sanitise(question) +
+      ` <el id="hint" onclick="javascript:hide_hint();">` + get_hint() + "</el>";
   } else {
     document.getElementById("qs").innerHTML =
       sanitise(question) + ` <el id="hint" onclick="javascript:hide_hint();">` +
