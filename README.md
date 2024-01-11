@@ -119,6 +119,6 @@ complete them before the hangman is fully formed.
 
 ![Logo](https://github.com/vtp6/vtp6.github.io/assets/55329600/d7b16a93-0efc-4ecb-9990-2fdf45c52b37)
 
-<sub>© Rujul Nayak 2023</sub>
+<sub>© Rujul Nayak 2023-24</sub>
 
 [VTP6]: https://vtp6.github.io/

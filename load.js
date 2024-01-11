@@ -65,5 +65,3 @@ LIST_OF_LINKS.forEach(([a, b]) => {
   document.body.insertBefore(document.createElement("br"), cstm);
 });
 */
-
-document.getElementById("year").innerHTML = "2023-" + (new Date().getFullYear());

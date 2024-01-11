@@ -34,6 +34,6 @@ As a hint, you can click "Show numbers". This shows the translation order above 
 
 ![Logo](https://github.com/vtp6/vtp6.github.io/assets/55329600/d7b16a93-0efc-4ecb-9990-2fdf45c52b37)
 
-<sub>© Rujul Nayak 2023</sub>
+<sub>© Rujul Nayak 2023-24</sub>
 
 [VTP6 Literature]: https://vtp6.github.io/Literature

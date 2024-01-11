@@ -1,0 +1,1 @@
+document.getElementById("year").innerHTML = "2023-" + ("" + new Date().getFullYear()).slice(-2);
