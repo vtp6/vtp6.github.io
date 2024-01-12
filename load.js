@@ -16,6 +16,10 @@ function isDict(a) {
   return a.constructor == Object;
 }
 
+function remove_punctucation(str) {
+  return [...str].filter(c => c == encodeURIComponent(c)).join("");
+}
+
 function recurse(dict, obj, pref="") {
   let it = [...items(dict)];
   console.log(it);
@@ -30,7 +34,7 @@ function recurse(dict, obj, pref="") {
       b.forEach((s) => {
         let newli = document.createElement("li");
         newli.innerHTML =
-          `<a href="./sets/` + (pref + a + s).replaceAll(" ", "") + `">` + s + `</a>`;
+          `<a href="./sets/` + remove_punctucation(pref + a + s) + `">` + s + `</a>`;
         ul.appendChild(newli);
       });
       det.appendChild(ul);
