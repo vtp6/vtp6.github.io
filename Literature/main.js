@@ -147,7 +147,10 @@ function start() {
     qsn.appendChild(h3);
   });
 
-  id = setInterval(() => time++, 100);
+  id = setInterval(() =>
+    graph_points.push(
+      [++time, Math.min(prc.innerHTML.slice(0, -1), 100)]
+    ), 100);
 
   inp.focus();
 }
@@ -302,9 +305,9 @@ function check(del=1) {
     prc.style.animation = "";
     prc.offsetWidth;
     prc.style.animation = "fadeIn 0.5s";
-    if (del !== 0) {
-      graph_points.push([time, Math.min(prc.innerHTML.slice(0, -1), 100)]);
-    }
+    // if (del !== 0) {
+    //   graph_points.push([time, Math.min(prc.innerHTML.slice(0, -1), 100)]);
+    // }
   }
   if (score >= LEVTHRESHOLD) {
     clearInterval(id);
