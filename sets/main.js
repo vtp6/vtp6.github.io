@@ -872,6 +872,9 @@ let sp1 = 0;
 let sp2 = 0;
 
 function draw_sub() {
+  if (nm === "Custom Set") {
+    document.getElementById("sub").remove();
+  }
   sub = document.createElement("br");
   sub.classList.add("exempt");
   document.body.appendChild(sub);
