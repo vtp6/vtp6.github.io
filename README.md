@@ -102,8 +102,9 @@ definitions by clicking on them. There's a timer at the top
 to tell you how long it took.
 
 <!-- ![Match Mode Screenshot](https://github.com/vtp6/vtp6.github.io/assets/55329600/9a9745e8-4890-4343-9ef7-d71637750df8) -->
+<!-- ![Match Mode Recording](https://github.com/vtp6/vtp6.github.io/assets/55329600/a01e0522-9f7e-4731-8755-2d820302e1d6) -->
 
-![Match Mode Recording](https://github.com/vtp6/vtp6.github.io/assets/55329600/a01e0522-9f7e-4731-8755-2d820302e1d6)
+![Match Mode Recording](https://github.com/vtp6/vtp6.github.io/assets/55329600/f20180ed-dd0c-42d2-b411-5d1faf8e7dd3)
 
 
 ### Hangman Mode
