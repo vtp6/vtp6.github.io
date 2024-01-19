@@ -107,8 +107,15 @@ ul {
     margin-top: 0px;
 }
 
-.smalllink {
+.linkbar {
     font-size: 20px;
     font-family: monospace;
-    vertical-align: middle;
+}
+
+.less-margin-bottom {
+    margin-bottom: 10px;
+}
+
+.above-linkbar {
+    margin-bottom: 10px;
 }
