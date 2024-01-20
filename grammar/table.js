@@ -65,7 +65,7 @@ tbls.forEach(tbl => {
       let suff = suffix(head[ind]);
 
       if (cell[0] === "\\") {
-        td.innerHTML = cell.slice(1);
+        td.innerHTML = format(cell.slice(1));
       } else {
         td.innerHTML = pref + format("_*" + cell + "*_") + suff;
       }
