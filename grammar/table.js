@@ -16,16 +16,33 @@ function zip(a, ...b) {
 
 function format(string) {
   return string
+    .replaceAll(/\|(.*)\|/g, ``)
     .replaceAll(/\[(.*)\]/g, `$1`)
+    .replaceAll(/\{(.*)\}/g, `$1`)
     .replaceAll(/\*(.*)\*/g, `<b>$1</b>`)
     .replaceAll(/\_(.*)\_/g, `<i>$1</i>`);
 }
 
 function prefix(string) {
-  return string
-    .match(/\[(.*)\]/)[1]
+  let m = string.match(/\[(.*)\]/)
+  if (m === null) {
+    return "";
+  }
+  return m[1]
     .replaceAll(/\*(.*)\*/g, `$1`)
-    .replaceAll(/\_(.*)\_/g, `$1`);
+    .replaceAll(/\_(.*)\_/g, `$1`)
+    .replaceAll(/\|(.*)\|/g, `$1`);
+}
+
+function suffix(string) {
+  let m = string.match(/\{(.*)\}/)
+  if (m === null) {
+    return "";
+  }
+  return m[1]
+    .replaceAll(/\*(.*)\*/g, `$1`)
+    .replaceAll(/\_(.*)\_/g, `$1`)
+    .replaceAll(/\|(.*)\|/g, `$1`);
 }
 
 tbls.forEach(tbl => {
@@ -45,8 +62,14 @@ tbls.forEach(tbl => {
     row.forEach((cell, ind) => {
       let td = document.createElement("td");
       let pref = prefix(head[ind]);
+      let suff = suffix(head[ind]);
 
-      td.innerHTML = pref + format("_*" + cell + "*_");
+      if (cell[0] === "\\") {
+        td.innerHTML = cell.slice(1);
+      } else {
+        td.innerHTML = pref + format("_*" + cell + "*_") + suff;
+      }
+
       trow.appendChild(td);
     });
 
