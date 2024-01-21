@@ -9,8 +9,15 @@ body {
     vertical-align: text-top;
 }
 
-a {
+h1 * {
+    color: #ffffff;
+}
+
+a:not(h1 *) {
     color: #cccccc;
+}
+
+a {
     text-decoration: none;
 }
 
