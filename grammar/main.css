@@ -1,7 +1,0 @@
-b:not(i) {
-    color: #f0f0f0;
-}
-
-b i, i b {
-    color: #ffffff;
-}
