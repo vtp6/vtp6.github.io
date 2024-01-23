@@ -17,6 +17,7 @@ function zip(a, ...b) {
 function format(string) {
   return string
     .replaceAll(/\|(.*)\|/g, ``)
+    .replaceAll(/\/(.*)\//g, ``)
     .replaceAll(/\[(.*)\]/g, `$1`)
     .replaceAll(/\{(.*)\}/g, `$1`)
     .replaceAll(/\*(.*)\*/g, `<b>$1</b>`)
@@ -31,7 +32,8 @@ function prefix(string) {
   return m[1]
     .replaceAll(/\*(.*)\*/g, `$1`)
     .replaceAll(/\_(.*)\_/g, `$1`)
-    .replaceAll(/\|(.*)\|/g, `$1`);
+    .replaceAll(/\|(.*)\|/g, `$1`)
+    .replaceAll(/\/(.*)\//g, `$1`);
 }
 
 function suffix(string) {
@@ -42,7 +44,8 @@ function suffix(string) {
   return m[1]
     .replaceAll(/\*(.*)\*/g, `$1`)
     .replaceAll(/\_(.*)\_/g, `$1`)
-    .replaceAll(/\|(.*)\|/g, `$1`);
+    .replaceAll(/\|(.*)\|/g, `$1`)
+    .replaceAll(/\/(.*)\//g, `$1`);
 }
 
 tbls.forEach(tbl => {
