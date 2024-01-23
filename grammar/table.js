@@ -1,3 +1,86 @@
+/*
+
+SYNTAX GUIDE
+
+1.  The table is transposed, so rows in the js-data attribute
+    are actually the columns of the real table
+
+    NOTE: "row" from hereon in means row *of the js-data*, or
+    column of the real table
+
+2.  The cells in each row are separated by semicolons ;
+
+3.  The first cell in each row is the header cell. Header
+    cells are the template for cells in their row.
+
+    EXAMPLE js-data:
+      Col 1;abc;def
+      Col 2;ghi;jkl
+      Col 3;mno;pqr
+
+    This will produce a table with three columns. The table
+    will look like this:
+
+       Col 1 | Col 2 | Col 3
+      -------+-------+-------
+       abc   | ghi   | mno
+       def   | jkl   | pqr
+
+    Yes, this table has been automatically generated from
+    those three lines of js-data.
+
+4.  Header cells may contain PREFIXES. These are contained in
+    square brackets [] and save you from typing out the same
+    prefix into each cell
+
+    EXAMPLE js-data:
+      [habl]ar;o;as;a;amos;áis;an
+      [com]er;o;es;e;emos;éis;en
+      [viv]ir;o;es;e;imos;ís;en
+
+    This will produce a table with three columns. The table
+    will look like this:
+
+       hablar   | comer   | vivir
+      ----------+---------+---------
+       hablo    | como    | vivo
+       hablas   | comes   | vives
+       habla    | come    | vive
+       hablamos | comemos | vivimos
+       habláis  | coméis  | vivís
+       hablan   | comen   | viven
+
+    As you can see, the prefixes from the headers have been
+    automatically added to each cell in their table column.
+
+5.  Header cells may also contain SUFFIXES. These work the
+    same way as prefixes, except they use braces {} and are
+    added on at the end of each cell in the row.
+
+    EXAMPLE js-data:
+      {hablar};voy a ;vas a ;va a ;vamos a ;vais a ;van a 
+      {comer};voy a ;vas a ;va a ;vamos a ;vais a ;van a 
+      {vivir};voy a ;vas a ;va a ;vamos a ;vais a ;van a 
+
+    This will produce a table with three columns. The table
+    will look like this:
+
+       hablar         | comer         | vivir
+      ----------------+---------------+---------------
+       voy a hablar   | voy a comer   | voy a vivir
+       vas a hablar   | vas a comer   | vas a vivir
+       va a hablar    | va a comer    | va a vivir
+       vamos a hablar | vamos a comer | vamos a vivir
+       vais a hablar  | vais a comer  | vais a vivir
+       van a hablar   | van a comer   | van a vivir
+
+    Prefixes and suffixes can also be used simultaneously.
+
+
+[More coming soon...]
+
+*/
+
 let tbls = [...document.querySelectorAll(".convert")];
 
 function extract_data(elem) {
