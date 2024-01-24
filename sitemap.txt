@@ -98,3 +98,13 @@ https://vtp6.github.io/credits/
 https://vtp6.github.io/Literature/
 https://vtp6.github.io/Literature/ApuleiusCicero/
 https://vtp6.github.io/Literature/VirgilAeneid6/
+https://vtp6.github.io/grammar/
+https://vtp6.github.io/grammar/LatinGCSENouns/
+https://vtp6.github.io/grammar/LatinGCSEVerbsActive/
+https://vtp6.github.io/grammar/LatinGCSEVerbsPassive/
+https://vtp6.github.io/grammar/LatinGCSEParticiples/
+https://vtp6.github.io/grammar/LatinGCSESubjunctive/
+https://vtp6.github.io/grammar/LatinGCSESubjunctiveUses/
+https://vtp6.github.io/grammar/SpanishGCSEVerbs/
+https://vtp6.github.io/grammar/GermanGCSEVerbs/
+https://vtp6.github.io/grammar/FrenchGCSEVerbs/
