@@ -2,8 +2,11 @@
 
 <html>
     <head>
+        <! Potentialy add bootstrap components to improve visual aspects>
         <meta charset="utf-8">
         <title>Home | VTP6</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <! https://getbootstrap.com/>
         <link rel="stylesheet" href="sets/main.css">
         <link rel="icon" type="image/png" href="sets/logo.png"/>
         <meta property="og:image" content="icon.jpg" />
@@ -11,8 +14,27 @@
         <meta property="og:image:height" content="256" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Vocabulary Testing Program 6 (VTP6) is an online platform to help students revise vocabulary. It contains study sets for Latin, Spanish, French and German.">
+        <! Hides content when JavaScript is disabled>
+        <style>
+            #js-content {
+              display: none;
+            }
+          </style>
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              document.getElementById('js-content').style.display = 'block';
+            });
+          </script>
+    
     </head>
     <body>
+
+        <noscript>
+            <p><b><h2>JavaScript is required to use VTP6.<h2></b></p>
+        </noscript>
+
+        <div id="js-content">
+
         <h1 class="above-linkbar">
             <a href="./">VTP6</a> &nbsp;
             <img id="dl" src="./sets/download.svg" height="25px" onclick="window.open('./vtp6_files.zip', '_blank').focus();" />
@@ -102,5 +124,7 @@
         <div id="sub"><el>© Rujul Nayak <el id="year">2023-</el></el> | <a href="mailto:vtp6_feedback@outlook.com" class="feedback">Feedback</a> <a href="https://github.com/vtp6/vtp6.github.io"><img src="sets/logosmall.png" class="logo" /></a></div>
         <script src="load.js"></script>
         <script src="year.js"></script>
+
+        </div>
     </body>
 </html>
