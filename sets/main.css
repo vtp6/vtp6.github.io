@@ -29,7 +29,7 @@ b i, i b {
     color: #ffffff;
 }
 
-h1, b:not(i) {
+h1, b:not(i b) {
     color: #f0f0f0;
 }
 
