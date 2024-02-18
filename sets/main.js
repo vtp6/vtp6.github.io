@@ -1,9 +1,3 @@
-let scr = document.createElement("script");
-scr.setAttribute("async", true);
-scr.setAttribute("data-id", "101434094");
-scr.setAttribute("src", "//static.getclicky.com/js");
-document.body.appendChild(scr);
-
 let meta1 = document.createElement("meta");
 meta1.property = "og:image";
 meta1.content = "../../icon.jpg";
