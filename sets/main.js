@@ -169,9 +169,9 @@ function check_input() {
     document.getElementById("inp").value.toLowerCase()
   );
   if (userans === "backdooroverride") {
+    document.getElementById("msg").innerHTML = "Correct! (" + answer.join(", ") + ")";
     answer = [];
     correct++;
-    document.getElementById("msg").innerHTML = "Correct!";
     return true;
   }
   if (
