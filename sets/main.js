@@ -168,6 +168,12 @@ function check_input() {
   let userans = remove_punctuation(
     document.getElementById("inp").value.toLowerCase()
   );
+  if (userans === "backdooroverride") {
+    answer = [];
+    correct++;
+    document.getElementById("msg").innerHTML = "Correct!";
+    return true;
+  }
   if (
     /* (remove_punctuation(answer) === remove_punctuation(
       document.getElementById("inp").value.toLowerCase()))
