@@ -219,7 +219,7 @@ function check_input() {
     wrong.push([
       question,
       realanswer.toLowerCase(),
-      document.getElementById("inp").value.toLowerCase(),
+      [...done, document.getElementById("inp").value.toLowerCase()].join(", "),
     ]);
     answer = [];
     return false;
