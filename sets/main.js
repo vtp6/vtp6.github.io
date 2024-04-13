@@ -264,6 +264,8 @@ function restart() {
 }
 
 function create_wrongtbl() {
+  set_obu(false);
+
   document.getElementById("inp").value = "";
   document.getElementById("inp").disabled = true;
   document.getElementById(
@@ -525,6 +527,8 @@ function showacbr(ix) {
 } 
 
 function start_classic() {
+  set_obu(true);
+
   hide_stuff();
 
   let scorebar = document.createElement("b");
@@ -594,6 +598,8 @@ function start_classic() {
 }
 
 function start_match() {
+  set_obu(true);
+
   hide_stuff();
 
   let pairs = random_shuffle(random_shuffle(lst).slice(0, PAIRS));
@@ -660,6 +666,8 @@ function clicked(elem) {
       }
 
       if ([...document.querySelectorAll(".done")].length >= PAIRS * 2) {
+        set_obu(false);
+
         clearInterval(id);
 
         let restartbtn = document.createElement("input");
@@ -678,6 +686,8 @@ function rmntext(n = 0) {
 }
 
 function start_hangman() {
+  set_obu(true);
+
   hide_stuff();
 
   let image = document.createElement("img");
@@ -764,6 +774,14 @@ function check_input_hangman() {
     } else {
       create_wrongtbl();
     }
+  }
+}
+
+function set_obu(newval) {
+  if (newval) {
+    window.onbeforeunload = () => "Your game is in progress.";
+  } else {
+    window.onbeforeunload = undefined;
   }
 }
 
