@@ -106,5 +106,6 @@ https://vtp6.github.io/grammar/LatinGCSEParticiples/
 https://vtp6.github.io/grammar/LatinGCSESubjunctive/
 https://vtp6.github.io/grammar/LatinGCSESubjunctiveUses/
 https://vtp6.github.io/grammar/SpanishGCSEVerbs/
+https://vtp6.github.io/grammar/SpanishGCSESubjunctiveUses/
 https://vtp6.github.io/grammar/GermanGCSEVerbs/
 https://vtp6.github.io/grammar/FrenchGCSEVerbs/
