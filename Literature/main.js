@@ -323,7 +323,7 @@ function check(event, del=1) {
     console.log(graph_points);
     draw_graph();
     grp.hidden = false;
-    rst.focus();
+    rst.tabIndex = 1;
   }
 }
 
