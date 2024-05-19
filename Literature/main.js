@@ -294,7 +294,8 @@ function draw_graph() {
   ctx.stroke();
 }
 
-function check(del=1) {
+function check(event, del=1) {
+  if (event && (event.ctrlKey || event.metaKey) && event.keyCode === 13) return give_up();
   let old_score = prc.innerHTML;
   userans = remove_punctuation(inp.value);
   let score = 100 - (levDist(
@@ -328,7 +329,7 @@ function check(del=1) {
 
 function give_up() {
   inp.value = answer;
-  check(0);
+  check(undefined, 0);
 }
 
 // From https://stackoverflow.com/a/11381730
@@ -387,10 +388,12 @@ section_names.forEach(el => {
 });
 
 srt.addEventListener("click", start);
-inp.addEventListener("input", check);
+inp.addEventListener("keydown", check);
 num.addEventListener("click", show_numbers);
 gup.addEventListener("click", give_up);
 rst.addEventListener("click", () =>
   window.location.replace(location.href.split('?')[0] +
   "?sections=" + encodeURIComponent(checked_list))
 );
+
+srt.focus();
