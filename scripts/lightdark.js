@@ -19,13 +19,11 @@ function switch_theme() {
         theme = "dark";
         document.body.classList.remove("light-theme");
         document.body.classList.add("dark-theme");
-        theme_button.src = "./images/light.svg";
         document.cookie = "vtp6Theme=dark;domain=vtp6.rujulnayak.com;max-age=31536000";
     } else {
         theme = "light";
         document.body.classList.remove("dark-theme");
         document.body.classList.add("light-theme");
-        theme_button.src = "./images/dark.svg";
         document.cookie = "vtp6Theme=light;domain=vtp6.rujulnayak.com;max-age=31536000";
     }
 }
@@ -38,7 +36,6 @@ if (theme === undefined || theme === "light") {
 } else {
     theme = "dark";
     document.body.classList.add("dark-theme");
-    theme_button.src = "./images/light.svg";
 }
 
 theme_button.addEventListener("click", switch_theme);

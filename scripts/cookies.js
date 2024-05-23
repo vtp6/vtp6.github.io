@@ -1,5 +1,5 @@
-let cks = document.createElement("div");
-cks.innerHTML = `
+let cookies_button = document.createElement("div");
+cookies_button.innerHTML = `
     <h1 id="cookie-title">Cookies on VTP6</h1>
     <p id="cookie-text">
         We use cookies on this site (vtp6.rujulnayak.com) to store your theme preferences,
@@ -8,7 +8,7 @@ cks.innerHTML = `
     </p>
     <input type="button" id="cookie-button" value="OK &check;" />
 `;
-cks.id = "cookie-banner";
+cookies_button.id = "cookie-banner";
 
 function get_cookies() {
     let str = document.cookie.split(";");
@@ -22,12 +22,12 @@ function get_cookies() {
 }
 
 function remove_banner() {
-    cks.remove();
+    cookies_button.remove();
     document.cookie = "cookiesAllowed=1;domain=vtp6.rujulnayak.com;max-age=31536000";
 }
 
 if (!get_cookies()["cookiesAllowed"]) {
-    document.body.appendChild(cks);
+    document.body.appendChild(cookies_button);
     document.getElementById("cookie-button").addEventListener("click", remove_banner);
 } else {
     document.cookie = "cookiesAllowed=1;domain=vtp6.rujulnayak.com;max-age=31536000";
