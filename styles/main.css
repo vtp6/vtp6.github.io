@@ -37,6 +37,8 @@ div#header {
         position: absolute;
         left: 25px;
         top: 90px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
         * {
             display: block;
             padding: 5px;
@@ -90,7 +92,7 @@ body.light-theme {
     }
 
     div#dropdown-container {
-        background-color: lightgray;
+        background-color: #f1f1f1;
     }
 }
 
