@@ -1,0 +1,102 @@
+div#header {
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    * {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 30px;
+    }
+
+    img#banner-logo {
+        height: 100%;
+    }
+
+    a.banner-link {
+        font-style: italic;
+        padding-right: 15px;
+    }
+
+    img#theme-button {
+        height: 50%;
+        position: absolute;
+        right: 10px;
+        top: 20%;
+        cursor: pointer;
+    }
+}
+
+div#cookie-banner {
+    width: 90%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 10px;
+    animation: fadeIn 1s;
+
+    input#cookie-button {
+        background-color: #00703c;
+        color: white;
+        font-size: 20px;
+        padding: 5px;
+        border: 0px;
+    }
+}
+
+body.light-theme {
+    background-color: white;
+    color: black;
+
+    a.banner-link {
+        color: red;
+    }
+
+    div#cookie-banner {
+        background-color: lightgray;
+
+        input#cookie-button {
+            background-color: #00703c;
+        }
+    }
+}
+
+body.dark-theme {
+    background-color: #111111;
+    color: #f0f0f0;
+    
+    a.banner-link {
+        color: #2a8c8c;
+    }
+
+    div#cookie-banner {
+        background-color: #2a8c8c;
+
+        input#cookie-button {
+            background-color: #1fd655;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes switchTheme {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
