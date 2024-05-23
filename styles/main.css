@@ -47,6 +47,16 @@ div#header {
     }
 }
 
+div#footer {
+    height: 1em;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    padding: 10px;
+    text-align: center;
+}
+
 div#cookie-banner {
     width: calc(100% - 20px);
     position: fixed;
@@ -71,6 +81,10 @@ body.light-theme {
 
     a.banner-link {
         color: #0093cb;
+    }
+
+    div#header, div#footer {
+        background-color: white;
     }
 
     div#cookie-banner {
@@ -101,6 +115,10 @@ body.dark-theme {
     
     a.banner-link {
         color: #2a8c8c;
+    }
+
+    div#header, div#footer {
+        background-color: #111111;
     }
 
     div#cookie-banner {
