@@ -37,7 +37,6 @@ div#header {
         position: absolute;
         left: 25px;
         top: 90px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
         * {
             display: block;
@@ -49,14 +48,13 @@ div#header {
 }
 
 div#cookie-banner {
-    width: 90%;
+    width: calc(100% - 20px);
     position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 0px;
+    left: 0px;
     text-align: center;
     padding: 10px;
-    animation: fadeIn 1s;
+    animation: slideUp 1s ease-out;
 
     input#cookie-button {
         background-color: #00703c;
@@ -72,7 +70,7 @@ body.light-theme {
     color: black;
 
     a.banner-link {
-        color: red;
+        color: #0093cb;
     }
 
     div#cookie-banner {
@@ -93,6 +91,7 @@ body.light-theme {
 
     div#dropdown-container {
         background-color: #f1f1f1;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     }
 }
 
@@ -122,6 +121,7 @@ body.dark-theme {
 
     div#dropdown-container {
         background-color: #222222;
+        box-shadow: 0px 8px 16px 0px rgba(255,255,255,0.1);
     }
 }
 
@@ -133,6 +133,11 @@ body.dark-theme {
 @keyframes switchTheme {
     0% {opacity: 0;}
     100% {opacity: 1;}
+}
+
+@keyframes slideUp {
+    from { transform: translate(0, +100%) }
+    to { transform: none;}
 }
 
 a {
