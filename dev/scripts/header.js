@@ -4,5 +4,5 @@ document.getElementById("header").innerHTML = `
     <a href="/folders/" class="banner-link">FOLDERS</a>
     <a href="/grammar/" class="banner-link">GRAMMAR</a>
     <a href="/credits/" class="banner-link">CREDITS</a>
-    <img src="/images/dark.svg" id="theme-button" />
+    <img src="./images/dark.svg" id="theme-button" />
 `
