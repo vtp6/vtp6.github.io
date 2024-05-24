@@ -23,6 +23,7 @@ div#header {
 
     img#theme-button {
         height: 50%;
+        width: 50px;
         position: absolute;
         right: 10px;
         top: 20%;
