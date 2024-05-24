@@ -49,7 +49,7 @@ div#header {
 
 div#footer {
     height: 1em;
-    width: 100%;
+    width: calc(100% - 20px);
     position: fixed;
     bottom: 0px;
     left: 0px;
