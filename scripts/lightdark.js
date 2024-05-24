@@ -1,5 +1,3 @@
-const theme_button = document.getElementById("theme-button");
-
 function get_cookies() {
     let str = document.cookie.split(";");
     let d = {};
@@ -37,5 +35,3 @@ if (theme === undefined || theme === "light") {
     theme = "dark";
     document.body.classList.add("dark-theme");
 }
-
-theme_button.addEventListener("click", switch_theme);

@@ -13,7 +13,10 @@ function add_header() {
             <img src="/images/dark.svg" id="theme-button" />
         `;
 
-        header_version = 0
+        header_version = 0;
+
+        document.getElementById("theme-button").addEventListener("click", switch_theme);
+
     } else if (screen_width < 1000 && header_version !== 1) {
         document.getElementById("header").innerHTML = `
             <a href="/"><img src="/logos/logo-banner.png" id="banner-logo" /></a>
@@ -39,6 +42,8 @@ function add_header() {
         });
 
         header_version = 1;
+
+        document.getElementById("theme-button").addEventListener("click", switch_theme);
     }
 }
 
