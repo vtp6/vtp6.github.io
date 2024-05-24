@@ -5,12 +5,12 @@ function add_header() {
 
     if (screen_width >= 1000 && header_version !== 0) {
         document.getElementById("header").innerHTML = `
-            <a href="/"><img src="/logos/logo-banner.png" id="banner-logo" /></a>
+            <a href="/"><img src="/logos/logo-banner.png" id="banner-logo" alt="VTP6 logo" /></a>
             <a href="/about/" class="banner-link">ABOUT</a>
             <a href="/folders/" class="banner-link">FOLDERS</a>
             <a href="/grammar/" class="banner-link">GRAMMAR</a>
             <a href="/credits/" class="banner-link">CREDITS</a>
-            <img src="/images/dark.svg" id="theme-button" />
+            <img id="theme-button" alt="Toggle theme" />
         `;
 
         header_version = 0;
@@ -19,15 +19,15 @@ function add_header() {
 
     } else if (screen_width < 1000 && header_version !== 1) {
         document.getElementById("header").innerHTML = `
-            <a href="/"><img src="/logos/logo-banner.png" id="banner-logo" /></a>
-            <img id="dropdown-arrow" />
+            <a href="/"><img src="/logos/logo-banner.png" id="banner-logo" alt="VTP6 logo" /></a>
+            <img id="dropdown-arrow" alt="Menu" />
             <div id="dropdown-container">
                 <a href="/about/" class="banner-link">ABOUT</a>
                 <a href="/folders/" class="banner-link">FOLDERS</a>
                 <a href="/grammar/" class="banner-link">GRAMMAR</a>
                 <a href="/credits/" class="banner-link">CREDITS</a>
             </div>
-            <img id="theme-button" />
+            <img id="theme-button" alt="Toggle theme" />
         `;
 
         let dropdown_container = document.getElementById("dropdown-container");
