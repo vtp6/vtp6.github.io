@@ -1,0 +1,48 @@
+div#content {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    
+    h1#main-header {
+        font-size: 75px;
+
+        span#orange {
+            color: #e97132;
+        }
+
+        span#purple {
+            color: #7030a0;
+        }
+    }
+
+    h3#main-text {
+        font-size: 40px;
+    }
+}
+
+body.light-theme {
+
+    h3#main-text {
+        color: 	#87ceeb;
+
+        i {
+            color: #0093cb;
+        }
+    }
+
+}
+
+body.dark-theme {
+
+    h3#main-text {
+        color: lightgray;
+
+        i {
+            color: white;
+        }
+    }
+
+}
