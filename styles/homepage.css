@@ -18,8 +18,20 @@ div#content {
         }
     }
 
-    h3#main-text {
+    h2#main-text {
         font-size: 40px;
+    }
+
+    h3#link-text {
+        span#animate-arrow {
+            position: absolute;
+        }
+    }
+
+    h3#link-text:hover {
+        span#animate-arrow {
+            animation: jump 1s ease infinite;
+        }
     }
 }
 
@@ -28,7 +40,7 @@ div#content {
         h1#main-header {
             font-size: 50px;
         }
-        h3#main-text {
+        h2#main-text {
             font-size: 30px;
         }
     }
@@ -36,7 +48,7 @@ div#content {
 
 body.light-theme {
 
-    h3#main-text {
+    h2#main-text {
         color: 	#87ceeb;
 
         i {
@@ -48,7 +60,7 @@ body.light-theme {
 
 body.dark-theme {
 
-    h3#main-text {
+    h2#main-text {
         color: lightgray;
 
         i {
@@ -56,4 +68,9 @@ body.dark-theme {
         }
     }
 
+}
+
+@keyframes jump {
+    0%, 100% {transform: none;}
+    50% {transform: translate(10px, 0px);}
 }
