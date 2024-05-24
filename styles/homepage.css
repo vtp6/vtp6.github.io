@@ -23,6 +23,17 @@ div#content {
     }
 }
 
+@media (max-width: 999px) {
+    div#content {
+        h1#main-header {
+            font-size: 50px;
+        }
+        h3#main-text {
+            font-size: 30px;
+        }
+    }
+}
+
 body.light-theme {
 
     h3#main-text {
