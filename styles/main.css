@@ -35,7 +35,7 @@ div#header {
     }
 
     div#dropdown-container {
-        animation: fadeIn 1s;
+        animation: slideDown 1s;
         position: absolute;
         left: 25px;
         top: 90px;
@@ -151,13 +151,18 @@ body.dark-theme {
 }
 
 @keyframes switchTheme {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
 @keyframes slideUp {
-    from { transform: translate(0, +100%) }
-    to { transform: none;}
+    from {transform: translate(0, +100%);}
+    to {transform: none;}
+}
+
+@keyframes slideDown {
+    from {line-height: 0;}
+    to {line-height: 1;}
 }
 
 a {
