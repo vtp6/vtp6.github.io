@@ -29,7 +29,7 @@ div#content {
     }
 
     h3#link-text:hover {
-        span#animate-arrow {
+        a:hover + span#animate-arrow {
             animation: jump 1s ease infinite;
         }
     }
