@@ -1,0 +1,45 @@
+div#folders-flex {
+    position: absolute;
+    top: 150px;
+    width: calc(100% - 16px);
+    flex-wrap: wrap;
+}
+
+div.folders-flexbox {
+    display: flex;
+    width: calc(50% - 26px);
+    border-radius: 10px;
+    border: 3px solid;
+    margin: 10px;
+    text-align: center;
+
+    a.folders-link {
+        width: 100%;
+    }
+}
+
+@media (max-width: 999px) {
+    div.folders-flexbox {
+        width: calc(100% - 26px);
+    }
+}
+
+body.light-theme {
+    div.folders-flexbox {
+        border-color: #0093cb;
+    }
+
+    div.folders-flexbox:hover {
+        background-color: #eeeeee;
+    }
+}
+
+body.dark-theme {
+    div.folders-flexbox {
+        border-color: #2a8c8c;
+    }
+
+    div.folders-flexbox:hover {
+        background-color: #222222;
+    }
+}

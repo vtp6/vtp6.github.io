@@ -1,3 +1,1 @@
-document.getElementById("footer").innerHTML = `
-    &copy; Rujul Nayak 2023-${("" + new Date().getFullYear()).slice(-2)}
-`;
+document.getElementById("footer").innerHTML = `v6.5.0 (<a href="https://github.com/vtp6/vtp6.github.io/releases">Changelog</a>)`;

@@ -1,3 +1,7 @@
+html:has(> body.dark-theme) {
+    scrollbar-color: lightgray #111111;
+}
+
 div#header {
     height: 100px;
     width: 100%;
@@ -160,6 +164,10 @@ body.dark-theme {
     }
 }
 
+div.flex-container {
+    display: flex;
+}
+
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
@@ -180,6 +188,16 @@ body.dark-theme {
     to {line-height: 1;}
 }
 
+@keyframes enlarge {
+    from {height: 0%;}
+    to {height: 100%;}
+}
+
+@keyframes spin {
+    from {transform: rotateY(0deg);}
+    to {transform: rotateY(360deg);}
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -187,4 +205,8 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+a.no-underline:hover {
+    text-decoration: none;
 }
