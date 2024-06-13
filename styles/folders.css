@@ -22,6 +22,9 @@ div.folders-flexbox {
     div.folders-flexbox {
         width: calc(100% - 26px);
     }
+    div#folders-flex {
+        top: 120px;
+    }
 }
 
 body.light-theme {
