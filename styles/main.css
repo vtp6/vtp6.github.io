@@ -168,6 +168,18 @@ div.flex-container {
     display: flex;
 }
 
+.line-container {
+    display: flex;
+    align-items: center;
+    width: calc(100% - 16px);
+}
+
+span.line {
+    flex-grow: 1;
+    border-bottom: 1px solid black;
+    margin: 5px
+}
+
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity: 1;}
