@@ -1,8 +1,13 @@
-div#folders-flex {
+div#content {
     position: absolute;
     top: 150px;
+    width: 100%;
+}
+
+div#folders-flex {
     width: calc(100% - 16px);
     flex-wrap: wrap;
+    align-items: center;
 }
 
 div.folders-flexbox {
@@ -19,30 +24,20 @@ div.folders-flexbox {
 }
 
 div#folders-custom {
-    position: absolute;
-    top: 500px;
     margin-left: 50%;
     transform: translateX(-50%);
     width: calc(50% - 34px);
 }
 
-p.line-container {
-    position: absolute;
-    top: 450px;
+em {
+    font-family: Manrope, Helvetica, sans-serif;
 }
 
 @media (max-width: 999px) {
     div.folders-flexbox {
         width: calc(100% - 26px);
     }
-    div#folders-flex {
-        top: 120px;
-    }
-    p.line-container {
-        top: 670px;
-    }
     div#folders-custom {
-        top: 725px;
         margin-left: 10px;
         transform: none;
         width: calc(100% - 42px);

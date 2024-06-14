@@ -110,7 +110,52 @@
     src: url("fonts/Metropolis-ExtraBoldItalic.otf") format("opentype");
 }
 
+@font-face {
+    font-family: Manrope;
+    font-weight: 200;
+    src: url("fonts/Manrope-ExtraLight.ttf");
+}
+
+@font-face {
+    font-family: Manrope;
+    font-weight: 300;
+    src: url("fonts/Manrope-Light.ttf");
+}
+
+@font-face {
+    font-family: Manrope;
+    font-weight: 400;
+    src: url("fonts/Manrope-Regular.ttf");
+}
+
+@font-face {
+    font-family: Manrope;
+    font-weight: 500;
+    src: url("fonts/Manrope-Medium.ttf");
+}
+
+@font-face {
+    font-family: Manrope;
+    font-weight: 600;
+    src: url("fonts/Manrope-SemiBold.ttf");
+}
+
+@font-face {
+    font-family: Manrope;
+    font-weight: 700;
+    src: url("fonts/Manrope-Bold.ttf");
+}
+
+@font-face {
+    font-family: Manrope;
+    font-weight: 800;
+    src: url("fonts/Manrope-ExtraBold.ttf");
+}
 
 body {
     font-family: Metropolitis, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Manrope, Metropolitis, Helvetica, sans-serif;
 }

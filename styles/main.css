@@ -1,7 +1,6 @@
 html:has(> body.dark-theme) {
     scrollbar-color: lightgray #111111;
 }
-
 div#header {
     height: 100px;
     width: 100%;
@@ -86,6 +85,11 @@ div#cookie-banner {
     }
 }
 
+div#margin {
+    height: 50px;
+    width: 100%;
+}
+
 body.light-theme {
     background-color: white;
     color: black;
@@ -123,11 +127,16 @@ body.light-theme {
         background-color: #f1f1f1;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     }
+
+    span.line {
+        border-color: black;
+    }
 }
 
 body.dark-theme {
     background-color: #111111;
-    color: #f0e0e0;
+    --main-colour: #e0f0f0;
+    color: var(--main-colour);
     
     a.banner-link {
         color: #2a8c8c;
@@ -162,6 +171,10 @@ body.dark-theme {
         background-color: #222222;
         box-shadow: 0px 8px 16px 0px rgba(255,255,255,0.1);
     }
+
+    span.line {
+        border-color: var(--main-colour);
+    }
 }
 
 div.flex-container {
@@ -176,7 +189,7 @@ div.flex-container {
 
 span.line {
     flex-grow: 1;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid;
     margin: 5px
 }
 
