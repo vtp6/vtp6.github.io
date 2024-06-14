@@ -1,6 +1,7 @@
 html:has(> body.dark-theme) {
     scrollbar-color: lightgray #111111;
 }
+
 div#header {
     height: 100px;
     width: 100%;

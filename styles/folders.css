@@ -1,7 +1,7 @@
 div#content {
     position: absolute;
     top: 150px;
-    width: 100%;
+    width: calc(100% - 16px);
 }
 
 div#folders-flex {
