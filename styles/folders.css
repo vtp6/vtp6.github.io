@@ -29,10 +29,6 @@ div#folders-custom {
     width: calc(50% - 34px);
 }
 
-em {
-    font-family: Manrope, Helvetica, sans-serif;
-}
-
 @media (max-width: 999px) {
     div.folders-flexbox {
         width: calc(100% - 26px);
@@ -41,6 +37,9 @@ em {
         margin-left: 10px;
         transform: none;
         width: calc(100% - 42px);
+    }
+    div#content {
+        top: 125px;
     }
 }
 
