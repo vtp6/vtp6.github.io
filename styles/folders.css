@@ -10,6 +10,11 @@ div#folders-flex {
     align-items: center;
 }
 
+div#units-flex {
+    display: block;
+    width: 250px;
+}
+
 div.folders-flexbox {
     display: flex;
     width: calc(50% - 26px);
@@ -20,6 +25,24 @@ div.folders-flexbox {
 
     a.folders-link {
         width: 100%;
+    }
+}
+
+div.units-flexbox {
+    display: flex;
+    border-radius: 10px;
+    border: 3px solid;
+    margin: 10px;
+    align-items: center;
+
+    input.folders-checkbox {
+        height: 25px;
+        width: 25px;
+        margin: 10px;
+    }
+
+    span.checkbox-label {
+        font-size: 25px;
     }
 }
 
@@ -51,6 +74,10 @@ body.light-theme {
     div.folders-flexbox:hover {
         background-color: #eeeeee;
     }
+
+    input.folders-checkbox {
+        accent-color: #0093cb;
+    }
 }
 
 body.dark-theme {
@@ -60,5 +87,9 @@ body.dark-theme {
 
     div.folders-flexbox:hover {
         background-color: #222222;
+    }
+
+    input.folders-checkbox {
+        accent-color: #2a8c8c;
     }
 }
