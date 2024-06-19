@@ -1,11 +1,8 @@
-/* <div class="units-flexbox" name="unit1">
-    <input type="checkbox" class="folders-checkbox" />
-    <span class="checkbox-label">Unit 1</span>
-</div> */
-
 let units = TERMS_LIST.split("\n\n");
 
 const uflex = document.getElementById("units-flex");
+
+let total = 0;
 
 units = units.map((unit, uindex) => {
     let [unit_header, ...urest] = unit.split("\n");
@@ -24,5 +21,8 @@ units = units.map((unit, uindex) => {
         <input type="checkbox" class="folders-checkbox" />
         <span class="checkbox-label">${unit_name} <i>(${unit_terms.length})</i></span>`;
     uflex.appendChild(uflexbox);
+    total += unit_terms.length;
     return [[unit_name, unit_varname], unit_terms];
 });
+
+document.getElementById("insert-length-here").innerHTML = "(" + total + ")";

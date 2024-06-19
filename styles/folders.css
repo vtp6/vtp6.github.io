@@ -78,6 +78,10 @@ body.light-theme {
     input.folders-checkbox {
         accent-color: #0093cb;
     }
+
+    div.units-flexbox.no-border {
+        border-color: white;
+    }
 }
 
 body.dark-theme {
@@ -91,5 +95,9 @@ body.dark-theme {
 
     input.folders-checkbox {
         accent-color: #2a8c8c;
+    }
+
+    div.units-flexbox.no-border {
+        border-color: #111111;
     }
 }
