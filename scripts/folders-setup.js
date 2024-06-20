@@ -25,4 +25,4 @@ units = units.map((unit, uindex) => {
     return [[unit_name, unit_varname], unit_terms];
 });
 
-document.getElementById("insert-length-here").innerHTML = "(" + total + ")";
+document.getElementById("insert-length-here").innerHTML = "(" + total + " terms)";

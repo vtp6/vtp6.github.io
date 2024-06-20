@@ -11,8 +11,8 @@ div#folders-flex {
 }
 
 div#units-flex {
-    display: block;
-    width: 250px;
+    width: calc(100% - 16px);
+    flex-wrap: wrap;
 }
 
 div.folders-flexbox {
@@ -30,8 +30,9 @@ div.folders-flexbox {
 
 div.units-flexbox {
     display: flex;
+    width: 30%;
+    box-sizing: border-box;
     border-radius: 10px;
-    border: 3px solid;
     margin: 10px;
     align-items: center;
 
@@ -46,10 +47,42 @@ div.units-flexbox {
     }
 }
 
+div.units-flexbox:not(.no-border) {
+    outline: 2px solid;
+    border: 2px solid;
+    outline-offset: -2px;
+    transition: outline-width 200ms ease, outline-offset 200ms ease;
+}
+
+div.units-flexbox:not(.no-border):has(>input:checked) {
+    outline-width: 5px;
+    outline-offset: -5px;
+}
+
+div.units-flexbox.no-border {
+    width: 100%;
+}
+
 div#folders-custom {
     margin-left: 50%;
     transform: translateX(-50%);
     width: calc(50% - 34px);
+}
+
+div#settings-bar {
+    width: 100%;
+    box-sizing: border-box;
+
+    div#button-container {
+        img#start-image {
+            width: 50px;
+            padding: 20px;
+        }
+
+        img#start-image:active {
+            transform: scale(0.9);
+        }
+    }
 }
 
 @media (max-width: 999px) {
@@ -63,6 +96,10 @@ div#folders-custom {
     }
     div#content {
         top: 125px;
+    }
+    div.units-flexbox {
+        width: 100%;
+        box-sizing: border-box;
     }
 }
 
@@ -79,8 +116,17 @@ body.light-theme {
         accent-color: #0093cb;
     }
 
-    div.units-flexbox.no-border {
-        border-color: white;
+    div.units-flexbox {
+        outline-color: darkgray;
+        border-color: darkgray;
+    }
+
+    div.units-flexbox span.checkbox-label i {
+        color: darkgray;
+    }
+
+    img#start-image {
+        content: url("../images/play-light.svg");
     }
 }
 
@@ -97,7 +143,16 @@ body.dark-theme {
         accent-color: #2a8c8c;
     }
 
-    div.units-flexbox.no-border {
-        border-color: #111111;
+    div.units-flexbox {
+        border-color: lightgray;
+    }
+
+    div.units-flexbox span.checkbox-label i {
+        outline-color: lightgray;
+        color: lightgray;
+    }
+
+    img#start-image {
+        content: url("../images/play-dark.svg");
     }
 }
