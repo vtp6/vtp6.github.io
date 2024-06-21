@@ -2,6 +2,8 @@ let units_flexboxes = [...document.querySelectorAll("div.units-flexbox")];
 
 let [unit_all, ...unit_checkboxes] = [...document.querySelectorAll(`input.folders-checkbox`)];
 
+let the_start_button_element = document.getElementById("start-button");
+
 units_flexboxes.forEach(flexbox => {
     flexbox.addEventListener("click", (event) => {
         let target = event.target;
@@ -26,4 +28,5 @@ function change_all_box(ubox) {
     } else {
         unit_all.checked = unit_checkboxes.every(box => box.checked);
     }
+    the_start_button_element.disabled = !unit_checkboxes.some(box => box.checked);
 }
