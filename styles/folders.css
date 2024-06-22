@@ -87,7 +87,6 @@ div#settings-bar {
         cursor: pointer;
         display: inline-flex;
         fill: currentcolor;
-        font-family: "Google Sans",Roboto,Arial,sans-serif;
         font-size: 14px;
         font-weight: 500;
         height: 48px;
@@ -110,6 +109,7 @@ div#settings-bar {
         will-change: transform,opacity;
         z-index: 0;
     }
+
     button#start-button:not(:disabled) {
         box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
     }
@@ -280,9 +280,44 @@ body.dark-theme {
         input[type=checkbox]:focus + span.slider {
             box-shadow: 0 0 1px #2a8c8c;
         }
+
+        span.slider {
+            background-color: #444444;
+        }
+
+        span.slider:before {
+            background-color: lightgray;
+        }
     }
 
     span.not-selected {
         color: #555555;
+    }
+
+    div#settings-bar {
+        button#start-button:not(:disabled) {
+            background-color: #2a8c8c;
+            color: #ffffff;
+        }
+
+        button#start-button:not(:disabled) {
+            box-shadow: rgba(255, 255, 255, .3) 0 1px 3px 0, rgba(255, 255, 255, .15) 0 4px 8px 3px;
+        }
+        
+        button#start-button:not(:disabled):hover {
+            background: darkturquoise;
+            color: beige;
+            box-shadow: rgba(255, 255, 255, .3) 0 2px 3px 0, rgba(255, 255, 255, .15) 0 6px 10px 4px;
+        }
+        
+        button#start-button:not(:disabled):focus {
+            box-shadow: rgba(255, 255, 255, .3) 0 1px 3px 0, rgba(255, 255, 255, .15) 0 4px 8px 3px;
+        }
+        
+        button#start-button:not(:disabled):active {
+            outline: none;
+            transform: scale(0.9);
+            box-shadow: rgba(255, 255, 255, .3) 0 4px 4px 0, rgba(255, 255, 255, .15) 0 8px 12px 6px;
+        }
     }
 }
