@@ -2,8 +2,6 @@ let units_flexboxes = [...document.querySelectorAll("div.units-flexbox")];
 
 let [unit_all, ...unit_checkboxes] = [...document.querySelectorAll(`input.folders-checkbox`)];
 
-let the_start_button_element = document.getElementById("start-button");
-
 units_flexboxes.forEach(flexbox => {
     flexbox.addEventListener("click", (event) => {
         let target = event.target;
@@ -28,7 +26,7 @@ function change_all_box(ubox) {
     } else {
         unit_all.checked = unit_checkboxes.every(box => box.checked);
     }
-    the_start_button_element.disabled = !unit_checkboxes.some(box => box.checked);
+    document.getElementById("start-button").disabled = !unit_checkboxes.some(box => box.checked);
 }
 
 document.addEventListener("keydown", (event) => {
@@ -38,3 +36,13 @@ document.addEventListener("keydown", (event) => {
         change_all_box(unit_all);
     }
 });
+
+document.getElementById("gamemode-checkbox").addEventListener("input", () => {
+    if (document.getElementById("gamemode-checkbox").checked) {
+        document.getElementById("before-slider").classList.add("not-selected");
+        document.getElementById("after-slider").classList.remove("not-selected");
+    } else {
+        document.getElementById("after-slider").classList.add("not-selected");
+        document.getElementById("before-slider").classList.remove("not-selected");
+    }
+})

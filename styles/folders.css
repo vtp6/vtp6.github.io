@@ -177,14 +177,6 @@ div#settings-bar {
             border-radius: 50%;
         }
           
-        input[type=checkbox]:checked + span.slider {
-            background-color: #2196F3;
-        }
-          
-        input[type=checkbox]:focus + span.slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-          
         input[type=checkbox]:checked + span.slider:before {
             -webkit-transform: translateX(26px);
             -ms-transform: translateX(26px);
@@ -196,6 +188,11 @@ div#settings-bar {
 div#settings-bar * {
     display: inline;
     vertical-align: middle;
+}
+
+div#match-div {
+    box-sizing: border-box;
+    width: 100%;
 }
 
 @media (max-width: 999px) {
@@ -238,9 +235,18 @@ body.light-theme {
         color: darkgray;
     }
 
-    div#settings-bar input[type=button] {
-        background-color: cyan;
-        color: royalblue;
+    div#settings-bar label.switch {
+        input[type=checkbox]:checked + span.slider {
+            background-color: #0093cb;
+        }
+        
+        input[type=checkbox]:focus + span.slider {
+            box-shadow: 0 0 1px #0093cb;
+        }
+    }
+
+    span.not-selected {
+        color: darkgray;
     }
 }
 
@@ -266,7 +272,17 @@ body.dark-theme {
         color: lightgray;
     }
 
-    img#start-image {
-        content: url("../images/play-dark.svg");
+    div#settings-bar label.switch {
+        input[type=checkbox]:checked + span.slider {
+            background-color: #2a8c8c;
+        }
+        
+        input[type=checkbox]:focus + span.slider {
+            box-shadow: 0 0 1px #2a8c8c;
+        }
+    }
+
+    span.not-selected {
+        color: #555555;
     }
 }
