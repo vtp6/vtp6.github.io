@@ -3,8 +3,8 @@ cookies_button.innerHTML = `
     <h1 id="cookie-title">Cookies on VTP6</h1>
     <p id="cookie-text">
         We use cookies on this site (vtp6.rujulnayak.com) to store your theme preferences,
-        and to save your high scores. We will never use cookies to track you or store your
-        personal data.
+        to save your high scores, and for website analytics. Aside from analytics, we will
+        never use any third party cookies on this website.
     </p>
     <input type="button" id="cookie-button" value="OK &check;" />
 `;
