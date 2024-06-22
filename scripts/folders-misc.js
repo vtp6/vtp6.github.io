@@ -30,3 +30,11 @@ function change_all_box(ubox) {
     }
     the_start_button_element.disabled = !unit_checkboxes.some(box => box.checked);
 }
+
+document.addEventListener("keydown", (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key === "a") {
+        event.preventDefault();
+        unit_all.checked = true;
+        change_all_box(unit_all);
+    }
+});
