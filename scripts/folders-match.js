@@ -1,8 +1,13 @@
 let match_sample = [];
 let match_pairs = [];
 
-match_selections = [undefined, undefined];
-match_texts = [undefined, undefined];
+let match_selections = [undefined, undefined];
+let match_texts = [undefined, undefined];
+
+let match_time = 0;
+let match_timer_id = 0;
+
+let completed_pairs = 0;
 
 function folders_start_match(terms) {
     match_sample = random_sample(terms, 6);
@@ -11,6 +16,16 @@ function folders_start_match(terms) {
     match_div.id = "match-div";
     document.getElementById("content")
         .insertBefore(match_div, document.getElementById("margin"));
+
+    timer_div = document.createElement("div");
+    timer_div.id = "timer-div";
+    timer_div.innerHTML = `<span id="timer-text">0.0s</span>`;
+    match_div.appendChild(timer_div);
+
+    match_timer_id = setInterval(() => {
+        document.getElementById("timer-text").innerText =
+            (++match_time / 10).toFixed(1) + "s";
+    }, 100);
     
     match_pairs = zip(
         random_shuffle(match_sample.map(a => a[0])),
@@ -30,6 +45,8 @@ function folders_start_match(terms) {
         });
         match_div.appendChild(line_div);
     });
+
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 function folders_match_input(event) {
@@ -54,15 +71,24 @@ function folders_match_input(event) {
 }
 
 function folders_match_check_input() {
-    match_selections.forEach(element => {
+    match_selections.forEach((element, index) => {
+        element.classList.remove("wrong");
         element.classList.remove("selected");
         if (match_sample.map(JSON.stringify).includes(JSON.stringify(match_texts))) {
             element.classList.add("done");
             element.innerHTML =
                 `<img id="folders-done-image" height="${element.offsetHeight / 2}px" />`;
+            if (index === 0) completed_pairs++;
         } else {
+            element.classList.remove("wrong");
+            element.offsetHeight;
             element.classList.add("wrong");
         }
     });
     match_selections = [undefined, undefined];
+    if (completed_pairs === 6) {
+        clearInterval(match_timer_id);
+        document.getElementById("timer-div").innerHTML +=
+            `<button class="start-button" id="restart-button" role="button">Restart!</button>`;
+    }
 }

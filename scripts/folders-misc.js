@@ -37,7 +37,7 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-document.getElementById("gamemode-checkbox").addEventListener("input", () => {
+function gamemode_checkbox_input() {
     if (document.getElementById("gamemode-checkbox").checked) {
         document.getElementById("before-slider").classList.add("not-selected");
         document.getElementById("after-slider").classList.remove("not-selected");
@@ -45,4 +45,16 @@ document.getElementById("gamemode-checkbox").addEventListener("input", () => {
         document.getElementById("after-slider").classList.add("not-selected");
         document.getElementById("before-slider").classList.remove("not-selected");
     }
-})
+}
+
+document.getElementById("gamemode-checkbox").addEventListener("input", gamemode_checkbox_input);
+
+document.getElementById("before-slider").addEventListener("click", () => {
+    document.getElementById("gamemode-checkbox").checked = false;
+    gamemode_checkbox_input();
+});
+
+document.getElementById("after-slider").addEventListener("click", () => {
+    document.getElementById("gamemode-checkbox").checked = true;
+    gamemode_checkbox_input();
+});
