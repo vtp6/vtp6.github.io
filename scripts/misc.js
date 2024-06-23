@@ -8,6 +8,20 @@ function assert(condition, message) {
 }
 
 /**
+ * Replaces potentially harmful characters in a string of text
+ * with their HTML character reference equivalents,
+ * so that the returned text can be used as an element's innerHTML.
+ * @param {String} string The text to sanitise.
+ * @returns {String} The sanitised string.
+ */
+function sanitise(string) {
+    return string
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+}
+
+/**
  * Equivalent of Python's `sum` function
  * (returns the total of the elements of an array)
  * @param {Number[]} arr The array to sum.
@@ -62,4 +76,24 @@ function random_sample(arr, k) {
     ret = [];
     while (k-- > 0) ret.push(remove(arr, random_choice(arr)));
     return ret;
+}
+
+/**
+ * Similar to Python's `random.shuffle` function
+ * (returns a pseudo-random permutation of a given array)
+ * @param {Any[]} arr The array to shuffle.
+ * @returns {Any[]} A random permutation of `a`.
+ */
+function random_shuffle(arr) {
+    return random_sample(arr, arr.length);
+}
+
+/**
+ * Equivalent of Python's `zip` function
+ * (transposes a 2D array of arrays)
+ * @param {...Any[]} arrs Arrays to transpose.
+ * @returns {Any[][]} The transposed 2D array.
+ */
+function zip(...arrs) {
+    return arrs[0].map((_, i) => arrs.map(r => r[i]));
 }
