@@ -248,6 +248,18 @@ div#match-div {
         width: 100%;
         box-sizing: border-box;
     }
+    div#content div#match-div div.match-line-div div.match-text-div {
+        text-size-adjust: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (hover: none) {
+    div#content div#match-div div.match-line-div div.match-text-div:not(.selected):hover {
+        background-color: initial;
+    }
 }
 
 body.light-theme {
