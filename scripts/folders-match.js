@@ -46,7 +46,7 @@ function folders_start_match(terms) {
         match_div.appendChild(line_div);
     });
 
-    window.scrollTo(0, document.body.scrollHeight);
+    // window.scrollTo(0, document.body.scrollHeight);
 }
 
 function folders_match_input(event) {
@@ -83,6 +83,7 @@ function folders_match_check_input() {
             element.classList.remove("wrong");
             element.offsetHeight;
             element.classList.add("wrong");
+            match_time += 5;
         }
     });
     match_selections = [undefined, undefined];
@@ -90,5 +91,10 @@ function folders_match_check_input() {
         clearInterval(match_timer_id);
         document.getElementById("timer-div").innerHTML +=
             `<button class="start-button" id="restart-button" role="button">Restart!</button>`;
+        document.getElementById("restart-button").addEventListener("click", () => {
+            document.getElementById("match-div").remove();
+            document.getElementById("settings-bar").hidden = false;
+            document.getElementById("units-flex").style.display = "flex";
+        });
     }
 }
