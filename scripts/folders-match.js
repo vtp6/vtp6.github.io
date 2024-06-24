@@ -95,6 +95,17 @@ function folders_match_check_input() {
             document.getElementById("match-div").remove();
             document.getElementById("settings-bar").hidden = false;
             document.getElementById("units-flex").style.display = "flex";
+            
+            match_sample = [];
+            match_pairs = [];
+
+            match_selections = [undefined, undefined];
+            match_texts = [undefined, undefined];
+
+            match_time = 0;
+            match_timer_id = 0;
+
+            completed_pairs = 0;
         });
     }
 }
