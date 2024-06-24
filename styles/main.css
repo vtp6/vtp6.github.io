@@ -48,6 +48,7 @@ div#header {
         position: absolute;
         left: 25px;
         top: 90px;
+        line-height: 1;
 
         * {
             display: block;
