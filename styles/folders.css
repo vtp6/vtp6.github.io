@@ -5,13 +5,13 @@ div#content {
 }
 
 div#folders-flex {
-    width: calc(100% - 16px);
+    width: 100%;
     flex-wrap: wrap;
     align-items: center;
 }
 
 div#units-flex {
-    width: calc(100% - 16px);
+    width: 100%;
     flex-wrap: wrap;
 }
 
@@ -30,7 +30,7 @@ div.folders-flexbox {
 
 div.units-flexbox {
     display: flex;
-    width: 30%;
+    width: calc((100% - 60px) / 3);
     box-sizing: border-box;
     border-radius: 10px;
     margin: 10px;

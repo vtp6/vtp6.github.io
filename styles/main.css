@@ -17,7 +17,7 @@ div#header {
     }
 
     img#banner-logo {
-        height: 100%;
+        height: 100px;
     }
 
     a.banner-link {
@@ -31,24 +31,27 @@ div#header {
     }
 
     img#theme-button {
-        height: 50%;
+        height: 50px;
         width: 50px;
         position: absolute;
         right: 10px;
-        top: 20%;
+        top: 20px;
         cursor: pointer;
     }
 
     img#dropdown-arrow {
-        height: 30px;
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        top: 20px;
+        left: 10px;
     }
 
     div#dropdown-container {
-        animation: slideDown 1s;
+        animation: slideRight 500ms;
         position: absolute;
-        left: 25px;
-        top: 90px;
-        line-height: 1;
+        left: 0px;
+        top: 80px;
 
         * {
             display: block;
@@ -56,6 +59,12 @@ div#header {
             padding-left: 10px;
             padding-right: 10px;
         }
+    }
+
+    a.centre {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }
 
@@ -118,7 +127,7 @@ body.light-theme {
     }
 
     img#dropdown-arrow {
-        content: url("../images/down-light.svg");
+        content: url("../images/menu-light.svg");
     }
 
     img#theme-button {
@@ -162,7 +171,7 @@ body.dark-theme {
     }
 
     img#dropdown-arrow {
-        content: url("../images/down-dark.svg");
+        content: url("../images/menu-dark.svg");
     }
 
     img#theme-button {
@@ -210,9 +219,9 @@ span.line {
     to {transform: none;}
 }
 
-@keyframes slideDown {
-    from {line-height: 0;}
-    to {line-height: 1;}
+@keyframes slideRight {
+    from {transform: translate(-100%, 0);}
+    to {transform: none;}
 }
 
 @keyframes enlarge {
