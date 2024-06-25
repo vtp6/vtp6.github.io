@@ -9,7 +9,7 @@ function add_header() {
             <a href="/about/" class="banner-link">ABOUT</a>
             <a href="/folders/" class="banner-link">FOLDERS</a>
             <a href="/grammar/" class="banner-link">GRAMMAR</a>
-            <a href="/credits/" class="banner-link">CREDITS</a>
+            <a href="/other/" class="banner-link">OTHER</a>
             <img id="theme-button" alt="Toggle theme" />
         `;
 
@@ -21,23 +21,24 @@ function add_header() {
         document.getElementById("header").innerHTML = `
             <img id="dropdown-arrow" alt="Menu" />
             <a href="/" class="centre"><img src="/logos/logo-banner.png" id="banner-logo" alt="VTP6 logo" /></a>
-            <div id="dropdown-container">
+            <div id="dropdown-container" class="hidden">
                 <a href="/about/" class="banner-link">ABOUT</a>
                 <a href="/folders/" class="banner-link">FOLDERS</a>
                 <a href="/grammar/" class="banner-link">GRAMMAR</a>
-                <a href="/credits/" class="banner-link">CREDITS</a>
+                <a href="/other/" class="banner-link">OTHER</a>
             </div>
             <img id="theme-button" alt="Toggle theme" />
         `;
 
         let dropdown_container = document.getElementById("dropdown-container");
-        dropdown_container.style.display = "none";
 
         document.getElementById("dropdown-arrow").addEventListener("click", () => {
-            if (dropdown_container.style.display === "none") {
-                dropdown_container.style.display = "inherit";
+            if ([...dropdown_container.classList].includes("hidden")) {
+                dropdown_container.classList.remove("hidden");
+                document.getElementById("dropdown-arrow").classList.add("close-button");
             } else {
-                dropdown_container.style.display = "none";
+                dropdown_container.classList.add("hidden");
+                document.getElementById("dropdown-arrow").classList.remove("close-button");
             }
         });
 

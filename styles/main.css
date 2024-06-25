@@ -48,7 +48,8 @@ div#header {
     }
 
     div#dropdown-container {
-        animation: slideRight 500ms;
+        transition: transform 500ms ease-in-out;
+        transform: none;
         position: absolute;
         left: 0px;
         top: 80px;
@@ -59,6 +60,10 @@ div#header {
             padding-left: 10px;
             padding-right: 10px;
         }
+    }
+
+    div#dropdown-container.hidden {
+        transform: translateX(-100%);
     }
 
     a.centre {
@@ -130,6 +135,10 @@ body.light-theme {
         content: url("../images/menu-light.svg");
     }
 
+    img#dropdown-arrow.close-button {
+        content: url("../images/close-light.svg");
+    }
+
     img#theme-button {
         content: url("../images/dark.svg");
     }
@@ -172,6 +181,10 @@ body.dark-theme {
 
     img#dropdown-arrow {
         content: url("../images/menu-dark.svg");
+    }
+
+    img#dropdown-arrow.close-button {
+        content: url("../images/close-dark.svg");
     }
 
     img#theme-button {
