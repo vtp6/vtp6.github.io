@@ -46,7 +46,7 @@ function folders_start_match(terms) {
         match_div.appendChild(line_div);
     });
 
-    // window.scrollTo(0, document.body.scrollHeight);
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 function folders_match_input(event) {
@@ -89,6 +89,7 @@ function folders_match_check_input() {
     match_selections = [undefined, undefined];
     if (completed_pairs === 6) {
         clearInterval(match_timer_id);
+        window.scrollTo(0, 0);
         document.getElementById("timer-div").innerHTML =
             `<button class="start-button" id="share-button" role="button">Share!</button>` +
             document.getElementById("timer-div").innerHTML +
@@ -117,8 +118,8 @@ function folders_match_check_input() {
             if (navigator.share) {
                 navigator.share({
                     title: "VTP6 Match",
-                    text: `I completed ${OPTIONS["name"]} Match mode in ${(match_time / 10).toFixed(1)}s on VTP6.` +
-                    `Can you beat me? Try it here: ${location.href}`
+                    text: `I completed ${OPTIONS["name"]} Match mode in ${(match_time / 10).toFixed(1)}s on VTP6. ` +
+                    `\nCan you beat me? Try it here: ${location.href}`
                 });
             }
         });

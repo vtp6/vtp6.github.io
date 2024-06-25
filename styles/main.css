@@ -1,3 +1,7 @@
+:root {
+    scroll-behavior: smooth;
+}
+
 html:has(> body.dark-theme) {
     scrollbar-color: lightgray #111111;
 }
