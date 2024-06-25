@@ -111,7 +111,11 @@ function folders_match_check_input() {
         });
         document.getElementById("share-button").addEventListener("click", () => {
             if (navigator.share) {
-                navigator.share({title: "VTP6 Match Score", text: (match_time / 10).toFixed(1)});
+                navigator.share({
+                    title: "VTP6 Match",
+                    text: `I completed ${OPTIONS["name"]} Match mode in ${(match_time / 10).toFixed(1)}s on VTP6.` +
+                    `Can you beat me? Try it here: ${location.href}`
+                });
             }
         });
     }
