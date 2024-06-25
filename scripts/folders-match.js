@@ -110,6 +110,10 @@ function folders_match_check_input() {
             completed_pairs = 0;
         });
         document.getElementById("share-button").addEventListener("click", () => {
+            let link = document.createElement("a");
+            link.download = "vtp6-match.png";
+            link.href = create_match_image();
+            link.click();
             if (navigator.share) {
                 navigator.share({
                     title: "VTP6 Match",
@@ -126,14 +130,29 @@ function create_match_image() {
     cnv.width = cnv.height = 2000;
     let ctx = cnv.getContext("2d");
     ctx.textAlign = "center";
+
     ctx.fillStyle = "#111111";
     ctx.fillRect(0, 0, cnv.width, cnv.height);
-    ctx.font = "100px Manrope";
+
+    ctx.font = "120px Metropolitis";
     ctx.fillStyle = "#2a8c8c";
     ctx.fillText("Vocabulary Testing Program 6", cnv.width / 2, 200);
+
+    ctx.font = "250px Metropolitis";
+    ctx.fillStyle = "#8c2a8c"
+    ctx.fillText((match_time / 10).toFixed(1) + "s", cnv.width / 2, 1000);
+
     ctx.font = "50px Manrope";
     ctx.fillStyle = "#e0f0f0";
-    ctx.fillText("vtp6.rujulnayak.com", cnv.width / 2, cnv.height - 50);
+    ctx.fillText("vtp6.rujulnayak.com", cnv.width / 2, 1950);
+
+    ctx.font = "80px Manrope";
+    ctx.fillText("I completed " + OPTIONS["name"] + " Match mode in", cnv.width / 2, 700);
+
+    ctx.font = "100px Manrope"
+    ctx.fillStyle = "orange";
+    ctx.fillText("Can you beat me?", cnv.width / 2, 1500);
+
     let data = cnv.toDataURL('image/png');
-    console.log(data);
+    return data;
 }
