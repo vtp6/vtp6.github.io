@@ -89,7 +89,9 @@ function folders_match_check_input() {
     match_selections = [undefined, undefined];
     if (completed_pairs === 6) {
         clearInterval(match_timer_id);
-        document.getElementById("timer-div").innerHTML +=
+        document.getElementById("timer-div").innerHTML =
+            `<button class="start-button" id="share-button" role="button">Share!</button>` +
+            document.getElementById("timer-div").innerHTML +
             `<button class="start-button" id="restart-button" role="button">Restart!</button>`;
         document.getElementById("restart-button").addEventListener("click", () => {
             document.getElementById("match-div").remove();
@@ -106,6 +108,11 @@ function folders_match_check_input() {
             match_timer_id = 0;
 
             completed_pairs = 0;
+        });
+        document.getElementById("share-button").addEventListener("click", () => {
+            if (navigator.share) {
+                navigator.share((match_time / 10).toFixed(1));
+            }
         });
     }
 }

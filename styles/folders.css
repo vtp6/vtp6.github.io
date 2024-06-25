@@ -207,6 +207,12 @@ div#match-div {
             right: 16px;
             margin: 0px;
         }
+
+        button#share-button {
+            position: absolute;
+            left: 16px;
+            margin: 0px;
+        }
     }
 
     div.match-line-div {
