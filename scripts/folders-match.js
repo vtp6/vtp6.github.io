@@ -111,8 +111,25 @@ function folders_match_check_input() {
         });
         document.getElementById("share-button").addEventListener("click", () => {
             if (navigator.share) {
-                navigator.share((match_time / 10).toFixed(1));
+                navigator.share({title: "VTP6 Match Score", text: (match_time / 10).toFixed(1)});
             }
         });
     }
+}
+
+function create_match_image() {
+    let cnv = document.createElement("canvas");
+    cnv.width = cnv.height = 2000;
+    let ctx = cnv.getContext("2d");
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#111111";
+    ctx.fillRect(0, 0, cnv.width, cnv.height);
+    ctx.font = "100px Manrope";
+    ctx.fillStyle = "#2a8c8c";
+    ctx.fillText("Vocabulary Testing Program 6", cnv.width / 2, 200);
+    ctx.font = "50px Manrope";
+    ctx.fillStyle = "#e0f0f0";
+    ctx.fillText("vtp6.rujulnayak.com", cnv.width / 2, cnv.height - 50);
+    let data = cnv.toDataURL('image/png');
+    console.log(data);
 }
