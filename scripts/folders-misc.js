@@ -37,24 +37,55 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-function gamemode_checkbox_input() {
-    if (document.getElementById("gamemode-checkbox").checked) {
-        document.getElementById("before-slider").classList.add("not-selected");
-        document.getElementById("after-slider").classList.remove("not-selected");
-    } else {
-        document.getElementById("after-slider").classList.add("not-selected");
-        document.getElementById("before-slider").classList.remove("not-selected");
-    }
+// function gamemode_checkbox_input() {
+//     if (document.getElementById("gamemode-checkbox").checked) {
+//         document.getElementById("before-slider").classList.add("not-selected");
+//         document.getElementById("after-slider").classList.remove("not-selected");
+//     } else {
+//         document.getElementById("after-slider").classList.add("not-selected");
+//         document.getElementById("before-slider").classList.remove("not-selected");
+//     }
+// }
+
+// document.getElementById("gamemode-checkbox").addEventListener("input", gamemode_checkbox_input);
+
+// document.getElementById("before-slider").addEventListener("click", () => {
+//     document.getElementById("gamemode-checkbox").checked = false;
+//     gamemode_checkbox_input();
+// });
+
+// document.getElementById("after-slider").addEventListener("click", () => {
+//     document.getElementById("gamemode-checkbox").checked = true;
+//     gamemode_checkbox_input();
+// });
+
+const GAME_MODE_DESCRIPTIONS = {
+    classic: "Simply give the definition of each term that comes up. No clock, no high scores, no stress.",
+    match: "Match the terms on the left to the definitions on the right as quickly as possible.",
+    quick_fire: "Race against the clock to answer as many questions as possible."
 }
 
-document.getElementById("gamemode-checkbox").addEventListener("input", gamemode_checkbox_input);
+let gms = document.getElementById("gamemode-selector");
 
-document.getElementById("before-slider").addEventListener("click", () => {
-    document.getElementById("gamemode-checkbox").checked = false;
-    gamemode_checkbox_input();
+function toTitleCase(str) {
+    return str.replace(
+      /\w\S*/g,
+      text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    );
+  }
+
+Object.keys(GAME_MODE_DESCRIPTIONS).forEach(key => {
+    let optn = document.createElement("option");
+    optn.value = key;
+    optn.innerHTML = toTitleCase(key.replaceAll("_", " "));
+    gms.appendChild(optn);
 });
 
-document.getElementById("after-slider").addEventListener("click", () => {
-    document.getElementById("gamemode-checkbox").checked = true;
-    gamemode_checkbox_input();
-});
+function update_help_tip() {
+    document.getElementById("help-tip").innerHTML =
+        `<i>${GAME_MODE_DESCRIPTIONS[gms.value]}</i> &nbsp; <a href="/help/game-mode">Help.</a>`;
+}
+
+gms.addEventListener("input", update_help_tip);
+
+update_help_tip();

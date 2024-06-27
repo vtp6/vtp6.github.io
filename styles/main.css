@@ -253,13 +253,12 @@ span.line {
 
 a {
     color: inherit;
-    text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
-a.no-underline:hover {
+a.no-underline {
     text-decoration: none;
 }

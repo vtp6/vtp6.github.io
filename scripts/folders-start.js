@@ -2,7 +2,8 @@ function folders_start_game() {
     document.getElementById("settings-bar").hidden = true;
     document.getElementById("units-flex").style.display = "none";
 
-    game_mode = document.getElementById("gamemode-checkbox").checked ? "match" : "classic";
+    // game_mode = document.getElementById("gamemode-checkbox").checked ? "match" : "classic";
+    game_mode = document.getElementById("gamemode-selector").value;
 
     let selected_units = [...
         document.getElementById("units-flex")
