@@ -83,7 +83,7 @@ Object.keys(GAME_MODE_DESCRIPTIONS).forEach(key => {
 
 function update_help_tip() {
     document.getElementById("help-tip").innerHTML =
-        `<i>${GAME_MODE_DESCRIPTIONS[gms.value]}</i> &nbsp; <a href="/help/game-mode">Help.</a>`;
+        `<i>${GAME_MODE_DESCRIPTIONS[gms.value]}</i> &nbsp; <a href="/help/game-mode/">Help.</a>`;
     let high_score = get_cookies()[`vtp6HighScore_` + gms.value];
     if (high_score !== undefined) {
         document.getElementById("high-score-text").innerHTML = high_score;
