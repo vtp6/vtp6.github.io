@@ -82,10 +82,9 @@ Object.keys(GAME_MODE_DESCRIPTIONS).forEach(key => {
 });
 
 function update_help_tip() {
-    let selected_game_mode = gms.value;
     document.getElementById("help-tip").innerHTML =
-        `<i>${selected_game_mode}</i> &nbsp; <a href="/help/game-mode">Help.</a>`;
-    let high_score = get_cookies()[`vtp6HighScore_` + selected_game_mode];
+        `<i>${GAME_MODE_DESCRIPTIONS[gms.value]}</i> &nbsp; <a href="/help/game-mode">Help.</a>`;
+    let high_score = get_cookies()[`vtp6HighScore_` + gms.value];
     if (high_score !== undefined) {
         document.getElementById("high-score-text").innerHTML = high_score;
     } else {
