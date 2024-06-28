@@ -91,6 +91,7 @@ function folders_match_check_input() {
         clearInterval(match_timer_id);
         window.scrollTo(0, 0);
         set_match_high_score(match_time / 10);
+        update_help_tip();
         document.getElementById("timer-div").innerHTML =
             `<button class="start-button" id="share-button" role="button">Share!</button>` +
             document.getElementById("timer-div").innerHTML +
