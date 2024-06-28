@@ -90,6 +90,7 @@ function folders_match_check_input() {
     if (completed_pairs === 6) {
         clearInterval(match_timer_id);
         window.scrollTo(0, 0);
+        set_match_high_score(match_time / 10);
         document.getElementById("timer-div").innerHTML =
             `<button class="start-button" id="share-button" role="button">Share!</button>` +
             document.getElementById("timer-div").innerHTML +
@@ -156,4 +157,10 @@ function create_match_image() {
 
     let data = cnv.toDataURL('image/png');
     return data;
+}
+
+function set_match_high_score(score) {
+    let currenths = get_cookies()["vtp6HighScore_match"];
+    if (currenths === undefined || score < +currenths.slice(0, -1))
+        document.cookie = `vtp6HighScore_match=${score.toFixed(1)}s;domain=vtp6.rujulnayak.com;max-age=31536000`;
 }
