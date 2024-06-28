@@ -13,11 +13,13 @@ function folders_start_game() {
     let selected_terms = units.filter(
         lst => selected_units.includes(lst[0][1])
     ).map(arr => arr[1]).flat();
-
-    if (game_mode === "match") {
-        folders_start_match(selected_terms);
-    } else if (game_mode === "classic") {
+    
+    if (game_mode === "classic") {
         folders_start_classic(selected_terms);
+    } else if (game_mode === "match") {
+        folders_start_match(selected_terms);
+    } else if (game_mode === "quick_fire") {
+        folders_start_quickfire(selected_terms);
     }
 }
 
