@@ -195,6 +195,8 @@ div#settings-bar {
     }
 
     span#high-score {
+        display: inline-block;
+        
         img#high-score-image {
             content: url("../images/highscore.svg");
             height: 20px;
