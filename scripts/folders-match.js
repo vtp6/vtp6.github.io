@@ -90,11 +90,13 @@ function folders_match_check_input() {
     if (completed_pairs === 6) {
         clearInterval(match_timer_id);
         window.scrollTo(0, 0);
-        set_match_high_score(match_time / 10);
+        let temp_string = "";
+        if (set_match_high_score(match_time / 10))
+            temp_string = ` <img class="high-score-image" /> `;
         update_help_tip();
         document.getElementById("timer-div").innerHTML =
             `<button class="start-button" id="share-button" role="button">Share!</button>` +
-            document.getElementById("timer-div").innerHTML +
+            temp_string + document.getElementById("timer-div").innerHTML + temp_string +
             `<button class="start-button" id="restart-button" role="button">Restart!</button>`;
         document.getElementById("restart-button").addEventListener("click", () => {
             document.getElementById("match-div").remove();
@@ -162,6 +164,12 @@ function create_match_image() {
 
 function set_match_high_score(score) {
     let currenths = get_cookies()["vtp6HighScore_match"];
-    if (currenths === undefined || score < +currenths.slice(0, -1))
-        document.cookie = `vtp6HighScore_match=${score.toFixed(1)}s;domain=vtp6.rujulnayak.com;max-age=31536000`;
+    if (currenths === undefined || score < +currenths.slice(0, -1)) {
+        document.cookie =
+            `vtp6HighScore_match=${score.toFixed(1)}s;` +
+            `domain=vtp6.rujulnayak.com;max-age=31536000`;
+        return true;
+    } else {
+        return false;
+    }
 }
