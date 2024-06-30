@@ -67,17 +67,10 @@ const GAME_MODE_DESCRIPTIONS = {
 
 let gms = document.getElementById("gamemode-selector");
 
-function toTitleCase(str) {
-    return str.replace(
-      /\w\S*/g,
-      text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
-    );
-  }
-
 Object.keys(GAME_MODE_DESCRIPTIONS).forEach(key => {
     let optn = document.createElement("option");
     optn.value = key;
-    optn.innerHTML = toTitleCase(key.replaceAll("_", " "));
+    optn.innerHTML = title_case(key.replaceAll("_", " "));
     gms.appendChild(optn);
 });
 

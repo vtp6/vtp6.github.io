@@ -97,3 +97,15 @@ function random_shuffle(arr) {
 function zip(...arrs) {
     return arrs[0].map((_, i) => arrs.map(r => r[i]));
 }
+
+/**
+ * Equivalent of Python's `str.title` function
+ * (converts a string to title case)
+ * @param {String} str The string to convert to title case.
+ * @returns {String} The title-cased string.
+ */
+function title_case(str) {
+    return str.replace(/\w\S*/g, (text) =>
+        text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    );
+}

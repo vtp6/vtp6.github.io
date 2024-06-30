@@ -292,7 +292,7 @@ div#classic-div {
 
         div#progress-bar-container {
             box-sizing: border-box;
-            width: calc(100% - 150px);
+            width: calc(100% - 200px);
             border: 2px solid;
             border-radius: 12.5px;
             background: white;
@@ -301,6 +301,38 @@ div#classic-div {
         span#progress-bar-text {
             float: right;
             font-size: 20px;
+            padding-right: 10px;
+        }
+    }
+
+    input#classic-input {
+        font-size: 25px;
+        border: 3px solid;
+        box-sizing: border-box;
+        width: 100%;
+        border-radius: 15px;
+        padding: 5px;
+    }
+
+    h1#classic-question {
+        text-align: center;
+        height: 48px;
+        margin: 50px 0px;
+
+        * {
+            vertical-align: middle;
+        }
+
+        span#classic-question-text {
+            line-height: 48px;
+        }
+
+        button#finish-button {
+            float: right;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0px;
         }
     }
 }

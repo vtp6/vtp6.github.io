@@ -1,9 +1,18 @@
 let full_terms_list = [];
 let randomised_terms = [];
 
+let [question, answer] = ["", ""];
+
+let textbox = undefined;
+
 function set_progress_bar_background(val, col) {
     document.getElementById("progress-bar-container").style.background =
         `linear-gradient(to right, ${col} ${val * 100}%, var(--other-colour) ${(1 - val) * 100}%)`;
+}
+
+function new_question() {
+    [question, answer] = randomised_terms.shift();
+    document.getElementById("classic-question-text").innerHTML = sanitise(question);
 }
 
 function folders_start_classic(terms) {
@@ -25,4 +34,9 @@ function folders_start_classic(terms) {
     classic_div.id = "classic-div";
     document.getElementById("content")
         .insertBefore(classic_div, document.getElementById("margin"));
+
+    textbox = document.getElementById("classic-input");
+    textbox.focus();
+
+    new_question();
 }

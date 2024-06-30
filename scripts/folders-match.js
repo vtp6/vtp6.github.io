@@ -39,7 +39,7 @@ function folders_start_match(terms) {
             let text_div = document.createElement("div");
             text_div.classList.add("match-text-div");
             text_div.id = "match-text-div-" + i + "-" + j;
-            text_div.innerHTML = s.replaceAll("(", "").replaceAll(")", "");
+            text_div.innerHTML = sanitise(s).replaceAll("(", "").replaceAll(")", "");
             line_div.appendChild(text_div);
             text_div.addEventListener("click", folders_match_input);
         });
