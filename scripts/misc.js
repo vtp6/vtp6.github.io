@@ -127,3 +127,36 @@ function remove_punctuation(string) {
             }
         ).join("");
 }
+
+/**
+ * Expands parentheses (needed for input parsing)
+ * - this is the helper function
+ * @param {String} str The input string.
+ * @returns {[String[], Number]} A list of options, and an index.
+ */
+function expand_parens_helper(str) {
+    let ret = [""];
+    for (let i = 0; i < str.length; i++) {
+        let char = str[i]
+        if (char === "(") {
+            let [lst, j] = expand_parens_helper(str.slice(i + 1));
+            ret.push(...ret.map(s => lst.map(t => s + t)).flat());
+            i += j + 1
+        } else if (char === ")") {
+            return [ret, i];
+        } else {
+            ret = ret.map(s => s + char);
+        }
+    };
+    return [ret, str.length - 1];
+}
+
+/**
+ * Expands parentheses (needed for input parsing)
+ * - this is the interface function
+ * @param {String} str The input string.
+ * @returns {String[]} A list of options.
+ */
+function expand_parens(str) {
+    return expand_parens_helper(str)[0]
+}

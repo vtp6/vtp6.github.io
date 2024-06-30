@@ -530,8 +530,17 @@ body.dark-theme {
         color: #e0f0f0;
     }
 
-    div#progress-bar-container {
-        --other-colour: #111111;
+    div#classic-div {
+        div#progress-bar-div div#progress-bar-container {
+            background: #111111;
+            --other-colour: #111111;
+        }
+
+        input#classic-input {
+            background-color: #111111;
+            border-color: white;
+            color: #e0f0f0;
+        }
     }
 }
 
