@@ -15,6 +15,28 @@ function new_question() {
     document.getElementById("classic-question-text").innerHTML = sanitise(question);
 }
 
+function check_input_classic() {
+    let value = textbox.value;
+    let unpunctuated = remove_punctuation(value);
+    textbox.value = "";
+    let rickroll = [            // Hey there!
+        "thonnu",               // 
+        "thunno",               // You're looking at the code
+        "rujul",                // behind rickrolls on VTP6.
+        "rujulnayak",           // 
+        "vtp",                  // Enter any of these keywords
+        "vtp6",                 // into the input box on VTP6,
+        "rick",                 // and you will be redirected
+        "rickroll",             // to a rickroll (link below).
+        "rickrollme",           // 
+        "nevergonnagiveyouup",  // Try it out at your own risk.
+    ];
+    if (rickroll.includes(unpunctuated))
+        return window.open(
+            "https://youtu.be/xvFZjo5PgG0", // This is the link.
+        "_blank").focus();
+}
+
 function folders_start_classic(terms) {
     full_terms_list = [...terms];
     randomised_terms = random_shuffle(terms);
@@ -37,6 +59,12 @@ function folders_start_classic(terms) {
 
     textbox = document.getElementById("classic-input");
     textbox.focus();
+
+    textbox.addEventListener("keyup", ({ key }) => {
+        if (key === "Enter") {
+          check_input_classic();
+        }
+    });
 
     new_question();
 }

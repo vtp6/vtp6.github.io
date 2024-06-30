@@ -109,3 +109,21 @@ function title_case(str) {
         text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
     );
 }
+
+/**
+ * Keeps only alphanumeric characters in a given string
+ * @param {String} str The string to remove punctuation from.
+ * @returns {String} The alphanumeric string.
+ */
+function remove_punctuation(string) {
+    return [...string]
+        .map((c) => {
+            let ord = c.charCodeAt(0);
+            return (
+                (47 < ord && ord < 58) || 
+                (64 < ord && ord < 91) || 
+                (96 < ord && ord < 123)
+                || (ord > 127)) ? c : "";
+            }
+        ).join("");
+}
