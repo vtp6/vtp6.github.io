@@ -261,7 +261,7 @@ div#match-div {
 
         div.match-text-div.done {
             display: flex;
-            animation: correct 500ms forwards;
+            animation: correctMatch 500ms forwards;
             padding: 0px;
             max-height: calc((100vh - 200px) / 6);
 
@@ -272,7 +272,7 @@ div#match-div {
         }
 
         div.match-text-div.wrong {
-            animation: wrong 500ms;
+            animation: wrongMatch 500ms;
         }
     }
 }
@@ -293,9 +293,15 @@ div#classic-div {
         div#progress-bar-container {
             box-sizing: border-box;
             width: calc(100% - 200px);
-            border: 2px solid;
+            /* border: 2px solid; */
             border-radius: 12.5px;
-            background: white;
+            background: linear-gradient(to right, red 0%, yellow 50%, green 100%);
+
+            div#progress-bar {
+                float: right;
+                background-color: var(--other-colour);
+                width: 100%;
+            }
         }
 
         span#progress-bar-text {
@@ -314,6 +320,14 @@ div#classic-div {
         padding: 5px;
     }
 
+    input#classic-input.correct {
+        animation: correctClassic 500ms;
+    }
+
+    input#classic-input.wrong {
+        animation: wrongClassic 500ms;
+    }
+
     h1#classic-question {
         text-align: center;
         height: 48px;
@@ -328,11 +342,46 @@ div#classic-div {
         }
 
         button#finish-button {
-            float: right;
             position: relative;
             top: 50%;
             transform: translateY(-50%);
             margin: 0px;
+        }
+
+        button#skip-button {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            margin: 0px;
+        }
+    }
+
+    button#finish-button, button#finish-button2 {
+        float: right;
+    }
+
+    button#skip-button, button#skip-button2 {
+        float: left;
+    }
+
+    div#small-screen-button-row {
+        display: none;
+    }
+
+    p#typo-text {
+        text-align: center;
+        font-style: italic;
+
+        span.orange {
+            color: orange;
+        }
+
+        span.green {
+            color: #50c878;
+        }
+
+        span.red {
+            color: #ed4337;
         }
     }
 }
@@ -369,6 +418,19 @@ div#classic-div {
     div.match-line-div {
         min-height: 50px;
     }
+
+    div#classic-div h1#classic-question {
+        margin: 20px 0px;
+    }
+
+    div#small-screen-button-row {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    button#finish-button, button#skip-button {
+        display: none;
+    }
 }
 
 @media (hover: none) {
@@ -378,6 +440,8 @@ div#classic-div {
 }
 
 body.light-theme {
+    --green: #50c878
+    
     div.folders-flexbox {
         border-color: #0093cb;
     }
@@ -437,6 +501,8 @@ body.light-theme {
 }
 
 body.dark-theme {
+    --green: green;
+
     div.folders-flexbox {
         border-color: #2a8c8c;
     }
@@ -532,7 +598,6 @@ body.dark-theme {
 
     div#classic-div {
         div#progress-bar-div div#progress-bar-container {
-            background: #111111;
             --other-colour: #111111;
         }
 
@@ -544,17 +609,35 @@ body.dark-theme {
     }
 }
 
-@keyframes correct {
+@keyframes correctMatch {
     50% {
-        background-color: #50c878;
+        background-color: var(--green);
     }
     100% {
         background-color: darkgray;
     }
 }
 
-@keyframes wrong {
+@keyframes wrongMatch {
     50% {
+        background-color: #ed4337;
+    }
+    100% {
+        background-color: initial;
+    }
+}
+
+@keyframes correctClassic {
+    0% {
+        background-color: var(--green);
+    }
+    100% {
+        background-color: initial;
+    }
+}
+
+@keyframes wrongClassic {
+    0% {
         background-color: #ed4337;
     }
     100% {

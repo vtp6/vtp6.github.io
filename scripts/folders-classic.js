@@ -10,11 +10,11 @@ let textbox = undefined;
 let correct = 0;
 let wrong = 0;
 
-const THRESHOLD = 0.8
+const THRESHOLD = 0.2; // 80% typo detection threshold
 
-function set_progress_bar_background(val, col) {
-    document.getElementById("progress-bar-container").style.background =
-        `linear-gradient(to right, ${col} ${val * 100}%, let(--other-colour) ${(1 - val) * 100}%)`;
+function set_progress_bar_background(val) {
+    document.getElementById("progress-bar")
+        .style.width = `${100 - val}%`;
 }
 
 function new_question() {
@@ -23,14 +23,27 @@ function new_question() {
 
     split_answer = answer.split(",")
         .map(str => str.split("/")).flat()
-        .map(remove_punctuation)
         .map(expand_parens);
+
+    textbox.focus();
 }
 
-function check_input_classic() {
-    let value = textbox.value;
+function update_bar_text() {
+    let total = correct + wrong;
+    let percentage = correct / total * 100;
+    document.getElementById("progress-bar-text").innerHTML =
+        `${correct}/${total} (${percentage.toFixed(2)}%)`;
+    set_progress_bar_background(percentage);
+}
+
+function check_input(value) {
     let unpunctuated = remove_punctuation(value);
     textbox.value = "";
+
+    let typo_p = document.getElementById("typo-text");
+
+    let typo = typo_p.innerHTML === `<span class="orange">Typo?</span> Try again.`;
+    typo_p.innerHTML = "&nbsp;";
 
     let rickroll = [            // Hey there!
         "thonnu",               // 
@@ -50,17 +63,54 @@ function check_input_classic() {
             "https://youtu.be/xvFZjo5PgG0", // This is the link.
         "_blank").focus();
 
-    if (split_answer.some(lst => lst.includes(unpunctuated)))
-        return true;
+    if (split_answer.some(lst =>
+        lst.map(remove_punctuation).includes(unpunctuated))
+    ) return true;
 
-    if (split_answer.flat().some(s =>
-        levDist(s, unpunctuated) / s.length >= THRESHOLD
-    )) {
-        // tell the user there's a typo
+    if (typo) return false;
+
+    if (split_answer.flat().some(s => {
+        let ans = levDist(remove_punctuation(s), unpunctuated) /
+            remove_punctuation(s).length;
+        console.log(ans);
+        return ans <= THRESHOLD;
+    })) {
+        textbox.value = value;
+        typo_p.innerHTML = `<span class="orange">Typo?</span> Try again.`;
         return undefined;
     }
 
     return false;
+}
+
+function check_input_classic() {
+    let result = check_input(textbox.value);
+
+    if (result === undefined) return;
+
+    if (OPTIONS["all"]) {
+        // coming soon...
+    } else {
+        textbox.classList.remove("correct");
+        textbox.classList.remove("wrong");
+        textbox.offsetWidth;
+        if (result) {
+            correct++;
+            textbox.classList.add("correct");
+            document.getElementById("typo-text").innerHTML = `
+                <span class="green">Correct!</span>
+            `;
+        } else {
+            wrong++;
+            textbox.classList.add("wrong");
+            document.getElementById("typo-text").innerHTML = `
+                <span class="red">Wrong:</span>
+                ${answer}
+            `;
+        }
+        new_question();
+    }
+    update_bar_text();
 }
 
 function folders_start_classic(terms) {
@@ -70,28 +120,41 @@ function folders_start_classic(terms) {
     let classic_div = document.createElement("div");
     classic_div.innerHTML = `
         <div id="progress-bar-div">
-            <div id="progress-bar-container"></div>
+            <div id="progress-bar-container"><div id="progress-bar"></div></div>
             <span id="progress-bar-text">0/0 (0.00%)</span>
         </div>
         <h1 id="classic-question">
+            <button class="start-button" id="skip-button">Skip &rarr;</button>
             <span id="classic-question-text"></span>
             <button class="start-button" id="finish-button">Finish!</button>
         </h1>
+        <div id="small-screen-button-row">
+            <button class="start-button" id="skip-button2">Skip &rarr;</button>
+            <button class="start-button" id="finish-button2">Finish!</button>
+        </div>
         <input type="text" id="classic-input"
             placeholder="Type the definition here..."
             autocomplete="off" autocorrect="off"
             spellcheck="false" />
+        <p id="typo-text">&nbsp;</p>
     `;
     classic_div.id = "classic-div";
     document.getElementById("content")
         .insertBefore(classic_div, document.getElementById("margin"));
 
     textbox = document.getElementById("classic-input");
-    textbox.focus();
+
+    document.getElementById("skip-button").addEventListener("click", () =>
+        (textbox.value = "") || check_input_classic()
+    );
+
+    document.getElementById("skip-button2").addEventListener("click", () =>
+        (textbox.value = "") || check_input_classic()
+    );
 
     textbox.addEventListener("keyup", ({ key }) => {
         if (key === "Enter") {
-            console.log(check_input_classic());
+            check_input_classic();
         }
     });
 
