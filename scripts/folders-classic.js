@@ -21,7 +21,7 @@ function new_question() {
     [question, answer] = randomised_terms.shift();
     document.getElementById("classic-question-text").innerHTML = sanitise(question);
 
-    split_answer = answer.split(",")
+    split_answer = answer.toLowerCase().split(",")
         .map(str => str.split("/")).flat()
         .map(expand_parens);
 
@@ -37,7 +37,7 @@ function update_bar_text() {
 }
 
 function check_input(value) {
-    let unpunctuated = remove_punctuation(value);
+    let unpunctuated = remove_punctuation(value.toLowerCase());
     textbox.value = "";
 
     let typo_p = document.getElementById("typo-text");
