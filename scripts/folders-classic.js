@@ -25,6 +25,8 @@ function new_question() {
         .map(str => str.split("/")).flat()
         .map(expand_parens);
 
+    if (randomised_terms.length === 0) randomised_terms = random_shuffle(full_terms_list);
+
     textbox.focus();
 }
 
