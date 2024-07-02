@@ -113,6 +113,20 @@ function check_input_classic() {
     update_bar_text();
 }
 
+function finish_classic_game() {
+    let nrn = next_round_number(correct + wrong);
+    let left = nrn - correct - wrong;
+    if (window.confirm(
+        "Are you completely sure you want to finish the game?" +
+        (left < Math.max((correct + wrong) / 10, 10) ?
+            `\n\nOnly ${pluralise(left, " more question")} ` +
+            `to go until you have completed ${nrn} questions.`
+        : "")
+    )) {
+        // finish the game (coming soon)
+    }
+}
+
 function folders_start_classic(terms) {
     full_terms_list = [...terms];
     randomised_terms = random_shuffle(terms);
@@ -128,14 +142,13 @@ function folders_start_classic(terms) {
             <span id="classic-question-text"></span>
             <button class="start-button" id="finish-button">Finish!</button>
         </h1>
-        <div id="small-screen-button-row">
-            <button class="start-button" id="skip-button2">Skip &rarr;</button>
-            <button class="start-button" id="finish-button2">Finish!</button>
+        <div id="input-div">
+            <input type="text" id="classic-input"
+                placeholder="Type the definition here..."
+                autocomplete="off" autocorrect="off"
+                spellcheck="false" />
+            <button class="start-button" id="square-finish-button"><img id="finish-image" /></button>
         </div>
-        <input type="text" id="classic-input"
-            placeholder="Type the definition here..."
-            autocomplete="off" autocorrect="off"
-            spellcheck="false" />
         <p id="typo-text">&nbsp;</p>
     `;
     classic_div.id = "classic-div";
@@ -148,9 +161,8 @@ function folders_start_classic(terms) {
         (textbox.value = "") || check_input_classic()
     );
 
-    document.getElementById("skip-button2").addEventListener("click", () =>
-        (textbox.value = "") || check_input_classic()
-    );
+    document.getElementById("finish-button").addEventListener("click", finish_classic_game);
+    document.getElementById("square-finish-button").addEventListener("click", finish_classic_game);
 
     textbox.addEventListener("keyup", ({ key }) => {
         if (key === "Enter") {

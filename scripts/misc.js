@@ -160,3 +160,32 @@ function expand_parens_helper(str) {
 function expand_parens(str) {
     return expand_parens_helper(str)[0]
 }
+
+/**
+ * Returns the next integer after `n` which is equal
+ * to itself when rounded to 1 significant figure,
+ * and not a single-digit number (i.e. it is a digit
+ * followed by a positive number of 0s, meaning that
+ * it matches the regular expression pattern /\^d0+$/g)
+ * @param {Number} n A non-negative input integer.
+ * @returns {Number} The next round number greater than `n`.
+ */
+function next_round_number(n) {
+    while (++n) {
+        if (/^\d0+$/g.test(n)) return n;
+    }
+}
+
+/**
+ * Given a number and a string, returns the concatenated
+ * string, pluralising the string if `n !== 1`
+ * @param {Number} n The number.
+ * @param {String} s The singular string (if `n === 1`).
+ * @param {String | undefined} p The plural string (if `n !== 1`).
+ * NOTE: This is optional: if not given, it defaults to `s + "s"`.
+ * @returns {String} The concatenated string.
+ */
+function pluralise(n, s, p=undefined) {
+    if (p === undefined) p = s + "s";
+    return `${n}${n === 1 ? s : p}`;
+}

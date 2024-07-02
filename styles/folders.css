@@ -384,6 +384,10 @@ div#classic-div {
             color: #ed4337;
         }
     }
+
+    button#square-finish-button {
+        display: none;
+    }
 }
 
 @media (max-width: 999px) {
@@ -421,17 +425,33 @@ div#classic-div {
 
     div#classic-div h1#classic-question {
         margin: 20px 0px;
-    }
-
-    div#classic-div div#small-screen-button-row {
-        display: block;
-        height: 100px;
-        margin-bottom: 20px;
+        font-size: 20px;
     }
 
     div#classic-div {
         button#finish-button, button#skip-button {
             display: none;
+        }
+
+        button#square-finish-button {
+            display: inline;
+            margin: auto;
+            padding: 0px;
+            border-radius: 15px;
+            height: 45px;
+            width: 45px;
+            vertical-align: middle;
+            float: right;
+        }
+
+        input#classic-input {
+            width: calc(100% - 75px);
+            vertical-align: middle;
+        }
+
+        img#finish-image {
+            width: 25px;
+            height: 25px;
         }
     }
 }
@@ -500,6 +520,10 @@ body.light-theme {
 
     div#progress-bar-container {
         --other-colour: #ffffff;
+    }
+
+    img#finish-image {
+        content: url("../images/finish-light.svg");
     }
 }
 
@@ -609,6 +633,10 @@ body.dark-theme {
             border-color: white;
             color: #e0f0f0;
         }
+    }
+
+    img#finish-image {
+        content: url("../images/finish-dark.svg");
     }
 }
 
