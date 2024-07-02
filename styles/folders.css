@@ -423,13 +423,16 @@ div#classic-div {
         margin: 20px 0px;
     }
 
-    div#small-screen-button-row {
+    div#classic-div div#small-screen-button-row {
         display: block;
+        height: 100px;
         margin-bottom: 20px;
     }
 
-    button#finish-button, button#skip-button {
-        display: none;
+    div#classic-div {
+        button#finish-button, button#skip-button {
+            display: none;
+        }
     }
 }
 
@@ -440,7 +443,7 @@ div#classic-div {
 }
 
 body.light-theme {
-    --green: #50c878
+    --green: #50c878;
     
     div.folders-flexbox {
         border-color: #0093cb;
