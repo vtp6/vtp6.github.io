@@ -455,9 +455,9 @@ div#classic-div {
         }
     }
 
-    @media (max-height: 800px) {
+    @media (max-height: 750px) {
         div#classic-div h1#classic-question {
-            margin: 0px;
+            margin: 5px 0px;
         }
     }
 }
