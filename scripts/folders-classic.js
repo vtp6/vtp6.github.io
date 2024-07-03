@@ -172,6 +172,7 @@ function folders_start_classic(terms) {
         }
     });
 
+    window.scrollTo(0, 0);
     new_question();
 }
 

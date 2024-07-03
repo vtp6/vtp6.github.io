@@ -423,12 +423,12 @@ div#classic-div {
         min-height: 50px;
     }
 
-    div#classic-div h1#classic-question {
-        margin: 20px 0px;
-        font-size: 20px;
-    }
-
     div#classic-div {
+        h1#classic-question {
+            margin: 20px 0px;
+            font-size: 20px;
+        }
+
         button#finish-button, button#skip-button {
             display: none;
         }
@@ -452,6 +452,12 @@ div#classic-div {
         img#finish-image {
             width: 25px;
             height: 25px;
+        }
+    }
+
+    @media (max-height: 800px) {
+        div#classic-div h1#classic-question {
+            margin: 0px;
         }
     }
 }
