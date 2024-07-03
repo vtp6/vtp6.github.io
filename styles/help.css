@@ -1,0 +1,26 @@
+div#content {
+    position: absolute;
+    top: 125px;
+    width: calc(100% - 16px);
+    box-sizing: border-box;
+}
+
+section {
+    padding: 10px;
+}
+
+h3.faq-header {
+    padding-top: 15px;
+}
+
+body.light-theme {
+    section.selected {
+        background-color: #bef0ff;
+    }
+}
+
+body.dark-theme {
+    section.selected {
+        background-color: #154646;
+    }
+}
