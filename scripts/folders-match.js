@@ -167,7 +167,7 @@ function set_match_high_score(score) {
     if (currenths === undefined || score < +currenths.slice(0, -1)) {
         document.cookie =
             `vtp6HighScore_match=${score.toFixed(1)}s;` +
-            `domain=;max-age=31536000`;
+            `domain=vtp6.rujulnayak.com;max-age=31536000`;
         return true;
     } else {
         return false;
