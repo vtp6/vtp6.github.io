@@ -10,6 +10,8 @@ let textbox = undefined;
 let correct = 0;
 let wrong = 0;
 
+let wrongtbl = [];
+
 const THRESHOLD = 0.2; // 80% typo detection threshold
 
 function set_progress_bar_background(val) {
@@ -86,7 +88,7 @@ function check_input(value) {
 }
 
 function check_input_classic() {
-    let result = check_input(textbox.value);
+    let result = check_input(userans = textbox.value);
 
     if (result === undefined) return;
 
@@ -109,6 +111,7 @@ function check_input_classic() {
                 <span class="red">Wrong:</span>
                 ${answer}
             `;
+            wrongtbl.push([question, answer, userans]);
         }
         new_question();
     }
