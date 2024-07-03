@@ -6,7 +6,7 @@ function add_header() {
     if (screen_width >= 1000 && header_version !== 0) {
         document.getElementById("header").innerHTML = `
             <a href="/"><img src="/logos/logo-banner.png" id="banner-logo" alt="VTP6 logo" /></a>
-            <a href="/about/" class="banner-link no-underline">ABOUT</a>
+            <a href="/help/" class="banner-link no-underline">HELP</a>
             <a href="/folders/" class="banner-link no-underline">FOLDERS</a>
             <a href="/grammar/" class="banner-link no-underline">GRAMMAR</a>
             <a href="/other/" class="banner-link no-underline">OTHER</a>
@@ -22,7 +22,7 @@ function add_header() {
             <img id="dropdown-arrow" alt="Menu" />
             <a href="/" class="centre"><img src="/logos/logo-banner.png" id="banner-logo" alt="VTP6 logo" /></a>
             <div id="dropdown-container" class="hidden">
-                <a href="/about/" class="banner-link no-underline">ABOUT</a>
+                <a href="/help/" class="banner-link no-underline">HELP</a>
                 <a href="/folders/" class="banner-link no-underline">FOLDERS</a>
                 <a href="/grammar/" class="banner-link no-underline">GRAMMAR</a>
                 <a href="/other/" class="banner-link no-underline">OTHER</a>

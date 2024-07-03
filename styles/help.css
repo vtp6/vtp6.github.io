@@ -7,6 +7,7 @@ div#content {
 
 section {
     padding: 10px;
+    scroll-margin-top: 120px;
 }
 
 h3.faq-header {
