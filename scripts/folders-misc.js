@@ -62,7 +62,7 @@ document.addEventListener("keydown", (event) => {
 const GAME_MODE_DESCRIPTIONS = {
     classic: "Simply give the definition of each term that comes up. No clock, no high scores, no stress.",
     match: "Match the terms on the left to the definitions on the right as quickly as possible.",
-    quick_fire: "Race against the clock to answer as many questions as possible."
+    quick_fire: "Race against the clock to answer as many questions as possible in a set amount of time."
 }
 
 let gms = document.getElementById("gamemode-selector");

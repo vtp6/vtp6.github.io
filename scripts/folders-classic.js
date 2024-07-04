@@ -1,3 +1,7 @@
+// NOTE: because Quick Fire and Classic share a lot of features,
+// the code behind Quick Fire mode was added to this file instead
+// of a separate folders-quickfire.js
+
 let full_terms_list = [];
 let randomised_terms = [];
 
@@ -11,6 +15,10 @@ let correct = 0;
 let wrong = 0;
 
 let wrongtbl = [];
+
+let quickfire_timer = 150;
+let quickfire_timer_id = 0;
+let quickfire_increment = 30;
 
 const THRESHOLD = 0.2; // 80% typo detection threshold
 
@@ -118,6 +126,38 @@ function check_input_classic() {
     update_bar_text();
 }
 
+function check_input_quickfire() {
+    let result = check_input(userans = textbox.value);
+
+    if (result === undefined) return;
+
+    if (OPTIONS["all"]) {
+        // coming soon...
+    } else {
+        textbox.classList.remove("correct");
+        textbox.classList.remove("wrong");
+        textbox.offsetWidth;
+        if (result) {
+            correct++;
+            textbox.classList.add("correct");
+            document.getElementById("typo-text").innerHTML = `
+                <span class="green">Correct!</span>
+            `;
+            quickfire_timer += quickfire_increment;
+            quickfire_increment = Math.max(quickfire_increment - 2, 5);
+        } else {
+            wrong++;
+            textbox.classList.add("wrong");
+            document.getElementById("typo-text").innerHTML = `
+                <span class="red">Wrong:</span>
+                ${answer}
+            `;
+            wrongtbl.push([question, answer, userans]);
+        }
+        new_question();
+    }
+}
+
 function finish_classic_game() {
     let nrn = next_round_number(correct + wrong);
     let left = nrn - correct - wrong;
@@ -131,6 +171,9 @@ function finish_classic_game() {
         document.getElementById("classic-div").remove();
         let finish_div = document.createElement("div");
         finish_div.innerHTML = `
+            <div id="score-div">
+                <h3>${correct}/${correct + wrong} (${(correct / (total || 1) * 100).toFixed(2)}%)</h3>
+            </div>
             <div id="restart-button-div">
                 <button class="start-button" id="classic-restart-button">Restart!</button>
             </div>
@@ -175,8 +218,87 @@ function finish_classic_game() {
                 wrong = 0;
 
                 wrongtbl = [];
+
+                quickfire_timer = 150;
+                quickfire_timer_id = 0;
+                quickfire_increment = 30;
             });
     }
+}
+
+function set_quickfire_high_score(score) {
+    let currenths = get_cookies()["vtp6HighScore_quickFire"];
+    if (currenths === undefined || score > +currenths.slice(0, -1)) {
+        document.cookie =
+            `vtp6HighScore_quickFire=${score.toFixed(1)}s;` +
+            `domain=vtp6.rujulnayak.com;path=/;max-age=31536000`;
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function finish_quickfire_game() {
+    clearInterval(quickfire_timer_id);
+
+    document.getElementById("classic-div").remove();
+
+    let high_score = set_quickfire_high_score(correct);
+
+    let finish_div = document.createElement("div");
+    finish_div.innerHTML = `
+        <div id="score-div">
+            <h3>Your score was ${high_score ? `<img class="qf-high-score-image" />` : ""} ${correct}</h3>
+        </div>
+        <div id="restart-button-div">
+            <button class="start-button" id="classic-restart-button">Restart!</button>
+        </div>
+        <table id="wrong-table">
+            <tr>
+                <th>Term</th>
+                <th>Definition</th>
+                <th>Your&nbsp;Answer</th>
+            </tr>
+        </table>
+    `;
+    finish_div.id = "finish-div";
+    document.getElementById("content")
+        .insertBefore(finish_div, document.getElementById("margin"));
+
+    wrongtbl.forEach(row => {
+        let [a, b, c] = row;
+        let tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${a}</td> <td>${b}</td>
+            <td><em>${c}</em></td>
+        `;
+        document.getElementById("wrong-table").appendChild(tr);
+    });
+
+    document.getElementById("classic-restart-button")
+        .addEventListener("click", () => {
+            document.getElementById("finish-div").remove();
+            document.getElementById("settings-bar").hidden = false;
+            document.getElementById("units-flex").style.display = "flex";
+
+            full_terms_list = [];
+            randomised_terms = [];
+
+            [question, answer] = ["", ""];
+
+            split_answer = [];
+
+            textbox = undefined;
+
+            correct = 0;
+            wrong = 0;
+
+            wrongtbl = [];
+
+            quickfire_timer = 150;
+            quickfire_timer_id = 0;
+            quickfire_increment = 30;
+        });
 }
 
 function folders_start_classic(terms) {
@@ -221,6 +343,51 @@ function folders_start_classic(terms) {
             check_input_classic();
         }
     });
+
+    window.scrollTo(0, 0);
+    new_question();
+}
+
+function folders_start_quickfire(terms) {
+    full_terms_list = [...terms];
+    randomised_terms = random_shuffle(terms);
+
+    let classic_div = document.createElement("div");
+    classic_div.innerHTML = `
+        <div id="quickfire-timer-div">
+            <h3 id="quickfire-timer">&nbsp;</h3>
+        </div>
+        <h1 id="classic-question" class="quickfire-question">
+            <span id="classic-question-text" class="quickfire-question-text"></span>
+        </h1>
+        <div id="input-div">
+            <input type="text" id="classic-input" class="quickfire-input"
+                placeholder="Type the definition here..."
+                autocomplete="off" autocorrect="off"
+                spellcheck="false" />
+        </div>
+        <p id="typo-text">&nbsp;</p>
+    `;
+    classic_div.id = "classic-div";
+    document.getElementById("content")
+        .insertBefore(classic_div, document.getElementById("margin"));
+
+    if (OPTIONS["all"]) quickfire_timer = 200, quickfire_increment = 50;
+    document.getElementById("quickfire-timer").innerText = (quickfire_timer / 10).toFixed(1) + "s";
+
+    textbox = document.getElementById("classic-input");
+
+    textbox.addEventListener("keyup", ({ key }) => {
+        if (key === "Enter") {
+            check_input_quickfire();
+        }
+    });
+
+    quickfire_timer_id = setInterval(() => {
+        document.getElementById("quickfire-timer").innerText =
+            (--quickfire_timer / 10).toFixed(1) + "s";
+        if (quickfire_timer <= 0) finish_quickfire_game();
+    }, 100);
 
     window.scrollTo(0, 0);
     new_question();
