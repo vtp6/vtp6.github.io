@@ -132,19 +132,50 @@ function finish_classic_game() {
         let finish_div = document.createElement("div");
         finish_div.innerHTML = `
             <div id="restart-button-div">
-                <button class="start-button" id="restart-button">Restart!</button>
+                <button class="start-button" id="classic-restart-button">Restart!</button>
             </div>
             <table id="wrong-table">
                 <tr>
                     <th>Term</th>
                     <th>Definition</th>
-                    <th>Your Answer</th>
+                    <th>Your&nbsp;Answer</th>
                 </tr>
             </table>
         `;
         finish_div.id = "finish-div";
         document.getElementById("content")
             .insertBefore(finish_div, document.getElementById("margin"));
+
+        wrongtbl.forEach(row => {
+            let [a, b, c] = row;
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${a}</td> <td>${b}</td>
+                <td><em>${c}</em></td>
+            `;
+            document.getElementById("wrong-table").appendChild(tr);
+        });
+
+        document.getElementById("classic-restart-button")
+            .addEventListener("click", () => {
+                document.getElementById("finish-div").remove();
+                document.getElementById("settings-bar").hidden = false;
+                document.getElementById("units-flex").style.display = "flex";
+
+                full_terms_list = [];
+                randomised_terms = [];
+
+                [question, answer] = ["", ""];
+
+                split_answer = [];
+
+                textbox = undefined;
+
+                correct = 0;
+                wrong = 0;
+
+                wrongtbl = [];
+            });
     }
 }
 

@@ -394,7 +394,7 @@ div#finish-div {
     div#restart-button-div {
         height: 100px;
 
-        button#restart-button {
+        button#classic-restart-button {
             float: right;
         }
     }
