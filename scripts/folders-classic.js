@@ -230,7 +230,7 @@ function set_quickfire_high_score(score) {
     let currenths = get_cookies()["vtp6HighScore_quick_fire"];
     if (currenths === undefined || score > +currenths.slice(0, -1)) {
         document.cookie =
-            `vtp6HighScore_quickFire=${score.toFixed(1)}s;` +
+            `vtp6HighScore_quick_fire=${score};` +
             `domain=vtp6.rujulnayak.com;path=/;max-age=31536000`;
         return true;
     } else {
