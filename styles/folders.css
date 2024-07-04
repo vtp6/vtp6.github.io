@@ -390,6 +390,24 @@ div#classic-div {
     }
 }
 
+div#finish-div {
+    div#restart-button-div {
+        height: 100px;
+
+        button#restart-button {
+            float: right;
+        }
+    }
+
+    table#wrong-table {
+        td, th {
+            text-align: left;
+            padding-right: 10px;
+            padding-top: 5px;
+        }
+    }
+}
+
 @media (max-width: 999px) {
     div.folders-flexbox {
         width: calc(100% - 26px);

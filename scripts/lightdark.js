@@ -17,12 +17,12 @@ function switch_theme() {
         theme = "dark";
         document.body.classList.remove("light-theme");
         document.body.classList.add("dark-theme");
-        document.cookie = "vtp6Theme=dark;domain=vtp6.rujulnayak.com;max-age=31536000";
+        document.cookie = "vtp6Theme=dark;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
     } else {
         theme = "light";
         document.body.classList.remove("dark-theme");
         document.body.classList.add("light-theme");
-        document.cookie = "vtp6Theme=light;domain=vtp6.rujulnayak.com;max-age=31536000";
+        document.cookie = "vtp6Theme=light;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
     }
 }
 

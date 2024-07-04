@@ -128,7 +128,23 @@ function finish_classic_game() {
             `to go until you have completed ${nrn} questions.`
         : "")
     )) {
-        // finish the game (coming soon)
+        document.getElementById("classic-div").remove();
+        let finish_div = document.createElement("div");
+        finish_div.innerHTML = `
+            <div id="restart-button-div">
+                <button class="start-button" id="restart-button">Restart!</button>
+            </div>
+            <table id="wrong-table">
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                    <th>Your Answer</th>
+                </tr>
+            </table>
+        `;
+        finish_div.id = "finish-div";
+        document.getElementById("content")
+            .insertBefore(finish_div, document.getElementById("margin"));
     }
 }
 

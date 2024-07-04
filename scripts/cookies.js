@@ -25,14 +25,14 @@ function get_cookies() {
 
 function remove_banner() {
     cookies_button.remove();
-    document.cookie = "cookiesAllowed=1;domain=vtp6.rujulnayak.com;max-age=31536000";
+    document.cookie = "cookiesAllowed=1;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
 }
 
 if (!get_cookies()["cookiesAllowed"]) {
     document.body.appendChild(cookies_button);
     document.getElementById("cookie-button").addEventListener("click", remove_banner);
 } else {
-    document.cookie = "cookiesAllowed=1;domain=vtp6.rujulnayak.com;max-age=31536000";
+    document.cookie = "cookiesAllowed=1;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
 }
 
 function delete_cookies() {
