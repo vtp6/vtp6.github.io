@@ -163,12 +163,43 @@ function check_input_quickfire() {
 
     if (result === undefined) return;
 
+    textbox.classList.remove("correct");
+    textbox.classList.remove("wrong");
+    textbox.offsetWidth;
+
     if (OPTIONS["all"]) {
-        // coming soon...
+        if (result) {
+            textbox.classList.add("correct");
+            split_answer = split_answer.filter(l =>
+                !l.map(remove_punctuation)
+                .includes(remove_punctuation(userans))
+            );
+            if (split_answer.length === 0) {
+                correct++;
+                document.getElementById("typo-text").innerHTML = `
+                    <span class="green">Correct!</span>
+                `;
+                new_question();
+                quickfire_timer += quickfire_increment;
+                quickfire_increment = Math.max(quickfire_increment - 2, 5);
+            } else {
+                let n = document.getElementById("classic-all-num");
+                n.innerHTML = +n.innerHTML + 1;
+                document.getElementById("typo-text").innerHTML = `
+                    <span class="green">Keep going!</span>
+                `;
+            }
+        } else {
+            wrong++;
+            textbox.classList.add("wrong");
+            document.getElementById("typo-text").innerHTML = `
+                <span class="red">Wrong:</span>
+                ${answer}
+            `;
+            wrongtbl.push([question, answer, userans]);
+            new_question();
+        }
     } else {
-        textbox.classList.remove("correct");
-        textbox.classList.remove("wrong");
-        textbox.offsetWidth;
         if (result) {
             correct++;
             textbox.classList.add("correct");
@@ -404,7 +435,7 @@ function folders_start_quickfire(terms) {
     document.getElementById("content")
         .insertBefore(classic_div, document.getElementById("margin"));
 
-    if (OPTIONS["all"]) quickfire_timer = 200, quickfire_increment = 50;
+    if (OPTIONS["all"]) quickfire_timer = 250;
     document.getElementById("quickfire-timer").innerText = (quickfire_timer / 10).toFixed(1) + "s";
 
     textbox = document.getElementById("classic-input");
