@@ -47,7 +47,7 @@ function update_bar_text() {
     let total = correct + wrong;
     let percentage = correct / total * 100;
     document.getElementById("progress-bar-text").innerHTML =
-        `${correct}/${total} (${percentage.toFixed(2)}%)`;
+        `${correct}/${total} (${percentage.toPrecision(3)}%)`;
     set_progress_bar_background(percentage);
 }
 
@@ -204,7 +204,7 @@ function finish_classic_game() {
         let finish_div = document.createElement("div");
         finish_div.innerHTML = `
             <div id="score-div">
-                <h3>${correct}/${correct + wrong} (${(correct / ((correct + wrong) || 1) * 100).toFixed(2)}%)</h3>
+                <h3>${correct}/${correct + wrong} (${(correct / ((correct + wrong) || 1) * 100).toPrecision(3)}%)</h3>
             </div>
             <div id="restart-button-div">
                 <button class="start-button" id="classic-restart-button">Restart!</button>
