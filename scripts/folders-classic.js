@@ -35,6 +35,9 @@ function new_question() {
         .map(str => str.split("/")).flat()
         .map(expand_parens);
 
+    if (OPTIONS["all"]) document.getElementById("classic-question-text").innerHTML +=
+        ` (<span id="classic-all-num">0</span>/${split_answer.length})`;
+
     if (randomised_terms.length === 0) randomised_terms = random_shuffle(full_terms_list);
 
     textbox.focus();
@@ -100,12 +103,41 @@ function check_input_classic() {
 
     if (result === undefined) return;
 
+    textbox.classList.remove("correct");
+    textbox.classList.remove("wrong");
+    textbox.offsetWidth;
+
     if (OPTIONS["all"]) {
-        // coming soon...
+        if (result) {
+            textbox.classList.add("correct");
+            split_answer = split_answer.filter(l =>
+                !l.map(remove_punctuation)
+                .includes(remove_punctuation(userans))
+            );
+            if (split_answer.length === 0) {
+                correct++;
+                document.getElementById("typo-text").innerHTML = `
+                    <span class="green">Correct!</span>
+                `;
+                new_question();
+            } else {
+                let n = document.getElementById("classic-all-num");
+                n.innerHTML = +n.innerHTML + 1;
+                document.getElementById("typo-text").innerHTML = `
+                    <span class="green">Keep going!</span>
+                `;
+            }
+        } else {
+            wrong++;
+            textbox.classList.add("wrong");
+            document.getElementById("typo-text").innerHTML = `
+                <span class="red">Wrong:</span>
+                ${answer}
+            `;
+            wrongtbl.push([question, answer, userans]);
+            new_question();
+        }
     } else {
-        textbox.classList.remove("correct");
-        textbox.classList.remove("wrong");
-        textbox.offsetWidth;
         if (result) {
             correct++;
             textbox.classList.add("correct");
@@ -172,7 +204,7 @@ function finish_classic_game() {
         let finish_div = document.createElement("div");
         finish_div.innerHTML = `
             <div id="score-div">
-                <h3>${correct}/${correct + wrong} (${(correct / (total || 1) * 100).toFixed(2)}%)</h3>
+                <h3>${correct}/${correct + wrong} (${(correct / ((correct + wrong) || 1) * 100).toFixed(2)}%)</h3>
             </div>
             <div id="restart-button-div">
                 <button class="start-button" id="classic-restart-button">Restart!</button>
