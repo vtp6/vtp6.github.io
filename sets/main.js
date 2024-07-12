@@ -30,6 +30,12 @@ document.title = nm + " | VTP6";
 let h1 = document.querySelector("h1");
 h1.innerHTML = `<a href="../../">VTP6</a> &nbsp; <img id="dl" src="../download.svg" height="25px" onclick="javascript:downloadbar()" />`;
 
+let warning = document.createElement("p");
+warning.id = "warning";
+warning.innerHTML = `NOTE: you are using the old version of VTP6. <br /> <br /> You may continue to use this version if you wish,
+but there is a newer version of this page in <i><a href="../../folders/">the Folders directory</a></i> (v6.5).`;
+document.body.insertBefore(warning, h1.nextSibling);
+
 let realanswer = "";
 let answer = [];
 let done = [];
