@@ -142,3 +142,7 @@ ul {
 .above-linkbar {
     margin-bottom: 10px;
 }
+
+p#warning {
+    color: #eed202;
+}

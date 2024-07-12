@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+    <head>
+        <link rel="stylesheet" href="../../../styles/fonts.css" />
+        <link rel="stylesheet" href="../../../styles/main.css" />
+        <link rel="stylesheet" href="../../../styles/folders.css" />
+        <title>Latin Entry Level | Vocabulary Testing Program 6</title>
+        <link rel="icon" type="image/png" href="../../../logos/logo-square.png"/>
+        <meta property="og:image" content="../../../logos/logo-banner.png" />
+        <meta property="og:image:width" content="1980" />
+        <meta property="og:image:height" content="1741" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="description" content="Study Latin Entry Level on Vocabulary Testing Program 6." />
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="content">
+            <div id="settings-bar">
+                <!-- <span id="before-slider">Classic</span>
+                <label class="switch" id="switch-slider">
+                    <input type="checkbox" id="gamemode-checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span id="after-slider" class="not-selected">Match</span> -->
+                <select id="gamemode-selector"></select>
+                <button class="start-button" id="start-button" role="button" disabled="true">Start!</button>
+                <span id="high-score">
+                    <img class="high-score-image" />
+                    <span id="high-score-text"></span>
+                </span>
+                <p id="help-tip"></p>
+            </div>
+            <div class="flex-container" id="units-flex">
+                <div class="units-flexbox no-border" name="all">
+                    <input type="checkbox" class="folders-checkbox" />
+                    <span class="checkbox-label">All <i id="insert-length-here"></i></span>
+                </div>
+            </div>
+            <div id="margin"></div>
+        </div>
+        <div id="footer"></div>
+        <script>
+            const TERMS_LIST = `# Page 1
+ad + acc.	to/at/towards
+advenio, advenire, adveni	arrive
+ager, agri, m	field
+ago, agere, egi, actus	do/act/drive
+agricola, agricolae m.	farmer
+amicus, amici, m.	friend
+amo, amare, amavi, amatus	love/like
+ancilla, ancillae, f.	slave-girl/slave-woman
+aqua, aquae, f.	water
+audio, audire, audivi, auditus	hear/listen to
+bonus, bona, bonum	good
+canis, canis m.f.	dog
+cena, cenae f.	dinner/meal
+cibus, cibi, m.	food
+clamo, clamare, clamavi, clamatus	shout
+clamor, clamoris, m.	shout/shouting/noise
+constituo, constituere, constitui, constitutus	decide
+consumo, consumere, consumpsi, consumptus	eat
+cur?	why?
+curro, currere, cucurri, cursus	run
+
+# Page 2
+do, dare, dedi, datus	give
+doceo, docere, docui, doctus	teach
+domina, dominae, f.	mistress
+dominus, domini, m.	master
+ego, mei	I/me
+et	and/even
+exspecto, exspectare, exspectavi, exspectatus	wait for/expect
+fabula, fabulae f.	story
+facio, facere, feci, factus	make/do
+femina, feminae, f.	woman
+filia, filiae, f.	daughter
+filius, filii, m.	son
+fortis, forte	brave
+forum, fori, n,	forum/market place
+habeo, habere, habui, habitus	have/hold
+habito, habitare, habitavi, habitatus	live
+hortus, horti, m.	garden
+ibi	there
+in + accusative	into/onto
+inquit	he says/she says/he said/she said
+intro, intrare, intravi, intratus	enter
+invito, invitare, invitavi, invitatus	invite
+iratus, irata, iratum	angry
+
+# Page 3
+laboro laborare laboravi	work
+laetus, laeta, laetum	happy
+laudo, laudare, laudavi	praise
+liber, libri, m.	book
+magister, magistri, m.	teacher
+magnus, magna, magnum	big/large/great
+mater, matris, f.	mother
+mercator, mercatoris, m.	merchant
+meus, mea, meum	my
+mitto, mittere, misi	send
+mox	soon
+multus, multa, multum	much/many
+narro, narrare,narravi	tell/relate
+nomen, nominis, n.	name
+nos, nostrum	we
+olim	once/some time ago
+omnis, omne	all/every
+paro, parare, paravi	prepare
+parvus,parva, parvum	small
+pater, patris, m.	father
+pecunia, pecuniae, f.	money
+per +acc	through/along
+perterritus, perterrita, perterritum	terrified
+plaustrum, plaustri, n.	wagon
+porto, portare, portavi	carry
+possum, posse, potui	can/be able
+
+# Page 4
+postquam	after/when
+primus, prima, primum	first
+prope +acc	near
+puella, puellae, f.	girl
+puer, pueri, m.	boy
+pugno, pugnare, pugnavi	fight
+quis?	who?
+quid?	what?
+quoque	also/too
+rideo, ridere, risi	laugh/smile
+rogo, rogare, rogavi	ask/ask for
+Romanus, Romana, Romanum	Roman
+saepe	often
+saluto, salutare, salutavi	greet
+scribo, scribere, scripsi	write
+sed	but
+sedeo, sedere, sedi	sit
+servo, servare, servavi	save/protect/keep
+servus, servi, m.	slave
+solus, sola, solum	alone/lonely/only/on one's own
+specto, spectare, spectavi	look at/watch
+statim	at once/immediately
+sto, stare, steti	stand
+stultus, stulta, stultum	stupid/foolish
+subito	suddenly
+sum, esse, fui	be
+
+# Page 5
+taberna, tabernae, f.	shop/inn
+tandem	at last/finally
+timeo, timere, timui	fear/be afraid
+tu, tui	you (singular)
+ubi	where?/where/when
+urbs, urbis, f.	city/town
+venio, venire, veni	come
+via, viae, f.	street/road/way
+video, videre, vidi	see
+villa, villae, f.	house/country villa
+vinum, vini, n.	wine
+vir, viri,m.	man
+visito, visitare, visitare	visit
+voco, vocare, vocavi	call
+vos, vestrum	you (plural)
+
+# Page 6
+in foro	in the forum
+ex foro	from the forum
+Romae	at Rome
+ex urbe	from the city
+in aqua	in the water
+ex agris	from the fields
+cum amicis	with friends
+in plaustro	in the wagon
+in taberna	in the shop/ in the inn
+Roma	From Rome
+optimus -a -um	very good/best
+pessimus -a -um	very bad/worst
+plurimus -a -um	very much
+plurimi -ae -a	very many
+maximus -a -um	very big/biggest
+minimus -a -um	very small/smallest
+unus	one
+duo	two
+tres	three
+quattuor	four
+quinque	five
+sex	six
+septem	seven
+octo	eight
+novem	nine
+decem	ten`;
+            const NUM_UNITS = 12;
+            const OPTIONS = {lang: "la", id: "lael", name: "Latin Entry Level", all: true};
+        </script>
+        <script src="../../../scripts/lightdark.js"></script>
+        <script src="../../../scripts/header.js"></script>
+        <script src="../../../scripts/cookies.js"></script>
+        <script src="../../../scripts/footer.js"></script>
+        <script src="../../../scripts/misc.js"></script>
+        <script src="../../../scripts/folders-setup.js"></script>
+        <script src="../../../scripts/folders-misc.js"></script>
+        <script src="../../../scripts/folders-classic.js"></script>
+        <script src="../../../scripts/folders-match.js"></script>
+        <script src="../../../scripts/folders-start.js"></script>
+        <script async data-id="101454906" src="//static.getclicky.com/js"></script>
+    </body>
+</html>
