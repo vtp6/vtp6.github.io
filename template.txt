@@ -42,7 +42,7 @@
         <div id="footer"></div>
         <script>
             const TERMS_LIST = `HERE`;
-            const NUM_UNITS = 12;
+            const NUM_UNITS = HERE;
             const OPTIONS = {lang: "HERE", id: "HERE", name: "HERE", all: HERE};
         </script>
         <script src="../../../scripts/lightdark.js"></script>

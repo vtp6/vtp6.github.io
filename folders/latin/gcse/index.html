@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+    <head>
+        <link rel="stylesheet" href="../../../styles/fonts.css" />
+        <link rel="stylesheet" href="../../../styles/main.css" />
+        <link rel="stylesheet" href="../../../styles/folders.css" />
+        <title>Latin GCSE | Vocabulary Testing Program 6</title>
+        <link rel="icon" type="image/png" href="../../../logos/logo-square.png"/>
+        <meta property="og:image" content="../../../logos/logo-banner.png" />
+        <meta property="og:image:width" content="1980" />
+        <meta property="og:image:height" content="1741" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="description" content="Study Latin GCSE on Vocabulary Testing Program 6." />
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="content">
+            <div id="settings-bar">
+                <!-- <span id="before-slider">Classic</span>
+                <label class="switch" id="switch-slider">
+                    <input type="checkbox" id="gamemode-checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span id="after-slider" class="not-selected">Match</span> -->
+                <select id="gamemode-selector"></select>
+                <button class="start-button" id="start-button" role="button" disabled="true">Start!</button>
+                <span id="high-score">
+                    <img class="high-score-image" />
+                    <span id="high-score-text"></span>
+                </span>
+                <p id="help-tip"></p>
+            </div>
+            <div class="flex-container" id="units-flex">
+                <div class="units-flexbox no-border" name="all">
+                    <input type="checkbox" class="folders-checkbox" />
+                    <span class="checkbox-label">All <i id="insert-length-here"></i></span>
+                </div>
+            </div>
+            <div id="margin"></div>
+        </div>
+        <div id="footer"></div>
+        <script>
+            const TERMS_LIST = `# Page 1
+a + ablative & prefix	from/by/away from
+ab + ablative & prefix	from/by/away from
+absum, abesse, afui	be absent/be away/be distant from
+ac/atque	and
+accido, accidere, accidi	happen
+accipio, accipere, accepi, acceptus	accept/take in/receive
+ad + accusative	to/at/towards
+adeo (adverb)	so much/so greatly/to such an extent
+adsum, adesse, adfui	be here/be present
+advenio, advenire, adveni	arrive
+aedifico, aedificare, aedificavi, aedificatus	build
+ager, agri, m	field
+ago, agere, egi, actus	do/act/drive
+alii...alii	some...others
+alius, alia, aliud	other/another/else
+alter, altera, alterum	the other/another/the second (of two)/one (of two)
+altus, alta, altum	high/deep
+ambulo, ambulare, ambulavi	walk
+amicus, amici, m.	friend
+amo, amare, amavi, amatus	love/like
+amor, amoris, m.	love
+ancilla, ancillae, f.	slave-girl/slave-woman
+animus, animi, m.	soul/spirit/mind
+annus, anni, m.	year
+antea	before
+appropinquo, appropinquare, appropinquavi + dative	approach/come near to
+aqua, aquae, f.	water
+arma, armorum, n.plural	arms/weapons
+ars, artis, f.	art/skill
+ascendo, ascendere, ascendi, ascensus	climb
+audax, audacis	bold/daring
+audeo, audere, ausus sum	dare
+audio, audire, audivi, auditus	hear/listen to
+aufero, auferre, abstuli, ablatus	take away/carry off/steal
+auxilium, auxilii, n.	help
+bellum gero, gerere, gessi, gestus	wage war
+bellum, belli, n.	war
+bene	well
+bibo, bibere, bibi	drink
+bonus, bona, bonum	good
+brevis, breve	short/brief
+cado, cadere, cecidi, casus	fall
+caelum, caeli, n.	sky/heaven
+capio, capere, cepi, captus	take/capture/catch/make (a plan)
+captivus, captivi, m.	captive/prisoner
+caput, capitis, n.	head
+castra, castrorum, n.plural	camp
+celer, celere	quick/fast
+celo, celare, celavi, celatus	hide
+cena, cenae, f.	dinner/meal
+ceteri, ceterae, cetera	the rest/the others
+cibus, cibi, m.	food
+circum + accusative	around
+civis, civis, m.f.	citizen
+clamo, clamare, clamavi, clamatus	shout
+clamor, clamoris, m.	shout/shouting/noise
+clarus, clara, clarum	famous/clear
+coepi, coepisse	began
+cogito, cogitare, cogitavi, cogitatus	think/consider
+cognosco, cognoscere, cognovi, cognitus	get to know/find out
+cogo, cogere, coegi, coactus	force/compel
+comes, comitis, m. & f.	comrade/companion
+conficio, conficere, confeci, confectus	finish/wear out
+conor, conari, conatus sum	try
+consilium, consilii, n.	plan/advice/idea
+conspicio, conspicere, conspexi, conspectus	catch sight of/notice
+constituo, constituere, constitui, constitutus	decide
+
+# Page 2
+consul, consulis, m.	consul
+consumo, consumere, consumpsi, consumptus	eat
+contra +acc.	against
+convenio, convenire, conveni	come together/gather/meet
+copiae, copiarum, f plural	forces/troops
+corpus, corporis, n.	body
+cras	tomorrow
+credo, credere, credidi, credidtus + dative	trust/believe
+crudelis, crudele	cruel
+cum (conj)	when/since
+cum + abl. (prep)	with
+cupio, cupere, cupivi	want/desire
+cur?	why?
+cura, curae, f.	care/worry
+curro, currere, cucurri, cursus	run
+custodio, custodire, custodivi, custoditus	guard (v)
+custos, custodis, m. & f.	guard (n)
+de + abl.	from/down from/about
+dea, deae, f.	goddess
+debeo, debere, debui, debitus	owe/ought/should/must
+defendo, defendere, defendi, defensus	defend
+deinde	then
+deleo, delere, delevi, deletus	destroy
+descendo, descendere, descendi, descensus	go down/come down
+deus, dei, m.	god
+dico, dicere, dixi, dictus	say/speak/tell
+dies, diei, m.	day
+difficilis, difficile	difficult
+diligens, diligentis	careful
+dirus, dira, dirum	dreadful
+discedo, discedere, discessi	depart/leave
+diu	for a long time
+do, dare, dedi, datus	give
+doceo, docere, docui, doctus	teach
+domi	at home
+domina, dominae, f.	mistress
+dominus, domini, m.	master
+domus, domus, f.	home
+donum, doni, n.	gift/present
+dormio, dormire, dormivi	sleep
+duco, ducere, duxi, ductus	lead/take
+dum	while/until
+dux, ducis, m.	leader
+e (as prefix)	from/out of/out
+e + abl.	from/out of/out
+ecce!	look!
+effugio, effugere, effugi	escape
+ego, mei	I/me
+egredior, egredi, egressus sum	go out
+emo, emere, emi, emptus	buy
+enim	for
+eo, ire, i(v)i	go
+epistula, epistulae, f.	letter
+equus, equi, m.	horse
+et	and/even
+et...et	both...and
+etiam	even/also
+ex + abl.	from/out of/out
+exercitus, exercitus, m.	army
+exspecto, exspectare, exspectavi, exspectatus	wait for/expect
+facilis, facile	easy
+facio, facere, feci, factus	make/do
+faveo, favere, favi, fautus + dative	favour/support
+felix, felicis	fortunate/happy
+femina, feminae, f.	woman
+fero, ferre, tuli, latus	bring/carry/bear
+ferox, ferocis	fierce/ferocious
+festino, festinare, festinavi	hurry
+fidelis, fidele	faithful/loyal
+filia, filiae, f.	daughter
+filius, filii, m.	son
+flumen, fluminis, n.	river
+forte (adverb)	by chance
+fortis, forte	brave
+forum, fori, n,	forum/market place
+frater, fratris, m.	brother
+frustra	in vain
+fugio, fugere, fugi	run away/flee
+gaudeo, gaudere, gavisus sum	be pleased/rejoice
+gaudium, gaudii, n.	joy/pleasure
+gens, gentis, f.	family/tribe/race/people
+gero, gerere, gessi, gestus	wear (clothes)/wage (war)
+
+# Page 3
+gladius, gladii, m.	sword
+gravis, grave	heavy/serious
+habeo, habere, habui, habitus	have/hold
+habito, habitare, habitavi, habitatus	live
+heri	yesterday
+hic (adverb)	here
+hic, haec, hoc	this/he/she/it
+hodie	today
+homo, hominis, m.	man/human being
+hora, horae, f.	hour
+hortor, hortari, hortatus sum	encourage/urge
+hortus, horti, m.	garden
+hostis, hostis, m./inimicus, inimici, m.	enemy
+iaceo, iacere, iacui	lie
+iacio, iacere, ieci, iactus (in compounds - icio)	throw
+iam	now/already
+ianua, ianuae, f.	door
+ibi	there
+idem, eadem, idem	the same
+igitur	therefore/and so
+ille, illa, illud	that/he/she/it
+imperator, imperatoris, m.	emperor/general/leader
+imperium, imperii, n.	empire/power/command
+impero, imperare, imperavi, imperatus +dative	order/command
+in + ablative & prefix	in/on
+in + accusative & prefix	into/onto
+incendo, incendere, incendi, incensus	burn/set on fire
+infelix, infelicis	unlucky/unhappy
+ingens, gen. ingentis	huge
+ingredior, ingredi, ingressus sum/intro, intrare, intravi, intratus	enter
+inquit	he says/she says/he said/she said
+insula, insulae, f.	island/block of flats
+intellego, intellegere, intellexi, intellectus	understand/realise
+inter + accusative	among/between
+interea	meanwhile
+interficio, interficere, interfeci, interfectus	kill
+invenio, invenire, inveni, inventus	find
+invito, invitare, invitavi, invitatus	invite
+ipse, ipsa, ipsum	himself/herself/itself/themselves
+ira, irae, f.	anger
+iratus, irata, iratum	angry
+is, ea, id	he/she/it/this/that/them
+ita	in this way/so/to such an extent
+itaque	therefore/and so
+iter, itineris, n.	journey
+iterum	again
+iubeo, iubere, iussi, iussus	order
+iuvenis, iuvenis, m.	young man
+labor, laboris, m.	work/toil (n)
+laboro, laborare, laboravi	work/toil (v)
+lacrimo, lacrimare, lacrimavi	cry/weep
+laetus, laeta, laetum	happy
+laudo, laudare, laudavi, laudatus	praise
+legio, legionis, f.	legion
+lego, legere, legi, lectus	read/choose
+lentus	slow
+libenter	willingly/gladly
+liber, libri, m.	book
+liberi, liberorum, m.pl.	children
+libero, liberare, liberavi, liberatus	set free
+libertus, liberti, m.	freedman/ex-slave
+locus, loci, m.	place
+longus, longa, longum	long
+loquor, loqui, locutus sum	speak/talk
+lux, lucis, f.	light/daylight
+magis	more
+magnopere	greatly
+magnus, magna, magnum	big/great/large
+malo, malle, malui	prefer
+malus, mala, malum	evil/bad
+maneo, manere, mansi	remain/stay
+manus, manus, f.	hand/group of people
+mare, maris, n.	sea
+maritus, mariti, m.	husband
+mater, matris, f.	mother
+maxime	very greatly
+medius, media, medium	middle
+meus, mea, meum	my
+miles, militis, m.	soldier
+minime	very little/least/no
+miror, mirari, miratus sum	wonder at/admire
+miser, misera, miserum	miserable/wretched/sad
+mitto, mittere, misi, missus	send
+modus, modi, m.	manner/way/kind
+moneo, monere, monui, monitus	warn/advise
+mons, montis, m.	mountain
+morior, mori, mortuus sum	die
+mors, mortis, f.	death
+moveo, movere, movi, motus	move
+mox	soon
+multo	much
+multus, multa, multum	much/many
+murus, muri, m.	wall
+nam	for
+narro, narrare, narravi, narratus	tell/relate
+
+# Page 4
+-que	and
+nauta, nautae, m.	sailor
+navigo, navigare, navigavi	sail
+navis, navis, f.	ship
+ne	that...not/so that...not/lest/that
+nec	nor/and not/neither
+neco, necare, necavi, necatus	kill
+nemo, neminis	no one/nobody
+neque	nor/and not/neither
+nescio, nescire, nescivi	not know
+nihil	nothing
+nisi	unless/except
+nolo, nolle, nolui	not want/refuse
+nomen, nominis, n.	name
+non	not
+nonne...?	surely...?
+nonnulli, nonnullae, nonnulla	some/several
+nos, nostrum	we/us
+noster, nostra, nostrum	our
+novus, nova, novum	new
+nox, noctis, f.	night
+nullus, nulla, nullum	not any/no
+num	whether
+num...?	surely...not?/whether
+numquam	never
+nunc	now
+nuntio, nuntiare, nuntiavi, nuntiatus	announce/report
+nuntius, nuntii, m.	messenger/message/news
+occido, occidere, occidi, occisus	kill
+offero, offerre, obtuli, oblatus	offer
+olim	once/some time ago
+omnis, omne	all/every
+opprimo, opprimere, oppressi, oppressus	crush/overwhelm
+oppugno, oppugnare, oppugnavi, oppugnatus	attack
+oro, orare, oravi, oratus	beg
+ostendo, ostendere, ostendi, ostentus	show
+paene	almost/nearly
+paro, parare, paravi, paratus	prepare/provide
+pars, partis, f.	part
+parvus, parva, parvum	small
+pater, patris, m.	father
+patior, pati, passus sum	suffer/endure
+patria, patriae, f.	country/homeland
+pauci, paucae, pauca	few/a few
+pax, pacis, f.	peace
+pecunia, pecuniae, f.	money
+pello, pellere, pepuli, pulsus	drive
+per + accusative	through/along
+pereo, perire, perii, peritus	die/perish
+periculum, periculi, n.	danger
+persuadeo, persuadere, persuasi + dative	persuade
+perterritus, perterrita, perterritum	terrified
+pes, pedis, m.	foot
+peto, petere, petivi, petitus	make for/seek/ask for/beg for
+poena, poenae, f.	punishment
+poenas do	pay the penalty/be punished
+pono, ponere, posui, positus	put/place/set up
+porta, portae, f.	gate
+porto, portare, portavi, portatus	carry/bear/take
+possum, posse, potui	can/be able
+post + accusative	after/behind
+postea	afterwards
+postquam	after/when
+postridie	on the next day
+praemium, praemii, n.	prize/reward/profit
+primo	at first
+primus, prima, primum	first
+princeps, principis, m.	chief/emperor
+pro + ablative	in front of/for/in return for
+procedo, procedere, processi	advance/proceed
+proelium, proelii, n.	battle
+proficiscor, proficisci, profectus sum	set out
+progredior, progredi, progressus sum	advance
+promitto, promittere, promisi, promissus	promise
+prope + accusative	near
+propter +accusative	on account of/because of
+proximus, proxima, proximum	nearest/next to
+puella, puellae, f.	girl
+puer, pueri, m.	boy
+pugno, pugnare, pugnavi	fight
+pulcher, pulchra, pulchrum	beautiful/handsome
+punio, punire, punivi, punitus	punish
+puto, putare, putavi, putatus	think
+quaero, quaerere, quaesivi, quaesitus	search for/look for/ask
+qualis? quale?	what sort of?
+quam	than
+quam + superlative adverb	as...as possible
+quam!	how...!
+quam?	how...?
+quamquam	although
+quando?	when?
+quantus?, quanta?, quantum?	how big?/how much?
+qui, quae, quod	who/which
+
+# Page 5
+Roma, Romae, f.	Rome
+Romanus, Romana, Romanum	Roman
+quid?	what?
+quidam, quaedam, quoddam	one/a certain/some
+quis?	who?
+quo?	to where?
+quod	because
+quomodo?	how?
+quoque	also/too
+quot?	how many?
+rapio, rapere, rapui, raptus	seize/grab
+re- (prefix)	-back
+reddo, reddere, reddidi, redditus	give back/restore
+redeo, redire, redii, reditus	return/come back/go back
+refero, referre, retulli, relatus	bring back/carry back/ report/tell
+regina, reginae, f.	queen
+regnum. regni, n.	kingdom
+rego, regere, rexi, rectus	rule
+regredior, regredi, regressus sum	go back/return
+relinquo, relinquere, reliqui, relictus	leave/leave behind
+res, rei, f.	thing/matter/event
+resisto, resistere, restiti + dative	resist
+respondeo, respondere, respondi, responsus	reply
+rex, regis, m.	king
+rideo, ridere, risi	laugh/smile
+rogo, rogare, rogavi, rogatus	ask/ask for
+sacer, sacra, sacrum	sacred
+saepe	often
+saevus, saeva, saevum	savage/cruel
+saluto, salutare, salutavi, salutatus	greet
+sanguis, sanguinis, m.	blood
+scelestus, scelesta, scelestum	wicked
+scelus, sceleris, n.	crime
+scio, scire, scivi, scitus	know
+scribo, scribere, scripsi, scriptus	write
+se, sui	himself/herself/itself/themselves
+sed	but
+sedeo, sedere, sedi	sit
+semper	always
+senator, senatoris, m.	senator
+senex, senis m.	old man
+sentio, sentire, sensi, sensus	feel/notice
+sequor, sequi, secutus sum	follow
+servo, servare, servavi, servatus	save/protect/keep
+servus, servi, m.	slave
+si	if
+sic	thus/in this way
+silva, silvae, f.	wood
+simul	at the same time
+simulac	as soon as
+simulatque	as soon as
+sine	without
+soleo, solere, solitus sum	be accustomed
+solus, sola, solum	alone/only/on one's own/lonely
+specto, spectare, spectavi, spectatus	look at/watch
+spero, sperare, speravi, speratus	hope/expect
+spes. spei, f.	hope
+statim	at once/immediately
+sto, stare, steti	stand
+stultus, stulta, stultum	stupid/foolish
+sub + accusative & ablative	under/beneath
+subito	suddenly
+sum, esse, fui	be
+summus, summa, summum	highest/greatest/top (of)
+supero, superare, superare, superatus	overcome/overpower
+surgo, surgere, surrexi	get up/stand up/rise
+suus, sua, suum	his (own)/her (own)/its (own)/their (own)
+taberna, tabernae, f.	shop/inn
+taceo, tacere, tacui, tacitus	be silent/be quiet
+talis, tale	such/of such a kind
+tam	so
+tamen	however
+tandem	at last/finally
+tantus, tanta, tantum	so great/such a great
+tempestas, tempestatis, f.	storm
+templum, templi, n.	temple
+tempus, temporis, n.	time
+teneo, tenere, tenui, tentus	hold
+terra, terrae, f.	ground/land/country
+terreo, terrere, terrui, territus	frighten
+timeo, timere, timui	be afraid/fear
+tollo, tollere, sustuli, sublatus	raise/lift up/hold up
+tot	so many
+totus, tota, totum	whole
+trado, tradere, tradidi, traditus	hand over/hand down
+traho, trahere, traxi, tractus	drag
+trans (prefix)	across
+trans + accusative	across
+tristis, triste	sad
+tu, tui	you (singular)
+tum	then
+
+# Page 6
+turba, turbae, f.	crowd
+tuus, tua, tuum	your (singular)/yours (singular)
+ubi	when/where/where?
+umquam	ever
+unde?	from where?
+urbs, urbis, f.	city
+ut + indicative	as/when
+ut + subjunctive	that/so that/in order that
+uxor, uxoris, f.	wife
+validus, valida, validum	strong
+vehementer	violently/loudly
+vendo, vendere, vendidi, venditus	sell
+venio, venire, veni	come
+verbum, verbi, n.	word
+verto, vertere, verti, versus	turn
+vester, vestra, vestrum	your (plural)/yours (plural)
+via, viae, f.	street/way/road
+victoria, victoriae, f.	victory
+video, videre, vidi, visus	see
+videor, videri, visus sum	seem/appear
+villa, villae, f.	house/country villa
+vinco, vincere, vici, victus	conquer/win/be victorious
+vinum, vini, n.	wine
+vir, viri, m.	man
+virtus, virtutis, f.	courage/virtue
+vita, vitae, f.	life
+vivo, vivere, vixi	live/be alive
+voco, vocare, vocavi, vocatus	call
+volo, velle, volui	want/wish/be wiling
+vos, vestrum	you (plural)
+vox, vocis, f.	voice/shout
+vulnero, vulnerare, vulneravi, vulneratus	wound/injure
+vulnus, vulneris, n.	wound
+
+# Eng to Lat Page 1
+from/by/away from	a + abl.
+to/at/towards	ad + acc.
+arrive	advenio
+build	aedifico
+field	ager
+walk	ambulo
+friend	amicus
+slave-girl/slave-woman	ancilla
+year	annus
+water	aqua
+arms/weapons	arma
+hear/listen to	audio
+help	auxilium
+well	bene
+drink	bibo
+good	bonus
+fall	cado
+take/capture/catch/make (a plan)	capio
+dinner/meal	cena
+food	cibus
+shout	clamo
+plan/advice/idea	consilium
+catch sight of/notice	conspicio
+decide	constituo
+against	contra + acc
+with	cum + abl (prep)
+why?	cur?
+run	curro
+guard	custodio
+goddess	dea
+defend	defendo
+god	deus
+say/speak/tell	dico
+for a long time	diu
+mistress	domina
+master	dominus
+gift/present	donum
+sleep	dormio
+lead/take	duco
+letter	epistula
+and/even	et
+both...and	et...et
+from/out of/out	ex + abl.
+make/do	facio
+woman	femina
+hurry	festino
+daughter	filia
+son	filius
+forum/market place	forum
+run away/flee	fugio
+sword	gladius
+have/hold	habeo
+live	habito
+hour	hora
+garden	hortus
+in/on	in + abl
+into/onto	in + acc
+enter	intro
+find	invenio
+invite	invito
+anger	ira
+angry	iratus
+work/toil	laboro
+happy	laetus
+freedman/ex-slave	libertus
+long	longus
+
+# Eng to Lat Page 2
+and	-que
+big/great/large	magnus
+evil/bad	malus
+husband	maritus
+send	mitto
+much/many	multus
+wall	murus
+sailor	nauta
+sail	navigo
+kill	neco
+not	non
+new	novus
+announce/report	nuntio
+messenger/message/news	nuntius
+prepare/provide	paro
+small	parvus
+country/homeland	patria
+money	pecunia
+danger	periculum
+make for/seek/ask for/beg for	peto
+put/place/set up	pono
+gate	porta
+carry/bear/take	porto
+can/be able	possum
+girl	puella
+boy	puer
+when?	quando?
+queen	regina
+kingdom	regnum. regni
+rule	rego
+leave/leave behind	relinquo
+ask/ask for	rogo
+often	saepe
+savage/cruel	saevus
+greet	saluto
+write	scribo
+always	semper
+save/protect/keep	servo
+slave	servus
+wood	silva
+at once/immediately	statim
+suddenly	subito
+be	sum
+overcome/overpower	supero
+shop/inn	taberna
+be silent/be quiet	taceo
+at last/finally	tandem
+temple	templum
+hold	teneo
+frighten	terreo
+be afraid/fear	timeo
+hand over/hand down	trado
+drag	traho
+come	venio
+street/way/road	via
+house/country villa	villa
+conquer/win/be victorious	vinco
+wine	vinum
+man	vir
+call	voco`;
+            const NUM_UNITS = 8;
+            const OPTIONS = {lang: "HERE", id: "HERE", name: "HERE", all: HERE};
+        </script>
+        <script src="../../../scripts/lightdark.js"></script>
+        <script src="../../../scripts/header.js"></script>
+        <script src="../../../scripts/cookies.js"></script>
+        <script src="../../../scripts/footer.js"></script>
+        <script src="../../../scripts/misc.js"></script>
+        <script src="../../../scripts/folders-setup.js"></script>
+        <script src="../../../scripts/folders-misc.js"></script>
+        <script src="../../../scripts/folders-classic.js"></script>
+        <script src="../../../scripts/folders-match.js"></script>
+        <script src="../../../scripts/folders-start.js"></script>
+        <script async data-id="101454906" src="//static.getclicky.com/js"></script>
+    </body>
+</html>
