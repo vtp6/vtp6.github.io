@@ -50,6 +50,10 @@ body.light-theme {
         content: url("https://rujulnayak.com/balance_equation.svg");
     }
 
+    img#logo3 {
+        content: url("https://misc.rujulnayak.com/GCSE-Posters/assets/icon.svg");
+    }
+
     div.link-div:hover {
         border-color: #0093cb;
     }
@@ -62,6 +66,10 @@ body.dark-theme {
     
     img#logo2 {
         content: url("https://rujulnayak.com/balance_equation_dark.png");
+    }
+
+    img#logo3 {
+        content: url("https://misc.rujulnayak.com/GCSE-Posters/assets/icon-dark.svg");
     }
 
     div.link-div:hover {
