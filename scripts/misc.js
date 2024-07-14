@@ -2,9 +2,11 @@
  * Tests a condition and outputs an error message if false.
  * @param {Boolean} condition Condition to test.
  * @param {String} message Error message if failed.
+ * @returns {Boolean} The value of `condition`.
  */
 function assert(condition, message) {
-    if (!condition) console.error("ERROR! " + message);
+    if (!condition) return!! console.error("ERROR! " + message);
+    return true;
 }
 
 /**
@@ -188,4 +190,14 @@ function next_round_number(n) {
 function pluralise(n, s, p=undefined) {
     if (p === undefined) p = s + "s";
     return `${n}${n === 1 ? s : p}`;
+}
+
+/**
+ * Equivalent to the Python code `[*arr] == [*{*arr}]`
+ * (checks if an array contains unique values)
+ * @param {Any[]} arr The array to check the uniqueness of.
+ * @returns {Boolean} If the array is unique.
+ */
+function is_unique(arr) {
+    return arr.every((v, i, a) => a.indexOf(v) === i);
 }
