@@ -1,6 +1,6 @@
 let cookies_button = document.createElement("div");
 cookies_button.innerHTML = `
-    <h1 id="cookie-title">Cookies on VTP6</h1>
+    <h1 id="cookie-title">Welcome to the new VTP6</h1>
     <p id="cookie-text">
         We use cookies on this site (vtp6.rujulnayak.com) to store your theme preferences,
         to save your statistics on this website (e.g. high scores), and for website analytics.
