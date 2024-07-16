@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+    <head>
+        <link rel="stylesheet" href="../../../styles/fonts.css" />
+        <link rel="stylesheet" href="../../../styles/main.css" />
+        <link rel="stylesheet" href="../../../styles/folders.css" />
+        <title>French GCSE (8658) | Vocabulary Testing Program 6</title>
+        <link rel="icon" type="image/png" href="../../../logos/logo-square.png"/>
+        <meta property="og:image" content="../../../logos/logo-banner.png" />
+        <meta property="og:image:width" content="1980" />
+        <meta property="og:image:height" content="1741" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="description" content="Study French GCSE (old specification) on Vocabulary Testing Program 6." />
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="content">
+            <div id="settings-bar">
+                <!-- <span id="before-slider">Classic</span>
+                <label class="switch" id="switch-slider">
+                    <input type="checkbox" id="gamemode-checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span id="after-slider" class="not-selected">Match</span> -->
+                <select id="gamemode-selector"></select>
+                <button class="start-button" id="start-button" role="button" disabled="true">Start!</button>
+                <span id="high-score">
+                    <img class="high-score-image" />
+                    <span id="high-score-text"></span>
+                </span>
+                <p id="help-tip"></p>
+            </div>
+            <div class="flex-container" id="units-flex">
+                <div class="units-flexbox no-border" name="all">
+                    <input type="checkbox" class="folders-checkbox" />
+                    <span class="checkbox-label">All <i id="insert-length-here"></i></span>
+                </div>
+            </div>
+            <div id="margin"></div>
+        </div>
+        <div id="footer"></div>
+        <script>
+            const TERMS_LIST = `# Unit 1
+aimable	kind
+bavard / bavarde	chatty / talkative
+bête	stupid, silly
+compréhensif / compréhensive	understanding
+la confiance	trust
+égoïste	selfish
+l'esprit (m)	mind
+étonnant / étonnante	amazing
+étrange	strange
+fâché / fâchée	angry
+fier / fière	proud
+fou / folle	mad, crazy
+généreux /généreuse	generous
+gentil / gentille	kind, nice
+heureux / heureuse	happy
+injuste	unfair
+jaloux / jalouse	jealous
+de mauvaise humeur	bad tempered
+méchant / méchante	naughty, mean
+paresseux / paresseuse	lazy
+pénible	annoying
+le sens de l'humour	sense of humour
+sportif / sportive	sporty
+sympa	kind, nice
+timide	shy
+tranquille	quiet, calm
+travailleur / travailleuse	hard-working
+triste	sad
+aîné / aînée	elder
+l'amour (m)	love
+le beau-père	step-father
+la belle-mère	step-mother
+célibataire	single
+le copain / la copine	friend, mate
+le demi-frère	half-brother
+la demi-sœur	half-sister
+ensemble	together
+la femme	wife / woman
+la fille	daughter / girl
+le fils	son
+la grand-mère	grandmother
+le grand-père	grandfather
+les grands-parents (m)	grandparents
+le mari	husband
+mort / morte	dead
+la naissance	birth
+né(e) le...	born on the...
+le / la partenaire	partner
+le petit ami	boyfriend
+la petite amie	girlfriend
+la petite-fille	grand-daughter
+le petit-fils	grandson
+le prénom	first name
+les rapports (m)	relationships
+séparé / séparée	separated
+la tante	aunt
+unique	only
+la bague	ring
+les fiançailles (f)	engagement
+le jumeau / la jumelle	twin
+le neveu	nephew
+la barbe	beard
+beau / bel / belle	beautiful
+bouclé / bouclée	curly
+le bouton	spot, pimple
+les cheveux (m)	hair
+court / courte	short
+frisé / frisée	curly
+gros / grosse	fat
+jeune	young
+la jeunesse	youth
+joli / jolie	pretty
+laid / laide	ugly
+long / longue	long
+les lunettes (f)	glasses
+mi-long	medium length
+raide	straight
+de taille moyenne	medium height
+la vieillesse	old age
+vieux / vieil / vieille	old
+les yeux (m)	eyes
+s'appeler	(to) be called
+avoir...ans	(to) be...years old
+connaître	(to) know (a person)
+se disputer	(to) argue
+dire	(to) say, tell
+s'entendre (avec)	(to) get on (with)
+épouser	(to) marry
+se faire des amis	(to) make friends
+gâter	(to) spoil
+gêner	(to) annoy
+se marier	(to) get married, marry
+(en avoir) marre	((to) be) fed up
+mépriser	(to) despise
+se mettre en colère	(to) get angry
+mourir	(to) die
+naître	(to) be born
+partager	(to) share
+sortir	(to) go out
+
+# Unit 2
+s'abonner	(to) subscribe
+acheter	(to) buy
+l'avantage (m)	advantage
+le bloggeur	blogger
+la caméra	camcorder
+chercher	(to) look for
+le clavier	keyboard
+cliquer	(to) click
+le compte	account
+le courrier électronique	email
+dangereux / dangereuse	dangerous
+le désavantage	disadvantage
+l'écran (m)	screen
+l'écran tactile (m)	touch screen
+effacer	(to) delete
+en ligne	online
+enregistrer	(to) record
+envoyer	(to) send
+faire des achats	(to) shop
+le fichier	file
+le forum	chat room
+l'imprimante (f)	printer
+imprimer	(to) print
+l'inconvénient (m)	disadvantage, drawback
+l'internaute (m)	internet user
+le logiciel	software
+mettre en ligne	(to) upload
+le moniteur	monitor
+le mot de passe	password
+numérique	digital
+l'ordinateur (m)	computer
+l'ordinateur portable (m)	laptop
+la page d'accueil	home/welcome page
+la pile	battery
+la publicité	adverts
+remplir	(to) fill (in)
+rencontrer	(to) meet
+le réseau social	social network
+rester en contact	(to) stay in contact
+sauvegarder	(to) save
+le site internet / web	website
+la souris	mouse
+surfer sur Internet	(to) surf the internet
+la tablette (f)	tablet
+taper	(to) type
+tchatter, discuter	(to) chat (online)
+télécharger	(to) download
+le texto, le SMS	text message
+la touche	key
+le traitement de texte	word processing
+
+# Unit 3
+le basket	basketball
+le centre sportif	sports centre
+le cheval	horse
+commencer	(to) start
+courir	(to) run
+la course	race
+débuter	(to) begin
+l'équitation (f)	horse riding
+l'escalade (f)	rock climbing
+essayer	(to) try
+marquer un but	(to) score a goal
+la natation	swimming
+le patinage, le patin à glace	ice skating
+la patinoire	ice rink
+la pêche	fishing / peach
+la piscine	swimming pool
+la planche à voile	wind-surfing
+la promenade	walk
+le skate	skateboarding
+le ski (nautique)	(water) skiing
+les sports d'hiver (m)	winter sports
+le stade	stadium
+le tournoi	tournament
+la voile	sailing
+le volley	volleyball
+les actualités (f)	news
+l'ado (m/f)	adolescent
+le billet	ticket
+la chanson	song
+chanter	(to) sing
+le chanteur / la chanteuse	singer
+la chorale	choir
+le club des jeunes	youth club
+la console de jeux	games console
+le dessin animé	cartoon
+les échecs (m)	chess
+les effets spéciaux (m)	special effects
+l'espèce (f)	type, kind
+un/une fan de	a fan of
+féliciter	(to) congratulate
+le feuilleton	soap opera
+le film de guerre	war film
+le film policier	detective film
+le genre	type, kind
+s'intéresser à	(to) be interested in
+le jeu télévisé	game show
+le jeu	game
+le lecteur DVD/MP3	DVD/MP3 player
+le lieu	place
+le passe-temps	hobby
+passer du temps	(to) spend time
+payer	(to) pay (for)
+prendre	(to) take
+la séance	performance
+la série	series
+la télé réalité	reality television
+le temps libre	free time
+la tournée	tour
+la vedette	film star
+voir	(to) see
+vouloir	(to) wish, (to) want
+l'agneau (m)	lamb
+l'ail (m)	garlic
+amer / amère	sour
+l'ananas (m)	pineapple
+l'argent (m)	money
+l'assiette (f)	plate / dish
+la bière	beer
+bien cuit	well cooked
+le beurre	butter
+le bœuf	beef
+boire	(to) drink
+la boisson	drink
+le canard	duck
+la carte	menu
+la cerise	cherry
+le champignon	mushroom
+choisir	(to) choose
+le chou	cabbage
+le chou-fleur	cauliflower
+le citron	lemon
+commander	(to) order
+coûter	(to) cost
+la confiture	jam
+la crêpe	pancake
+les crudités (f)	raw chopped vegetables
+la dinde	turkey
+l'eau (minérale) (f)	(mineral) water
+l'escargot (m)	snail
+épicé / épicé	spicy
+la fraise	strawberry
+la framboise	raspberry
+les fruits de mer (m)	seafood
+la glace	ice cream
+goûter	(to) taste
+les haricots verts (m)	green beans
+le hors d'œuvre	starter
+le jambon	ham
+le lait	milk
+les légumes (m)	vegetables
+la noix	nut
+la nourriture	food
+l'œuf (m)	egg
+l'oignon (m)	onion
+la pamplemousse	grapefruit
+les pâtes (f)	pasta
+les petits pois (m)	peas
+piquant / piquante	spicy
+le plat principal	main meal
+la poire	pear
+le poisson	fish
+le poivre	pepper
+la pomme	apple
+la pomme de terre	potato
+le potage	soup
+le poulet	chicken
+le pourboire	tip
+la prune	plum
+les raisins (m)	grapes
+le repas	meal
+le riz	rice
+la saucisse	sausage
+le saumon	salmon
+le sel	salt
+le serveur / la serveuse	waiter / waitress
+le steak haché	burger
+le sucre	sugar
+la tasse	cup
+le thé	tea
+le thon	tuna
+la truite	trout
+la viande	meat
+le yaourt	yoghurt
+le veau	veal
+
+# Unit 4
+accrocher	(to) hang
+assister	(to) attend
+avoir hâte de	(to) look forward to
+barbant	boring
+conserver	(to) keep
+consommer	(to) consume
+coûter	(to) cost
+décorer	(to) decorate
+dormir	(to) sleep
+durer	(to) last
+être croyant	(to) be a believer
+fêter	(to) celebrate
+juif/juive	jewish
+l'anniversaire	birthday
+l'église	church
+l'huître	oyster
+l'organisation caritative	charity, charitable organisation
+la blague	joke
+la boule de noël	bauble
+la bûche de noël	christmas log
+la chandeleur	pancake day
+la communauté	community
+la crêpe	pancake
+la dinde	turkey
+la fête	festival/celebration /party
+la fête des mères	mother's day
+la fête des rois	twelfth night/ epiphany
+la fête du travail	may day
+la fin	end
+la lumière	light
+la messe	mass
+la messe de minuit	midnight mass
+la mosquée	mosque
+la pâte	dough
+la pentecôte	whitsuntide
+la réunion	meeting
+la Saint Valentin	valentine's day
+la Saint-Sylvestre	new year's eve
+la société de consommation	consumer society
+la Toussaint	all saints' day
+la veille de Noël	christmas eve
+le cadeau	present
+le cirque	circus
+le défilé	procession
+le jour de l'an	new year's day
+le jour férié	public holiday
+le repas	meal
+le réveillon de noël	christmas eve
+le sapin	christmas tree
+le spectacle de rue	street show
+les feux d'artifice	fireworks
+les gens	people
+les jeunes	young people
+musulman	muslim
+offrir	(to) offer
+ouvrir	(to) open
+pâques	easter
+partager	(to) share
+passer	(to) spend
+poisson d'avril	April fools' day
+recevoir	(to) receive
+religieux/religieuse	religious
+réserver	(to) book, (to) reserve
+réunir	(to) gather
+rigolo	funny
+s'entendre	(to) get on
+s'installer	(to) settle in
+se passer	(to) take place
+se reposer	(to) relax
+se retrouver	(to) meet
+tout le monde	everyone
+voir	(to) see
+voyager	(to) travel
+donner	(to) give
+s'amuser	(to) have fun
+
+# Unit 5
+l'armoire (f)	wardrobe
+le bureau	office, study
+la cave	cellar
+la cuisine	kitchen/cooking
+l'escalier (m)	staircase
+l'étage (m)	floor/storey
+la fenêtre	window
+le four	oven
+le foyer	home/household
+la maison	house
+individuelle	detached
+jumelée	semi-detached
+mitoyenne	terraced
+les meubles (m)	furniture
+le mur	wall
+la pelouse	lawn
+la pièce	room
+le rez-de-chaussée	ground floor
+la salle à manger	dining room
+la salle de bains	bathroom
+le salon	living room
+le sous-sol	basement
+le bâtiment	building
+la bibliothèque	library
+la bijouterie	jeweller's
+la boite (de nuit)	nightclub
+la boucherie	butcher's
+la boulangerie	bakery
+les boutiques (f)	small shops in town
+le centre commercial	shopping centre
+le centre-ville	town centre
+la charcuterie	delicatessen
+le collège	secondary school (Y7-10)
+les commerces (m)	shops
+le commissariat	police station
+l'école	school
+l'église (f)	church
+en ville	in town
+la fac	university, college
+la gare	train station
+la gare routière	bus station
+la grande surface	superstore
+l'hôtel de ville (m)	town hall
+l'immeuble (m)	block of flats
+la librairie	bookshop
+le lycée	secondary school (Y11-13)
+le magasin	shop
+la mairie	town hall
+le marché	market
+la mosquée	mosque
+le musée	museum
+le parc	park
+la pâtisserie	cake shop
+la place	square
+la poste	post office
+le quartier	area/district
+la station-service	service station
+la synagogue	synagogue
+le (bureau de) tabac	newsagent's
+le temple	temple
+l'usine (f)	factory
+la zone piétonne	pedestrian zone
+les baskets (f)	trainers
+le bijou	jewellery
+le blouson	coat/jacket
+la ceinture	seatbelt
+le chapeau	hat
+la chaussette	sock
+la chaussure	shoe
+la chemise	blouse/shirt
+la cravate	tie
+l'écharpe (f)	scarf
+le foulard, le hijab	head scarf
+le gilet	waistcoat
+la jupe	skirt
+le manteau	overcoat
+le pantalon	trousers
+le pull	jumper
+la robe	dress
+le sweat à capuche	hoodie
+la veste	jacket
+les vêtements (m)	clothes
+l'arbre (m)	tree
+aider	(to) help
+animé	lively
+l'arrêt de bus (m)	bus stop
+le besoin	need
+bon marché	cheap
+le bricolage	DIY
+le bruit	noise
+bruyant	noisy
+la caisse	till
+calme	calm
+la campagne	countryside
+la carte bancaire	bank card
+célèbre	famous
+le champ	field
+le choix	choice
+la chose	thing
+la circulation	traffic
+la colline	hill
+déménager	(to) move (house)
+démodé	old-fashioned
+dépenser	(to) spend
+devoir	(to) have to
+les distractions (f)	things (to) do
+économiser	(to) save (money)
+l'embouteillage (m)	traffic jam
+l'endroit (m)	place
+essayer	(to) try
+la ferme	farm
+la fermeture	closure
+la fleur	flower
+les gens (m)	people
+garder	(to) keep
+gratuit	free (of charge)
+l'habitant (e)	inhabitant
+le jardinage	gardening
+laver	(to) wash
+(faire du) lèche-vitrine	((to) go) window shopping
+livrer	(to) deliver
+le loyer	rent
+la lumière	light
+la marque	make, label, brand
+la mode	fashion
+(à) la montagne	(in the) mountain(s)
+nettoyer	(to) clean/tidy
+l'ombre	shade, shadow
+le parfum	perfume
+pauvre	poor
+perdre	(to) lose
+la piste cyclable	cycle lane
+le portefeuille	wallet
+le porte-monnaie	purse
+poser	(to) put down
+pouvoir	(to) be able to
+le prix	price
+propre	clean, tidy
+quitter	(to) leave
+ranger	(to) tidy
+le rayon	department, aisle
+réduire	(to) reduce
+réduit	reduced
+rembourser	(to) reimburse
+le risque	risk
+sale	dirty
+la sécurité	safety
+les soldes (m)	sales
+surchargé	overcrowded
+la tâche	task
+les transports en commun	public transport
+travailler	(to) work
+se trouver	(to) be found/situated
+le vendeur / la vendeuse	shop assistant
+vendre	(to) sell
+la vie	life
+la ville	town
+la vitrine	shop window
+vivre	(to) live
+le voisin	neighbour
+
+# Unit 6
+accro	addicted
+l'alcool (m)	alcohol
+alcoolique	alcoholic
+l'alimentation (f)	food
+aller bien	(to) be well
+aller mieux	(to) be better
+(s') arrêter	(to) stop
+avoir sommeil	(to) be sleepy
+le bonbon	sweet
+le cancer (des poumons)	(lung) cancer
+le casse-croûte	snack
+le chocolat	chocolate
+conseil	advice
+la consommation	consumption/usage
+la crise cardiaque	heart-attack
+dégoûtant	disgusting
+le déjeuner	lunch
+déprimé	depressed
+désintoxiquer	detox
+le dîner	evening meal
+dormir	(to) sleep
+la douleur	pain
+la drogue	drugs
+se droguer	(to) take drugs
+en bonne forme	fit
+en bonne santé	in good health
+s'enivrer	(to) get drunk
+l'entraînement (m)	training
+s'entraîner	(to) train (oneself)
+épuiser	(to) exhaust
+équilibré	balanced
+essoufflé	breathless
+éviter	(to) avoid
+faible	weak
+faire un régime	(to) be on a diet
+fatigué	tired
+le foie	liver
+la forme	fitness
+fort	strong
+fumer	(to) smoke
+garder	(to) keep
+gras	fatty
+l'habitude (f)	habit
+hors d'haleine	out of breath
+ivre, saoul, bourré	drunk
+malade	ill/sick
+la maladie	disease/illness
+malsain	unhealthy
+les matières grasses (f)	fats
+le médecin	doctor
+le médicament	medicine
+mener	(to) lead
+la musculation	weight-training
+la nourriture bio	organic food
+l'obésité (f)	obesity
+la peau	skin
+le petit-déjeuner	breakfast
+quotidien(ne)	daily
+renoncer	(to) give up
+le repas	meal
+respirer	(to) breathe
+sain	healthy
+salé	salty
+la santé	health
+(se) sentir	(to) feel
+le SIDA	AIDS
+soigner	(to) care for
+le soin	care
+le sommeil	sleep
+sucré	sugary
+surveiller	(to) supervise
+le tabac	tobacco
+le tabagisme	addiction to smoking, smoking addiction
+tousser	(to) cough
+le/la toxicomane	drug addict
+vomir	(to) be sick/(to) throw up
+agir	(to) act
+il s'agit de	it's a question of
+l'association caritative (f)	charity
+avertir	(to) warn
+le bonheur	happiness
+cacher	(to) hide
+combattre	(to) combat
+le commerce équitable	fair trade
+coupable	guilty
+la dette	debt
+se détendre	(to) relax
+devenir	(to) become
+l'eau potable (f)	drinking water
+l'égalité (f)	equality
+l'enquête (f)	enquiry
+l'espace vert (m)	green area
+le mannequin	model
+l'odeur (f)	odor/smell
+la pauvreté	poverty
+les personnes défavorisées	disadvantaged people
+pressé	(to) be in a hurry/rushed
+se relaxer	(to) relax
+rester	(to) stay
+réussir	(to) succeed
+les sans-abris, les SDF	homeless people
+suivre	(to) follow
+le tatouage	tatooing
+tenter	(to) attempt
+le travail bénévole	volunteer work
+tuer	(to) kill
+valoir mieux	(to) be better
+vide	empty
+la voix	voice
+
+# Unit 7
+allumer	(to) switch on
+le bain	bath
+la boîte la (en carton)	(cardboard) box
+le centre de recyclage	recycling centre
+le chômage	unemployment
+le chauffage central	central heating
+cultiver	(to) grow
+en danger	in danger
+les déchets (m)	rubbish
+détruire	(to) destroy
+disparaître	(to) disappear
+la douche	shower
+l'environnement (m)	environment
+éteindre	(to) switch off
+faire du recyclage	(to) recycle
+gaspiller	(to) waste
+l'inondation (f)	flood
+jeter	(to) throw (away)
+les ordures (f)	rubbish
+le pétrole	oil
+la piste cyclable	cycle lane
+pollué	polluted
+la poubelle	rubbish bin
+agresser	(to) attack
+améliorer	(to) improve
+l'attaque (f)	attack
+augmenter	(to) increase
+lourd	heavy, serious
+lutter	(to) struggle/fight
+la manifestation	demonstration/protest
+la marée	tide
+mentir	(to) lie
+mondial	worldwide
+le niveau	level
+la paix	peace
+le paysage	countryside / landscape
+(se) plaindre	(to) complain
+produire	(to) provide/produce
+les produits bio (m)	organic/green products
+ramasser	(to) pick up/collect
+reconnaissant	grateful
+le réfugié	refugee
+supporter	(to) tolerate, (to) put up with
+supprimer	(to) suppress/(to) eliminate
+le souci	worry/concern
+le témoin	witness
+le trou	hole
+la vague	wave
+voler	(to) steal
+le voyou	yob, hooligan
+la bande	gang
+la campagne	campaign
+le charbon	coal
+la couche d'ozone	ozone layer
+croire	(to) believe
+le déboisement	deforestation
+l'effet de serre (m)	greenhouse effect
+effrayant	frightening
+égal	equal
+l'emballage (m)	packaging
+empêcher	(to) prevent
+endommager	(to) damage
+l'énergie renouvelable (f)	renewable energy
+l'ennui (m)	boredom/problem, worry
+entouré	surrounded
+l'état (m)	state
+le gaz carbonique	carbon dioxide
+le gaz d'échappement	exhaust fumes
+la guerre	war
+harceler	(to) bully, (to) harass
+le harcèlement	bullying, harassment
+l'immigré (m)	immigrant
+l'incendie (m)	fire
+inonder	(to) flood
+s'inquiéter	(to) worry
+
+# Unit 8
+l'arrivée (f)	arrival
+l'ascenseur (m)	lift
+s'asseoir	(to) sit down
+attendre	(to) wait (for)
+l'aventure (f)	adventure
+les bagages (m)	luggage
+(se) baigner	(to) bathe, swim
+bronzer	(to) sunbathe
+expliquer	(to) explain
+faire la connaissance	(to) get to know
+(se) garer	(to) park
+(s') habituer à	(to) get used to
+l'horaire (m)	timetable
+laisser	(to) leave
+laver	(to) wash
+(se) laver	(to) get washed
+lentement	slowly
+lever	(to) lift
+(se) lever	(to) get up
+le lit	bed
+loger	(to) stay/lodge
+le loisir	free time (activity)
+louer	(to) hire, rent
+les lunettes de soleil (f)	sunglasses
+le maillot de bain	swimming costume
+la carte	map
+la carte postale	postcard
+casser	(to) break
+chercher	(to) look for
+la clé	key
+conduire	(to) drive
+se coucher	(to) go to bed
+la crème solaire	sun cream
+le départ	departure
+descendre	(to) descend/(to) stay
+durer	(to) last
+l'échange (m)	exchange
+l'essence (f)	petrol
+l'étranger / l'étrangère	stranger/foreigner
+marcher	(to) walk
+monter	(to) go up/ascend
+la moto	motorbike
+nager	(to) swim
+le parc d'attractions	theme park
+partir	(to) leave
+la pièce d'identité	means of identification
+le plan de ville	town map/plan
+se présenter	(to) introduce oneself
+prêt	ready
+le projet	plan
+se promener	(to) go for a walk
+le/la propriétaire	owner
+la randonnée	walk/hike
+remercier	(to) thank
+le rendez-vous	meeting
+les renseignements (m)	information
+réserver	(to) book/reserve
+rester	(to) stay
+(se) réveiller	(to) wake up
+revenir	(to) come back
+la salle de séjour	lounge
+le sable	sand
+le sac de couchage	sleeping bag
+le séjour	stay, visit
+le spectacle	show
+le tourisme	tourism
+tourner	(to) turn
+les vacances (f)	holiday(s)
+la valise	suitcase
+la visite (guidée)	guided tour
+voyager	(to) travel
+la vue sur la mer	sea view
+l'aire de jeux (f)	play area
+l'avis (m)	opinion
+le chemin	way, path
+la climatisation	air conditioning
+le concours	competition
+se débrouiller	(to) get by, (to) cope
+déranger	(to) disturb
+donner sur	(to) overlook
+dresser	(to) put up (tent)
+l'événement (m)	event
+faire la grasse matinée	(to) lie in/(to) sleep in
+la foire	fair
+la frontière	border/frontier
+héberger	(to) lodge/(to) accommodate
+l'herbe (f)	grass
+inconnu	unknown
+le jardin zoologique	zoo
+jumelé	twinned
+le lavabo	wash basin
+les lits superposés (m)	bunk beds
+manquer	(to) miss
+se mettre en route	(to) set off
+la moquette	carpet
+paraître	(to) seem
+le permis de conduire	driving licence
+atterrir	(to) land
+l'auto (f)	car
+l'autobus (m), le bus	bus
+l'autoroute (f)	motorway
+l'avion (m)	plane
+le bateau	boat
+le car	coach
+la location de voitures	car rental
+la route	road/way
+la voiture	car
+le vol	flight
+voler	(to) fly
+le chemin de fer	railway
+le train	train
+décoller	(to) take off
+l'auberge de jeunesse (f)	youth hostel
+la chambre d'hôte	bed and breakfast
+la chambre d'hôtel	hotel room
+la colonie de vacances	holiday/summer camp
+le dortoir	dormitory
+l'emplacement (m)	pitch (tent)
+en plein air	in the open air
+faire du camping	(to) go camping
+le gîte	holiday cottage
+l'hôtel	hotel
+la location	rental
+le logement	accommodation
+la tente	tent
+les Alpes (f)	Alps
+l'Angleterre (f) / anglais(e)	England/English
+la Belgique / belge	Belgium/ Belgian
+le bord de la mer	seaside
+britannique	British
+Douvres	Dover
+la Grande-Bretagne	Great Britain
+l'île (f)	island
+le lac	lake
+Londres	London
+la Manche	English Channel
+la Chine / chinois(e)	China/Chinese
+Ecosse (f) / écossais(e)	Scotland/ Scottish
+l'Espagne (f) / espagnol(e)	Spain/Spanish
+les Etats-Unis (m)	United States of America
+à l'étranger	abroad
+la France / français(e)	France/French
+l'Inde (f) / indien(ne)	India/Indian
+le Maroc / marocain(e)	Morocco/ Moroccan
+la Méditerranée	Mediterranean
+le monde	world
+la montagne	mountain
+le Pays de Galles / gallois(e)	Wales/Welsh
+la plage	beach
+la rivière	river
+la Suisse /suisse	Switzerland/Swiss
+la Tunisie / tunisien(ne)	Tunisia/Tunisian
+
+# Unit 9
+l'allemand (m)	German
+la chimie	Chemistry
+le dessin	Art
+l'enseignant	teacher (formal)
+l'EPS (f)	PE
+l'espagnol (m)	Spanish
+le français	French
+l'informatique (f)	IT, comsci
+l'instituteur (m)	primary school teacher (m)
+l'institutrice (f)	primary school teacher (f)
+la langue	language
+la matière	subject
+la physique	Physics
+le professeur, le prof	teacher
+la religion	Religious Studies
+la couture	Sewing
+les langues vivantes (f)	Modern Languages
+l'instruction civique (f)	Citizenship
+le proviseur	head teacher
+
+# Unit 10
+apprendre	(to) learn
+la calculette	calculator
+le collège	secondary school
+comprendre	(to) understand
+le cours	lesson
+demander	(to) ask
+les devoirs (m)	homework
+la difficulté	difficulty
+le diplôme	qualification
+le directeur	head master
+la directrice	head mistress
+la règle	rule
+le règlement	school rules
+la rentrée	return (to) school
+répéter	(to) repeat
+la réponse	reply, answer
+le résultat	result
+réussir un examen	(to) pass an exam
+la salle de classe	classroom
+savoir	(to) know
+scolaire	school (adj)
+le tableau	board
+le terrain de sport	sports field/ground
+le trimestre	term
+trouver	(to) find
+discuter	(to) discuss
+distribuer	(to) distribute/give out
+le droit	right
+l'école (f) primaire	primary school
+l'école (f) secondaire	secondary school
+l'élève (m/f)	pupil
+l'emploi du temps (m)	timetable
+en seconde	in Year 11
+enseigner	(to) teach
+les études (f)	studies
+l'étudiant (m)	student
+l'examen (m)	examination
+faire attention	(to) pay attention
+la leçon	lesson
+la lecture	reading
+lire	(to) read
+le maquillage	make-up
+la note	mark
+oublier	(to) forget
+passer un examen	(to) sit an exam
+la pause	break, pause
+penser	(to) think
+permettre	(to) allow, (to) permit
+porter	(to) carry, wear
+la pression	pressure
+la récré(ation)	break-time
+le lycée	6th form college
+bien équipé	well-equipped
+le bulletin scolaire	school report
+le car de ramassage	school bus
+le couloir	corridor
+doué / douée	gifted/talented
+échouer	(to) fail
+les incivilités (f)	rudeness
+l'injure (f)	insult
+mal équipé	badly equipped
+la maternelle	nursery school
+redouble	(to) repeat the year
+la retenue	detention
+
+# Unit 11
+l'année sabbatique (f)	gap year
+l'apprenti(e)	apprentice
+l'apprentissage (m)	apprenticeship
+avoir envie (de)	(to) want (to)
+avoir l'intention (de)	(to) intend (to)
+le bac(calauréat)	A-level(s)
+le conseiller d'orientation	careers adviser
+en première	in Year 12
+en terminale	in Year 13
+l'épreuve (f)	test
+l'établissement (m)	school building
+les études (f)	studies
+étudier	(to) study
+la faculté, la fac	university, faculty, college
+former	(to) train
+laisser tomber	(to) drop
+la liberté	freedom
+la licence	degree
+le lycée	6th form college
+le stage	work experience
+l'université	university
+la voie générale	academic path
+la voie professionnelle	vocational path
+
+# Unit 12
+l'agent de police	policeman
+l'avenir (m)	future
+l'avocat(e)	lawyer
+le boucher / la bouchère	butcher
+le boulanger / la boulangère	baker
+le boulot	job
+le candidat	candidate
+le chercheur / la chercheuse	researcher
+le coiffeur / la coiffeuse	hairdresser
+le commerce	business
+compter (sur)	(to) count (on)
+le droit	law
+l'employé(e)	employee
+l'employeur	employer
+espérer	(to) hope
+le facteur / la factrice	postman
+le fermier / la fermière	farmer
+gagner	(to) earn, (to) win
+l'idée (f)	idea
+l'infirmier / l'infirmière	nurse
+l'informaticien / l'informaticienne	IT worker
+l'ingénieur / l'ingénieuse	engineer
+le journal	newspaper
+la livre (sterling)	£ (pound sterling)
+le/la maçon	builder
+le mécanicien / la mécanicienne	mechanic
+le médecin	doctor
+la médecine	medicine
+mettre de l'argent de côté	(to) save money
+le patron / la patronne	boss
+le petit job	part-time job
+la plombier / la plombière	plumber
+le policier / la policière	police officer
+le rêve	dream
+rêver	(to) dream
+recevoir	(to) receive
+varié / variée	varied
+le/la vétérinaire	vet
+à peine	scarcely
+assis	sitting
+le/la comptable	accountant
+la croisière	cruise
+le débouché	(job) prospect/opportunity
+debout	standing
+le dessinateur / la dessinatrice (de mode)	(fashion) designer
+disponible	available
+élargir	(to) widen
+l'entreprise (f)	firm/enterprise
+l'entretien (m)	interview
+enrichissant / enrichissante	enriching/rewarding
+l'espoir (m)	hope
+l'interprète (m)	interpreter
+l'outil (m)	tool
+venir de	(to) have just (done something)`;
+            const NUM_UNITS = 12;
+            const OPTIONS = {lang: "fr", id: "fr8658", name: "French GCSE", all: false};
+        </script>
+        <script src="../../../scripts/lightdark.js"></script>
+        <script src="../../../scripts/header.js"></script>
+        <script src="../../../scripts/cookies.js"></script>
+        <script src="../../../scripts/footer.js"></script>
+        <script src="../../../scripts/misc.js"></script>
+        <script src="../../../scripts/folders-setup.js"></script>
+        <script src="../../../scripts/folders-misc.js"></script>
+        <script src="../../../scripts/folders-classic.js"></script>
+        <script src="../../../scripts/folders-match.js"></script>
+        <script src="../../../scripts/folders-start.js"></script>
+        <script async data-id="101454906" src="//static.getclicky.com/js"></script>
+    </body>
+</html>
