@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+    <head>
+        <link rel="stylesheet" href="../../../styles/fonts.css" />
+        <link rel="stylesheet" href="../../../styles/main.css" />
+        <link rel="stylesheet" href="../../../styles/folders.css" />
+        <title>German GCSE (8668) | Vocabulary Testing Program 6</title>
+        <link rel="icon" type="image/png" href="../../../logos/logo-square.png"/>
+        <meta property="og:image" content="../../../logos/logo-banner.png" />
+        <meta property="og:image:width" content="1980" />
+        <meta property="og:image:height" content="1741" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="description" content="Study German GCSE (old specification) on Vocabulary Testing Program 6." />
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="content">
+            <div id="settings-bar">
+                <!-- <span id="before-slider">Classic</span>
+                <label class="switch" id="switch-slider">
+                    <input type="checkbox" id="gamemode-checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span id="after-slider" class="not-selected">Match</span> -->
+                <select id="gamemode-selector"></select>
+                <button class="start-button" id="start-button" role="button" disabled="true">Start!</button>
+                <span id="high-score">
+                    <img class="high-score-image" />
+                    <span id="high-score-text"></span>
+                </span>
+                <p id="help-tip"></p>
+            </div>
+            <div class="flex-container" id="units-flex">
+                <div class="units-flexbox no-border" name="all">
+                    <input type="checkbox" class="folders-checkbox" />
+                    <span class="checkbox-label">All <i id="insert-length-here"></i></span>
+                </div>
+            </div>
+            <div id="margin"></div>
+        </div>
+        <div id="footer"></div>
+        <script>
+            const TERMS_LIST = `# Unit 1
+der Bruder	brother
+das Einzelkind	only child
+der Freund	(boy)friend
+die Geschwister	brothers and sisters, siblings (pl)
+getrennt	separated
+der Goldfisch	goldfish
+die Halbschwester	half-sister
+zu Hause	at home
+das Haustier	pet
+heiraten	(to) marry, (to) get married
+heißen	(to) be called
+der Hund	dog
+jetzt	now
+das Kaninchen	rabbit
+die Katze	cat
+klein	small
+leider	unfortunately
+das Meerschweinchen	guinea pig
+namens	called, named
+nett	nice
+nur	only
+das Pferd	horse
+die Schwester	sister
+der Vogel	bird
+der Wellensittich	budgie
+die Zwillinge	twins (pl)
+auskommen mit	(to) get on with
+aussehen	(to) look, appear
+beide	both
+beschreiben	(to) describe
+bestimmt	certainly
+der Cousin	cousin (m)
+die Cousine	cousin (f)
+die Familie	family
+der Film	film
+die Frau	woman, wife
+die Freundin	(girl)friend
+geben	(to) give
+gefallen	(to) please, (to) like
+die Gemeinschaft	community, group
+das Geschenk	present, gift
+geschieden	divorced
+es gibt	there is / there are
+Glück haben	(to) be lucky
+glücklich	happy
+die Großeltern	grandparents (pl)
+die Großmutter	grandmother
+der Großvater	grandfather
+jeder / jede / jedes	each, every
+ledig	single, unmarried
+liebevoll	loving, affectionate
+der Morgen	morning
+auf die Nerven gehen	(to) get on one's nerves
+die Oma	granny, grandma
+der Onkel	uncle
+der Opa	grandad
+der Partner	partner (m)
+die Partnerin	partner (f)
+die Person	person
+die Stadt	town
+der Stiefbruder	stepbrother
+die Stiefmutter	stepmother
+die Stiefschwester	stepsister
+der Stiefvater	stepfather
+die Tante	aunt
+das Taschengeld	pocket money
+das Verhältnis	relationship
+verheiratet	married
+verlobt	engaged
+sich verstehen (mit)	(to) get on (with)
+vorbeikommen	(to) call in, (to) drop by
+die Witwe	widow
+wohnen	(to) live, (to) reside
+zu dritt	three (of us)
+zusammen	together
+allein	alone
+alleinstehend	single
+altmodisch	old-fashioned
+die Arbeitsstelle	job
+die Braut	bride
+die Freundin	(girl)friend
+gestorben	dead
+heiraten	(to) marry, (to) get married
+die Hochzeit	wedding
+die Kirche	church
+das Kleid	dress
+der Mann	man, husband
+ich möchte	I'd like to
+in Ordnung	fine, OK
+Sinn haben	(to) make sense
+wahrscheinlich	probably
+weiß	white
+zusammenleben	(to) live together
+anders	differently, in a different way
+aufgeregt	excited
+beide	both
+bestimmt	definite(ly), certain(ly)
+brauchen	(to) need
+dagegen	against, not in favour of
+dauern	(to) last
+das Ehepaar	married couple
+ehrlich	honest
+erwarten	(to) wait, (to) expect
+sich freuen auf	(to) look forward to
+geduldig	patient
+die Gesellschaft	society
+das Glück	happiness
+die goldene Hochzeit	golden wedding
+leben	(to) live
+der Lebensstil	lifestyle
+lösen	(to) solve
+etwas Positives	something good
+das Risiko (Risiken)	risk (risks)
+seit	for (a period of time), since
+sich scheiden lassen	(to) get divorced
+einen Sinn für Humor haben	(to) have a sense of humour
+die Stabilität	stability
+der Streit	argument
+suchen	(to) look for
+sich trennen	(to) separate
+veraltet	outdated
+die Verschwendung	waste
+verständnisvoll	understanding (adj)
+versuchen	(to) try
+wichtig	important
+die Wohnung	flat
+
+# ../github/vtp6.github.io/sets/GermanGCSEUnit2/index.html
+die Aktivität (-en)	activity
+auch wenn	even if
+ausgehen	(to) go out
+benutzen	(to) use
+chatten	(to) chat
+das Computerspiel (-e)	computer game
+das Cybermobbing	cyberbullying
+draußen	outside
+erleben	(to) experience
+der Fanatiker (-)	fanatic, fan
+die Freundschaft (-en)	friendship
+funktionieren	(to) work, (to) function
+furchtbar	terrible, awful
+die Gruppe (-n)	group
+hochladen	(to) upload
+in Kontakt bleiben	(to) stay in touch
+kommunizieren	(to) communicate
+der Laptop (-s)	laptop
+lieber	rather
+der Link	link
+meiner Meinung nach	in my opinion
+das Mitglied (-er)	member
+das Mobbing	bullying
+morgen	tomorrow
+die persönliche Information (-en)	personal information
+praktisch	practical
+schnell	quick, fast
+die Sicherheit (-en)	safety, security
+soziale Medien	social media (pl)
+soziale Netzwerke	social networks (pl)
+Sport treiben	(to) practise sport
+teilen	(to) share
+sich treffen (mit)	(to) meet (someone)
+der Treffpunkt (-e)	meeting place
+tun	(to) do
+ungesund	unhealthy
+verbringen	(to) spend (time)
+virtuell	virtual
+wirklich	real, really
+wissen	(to) know
+akzeptieren	(to) accept
+ändern	(to) change
+aufpassen	(to) watch
+beliebt	popular
+der Beruf (-e)	job, profession
+berühmt	famous
+Daten	data (pl)
+deshalb	therefore
+ebenfalls	as well
+entweder ... oder	either ... or
+die Gefahr (-en)	danger
+gleich	same
+informiert	informed
+der Inhalt (-e)	content
+kommunizieren	(to) communicate
+kontrollieren	(to) control
+kostenlos	free of charge
+meist	mostly, usually
+missbrauchen	(to) misuse, (to) abuse
+das Missverständnis (-se)	misunderstanding
+die Nachricht (-en)	message
+der Nutzer (-)	user
+das Passwort (¨-er)	password
+peinlich	embarrassing
+privat	private
+der Ratschlag (¨-e)	piece of advice
+regelmäßig	regular, regularly
+rund um die Uhr	24/7
+rund um die Welt	all around the world
+schicken	(to) send
+schützen	(to) protect
+sicher	safe, secure
+die SMS	text
+der Spitzname (-n)	nickname
+täglich	daily
+unbekannt	unknown
+unerfahren	inexperienced
+verschieden	various, different
+vorsichtig	careful
+das Zeichen (-)	character (in text)
+zerstören	(to) destroy
+der Zweck (-e)	purpose
+Angst haben	(to) be scared, (to) be frightened
+anrufen	(to) call, (to) phone
+benutzen	(to) use
+bestellen	(to) order
+bezahlen	(to) pay
+brauchen	(to) need
+einfach	simply, easy
+einzig	only (adj)
+feiern	(to) celebrate
+der Fotoapparat (-e)	camera
+herunterladen	(to) download
+irgendein(e)	any
+klingeln	(to) ring (bell or alarm)
+Lust haben (etwas zu tun)	(to) want to (do something)
+lustig	fun, funny
+missbrauchen	(to) misuse
+mobben	(to) bully
+neulich	recently
+nützlich	useful
+die Rechnung (-en)	bill
+schicken	(to) send
+simsen	(to) text
+spitze!	brilliant!, great!
+teilen	(to) share
+verstehen	(to) understand
+die Welt (-en)	world
+zugeben	(to) admit
+altmodisch	old-fashioned
+der Anschluss (¨-e)	connection
+besonders	special
+blöd	stupid
+das Dings	thingy
+die Dummheit (-en)	stupid thing, foolishness
+einmal	once
+das Geld	money
+das Gerät (-e)	device, appliance
+gewiss	certain, some
+jederzeit	at any time
+der Kalender (-)	diary, calendar
+der Klingelton (¨-e)	ringtone
+sich konzentrieren	(to) concentrate
+mitnehmen	(to) take with (you)
+nötig	necessary
+das stimmt	that's right / correct
+die Studie	study, research
+der Tarif (-e)	tariff, scale of charges
+vielleicht	perhaps
+der Wecker (-)	alarm clock
+der Weg (-e)	route, way, path
+zeigen	(to) show
+
+# ../github/vtp6.github.io/sets/GermanGCSEUnit3/index.html
+das Abenteuer (-)	adventure
+aufnehmen	(to) record
+einladen	(to) invite
+entspannend	relaxing
+die Flimmerkiste (-en)	box, TV
+sich freuen (über)	(to) be happy (about)
+hervorragend	excellent, outstanding
+das Jahrhundert (-e)	century
+die Leinwand (¨-e)	the big screen, cinema
+Lust haben etwas, zu tun	(to) feel like doing something
+der Regisseur (-e)	director
+die Reihe (-n)	series (films or books)
+der Schauspieler (-)	actor
+die Schauspielerin (-nen)	actress
+der Teilnehmer (-)	participant
+tot	dead
+zeitgemäß	contemporary, up (to) date
+anfangen	(to) start, (to) begin
+angucken / ansehen	(to) watch, (to) look at
+ausverkauft	sold out
+deutschsprachig	German-speaking
+erfolgreich	successful
+es geht um	it's about
+die Hauptrolle (-n)	starring role, main role
+herausbringen	(to) release (record etc.)
+kennenlernen	(to) meet, (to) get to know
+die Komödie (-n)	comedy
+das Mitglied (-er)	member
+die Plattenfirma (-en)	record company
+das Schlagzeug	drum kit
+die Tournee (-s)	tour
+verkaufen	(to) sell
+weltweit	worldwide
+allerlei	all sorts of
+der Augenblick (-e)	moment
+die Auswahl (-en)	selection, choice
+bestellen	(to) order
+Chips	crisps (pl)
+Was darf es sein?	what would you like? (in a shop or restaurant)
+dick	thick, fat
+draußen	outside, outdoors
+drinnen	inside, indoors
+Durst haben	(to) be thirsty
+die Ecke (-n)	corner
+empfehlen	(to) recommend
+enthalten	(to) contain
+das Fett (-e)	fat
+das Fertiggericht (-e)	ready meal
+das Gericht (-e)	dish, meal
+das Hauptgericht (-e)	main course
+holen	(to) get, (to) fetch
+der Kellner (-)	waiter
+die Kellnerin (-nen)	waitress
+es macht nichts	it's OK, it doesn't matter
+die Magermilch	skimmed milk
+der Meeresblick (-e)	sea view
+die Meeresfrüchte	seafood (pl)
+mühsam	arduous, hard work
+Muscheln	mussels (pl)
+die Rechnung (-en)	bill
+die Speisekarte (-n)	menu
+das Stück (-e)	piece
+Das tut mir leid.	I'm sorry.
+vermeiden	(to) avoid
+der Vielfraß (-e)	greedy eater / glutton
+die Vorspeise (-n)	starter
+wählen	(to) choose
+sich die Zeit nehmen	(to) take your time
+die Aalsuppe eel	soup
+das Abendessen (-)	dinner, evening meal
+keine Ahnung haben	(to) have no idea
+die Altstadt	the old part of town
+das Brathähnchen (-)	roast chicken
+die Currywurst (¨-e)	spicy sausage
+die Frikadelle (-n)	meatball
+das Frühstück (-e)	breakfast
+genießen	(to) enjoy
+das Hähnchen (-)	chicken
+die Himbeere (-n)	raspberry
+der Honig	honey
+Hunger haben	(to) be hungry
+die Kartoffel (-n)	potato
+die Küche (-n)	cuisine, kitchen
+der Kühlschrank (¨-e)	fridge
+das Mittagessen (-)	lunch
+die Sahne	cream
+das Schinkenbrot (-e)	ham sandwich
+die Suppe (-n)	soup
+die Angst (¨-e)	fear
+aufregend	exciting
+die Ausrüstung (-en)	equipment, kit
+begleiten	(to) accompany, (to) be with
+sich entscheiden	(to) decide
+erleben	(to) experience
+das Fallschirmspringen	parachuting
+im Freien	outside, in the open air
+die Fußspur (-en)	footprint
+der Gebirgssee (-n)	mountain lake
+gefährlich	dangerous
+die Herausforderung (-en)	challenge
+körperlich	physical
+die Leistung (-en)	achievement
+die Möglichkeit (-en)	possibility
+Mumm haben	(to) have the courage
+mutig	brave, courageous
+der Neoprenanzug (¨-e )	wetsuit
+probieren	(to) try out
+tauchen	(to) dive
+überwinden	(to) overcome
+unternehmungslustig	adventurous
+das Wildwasserschwimmen	white-water swimming
+der Zeitpunkt (-e)	point in time, moment
+abfahren	(to) leave, (to) depart, (to) go off
+sich amüsieren	(to) enjoy oneself
+anstrengend	hard work, effortful
+der Ausflug (¨-e)	trip, excursion
+baden gehen	(to) bathe, (to) swim
+der Besuch (-e)	visit
+die Blockflöte (-n)	recorder
+das Ding (-e)	thing
+ermüdend	tiring
+das Fechten	fencing
+frische Luft schnappen	(to) get a breath of fresh air
+die Führung (-en)	guided tour
+der Grillabend (-e)	barbecue
+großartig	great
+jonglieren	(to) juggle
+der Jugendklub (-s)	youth club
+die Kegelbahn (-en)	bowling alley
+kegeln	(to) bowl
+die Kochkurs (-e)	cookery course
+die Kunstgalerie (-n)	art gallery
+der Reisebus (-se)	coach
+das Schach	chess
+sich sonnen	(to) sunbathe
+teilnehmen	(to) take part, (to) join in
+das Tischtennis	table tennis
+das Turnier (-e)	tournament
+wandern	(to) hike, (to) walk
+die Wanderung (-en)	hike
+
+# ../github/vtp6.github.io/sets/GermanGCSEUnit4/index.html
+der Advent	Advent
+der Adventskranz (¨-e)	Advent wreath
+aufräumen	(to) tidy up
+der Besucher (-)	visitor
+brauchen	(to) need
+das Brötchen (-)	bread roll
+dauern	(to) last
+die Dose (-n)	tin, can
+die Einkaufsliste (-n)	shopping list
+die Erdbeere (-n)	strawberry
+der Feiertag (-e)	public holiday
+die Flasche (-n)	bottle
+sich freuen über	(to) be happy about
+die Gurke (-)	cucumber
+der Herbst	autumn
+das Kännchen (-)	pot (of coffee etc.)
+der Käse	cheese
+der Keks (-e)	biscuit
+der Kopfsalat	lettuce
+das Körbchen (-)	punnet
+der Maifeiertag	May Day
+das Mohnbrötchen (-)	poppy seed roll
+der Muttertag	Mother's Day
+das Oktoberfest	October (beer) festival
+der Osterhase (-n)	Easter bunny
+Österreich	Austria
+die Packung (-en)	packet, carton pack
+die Paprikawurst	paprika sausage
+picknicken / ein Picknick machen	(to) have a picnic
+die Schachtel (-n)	box
+der Schinken	ham
+die Schweiz	Switzerland
+der Senf	mustard
+Silvester	New Year's Eve
+das Spielzeug (-e)	toy
+stattfinden	(to) take place
+das Stück (-e)	piece
+die Tasse (-n)	cup
+teilnehmen (an)	(to) take part (in)
+der Teller (-)	plate
+die Tomate (-n)	tomato
+die Tradition (-en)	tradition
+die Tüte (-n)	bag, carton, cone
+die Vereinigten Staaten	the USA
+das Volksfest (-e)	public festival
+die Weintraube (-n)	grape
+zerschmettern	(to) smash
+zusammenarbeiten	(to) work together
+das Zwiebelbrot	onion bread
+aufpassen	(to) watch out, (to) take care
+der / die Bekannte (-n)	acquaintance, friend
+berichten	(to) report
+die Bratwurst (¨-e)	(fried) sausage
+bunt	brightly coloured
+deutschsprachig	German-speaking
+feiern	(to) celebrate
+das Feuerwerk (-e)	firework(display)
+im Freien	in the open air, outside
+der Frühling	spring
+das Gedicht (-e)	poem
+der / die Geliebte (-n)	loved one
+das Geschenk (-e)	present, gift
+das Gespenst (-er)	ghost
+grillen	(to) barbecue
+gruselig	spooky
+das Gute	the good thing
+das Hähnchen (-)	chicken
+das Herz (-en)	heart
+herzförmig	heart-shaped
+die Hexe (-n)	witch
+der Karton	cardboard
+kindisch	childish
+kitschig	cheesy
+kleben	(to) stick
+komisch	funny
+das Kostüm (-e)	costume
+der Kürbis (-se)	pumpkin
+die Laterne (-n)	lantern
+der Nachbar (-n)	neighbour
+der Plüschbär (-en)	teddy bear
+die Praline	chocolate
+der Scherz (-e)	joke
+schicken	(to) send
+das Straßenfest (-e)	street party
+der Streich (-e)	trick
+der Valentinstag (-e)	Valentine's Day
+sich verkleiden	(to) put on fancy dress, (to) dress up
+weltweit	worldwide
+der Zauberer (-)	magician
+der Anfang	beginning
+anzünden	(to) light
+aufstellen	(to) put up
+austauschen	(to) exchange
+backen	(to) bake
+der Besuch (-e)	visit
+der Feiertag (-e)	public holiday
+der Gänsebraten	roast goose
+der / die Heilige (-n)	saint
+Heiliger Abend / Heiligabend	Christmas Eve
+die Kartoffel (-n)	potato
+die Kartoffelklöße	potato dumplings (pl)
+die Kerze (-n)	candle
+das Laub	greenery
+der Neujahrstag	New Year's Day
+die Nuss (¨-e)	nut
+das Osterei (-er)	Easter egg
+Ostern	Easter
+der Rotkohl	red cabbage
+schmücken	(to) decorate
+der Stiefel (-)	boot
+der Tannenbaum (¨-e)	fir / pine tree
+unordentlich	untidy, messy
+Weihnachten	Christmas
+der Weihnachtsbaum (¨-e)	Christmas tree
+die Weihnachtszeit	Christmas time
+der Aschermittwoch	Ash Wednesday
+bekommen	(to) get, (to) receive
+berühmt	famous
+besonders	especially
+böse	evil, bad
+der Fasching	another word for carnival
+die Fastenzeit	period of fasting, Lent
+Fastnacht	carnival
+die Feier	celebration
+die Festlichkeit (-en)	celebration
+das Gebet (-e)	prayer
+die Geister	spirits (pl)
+genau	exact, exactly
+die Glocke (-n)	bell
+heilig	holy
+hervorragend	excellent, outstanding
+die Hupe (-n)	horn, klaxon
+der Karneval	carnival
+der Kunde (-n)	customer (m)
+die Kundin (-nen)	customer (f)
+das Licht (-er)	light
+die Menge (-n)	crowd
+mitmachen	(to) join in
+die Moschee (-n)	mosque
+stammen aus	(to) come from, (to) date from
+überall	everywhere
+der Umzug (¨-e)	procession
+verteiben	(to) drive out, (to) expel
+die Verwandten	relatives (pl)
+vorbereiten	(to) prepare
+der Wagen (-)	float (in a procession)
+wecken	(to) awaken
+wegtreiben	(to) banish
+die Zeit	time
+
+# ../github/vtp6.github.io/sets/GermanGCSEUnit5/index.html
+altmodisch	old-fashioned
+das Arbeitszimmer (-)	study
+das Badezimmer (-)	bathroom
+das Bett (-en)	bed
+das Esszimmer (-)	dining room
+der Fernseher (-)	TV
+der Flur (-e)	hall, corridor
+der Herd (-e)	cooker
+die Kommode (-n)	chest of drawers
+die Küche (-n)	kitchen
+neben	next to
+oben	upstairs
+das Schlafzimmer (-)	bedroom
+der Schrank (¨-e)	cupboard
+der Sessel (-)	armchair
+das Sofa (-s)	sofa
+der Spiegel (-)	mirror
+der Stock (-)	floor, storey
+der Stuhl (¨-e)	chair
+der Tisch (-e)	table
+die Toilette (-n)	toilet
+unten	downstairs
+der Vorhang (¨-e)	curtain
+das Wohnzimmer (-)	living room
+an	on
+auf	on (top of)
+die Bettdecke (-n)	blanket, duvet
+das Bücherregal (-e)	bookshelf
+das Doppelhaus (¨-er)	semi-detached house
+eigen	own (adj)
+das Einfamilienhaus (¨-er)	detached house
+zum Glück	fortunately
+hinter	behind
+das Hochhaus (¨-er)	high-rise block of flats
+kaputt	broken
+der Kleiderschrank (¨-e)	wardrobe
+das Kopfkissen (-)	pillow
+der Nachbar (-n)	neighbour
+der Nachttisch (-e)	bedside cabinet
+die Pflanze (-n)	plant
+das Reihenhaus (¨-er)	terraced house
+die Schublade (-n)	drawer
+der Stadtrand (¨-er)	outskirts of town
+unordentlich	untidy
+unter	under
+vor	in front of, before, outside
+die Wand (¨-e)	wall (inside)
+der Wohnblock (-s)	block of flats
+die Wohnung (-en)	flat, apartment
+zwischen	(in) between
+das Bauernhaus (¨-er)	farmhouse
+der Bauernhof (¨-e)	farm
+der Berg (-e)	mountain
+beschreiben	(to) describe
+die Brücke (-n)	bridge
+das Café (-s)	cafe
+die Disko (-s)	disco
+das Dorf (¨-er)	village
+der Fluss (¨-e)	river
+im Freien	outside
+herrlich	marvellous, magnificent, glorious
+das Kino (-s)	cinema
+die Küste (-n)	coast
+das Land	countryside
+die Landschaft (-en)	landscape, countryside
+leider	unfortunately
+mies	rotten, lousy
+in der Nähe	nearby
+ruhig	quiet, calm
+das Schwimmbad (¨-er)	swimming pool
+das Sportzentrum (-zentren)	sports centre
+die Stadt (¨-e)	town
+die Stadtmitte (-n)	town centre
+todlangweilig	dead boring
+der Wald (¨-er)	wood, forest
+die Ampel (-n)	traffic light
+die Apotheke (-n)	pharmacy
+die Auswahl	choice, selection
+die Bäckerei (-en)	bakery, baker's shop
+ein bisschen	a little
+das Dach (¨-er)	roof
+das Denkmal (¨-er)	monument
+der Einwohner (-)	inhabitant
+das Elektrogeschäft (-e)	shop for electrical goods
+die Fabrik (-en)	factory
+der Friseur (-e)	hairdresser (m)
+die Friseurin (-nen)	hairdresser (f)
+die Fußgängerzone (-n)	pedestrian precinct
+die Gegend (-en)	area
+das Geschäft (-e)	shop
+der Hafen (-)	harbour, port
+der Hauptbahnhof (¨-e)	main railway station
+die Hauptstadt (¨-e)	capital city
+das Juweliergeschäft (-e)	jeweller's shop
+das Kaufhaus (¨-er)	department store
+das Kleidergeschäft (-e)	clothes shop
+die Konditorei (-en)	confectioner's
+die Kreuzung (-en)	crossroads
+die Kunstgalerie (-n)	art gallery
+das Lebensmittelgeschäft (-e)	grocer's shop
+leiden	(to) stand, (to) bear
+der Marktplatz (¨-e)	marketplace
+die Mauer (-n)	wall (outside)
+die Metzgerei (-en)	butcher's shop
+der Obst-und Gemüseladen (¨-)	greengrocer's shop
+öffentliche Verkehrsmittel	public transport (pl)
+der Parkplatz (¨-e)	parking space
+der Preis (-e)	price
+preiswert	cheap, value for money
+die Reinigung (-en)	dry-cleaner's
+die S-Bahn (-en)	suburban (fast) railway
+sogar	even
+die Sparkasse (-n)	(savings) bank
+der Vorort (-e)	suburb
+das Warenhaus (¨-er)	department store
+
+# ../github/vtp6.github.io/sets/GermanGCSEUnit6/index.html
+das Altenheim (-e)	old people's home
+arbeiten	(to) work
+das Ausland	foreign country
+behindert	disabled
+brauchen	(to) need
+die Eigenschaft (-en)	quality
+die Erfahrung (-en)	experience
+Europa	Europe
+freiwillig	voluntary
+der/die Freiwillige (-n)	volunteer
+geduldig	patient
+helfen	(to) help
+die Hilfe (-n)	help
+sich interessieren für	(to) be interested in
+leicht	easy
+die Mannschaft (-en)	team
+möglich	possible
+nützlich	useful
+das Projekt (-e)	project
+reich	rich
+schwierig	difficult
+sensibel	sensitive
+trainieren	(to) train
+unmöglich	impossible
+wichtig	important
+der Arbeitstag (-e)	working day
+arm	poor
+die Aufgabe (-n)	task, job
+aufräumen	(to) tidy up
+aussehen	(to) look
+eigentlich	actually, really
+einfach	simple
+faszinierend	fascinating
+füttern	(to) feed
+die Grundschule (-n)	primary school
+herkommen	(to) come from, (to) originate from
+der Kindergarten (¨-)	nursery
+das Kinderheim (-e)	children's home
+das Krokodil (-e)	crocodile
+mehrere	several
+die Natur	nature
+der Ort (-e)	place
+die Schildkröte (-n)	tortoise, turtle
+die Schlange (-n)	snake
+spannend	exciting, thrilling
+spazieren gehen	(to) go for a walk
+süß	sweet
+täglich	daily
+der Tierpark (-s)	animal park, zoo
+das Tierheim (-e)	animal shelter
+die Umwelt	environment
+der Unterricht	lessons, teaching
+unterrichten	(to) teach
+verbringen	(to) spend (time)
+verschieden	different
+vorlesen	(to) read (aloud)
+die Weltkarte (-n)	world map
+zurzeit	at present
+der Alkohol	alcohol
+die Chips	crisps (pl)
+die Droge (-n)	drug
+elektronisch	electronic
+in Form sein	(to) be in form / (to) be in (good) shape
+das Gemüse	vegetables
+gesund	healthy
+die Gesundheit	health
+krank	ill
+der Kuchen (-)	cake
+das Medikament (-e)	medicine
+nehmen	(to) take
+das Obst	fruit
+rauchen	(to) smoke
+sagen	(to) say
+schmecken	(to) taste
+süchtig	addicted, addictive
+die Zigarette (-n)	cigarette
+abnehmen	(to) lose weight
+aufgeben	(to) give up
+aufhören	(to) stop
+außerdem	besides, furthermore
+daher	that is why
+damals	back then, in those days
+deshalb	therefore, because of that
+deswegen	therefore, because of that
+die Diät (-en)	diet
+dick	fat
+enthalten	(to) contain
+die Faulheit	laziness
+fettleibig	obese
+heutzutage	nowadays
+das Krankenhaus (¨-er)	hospital
+der Krebs (-e)	cancer
+der Lebensstil (-e)	lifestyle
+die Leber	liver
+leider	unfortunately
+die Mannschaft (-en)	team
+die Sache (-n)	thing, stuff
+schädlich	damaging, harmful
+sparen	(to) save
+sterben	(to) die
+der Stubenhocker (-)	couch potato, stay-at-home (m)
+die Stubenhockerin (-nen)	couch potato, stay-at-home (f)
+der Tabak (-e)	tobacco
+verbessern	(to) improve
+weder ... noch	... neither ... nor
+zunehmen	(to) put on weight
+
+# ../github/vtp6.github.io/sets/GermanGCSEUnit7/index.html
+der Abfalleimer (-)	rubbish bin, litter bin
+die Atmosphäre	atmosphere
+das Altpapier	waste paper
+ausmachen	(to) turn off
+benutzen	(to) use
+das Benzin	petrol
+bleifrei	lead-free
+das Elektroau(to) (-s)	electric car
+enthalten	(to) contain
+die Heizung	heating
+herunterdrehen	(to) turn down
+der Kunststoff (-e)	man-made / synthetic material
+das Licht	light
+die Luft	air
+der Müll	rubbish
+die Mülltonne (-n)	dustbin
+die Plastiktüte (-n)	plastic bag
+schaden	(to) damage
+schützen	(to) protect
+die Solarzelle (-n)	solar panel
+die Sonnenenergie	solar energy
+sparen	(to) save
+die Spraydose (-n)	aerosol
+der Strom	electricity
+die Tankstelle (-n)	petrol station
+trennen	(to) separate
+die Umwelt	environment
+umweltfeindlich	environmentally hostile
+umweltfreundlich	environmentally friendly
+umweltschädlich	harmful to the environment
+der Wald (¨-er)	forest
+der Abfall (¨-e)	rubbish, waste, litter
+die Abgase	exhaust fumes (pl)
+atmen	(to) breathe
+die Bevölkerung (-en)	population
+der Biomüll	organic waste
+die Dose (-n)	can
+die Energiesparlampe (-n)	energy-saving bulb
+der Fahrradweg (-e)	bicycle track / lane
+der Flughafen (¨-)	airport
+gefährlich	dangerous
+die Gewalt	violence
+der Jogurtbecher (-)	yogurt pot
+der Karton (-s)	cardboard, cardboard box
+der Kaugummi (-s)	chewing gum
+die Kohle	coal
+das Kraftwerk (-e)	power station
+der Lärm	noise
+der LKW (-s) (Lastkraftwagen)	HGV, lorry
+die Luftverschmutzung	air pollution
+sauber	clean
+schmutzig	dirty
+starten	(to) take off
+die Verpackung (-en)	packaging
+die Wasserverschmutzung	water pollution
+wegen	because of
+wegwerfen	(to) throw away
+zunehmen	(to) increase
+allein	alone
+arbeitslos	unemployed
+arm	poor
+betteln	(to) beg
+der Bettler (-)	beggar
+brauchen	(to) need
+der Dieb (-e)	thief (m)
+die Diebin (-nen)	thief (f)
+einsam	lonely
+sich fühlen	(to) feel
+das Gefängnis (-se)	prison
+hässlich	ugly
+die Hilfe	help
+die Kneipe (-n)	pub
+leben	(to) live
+reich	rich
+die Sozialhilfe	income support
+die Sozialwohnung (-en)	council flat
+stehlen	(to) steal
+überleben	(to) survive
+unterstützen	(to) support
+verdienen	(to) earn
+die Armut	poverty
+bedrohlich	threatening
+endlich	finally
+erscheinen	(to) appear, (to) seem
+fest	fixed, solid
+das Feuerholz	firewood
+fliehen	(to) flee
+die Flucht (-en)	escape
+der Flüchtling (-e)	refugee
+das Flüchtlingslager (-)	refugee camp
+froh	happy, glad, pleased
+die Geburt (-en)	birth
+hilflos	helpless
+holen	(to) fetch, (to) get
+das Holz	wood
+keinen festen Wohnsitz haben	(to) have no fixed home
+der Krieg (-e)	war
+sich kümmern um	(to) look after
+das Leben (-)	life
+losgehen	(to) set off
+obdachlos	homeless
+rauswerfen	(to) throw out
+das Risiko (Risiken)	risk
+schwierig	difficult
+die Sicherheit	safety
+die Suppenküche (-n)	soup kitchen
+die Tasche (-n)	bag
+über	over, above, via
+verkaufen	(to) sell
+wiederkommen	(to) come back
+
+# ../github/vtp6.github.io/sets/GermanGCSEUnit8/index.html
+bedeckt	overcast
+Belgien	Belgium
+der Blitz (-e)	lightning
+es blitzt	it's lightning
+der Donner (-)	thunder
+es donnert	it's thundering
+feucht	damp
+frieren	(to) freeze
+das Gewitter (-)	thunderstorm
+der Grad (-)	degree
+Griechenland	Greece
+der Hagel (-)	hail
+es hagelt	it's hailing
+heiter	bright, fine, clear, fair
+die Jugendherberge (-n)	youth hostel
+kalt	cold
+kühl	cool
+nass	wet
+der Nebel (-)	fog
+nebelig	foggy
+die Pension (-en)	small hotel, guest house
+Polen	Poland
+der Regen (-)	rain
+regnen	(to) rain
+Russland	Russia
+der Schauer (-)	shower
+der Schnee	snow
+schneien	(to) snow
+sonnig	sunny
+der Sturm (¨-e)	storm
+stürmisch	stormy
+trocken	dry
+übermorgen	the day after tomorrow
+übernachten	(to) stay overnight
+der Urlaub (-e)	holiday
+verbringen	(to) spend (time)
+vorgestern	the day before yesterday
+weiterfahren	(to) travel on
+die Wettervorhersage (-n)	weather forecast
+der Wind (-e)	wind
+windig	windy
+wolkig	cloudy
+die Autobahn (-en)	motorway
+das Boot (-e)	boat
+das Doppelzimmer (-)	double room
+der Eingang (¨-e)	entrance
+das Einzelzimmer (-)	single room
+erlaubt	allowed
+die Fähre (-n)	ferry
+die Fahrkarte (-n)	ticket
+der Fahrpreis (-e)	fare
+das Gleis (-e)	track, platform
+der Haartrockner (-)	hairdryer
+die Halbpension	half board
+der Koffer (-)	suitcase
+das Mittelmeer	Mediterranean Sea
+der Passagier (-e)	passenger
+der Reisebus (-se)	coach
+der Rezeptionist (-en)	receptionist (m)
+die Rezeptionistin (-nen)	receptionist (f)
+der Schatten (-)	shade, shadow
+schattig	shady
+der Stau (-s)	traffic jam
+die Übernachtung (-en)	overnight stay
+die Übernachtung mit Frühstück	Bed and Breakfast)
+die Unterkunft (¨-e)	accommodation
+die Vollpension	full board
+der Wohnwagen (-)	caravan
+das Zelt (-e)	tent
+das Zweibettzimmer (-)	twin bedroom
+die Bahn (-en)	train
+bald	soon
+Bayern	Bavaria
+der Bus (-se)	bus
+die Donau	River Danube
+fleißig	hard (working)
+Grüezi	Swiss word for hello
+Grüß Gott	hello
+langsam	slow(ly)
+die Ostsee	Baltic Sea
+plötzlich	suddenly
+der Rhein	River Rhine
+das Schiff (-e)	ship
+schnell	fast, quick(ly)
+der Strand (¨-e)	beach
+das Tal (¨-er)	valley
+Wien	Vienna
+der Zug (¨-e)	train
+zuletzt	finally, lastly
+die Abfahrt (-en)	departure
+aussteigen	(to) alight, (to) get off (bus or tram or train)
+besichtigen	(to) sightsee, (to) visit, (to) have a look
+der Bildschirm (-e)	screen
+die Burg (-en)	castle
+einsteigen	(to) get in / (to) get on
+die Eintrittskarte (-n)	admission ticket
+entlang	along
+der Fahrkartenautomat (-en)	ticket machine
+der Fahrkartenschalter (-)	ticket office
+die Fahrradvermietung (-en)	bicycle hire
+der Fotoapparat (-e)	camera
+die Führung (-en)	guided tour
+ganzjährig	all year round
+herrlich	marvellous, magnificent, glorious
+der Kopfhörer (-)	headphones
+die Linie (-n)	line, number (tram or bus)
+München	Munich
+die Öffnungszeiten	opening times (pl)
+das Reisebüro (-s)	travel agency
+der Reisebus (-se)	coach
+die Rundfahrt (-en)	tour, round trip
+das Schloss	castle, palace
+die Sehenswürdigkeit (-en)	tourist attraction, sight
+sich sonnen	(to) sunbathe
+umsteigen	(to) change (means of transport)
+der Wartesaal (¨-e)	waiting room
+wieder	again
+
+# ../github/vtp6.github.io/sets/GermanGCSEUnit9/index.html
+die Aula (Aulen)	school hall
+die Bibliothek (-en)	library
+erfahren	(to) learn, (to) find out
+der Gang (¨-e)	corridor
+das Gebäude (-)	building
+gemischt	mixed
+das Gymnasium (Gymnasien)	grammar school
+das Labor (-e)	laboratory
+das Lehrerzimmer (-)	staffroom
+die Mensa (-s)	dining hall, canteen
+der Neubau (-ten)	new build
+die Pause (-n)	break
+plaudern	(to) chat, (to) talk
+der Schüler (-)	pupil, school student (m)
+die Schülerin (-nen)	pupil, school student (f)
+der Schulhof (¨-e)	school yard, playground
+das Sekretariat (-e)	admin office
+das Sprachlabor (-e)	language lab
+der Sprachunterricht (-e)	language lessons
+die Theatervorführung (-en)	theatrical performance
+die Turnhalle (-n)	sports hall, gym
+umbauen	(to) rebuild
+die Veranstaltung (-en)	event
+die Versammlung (-en)	assembly
+die Zeitschrift (-en)	magazine
+1 = sehr gut	very good
+2 = gut	good
+3 = befriedigend	satisfactory, fair
+4 = ausreichend	sufficient, pass (just)
+5 = mangelhaft	poor, unsatisfactory, fail
+6 = ungenügend	extremely poor, inadequate
+das Abitur (-e)	German school leaver qualification (A-Level equivalent)
+der (Schul)abschluss (¨-e)	qualification
+das Abschlusszeugnis (-se)	school leaving certificate
+angenehm	pleasant, agreeable
+bestehen	(to) pass (an exam or test)
+das Bundesland (¨-er)	state (of Germany)
+der Direktor (-en)	head teacher (m)
+die Direktorin (-nen)	head teacher (f)
+der Fremdsprachenassistent (-en)	language assistant (m)
+die Fremdsprachenassistentin (-nen)	language assistant (f)
+die Ganztagsschule (-n)	all-day school
+die Gesamtschule (-n)	comprehensive school
+glücklicherweise	fortunately, luckily
+die Hauptschule (-n)	type of secondary school
+der Hausmeister (-)	caretaker (m)
+die Hausmeisterin (-nen)	caretaker (f)
+die Hauswirtschaft (-en)	home economics
+der Internat (-e)	boarding school
+die Klassenarbeit (-en)	test
+mindestens	at least
+die Note (-n)	mark, grade
+die Oberstufe (-n)	sixth form
+das Pflichtfach (¨-er)	compulsory subject
+die Prüfung (-en)	exam
+die Realschule (-n)	type of secondary school
+die mittlere Reife	school-leaving certificate usually taken after the sixth year of secondary school
+der Schulleiter (-)	head teacher (m)
+die Schulleiterin (-nen)	head teacher (f)
+das Schulsystem (-e)	school system
+selbstständig	independent
+vorbereiten	(to) prepare
+das Wahlfach (¨-er)	optional subject
+(das) Werken	handicraft
+das Zeugnis (-se)	school report
+Richtig	right
+Wichtig	important
+Mindestens	at least
+Mit + age	at the age of
+Mit sechs Jahren	at the age of six
+Vor sechs Jahren	six years ago
+seit sechs Jahren	for six years
+Das Bundesland	state
+Anders	different
+Nach	after
+Selbstständig	independent
+Oberstufe	sixth form
+Hauptschule	secondary school
+vorbereiten	(to) prepare
+Bekommen	(to) receive, (to) get
+Werden	(to) become
+Gesamtschule	comprehensive school
+Das heißt	that means
+Gleich	same
+Nur	only
+ungefähr	about, approximately
+Obwohl	although
+Mangelhaft	inadequate
+Bestanden	(to) pass
+Sich schminken	(to) put on makeup
+Sofort	right away
+Danach	afterwards
+Dauert	takes/lasts
+Umkleideraum	changing room
+
+# ../github/vtp6.github.io/sets/GermanGCSEUnit10/index.html
+sich anziehen	(to) get dressed
+aufstehen	(to) get up, (to) stand up
+das Aufstehen	getting up
+aufwachen	(to) wake up
+sich ausziehen	(to) get undressed
+bis	until, to
+sich duschen	(to) have a shower
+das Ereignis (-se)	event
+faul	lazy
+fleißig	hard-working, industrious
+früh	early
+nachsitzen	(to) have a detention
+sich rasieren	(to) shave
+sich schminken	(to) put on make-up
+schwatzen	(to) chat
+selten	rarely, seldom
+sitzen	(to) sit
+typisch	typical
+der Umkleideraum (¨-e)	changing room
+sich umziehen	(to) get changed
+verlassen	(to) leave
+sich waschen	(to) get washed
+sich die Zähne putzen	(to) clean one's teeth
+abschreiben	(to) copy
+die AG (-s) (Arbeitsgemeinschaft (-en))	extra-curricular activity
+aufpassen	(to) pay attention
+der Austausch (-e)	exchange
+blau machen	(to) play truant, (to) skip school
+durchfallen	(to) fail (exam or test)
+sich entspannen	(to) relax
+der Erfolg (-e)	success
+erklären	(to) explain
+fleißig	hard-working
+gestreift	striped
+korrigieren	(to) correct, (to) mark
+merken	(to) notice
+mündlich	oral
+die Nachprüfung (-en)	re-sit
+der Notendruck	pressure (to) get good marks
+die Regel (-n)	rule
+schaffen	(to) get, (to) achieve, (to) manage
+schwänzen	(to) play truant, (to) skip school
+sitzen bleiben	(to) repeat a school year
+trotzdem	nevertheless, even so
+ungerecht	unfair
+versetzt werden	(to) be moved up (to the next year group)
+wahnsinnig	crazy
+wiederholen	(to) repeat
+
+# ../github/vtp6.github.io/sets/GermanGCSEUnit11/index.html
+das Alter	age
+die Ausbildung (-en)	(job) training, education
+der / die Azubi (-s) (Auszubildende)	apprentice, trainee
+der Bauarbeiter (-)	construction worker (m)
+die Bauarbeiterin (-nen)	construction worker (f)
+die Berufspraxis (-praxen)	work experience
+die Berufsschule (-n)	vocational training school
+die Bewerbung (-en)	application
+einzig	single, only
+jobben	(to) (do casual) work
+der / die Jugendliche (-n)	young person
+klappen	(to) succeed, (to) work
+langweilig	boring
+der LKW-Fahrer (-)	lorry driver (m)
+die LKW-Fahrerin (-nen)	lorry driver (f)
+der Mindestlohn (¨-e)	minimum wage
+nachdenken	(to) think something over
+die Priorität (-en)	priority
+pünktlich	punctual, on time
+der Studienplatz (¨-e)	university place
+das Studium (Studien)	studies
+die Universität (-en)	university
+wirklich	really
+zufällig	by chance
+die Arbeitserfahrung (-)	experience of work
+Backwaren	baked goods (pl)
+bedienen	(to) serve
+behandeln	(to) treat, (to) handle
+der Berufsberater (-)	careers adviser
+die Buchhandlung (-)	bookshop
+der / die Büroangestellte (-n)	office worker
+eher	rather
+(sich) entscheiden	(to) decide
+das Exemplar (-e)	example
+auf keinen Fall	under no circumstances
+herstellen	(to) make, (to) produce
+die Karriere (-n)	career
+der Klempner (-)	plumber (m)
+die Klempnerin (-nen)	plumber (f)
+der Koch (¨-e)	cook (m)
+die Köchin (-nen)	cook (f)
+Lebensmittel	food (pl)
+lehren	(to) teach
+der Mechaniker (-)	mechanic (m)
+die Mechanikerin (-nen)	mechanic (f)
+der Pfleger (-)	care worker (m)
+die Pflegerin (-nen)	care worker (f)
+der Schmerz (-en)	pain
+die Stelle (-n)	job
+der Strauß (¨-e)	bunch of flowers
+teilweise	partly
+theoretisch	theoretically
+unbedingt	definitely
+der Verkäufer (-)	shop assistant (m)
+die Verkäuferin (-nen)	shop assistant (f)
+der Versuch (-e)	attempt
+(sich) vorstellen	(to) introduce (oneself)
+die Werkstatt (¨-en)	garage
+zustellen	(to) deliver
+
+# ../github/vtp6.github.io/sets/GermanGCSEUnit12/index.html
+ausprobieren	(to) test, (to) try out
+ausüben	(to) practise (a profession)
+bewerben (sich um)	(to) apply for
+der Briefträger (-)	postman
+die Briefträgerin (-nen)	postwoman
+enttäuscht	disappointed
+die Feuerwehrfrau (-en)	firefighter (f)
+der Feuerwehrmann (¨-er)	firefighter (m)
+gedreht	shot (a film)
+gelernt	fully trained
+hochladen	(to) upload
+der Kassierer (-)	cashier, bank clerk (m)
+die Kassiererin (-nen)	cashier, bank clerk (f)
+pflegen	(to) care for
+reparieren	(to) repair
+der Sänger (-)	singer (m)
+die Sängerin (-nen)	singer (f)
+der Soldat (-en)	soldier
+die Soldatin (-nen)	soldier (f)
+die Stimme (-n)	voice
+üben	(to) practise
+das Vorstellungsgespräch (-e)	job interview
+der Wasserhahn (¨-e)	tap
+das Arbeitspraktikum (-praktika)	work experience
+die Atempause (-n)	a pause for breath
+eröffnet	opened
+der Gärtner (-)	gardener (m)
+die Gärtnerin (-nen)	gardener (f)
+die Gelegenheit (-en)	opportunity
+der Ingenieur (-e)	engineer (m)
+die Ingenieurin (-nen)	engineer (f)
+lächerlich	ridiculous
+der Lohn (¨-e)	wage
+mies	rotten, lousy
+der Radiomoderator (-en)	radio presenter (m)
+die Radiomoderatorin (-nen)	radio presenter (f)
+der Traumjob (-s)	dream job
+unglaublich	unbelievable, incredible
+die Unterstützung (-en)	support, help`;
+            const NUM_UNITS = 12;
+            const OPTIONS = {lang: "de", id: "de8668", name: "German GCSE", all: false};
+        </script>
+        <script src="../../../scripts/lightdark.js"></script>
+        <script src="../../../scripts/header.js"></script>
+        <script src="../../../scripts/cookies.js"></script>
+        <script src="../../../scripts/footer.js"></script>
+        <script src="../../../scripts/misc.js"></script>
+        <script src="../../../scripts/folders-setup.js"></script>
+        <script src="../../../scripts/folders-misc.js"></script>
+        <script src="../../../scripts/folders-classic.js"></script>
+        <script src="../../../scripts/folders-match.js"></script>
+        <script src="../../../scripts/folders-start.js"></script>
+        <script async data-id="101454906" src="//static.getclicky.com/js"></script>
+    </body>
+</html>
