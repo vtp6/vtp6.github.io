@@ -1,0 +1,10 @@
+div#content {
+    position: absolute;
+    top: 100px;
+    width: calc(100% - 16px);
+    box-sizing: border-box;
+}
+
+h2 {
+    margin-top: 50px;;
+}

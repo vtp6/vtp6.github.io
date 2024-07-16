@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home | VTP6</title>
+        <link rel="stylesheet" href="sets/main.css">
+        <link rel="icon" type="image/png" href="sets/logo.png"/>
+        <meta property="og:image" content="icon.jpg" />
+        <meta property="og:image:width" content="256" />
+        <meta property="og:image:height" content="256" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Vocabulary Testing Program 6 (VTP6) is an online platform to help students revise vocabulary. It contains study sets for Latin, Spanish, French and German.">
+    </head>
+    <body>
+        <h1 class="above-linkbar">
+            <a href="./">VTP6</a> &nbsp;
+            <img id="dl" src="./sets/download.svg" height="25px" onclick="window.open('./vtp6_files.zip', '_blank').focus();" />
+        </h1>
+        <el class="linkbar">
+            <a href="./Literature/" class="smalllink">Literature</a> | <a href="./grammar/" class="smalllink">Grammar</a> <br />
+            <a href="./about/" class="smalllink">About</a> | <a href="./credits/" class="smalllink">Credits</a>
+        </el>
+        <br  /> <br  />
+        <el id="container"></el>
+        <br /> <br />
+        <a href="./sets/custom" id="custom">Import custom set</a>
+        <br /> <br /> <br />
+        <script>
+            function create_list(prefix, end) {
+                let ret = [];
+                for (i = 1; i <= end; i++) {
+                    ret.push(prefix + " " + i);
+                }
+                return ret
+            }
+
+            /* OLD
+            const LIST_OF_LINKS = [
+                ["Latin GCSE", [
+                    ...create_list("Page", 6),
+                    "Eng To Lat Page 1",
+                    "Eng To Lat Page 2",
+                ]],
+                ["Spanish GCSE", create_list("Unit", 12)],
+                ["German GCSE", create_list("Unit", 12)],
+                ["French GCSE", create_list("Unit", 12)],
+                ["Latin AS Level", create_list("Page", 15)],
+                ["Latin A Level Verse", [
+                    ...create_list("Checklist", 10),
+                    "Introductory Checklist"
+                ]],
+                ["Latin A Level Prose", [
+                    ...create_list("Checklist", 10),
+                    "Introductory Checklist"
+                ]],
+                ["Latin Entry Level", [
+                    ...create_list("Page", 5),
+                    "Additional Vocab"
+                ]],
+                ["Latin KS3", create_list("Chapter", 6)],
+            ];
+            */
+
+            const LIST_OF_LANGS = {
+                "Latin": {
+                    "GCSE": [
+                        ...create_list("Page", 6),
+                        "Eng To Lat Page 1",
+                        "Eng To Lat Page 2",
+                        "Apuleius & Cicero"
+                    ],
+                    "AS Level": create_list("Page", 15),
+                    "A Level": {
+                        "Prose": [
+                            ...create_list("Checklist", 10),
+                            "Introductory Checklist"
+                        ],
+                        "Verse": [
+                            ...create_list("Checklist", 10),
+                            "Introductory Checklist"
+                        ]
+                    },
+                    "Entry Level": [
+                        ...create_list("Page", 5),
+                        "Additional Vocab"
+                    ],
+                    "KS3": create_list("Chapter", 6)
+                },
+                "Spanish": create_list("GCSE Unit", 12),
+                "German": create_list("GCSE Unit", 12),
+                "French": create_list("GCSE Unit", 12)
+            };
+            
+            // Link creation is automated
+        </script>
+
+        <div itemscope itemtype="https://schema.org/WebSite">
+            <meta itemprop="url" content="https://vtp6.github.io/"/>
+            <meta itemprop="name" content="VTP6"/>
+        </div>
+        <div id="sub"><el>© Rujul Nayak <el id="year">2023-</el></el> | <a href="mailto:vtp6_feedback@outlook.com" class="feedback">Feedback</a> <a href="https://github.com/vtp6/vtp6.github.io"><img src="sets/logosmall.png" class="logo" /></a></div>
+        <script src="load.js"></script>
+        <script src="year.js"></script>
+    </body>
+</html>
