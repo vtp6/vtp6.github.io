@@ -28,6 +28,10 @@ div.folders-flexbox {
     }
 }
 
+div.folders-flexbox.disabled a.folders-link {
+    pointer-events: none;
+}
+
 div.units-flexbox {
     display: flex;
     width: calc((100% - 60px) / 3);
@@ -514,8 +518,12 @@ body.light-theme {
         border-color: #0093cb;
     }
 
-    div.folders-flexbox:hover {
+    div.folders-flexbox:not(.disabled):hover {
         background-color: #eeeeee;
+    }
+
+    div.folders-flexbox.disabled {
+        background-color: darkgray;
     }
 
     input.folders-checkbox {
@@ -579,8 +587,12 @@ body.dark-theme {
         border-color: #2a8c8c;
     }
 
-    div.folders-flexbox:hover {
+    div.folders-flexbox:not(.disabled):hover {
         background-color: #222222;
+    }
+
+    div.folders-flexbox.disabled {
+        background-color: #777777;
     }
 
     input.folders-checkbox {
