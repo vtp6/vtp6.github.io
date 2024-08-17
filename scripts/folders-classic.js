@@ -1,6 +1,12 @@
-// NOTE: because Quick Fire and Classic share a lot of features,
-// the code behind Quick Fire mode was added to this file instead
-// of a separate folders-quickfire.js
+// NOTE: this file contains the code behind the Classic, Classic Infinite, and
+// Quick Fire modes on VTP6. They were bundled together because they share a lot of
+// features with each other, and so some code can be reused.
+
+// NOTE: this is going to be very confusing, but whenever the code mentions
+// `classic` mode, this means "Classic Infinite" mode. "Classic" mode is referred to
+// as `legacy` mode in the code. This is because what is now "Classic Infinite" mode
+// was originally called "Classic" mode, and what is now "Classic" mode was added
+// in later at the request of a VTP6 user.
 
 let full_terms_list = [];
 let randomised_terms = [];
@@ -27,7 +33,9 @@ function set_progress_bar_background(val) {
         .style.width = `${100 - val}%`;
 }
 
-function new_question() {
+function new_question(reload=true) {
+    if (randomised_terms.length === 0 && !reload) return false;
+
     [question, answer] = randomised_terms.shift();
     document.getElementById("classic-question-text").innerHTML = sanitise(question);
 
@@ -38,9 +46,10 @@ function new_question() {
     if (OPTIONS["all"]) document.getElementById("classic-question-text").innerHTML +=
         ` (<span id="classic-all-num">0</span>/${split_answer.length})`;
 
-    if (randomised_terms.length === 0) randomised_terms = random_shuffle(full_terms_list);
+    if (randomised_terms.length === 0 && reload) randomised_terms = random_shuffle([...full_terms_list]);
 
     textbox.focus();
+    return true;
 }
 
 function update_bar_text() {
@@ -156,6 +165,71 @@ function check_input_classic() {
         new_question();
     }
     update_bar_text();
+}
+
+function check_input_legacy() {
+    let result = check_input(userans = textbox.value);
+    let cont = true;
+
+    if (result === undefined) return;
+
+    textbox.classList.remove("correct");
+    textbox.classList.remove("wrong");
+    textbox.offsetWidth;
+
+    if (OPTIONS["all"]) {
+        if (result) {
+            textbox.classList.add("correct");
+            split_answer = split_answer.filter(l =>
+                !l.map(remove_punctuation)
+                .includes(remove_punctuation(userans))
+            );
+            if (split_answer.length === 0) {
+                correct++;
+                document.getElementById("typo-text").innerHTML = `
+                    <span class="green">Correct!</span>
+                `;
+                cont = new_question(false);
+            } else {
+                let n = document.getElementById("classic-all-num");
+                n.innerHTML = +n.innerHTML + 1;
+                document.getElementById("typo-text").innerHTML = `
+                    <span class="green">Keep going!</span>
+                `;
+            }
+        } else {
+            wrong++;
+            textbox.classList.add("wrong");
+            document.getElementById("typo-text").innerHTML = `
+                <span class="red">Wrong:</span>
+                ${answer}
+            `;
+            wrongtbl.push([question, answer, userans]);
+            cont = new_question(false);
+        }
+    } else {
+        if (result) {
+            correct++;
+            textbox.classList.add("correct");
+            document.getElementById("typo-text").innerHTML = `
+                <span class="green">Correct!</span>
+            `;
+        } else {
+            wrong++;
+            textbox.classList.add("wrong");
+            document.getElementById("typo-text").innerHTML = `
+                <span class="red">Wrong:</span>
+                ${answer}
+            `;
+            wrongtbl.push([question, answer, userans]);
+        }
+        cont = new_question(false);
+    }
+    update_bar_text();
+
+    if (!cont) {
+        finish_legacy_game();
+    }
 }
 
 function check_input_quickfire() {
@@ -289,6 +363,99 @@ function finish_classic_game() {
     }
 }
 
+function finish_legacy_game() {
+    if (randomised_terms.length === 0 || window.confirm("Are you sure you want to finish the game?")) {
+        document.getElementById("classic-div").remove();
+        let finish_div = document.createElement("div");
+        finish_div.innerHTML = `
+            <div id="score-div">
+                <h3>${correct}/${correct + wrong} (${(correct / ((correct + wrong) || 1) * 100).toPrecision(3)}%)</h3>
+            </div>
+            <div id="restart-button-div">
+                <button class="start-button" id="classic-retry-button"
+                    ${wrongtbl.length === 0 ? 'disabled' : ''}>Mistakes</button>
+                <button class="start-button" id="classic-restart-button">Restart!</button>
+            </div>
+            <table id="wrong-table">
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                    <th>Your&nbsp;Answer</th>
+                </tr>
+            </table>
+        `;
+        finish_div.id = "finish-div";
+        document.getElementById("content")
+            .insertBefore(finish_div, document.getElementById("margin"));
+
+        [...wrongtbl].forEach(row => {
+            let [a, b, c] = row;
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${a}</td> <td>${b}</td>
+                <td><em>${c}</em></td>
+            `;
+            document.getElementById("wrong-table").appendChild(tr);
+        });
+
+        document.getElementById("classic-restart-button")
+            .addEventListener("click", () => {
+                document.getElementById("finish-div").remove();
+                document.getElementById("settings-bar").hidden = false;
+                document.getElementById("units-flex").style.display = "flex";
+
+                full_terms_list = [];
+                randomised_terms = [];
+
+                [question, answer] = ["", ""];
+
+                split_answer = [];
+
+                textbox = undefined;
+
+                correct = 0;
+                wrong = 0;
+
+                wrongtbl = [];
+
+                quickfire_timer = 150;
+                quickfire_timer_id = 0;
+                quickfire_increment = 30;
+            });
+        
+        document.getElementById("classic-retry-button")
+            .addEventListener("click", () => {
+                let mistakes = [...wrongtbl].map(([x, y, _]) => [x, y]);
+
+                document.getElementById("finish-div").remove();
+                document.getElementById("settings-bar").hidden = false;
+                document.getElementById("units-flex").style.display = "flex";
+
+                full_terms_list = [];
+                randomised_terms = [];
+
+                [question, answer] = ["", ""];
+
+                split_answer = [];
+
+                textbox = undefined;
+
+                correct = 0;
+                wrong = 0;
+
+                wrongtbl = [];
+
+                quickfire_timer = 150;
+                quickfire_timer_id = 0;
+                quickfire_increment = 30;
+
+                folders_start_legacy([...mistakes]);
+                document.getElementById("settings-bar").hidden = true;
+                document.getElementById("units-flex").style.display = "none";
+            })
+    }
+}
+
 function set_quickfire_high_score(score) {
     let currenths = get_cookies()["vtp6HighScore_quick_fire"];
     if (currenths === undefined || score > +currenths) {
@@ -409,6 +576,53 @@ function folders_start_classic(terms) {
 
     window.scrollTo(0, 0);
     new_question();
+}
+
+function folders_start_legacy(terms) {
+    full_terms_list = [...terms];
+    randomised_terms = random_shuffle(terms);
+
+    let classic_div = document.createElement("div");
+    classic_div.innerHTML = `
+        <div id="progress-bar-div">
+            <div id="progress-bar-container"><div id="progress-bar"></div></div>
+            <span id="progress-bar-text">0/0 (0.00%)</span>
+        </div>
+        <h1 id="classic-question">
+            <button class="start-button" id="skip-button">Skip &rarr;</button>
+            <span id="classic-question-text"></span>
+            <button class="start-button" id="finish-button">Finish!</button>
+        </h1>
+        <div id="input-div">
+            <input type="text" id="classic-input"
+                placeholder="Type the definition here..."
+                autocomplete="off" autocorrect="off"
+                spellcheck="false" />
+            <button class="start-button" id="square-finish-button"><img id="finish-image" /></button>
+        </div>
+        <p id="typo-text">&nbsp;</p>
+    `;
+    classic_div.id = "classic-div";
+    document.getElementById("content")
+        .insertBefore(classic_div, document.getElementById("margin"));
+
+    textbox = document.getElementById("classic-input");
+
+    document.getElementById("skip-button").addEventListener("click", () =>
+        (textbox.value = "") || check_input_legacy()
+    );
+
+    document.getElementById("finish-button").addEventListener("click", finish_legacy_game);
+    document.getElementById("square-finish-button").addEventListener("click", finish_legacy_game);
+
+    textbox.addEventListener("keyup", ({ key }) => {
+        if (key === "Enter") {
+            check_input_legacy();
+        }
+    });
+
+    window.scrollTo(0, 0);
+    new_question(false);
 }
 
 function folders_start_quickfire(terms) {

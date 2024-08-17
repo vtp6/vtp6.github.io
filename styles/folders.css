@@ -411,6 +411,10 @@ div#finish-div {
         button#classic-restart-button {
             float: right;
         }
+
+        button#classic-retry-button {
+            float: left;
+        }
     }
 
     table#wrong-table {

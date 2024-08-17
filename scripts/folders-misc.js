@@ -61,6 +61,7 @@ document.addEventListener("keydown", (event) => {
 
 const GAME_MODE_DESCRIPTIONS = {
     classic: "Simply give the definition of each term that comes up. No clock, no high scores, no stress.",
+    classic_infinite: "Same as Classic mode, except you can keep answering questions for as long as you want.",
     match: "Match the terms on the left to the definitions on the right as quickly as possible.",
     quick_fire: "Race against the clock to answer as many questions as possible in a set amount of time."
 }
