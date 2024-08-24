@@ -120,7 +120,7 @@ function check_input_classic() {
         if (result) {
             textbox.classList.add("correct");
             split_answer = split_answer.filter(l =>
-                !l.map(remove_punctuation)
+                !l.map(remove_punctuation).map(q => q.toLowerCase())
                 .includes(remove_punctuation(userans))
             );
             if (split_answer.length === 0) {
@@ -181,8 +181,8 @@ function check_input_legacy() {
         if (result) {
             textbox.classList.add("correct");
             split_answer = split_answer.filter(l =>
-                !l.map(remove_punctuation)
-                .includes(remove_punctuation(userans))
+                !l.map(remove_punctuation).map(q => q.toLowerCase())
+                .includes(remove_punctuation(userans).toLowerCase())
             );
             if (split_answer.length === 0) {
                 correct++;
@@ -245,7 +245,7 @@ function check_input_quickfire() {
         if (result) {
             textbox.classList.add("correct");
             split_answer = split_answer.filter(l =>
-                !l.map(remove_punctuation)
+                !l.map(remove_punctuation).map(q => q.toLowerCase())
                 .includes(remove_punctuation(userans))
             );
             if (split_answer.length === 0) {
