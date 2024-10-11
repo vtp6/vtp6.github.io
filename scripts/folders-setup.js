@@ -30,4 +30,6 @@ units = units.map((unit, uindex) => {
 
 assert(is_unique(units.map(l => l[0][1])), "Headers are not unique.");
 
+assert(units.length == NUM_UNITS, "Expected " + NUM_UNITS + " units, got " + units.length + ".");
+
 document.getElementById("insert-length-here").innerHTML = "(" + total + " terms)";

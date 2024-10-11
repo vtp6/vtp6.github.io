@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+    <head>
+        <link rel="stylesheet" href="../../../styles/fonts.css" />
+        <link rel="stylesheet" href="../../../styles/main.css" />
+        <link rel="stylesheet" href="../../../styles/folders.css" />
+        <title>French GCSE (8652) | Vocabulary Testing Program 6</title>
+        <link rel="icon" type="image/png" href="../../../logos/logo-square.png"/>
+        <meta property="og:image" content="../../../logos/logo-banner.png" />
+        <meta property="og:image:width" content="1980" />
+        <meta property="og:image:height" content="1741" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="description" content="Study French GCSE (new specification) on Vocabulary Testing Program 6." />
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="content">
+            <div id="settings-bar">
+                <!-- <span id="before-slider">Classic</span>
+                <label class="switch" id="switch-slider">
+                    <input type="checkbox" id="gamemode-checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span id="after-slider" class="not-selected">Match</span> -->
+                <select id="gamemode-selector"></select>
+                <button class="start-button" id="start-button" role="button" disabled="true">Start!</button>
+                <span id="high-score">
+                    <img class="high-score-image" />
+                    <span id="high-score-text"></span>
+                </span>
+                <p id="help-tip"></p>
+            </div>
+            <div class="flex-container" id="units-flex">
+                <div class="units-flexbox no-border" name="all">
+                    <input type="checkbox" class="folders-checkbox" />
+                    <span class="checkbox-label">All <i id="insert-length-here"></i></span>
+                </div>
+            </div>
+            <div id="margin"></div>
+        </div>
+        <div id="footer"></div>
+        <script>
+            const TERMS_LIST = `# Topic 1.1
+acheter	to buy
+alors	so, therefore
+arriver	to arrive
+attendre	to wait
+au revoir	goodbye
+aussi	also
+bavard(e)	chatty
+bonne chance	good luck
+calme	quiet, calm
+la catastrophe	catastrophe
+la clé	key
+connaître	to know (a person), to know (a place)
+le copain	friend, boyfriend
+la copine	friend, girlfriend
+de plus	besides, moreover
+descendre	to go down, to descend, to get off
+devoir	to have to
+drôle	funny
+embêtant(e)	annoying
+en fait	in fact, in reality
+en retard	late
+entendre	to hear
+fier/fière	proud
+fort(e)	strong
+gentil(le)	kind
+inquiet/inquiète	worried
+intelligent(e)	intelligent
+l'Internet	internet
+je n'ai pas	I don't have
+le judo	judo
+maintenant	now
+mais	but
+même	same
+la mission	mission
+neuf/neuve	new
+la note	note, grade, result
+oui	yes
+paresseux/paresseuse	lazy
+partir	to leave
+passionnant(e)	exciting
+penser	to think
+perdre	to lose
+la personnalité	personality
+personne	nobody
+la qualité	quality
+quand	when
+que	that
+quel(le)	which
+qui	who, which
+répondre	to answer
+salut	hi, hello
+sérieux/sérieuse	serious
+surtout	especially
+la téléphone	phone
+timide	shy
+ton/ta/tes	your
+le train	train
+travailleur/travailleuse	hard-working
+triste	sad
+trop	too much, too many
+vite	quick, fast, quickly
+la voiture	car
+vrai	real, true
+à l'avenir	in the future
+adopter	to adopt
+aider	to help
+apprécier	to enjoy, to appreciate
+l'argent (m.)	money
+l'association(s) (f.)	association(s)
+aucun(e)	no, not one
+les autres (m./f. pl.)	others
+aujourd'hui	today
+l'avocat(e)	lawyer
+le Canada	Canada
+cela	this, that
+célibataire	single
+certainement	certainly
+changer	to change
+chercher	to research, to look for
+la compétence	skill
+la connaissance	knowledge
+la course	race
+coûter	to cost
+la culture	culture
+demain	tomorrow
+développer	to develop
+donner	to give
+dur(e)	hard
+l'employeur/employeuse (m./f.)	employer
+entrer	to enter
+l'Espagne (f.)	Spain
+essayer	to try
+excellent(e)	excellent
+faire du jardinage	to garden
+le futur (n.)	future
+futur(e) (adj.)	future
+garder	to keep
+l'hôpital (m.)	hospital
+idéal(e)	ideal
+l'importance (f.)	importance
+l'instrument (m.)	instrument
+interculturel(le)	intercultural
+le mariage	marriage
+se marier	to marry
+la mer	sea
+mieux	better
+le monde	people, world
+la Normandie	Normandy
+notre/nos	our
+le PACS	civil partnership
+le parc	park
+le/la partenaire	partner
+partout	everywhere
+passer du temps	to spend time
+le passe-temps	hobby, pastime
+le pays	country
+le pilote	pilot
+plus	more
+pourquoi	why
+préférer	to prefer
+près de	near, next to
+probablement	probably
+le problème	problem
+la question	question
+quitter	to leave
+raconter	to tell, to relay
+rester	to stay
+souvent	often
+souhaiter	to wish
+traditionnel(le)	traditional
+le type	type
+la vie	life
+
+# Topic 1.2
+à demi	half
+adopter	to adopt
+adopté(e)	adopted
+aussi… que	as… as
+canadien(ne)	Canadian
+chez moi/ toi/ lui	at my, your, his place
+choisir	to choose
+la chose	thing
+le cinéma	cinama
+comprendre	to understand
+la Côte d'Ivoire (f.)	Ivory Coast
+les courses (fpl)	(grocery) shopping
+le demi-frère (m.)	half-brother
+la demi-sœur (f.)	half-sister
+les devoirs (m. pl.)	homework
+le dimanche	Sunday
+l'émission (f.)	TV programme
+encore	again, still
+fini	finished
+le frigo	fridge
+grandir	to grow up
+le jeu (m.)	game
+le jeu vidéo	video game
+là-bas	over there
+la lecture (f.)	reading
+meilleur(e)… que	better than
+moins… que	less than
+le mois (m.)	month
+Noël	Christmas
+nous	we
+le/les parents (m. pl.)	parents
+Paris	Paris
+pire	worse
+la plage (f.)	beach
+plus… que	more than
+regarder	to look at, to watch
+remplir	to fill in
+rire	to laugh
+séparé(e)	separated
+septembre	September
+la télé	television
+tous	all, every
+le travail	work
+les vacances (f. pl.)	holidays
+le vendredi	Friday
+vivre	to live
+à l'heure	on time
+appeler	to call
+après	tired
+boisson	drink
+la boulangerie	bakery
+le bus	bus
+la confiance	trust, confidence
+la conversation	conversation
+cool	cool
+la couverture	duvet
+croire	to believe
+la cuisine	kitchen
+d'abord	first, first of all
+la décision	decision
+le dîner	dinner
+encourager	to encourage
+entre	between
+gagner du temps	to save time
+la gymnastique	gymnastics
+l'idée (f.)	idea
+il faut	it is necessary
+il vaut la peine de	it is worth
+il vaut mieux	it is worth
+la journée	day
+juste	fair, just, only
+jouer	to play
+longtemps	long time
+manquer	to miss, to lack
+mentir	to lie
+la montagne	mountain
+le numéro	number
+patient(e)	patient
+plage	beach
+le piéton/pied	on foot (m/f)
+préparer	to prepare
+proche	near
+la promesse	promise
+quai	wharf
+le rendez-vous	meeting, appointment
+retour	return
+sembler	to seem
+le seuil	threshold
+le supermarché	supermarket
+tenir	to hold
+voir	to see
+
+# Topic 2.1
+à l'âge de	at the age of
+l'accident (m)	accident
+l'alcool (m)	alcohol
+avoir mal	to hurt
+avoir peur	to be scared
+la bouche	mouth
+le bras	arm
+le château	castle
+le choix	choice
+la cigarette	cigarette
+commencer	to start
+le corps	body
+d'accord	okay, agreed
+la dame	lady
+le danger	danger
+dangereux/dangereuse	dangerous
+dire	to say, to tell
+le dos	back
+la drogue	drug
+l'effort (m)	effort
+envoyer	to send
+examiner	to examine
+l'exercice	exercise
+la façon	way
+fatigué(e)	tired
+fumer	to smoke
+la gorge	throat
+immédiatement	immediately
+inquiet/inquiète	worried
+la jambe	leg
+lever	to raise, to lift
+le lieu	place
+le lit	bed
+le mal	ache
+malade	ill
+mauvais	bad
+le/la médecin	doctor
+le médicament	medicine
+l'oreille (f)	ear
+le pied	foot
+pleurer	to cry
+se relaxer	to relax
+la santé	health
+savoir	to know
+la tête	head
+tomber	to fall
+tuer	to kill
+l'urgence (f)	emergency
+vapoter	to vape
+actuellement	currently
+l'année (f.)	year
+avant de	before
+certain(e)(s)	some, certain
+le chapeau	hat
+chaud(e)	hot, warm
+se concentrer	to concentrate, to focus
+le concours	competition
+dépendre de	to depend on
+en ce moment	at the moment
+enfin	finally
+évidemment	obviously, evidently
+faible	weak
+la forêt	wood, forest
+gérer	to organise, to manage
+l'été (m.)	summer
+se lever	to get up
+marcher	to walk
+merci	thank you
+nager	to swim
+la nature	nature
+obliger	to oblige
+parler	to speak, to chat, to talk
+participer à	to participate, to take part
+passer des examens	to take exams
+le plat	dish
+prochain(e)	next
+la promenade	walk
+le repas	meal
+risquer	to risk
+se sentir	to feel
+le soleil	sun
+le traitement	treatment
+
+# Topic 2.2
+l'anniversaire (m.)	birthday
+le bain	bath
+le cadeau	present
+le chien	dog
+demander	to ask
+… fois	… time(s)
+hier	yesterday
+jeudi	Thursday
+lui	(to) him, (to) her
+lundi	Monday
+le match	match
+le mercredi	Wednesday
+la nourriture	food
+la nuit	night
+le portable	mobile phone
+le/la premièr(e)	first
+le programme	schedule
+ressembler	to look like
+le surf	surf(ing)
+te/t'	(to) you
+le Tour de France	Tour de France
+la partie (de foot)	(football) match, (football) game
+vous	you (polite/plural)
+améliorer	to improve
+assis(e)	sat
+bénéficier	to benefit
+le bureau	office, desk
+ça me rend	it makes me
+conscient(e)	conscious
+conseiller	to advise
+continuer	to continue
+courir	to run
+de nos jours	nowadays
+de saison	seasonal
+la débat	debate
+dépendant	dependent, addicted
+également	equally
+l'esprit (m.)	spirit
+essentiel(le)	essential
+l'étude (f.)	study
+eux	them
+l'exemple (m.)	example
+l'expert(e) (m./f.)	expert
+l'explication (f.)	explanation
+facilement	easily
+la force	strength
+les gens (m.pl.)	people
+grave	serious
+ici	here
+interdit	forbidden
+la majorité	majority
+nécessaire	necessary
+occidental(e)	western
+ouvert(e)	open
+parmi	among
+plutôt	rather
+la position	position
+possible	possible
+pratique	practice
+le produit	product, produce
+récent(e)	recent
+sainement	healthily
+selon	according to
+le tabac	tobacco
+le week-end	weekend
+
+# Topic 3.1
+apprendre	to learn
+bien sûr	of course
+le bureau	desk, office
+la classe	class, classroom
+la communication	communication
+l'environnement (m.)	environment
+étudier	to study
+indépendant(e)	independent
+l'information (f.)	information
+intéresser	to interest
+la langue	language
+le lycée	school, sixth form
+la matière	subject
+la médecine	medicine
+nouveau/nouvelle	new
+l'organisation (f.)	organisation
+l'organisation caritative (f.)	charity
+organisé(e)	organised
+la participation	contribution
+la passion	passion
+progresser	to progress
+la situation	situation
+situer	to locate
+l'université (f.)	university
+à mon avis	in my opinion
+accepter	to accept, to authorise
+aimer	to like
+la cantine	canteen
+le chewing-gum	chewing gum
+le cyber intimidation	cyber bullying
+l'élève (m.)	pupil
+et demi(e)	half past
+grand(e)	big
+le gymnase	gymnasium
+interdir	to forbid, to ban
+le/la/les meilleur(e)(s)	the best
+normal(e)	normal
+pendant	during
+le/la/;es pire(s)	the worst
+plein (de)	lots (of)
+la région	region
+le règlement	regulation, rule
+retourner	to go back
+tellement	so
+la salle informatique	IT room
+scolaire	school
+les vêtements (m. pl.)	clothes
+
+# Topic 3.2
+l'animal (m.)	animal
+l'auteur/autrice (m./f.)	author
+la carrière	career
+chanter	to sing
+chaque	each, every
+la compétition	competition
+connu(e)	famous, known
+l'Europe (f.)	Europe
+l'expérience (f.)	experience
+le festival	festival
+l'héroïne (f.)	(female) hero
+l'héros (m.)	(male) hero
+historique	historic
+l'influenceur/influenceuse (m./f.)	influencer
+local(e)(s)/locaux	local
+mai	May
+montrer	to show
+le/la musicien(enne)	musician
+le quartier	neighbourhood
+quelques	some, several
+le roman	novel
+la soirée	evening
+le thème	theme
+l'Angleterre (f.)	England
+l'assemblée (f.)	assembly
+avant	before
+avoir besoin de	to need
+la banque	bank
+le bâtiment	building
+la brochure	brochure
+la campagne	countryside
+le champ	field
+le/la collègue	colleague
+construire	to build
+dehors	outside
+le dépliant	leaflet
+le/la député(e)	deputy, MP
+la discussion	discussion
+le document	document
+l'enquête (f.)	survey
+l'entreprise (f.)	company
+être en train de	to be in the middle of
+expliquer	to explain
+la feuille	piece of paper, leaf
+froid(e)	cold
+la grève	strike
+il y a	there is
+le journal	newspaper, diary
+la loi	law
+le magasin	shop
+le ministre	minister
+le palais	palace
+le parlement	parliament
+la possibilité	possibility
+le poste	post office
+pratiquer	to practice
+la réception	reception
+la responsabilité	responsibility
+retirer	to withdraw
+la réunion	meeting
+le rôle	role
+le/la secrétaire	secretary
+le stage (en entreprise)	work experience
+le touriste	tourist
+venir de	to have just (done something)
+la visite	visit
+voter	to vote
+
+# Topic 4.1
+les Alpes (f. pl.)	Alps
+amusant(e)	amusing, fun, funny
+l'après-midi (m.)	afternoon
+le beau-père	stepfather, father-in-law
+britannique	British
+le bus	bus
+cela	that
+la chance	luck, opportunity
+les courses (f. pl.)	grocery shopping
+dernier/dernière	last
+les devoirs (m. pl.)	homework
+le e-mail (m.)	e-mail
+l'énergie (f.)	energy
+ensuite	then
+gentil(le)	kind
+les grands-parents (m. pl.)	grandparents
+le jeu de société	board game
+malade	ill, sick
+le matin	morning
+meilleur(e)	best, better
+mettre	to put (on)
+le pantalon	trousers
+la partie	part, round (of game)
+le portable	mobile phone
+prendre	to take
+la promenade	walk, stroll
+puis	then
+quelque	some
+recevoir	to receive
+la réponse	answer
+rire	to laugh
+(le) samedi	Saturday
+sans	without
+le site	(tourist) site
+le SMS	text message
+le thé	tea
+toujours	always
+trop	too
+venir	to come
+la ville	town, city
+visiter	to visit (a place)
+l'action (f.)	action
+les actualités (f. pl.)	current affairs
+africain(e)	African
+s'appeler	to be called
+apprécier	to enjoy, to appreciate, to like
+apprendre	to learn, to teach
+aussi	also
+bien	well, good
+camerounais(e)	Cameroonian
+ce/cet/cette/ces	this
+le centre commercial	shopping centre
+la comédie	comedy
+le concert	concert
+se demander	to wonder
+se disputer	to argue
+l'écran (m.)	screen
+embêtant(e)	annoying
+faire mauvais	(to) (be) bad (weather)
+le genre	kind, type
+jamais	never
+le moment	moment
+noir(e)	black
+le papa	dad
+le pêcheur	fisherman
+le piano	piano
+le rap	rap
+recommander	to recommend
+se relaxer	to relax
+se ressembler	to look alike
+la série	(TV) series
+tôt	early
+vers	(at) about
+
+# Topic 4.2
+l'année (f.)	year
+arriver	to arrive
+l'automne (m.)	autumn
+le bateau	boat
+le bord	edge
+le Canada	Canada
+la capitale	capital city
+cependant	however
+comme	like
+le défi	challenge
+descendre	to get off, to go down
+difficile	difficult
+ensemble	together
+entrer dans	to go into
+les États-Unis (m. pl.)	United States
+grave	serious
+habiter	to live
+haut	high
+l'heure (f.)	time, hour, o’clock
+historique	historic
+le hockey sur glace	ice hockey
+l'Île (f.)	island
+le kilomètre	kilometre
+là-bas	over there
+Maroc	Morocco
+la mer	sea
+le midi	midday
+le mois	month
+monter	to go up
+mourir	to die
+naître	to be born
+partir	to leave
+passer	to spend (time)
+le pays	country
+la pièce (de théâtre)	(theatre) play
+populaire	popular
+les Pyrénées (f. pl.)	Pyrenees
+rentrer	to go home
+rester	to stay
+retourner	to return
+la Réunion	Reunion (island)
+le salle	room
+le Sénégal	Senegal
+le sport	sport
+la Suisse	Switzerland
+le surf	surfing
+tomber	to fall
+traditionnel(le)	traditional
+l'ultra-marathon (m.)	ultra-marathon
+le voyage	journey
+vrai(e)	true, real
+aider	to help
+l'ascension (f.)	climb
+avoir l'air	to seem, look
+beau/bel/belle	beautiful, nice
+se blesser	to get hurt
+la boule	ball, bubble
+le canyoning	gorge walking
+la centaine	about a hundred
+chercher	to research, to look for
+chez	to the place (of), at (the place) (of), with
+le club	club
+le concurrent	competitor
+conseiller	to advise
+le cœur	heart
+le courage	courage
+courant	current
+la course	race
+le/la cycliste	cyclist
+découvrir	to discover, to find out
+dès que	as soon as
+différent(e)	different
+la distance	distance
+l'eau (f.)	water
+enfin	finally
+énorme	enormous
+entrer	to enter
+s'entraîner	to train
+l'étape (f.)	stage
+étonnant	astonishing
+l'événement (m.)	event
+éviter (de)	to avoid
+fou/folle	mad, crazy
+la Guadeloupe	Guadeloupe
+l'herbe (f.)	grass
+les Îles Caraïbes (f. pl.)	Caribbean islands
+il vaut la peine	it is worth
+il vaut mieux	it is better to
+le kayak	kayaking
+maintenant	now
+moderne	modern
+le monde	people, world
+la montée	climb
+le moyen	means
+nouveau/nouvelle (adj)	new
+où	where
+participer (à)	to participate (in), to take part (in)
+la passion	passion
+penser	to think
+la pente	slope
+la photo	photo
+le plaisir	pleasure
+le plastique	plastic
+la plein air	open air
+près de	near
+le prix	prize, price
+profiter de	to make the most (of), to enjoy
+progresser	to make progress
+le risque	risk
+risquer	to risk
+sauver	to rescue
+seul(e)	alone
+le ski	ski
+tous/toutes les deux	both
+vraiment	really`;
+            const NUM_UNITS = 8;
+            const OPTIONS = {lang: "fr", id: "fr8652", name: "French GCSE (New)", all: false};
+        </script>
+        <script src="../../../scripts/lightdark.js"></script>
+        <script src="../../../scripts/header.js"></script>
+        <script src="../../../scripts/cookies.js"></script>
+        <script src="../../../scripts/footer.js"></script>
+        <script src="../../../scripts/misc.js"></script>
+        <script src="../../../scripts/folders-setup.js"></script>
+        <script src="../../../scripts/folders-misc.js"></script>
+        <script src="../../../scripts/folders-classic.js"></script>
+        <script src="../../../scripts/folders-match.js"></script>
+        <script src="../../../scripts/folders-start.js"></script>
+        <script async data-id="101454906" src="//static.getclicky.com/js"></script>
+    </body>
+</html>
