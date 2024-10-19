@@ -551,6 +551,28 @@ button#upload-go-button {
     transform: translateX(-50%);
 }
 
+#file-format {
+    appearance: none;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    width: 250px;
+    padding: 16px 32px 16px 16px;
+    background: url("https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg")
+        no-repeat right 0.8em center / 1.4em,
+        linear-gradient(to left, rgba(255, 255, 255, 0.3) 3em, rgba(255, 255, 255, 0.2) 3em);
+    color: white;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    
+    option {
+        color: inherit;
+        background-color: white;
+    }
+}
 
 @media (hover: none) {
     div#content div#match-div div.match-line-div div.match-text-div:not(.selected):hover {
@@ -624,6 +646,18 @@ body.light-theme {
 
     img#finish-image {
         content: url("../images/finish-light.svg");
+    }
+
+    #file-format {
+        background: url("https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg")
+        no-repeat right 0.8em center / 1.4em,
+        linear-gradient(to left, rgba(0, 0, 0, 0.3) 3em, rgba(0, 0, 0, 0.2) 3em);
+        color: black;
+
+        option {
+            color: inherit;
+            background-color: black;
+        }
     }
 }
 

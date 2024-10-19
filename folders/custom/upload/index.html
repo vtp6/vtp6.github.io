@@ -37,7 +37,12 @@
                     <input type="file" id="input-upload" name="input-upload" accept=".txt, .csv" multiple="multiple">
                     <label for="input-upload" id="upload-button">Choose files</label>
                     <p id="file-upload-text"><i>No files selected</i></p>
-                </div>
+                </div> <br />
+                <select id="file-format">
+                    <option value="vtp5">VTP5 format</option>
+                    <option value="vtp6" selected>VTP6 format</option>
+                    <option value="csv">CSV format</option>
+                </select> <br /> <br />
                 <button class="start-button" id="upload-go-button" role="button" disabled="true">Go!</button>
             </div>
             <div id="margin"></div>
