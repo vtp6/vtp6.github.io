@@ -16,6 +16,12 @@ function folders_start_game() {
         ).map(arr => arr[1]).flat();
     } else {
         selected_terms = terms;
+        if (selected_terms.length === 0 || (game_mode === "match" && selected_terms.length < 6)) {
+            document.getElementById("custom-upload-box").hidden = false;
+            document.getElementById("settings-bar").hidden = true;
+            alert("ERROR: Not enough terms (check the format of your files)");
+            return;
+        }
     }
     
     if (game_mode === "classic") {
