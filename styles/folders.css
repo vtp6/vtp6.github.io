@@ -509,6 +509,9 @@ div#finish-div {
     }
 }
 
+#custom-input-box {
+    width: 100%;
+}
 
 #file-input {
     input#input-upload {
@@ -565,8 +568,7 @@ button#upload-go-button {
     border-radius: 0.25em;
     box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    margin-left: calc(50% - 125px);
     
     option {
         color: inherit;
