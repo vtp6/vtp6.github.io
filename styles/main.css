@@ -213,7 +213,7 @@ div.flex-container {
 .line-container {
     display: flex;
     align-items: center;
-    width: calc(100% - 16px);
+    width: 100%;
 }
 
 span.line {
