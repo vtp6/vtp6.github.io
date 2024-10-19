@@ -509,6 +509,49 @@ div#finish-div {
     }
 }
 
+
+#file-input {
+    input#input-upload {
+        opacity: 0;
+        width: 0.1px;
+        height: 0.1px;
+        position: absolute;
+    }
+
+    label#upload-button {
+        display: block;
+        position: relative;
+        width: 200px;
+        height: 50px;
+        border-radius: 25px;
+        background: linear-gradient(40deg, #ff6ec4, #7873f5);
+        box-shadow: 0 4px 7px rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: outline .1s linear;
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+
+    input#input-upload:hover + label {
+        outline: 2px solid black;
+    }
+
+    p#file-upload-text {
+        text-align: center;
+    }
+}
+
+button#upload-go-button {
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+
 @media (hover: none) {
     div#content div#match-div div.match-line-div div.match-text-div:not(.selected):hover {
         background-color: initial;
@@ -698,6 +741,14 @@ body.dark-theme {
 
     img#finish-image {
         content: url("../images/finish-dark.svg");
+    }
+
+    #file-input label#upload-button {
+        box-shadow: 0 4px 7px rgba(255, 255, 255, 0.4);;
+    }
+
+    #file-input input#input-upload:hover + label#upload-button {
+        outline: 2px solid white;
     }
 }
 
