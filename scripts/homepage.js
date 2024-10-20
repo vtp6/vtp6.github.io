@@ -20,4 +20,6 @@ function increment() {
     if (++n <= 6) setTimeout(increment, 50)
 }
 
-next_run();
+// Uncomment when birthday is over
+// next_run();
+

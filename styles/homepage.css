@@ -35,6 +35,13 @@ div#content {
     }
 }
 
+canvas#canvas {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+}
+
 @media (max-width: 999px) {
     div#content {
         h1#main-header {
