@@ -1,9 +1,9 @@
 if (OPTIONS["lang"] !== "cs") {
-    let units = TERMS_LIST.split("\n\n");
+    units = TERMS_LIST.split("\n\n");
 
     const uflex = document.getElementById("units-flex");
 
-    let total = 0;
+    total = 0;
 
     units = units.map((unit, uindex) => {
         let [unit_header, ...urest] = unit.split("\n");
