@@ -1010,153 +1010,549 @@ le super	great
 la voix	voice
 
 # Topic 7.1
-l'âge (m.) \t age
-l'an (m.)/année (f.) \t year
-apprendre \t to learn
-aujourd'hui \t today
-autre (adj.) \t other
-bien \t good, well
-bonjour \t good morning, good afternoon
-calme (adj.) \t calm, quiet
-les Caraïbes (f.pl.) \t Caribbean
-ce/cet/cette/ces \t this, these
-chaud(e) \t hot, warm
-cher/chère \t expensive
-comme \t such as, like, since
-comment \t how
-la Corse \t Corsica
-la côte \t coast
-différent(e) (de) \t different (from)
-dix \t ten
-en hiver \t in winter
-entre \t between
-espérer que \t to hope that
-être situé \t to be situated
-l'euro (m.) \t euro
-l'expérience (f.) \t experience
-faire des promenades \t to go for walks
-frais/fraîche \t fresh
-la frontière \t border
-le gateau \t cake
-l'histoire (f.) \t history, story
-l'hiver (m.) \t winter
-il faisait froid \t it was cold
-il faisait beau \t it was nice (weather), it was good (weather)
-il y avait du vent \t it was windy
-il y avait \t there was, there were
-l'île (f.) \t island
-intéressant(e) \t interesting
-l'invitation (f.) \t invitation
-le/la jeune \t young person
-jeune (adj.) \t young
-là \t there
-là-bas \t over there
-local(e) \t local
-long(ue) \t long
-le nord \t north
-nouveau/nouvelle (adj.) \t new
-la Nouvelle-Calédonie \t New Caledonia
-l'océan Atlantique (m.) \t Atlantic ocean
-l'océan Indien (m.) \t Indian ocean
-l'océan Pacifique (m.) \t Pacific ocean
-par contre \t on the other hand
-le parc naturel \t natural park
-parfait(e) \t perfect
-parfois \t sometimes
-pendant \t during
-plusieurs \t several
-le podcast \t podcast
-populaire \t popular
-préparer \t to prepare
-qu'est-ce que \t what
-quel(le) \t what, which
-raconter \t to tell
-la religion \t religion
-retourner \t to go back, to return
-souvent \t often
-traditionel(le) \t traditional
-très \t very
-trouver \t to find
-venir (de) \t to come (from)
-vivre \t to live
-vrai \t true, real
-vraiment \t really
-abandonner \t to abandon/to give up
-acheter \t to buy
-l'agriculture (f.) \t agriculture
-une année sabbatique \t gap year
-l'année sabbatique (f.) \t gap year
-après \t after
-arriver à \t to succeed in
-l'Asie (f.) \t Asia
-l'Australie (f.) \t Australia
-aussi \t also
-l'autre(s) (m./f.) \t other
-avant (de) \t before
-l'aventure (f.) \t adventure
-le blog \t blog
-le centre \t centre
-chercher \t to look for
-communiquer \t to communicate
-comprendre \t to understand
-contribuer (à) \t to contribute (to)
-découvrir \t to discover, to find out
-despuis \t since
-la destination \t destination
-le détail \t detail
-direct(e) \t direct
-donner \t to give
-écrire \t to write
-en même temps \t at the same time
-ensemble \t together
-les études (f.pl.) \t studies
-évidemment \t evidently, obviously
-l'examem \t exam
-faire la découverte \t to discover
-la ferme \t farm
-le festival \t festival
-gagner \t to win, to earn
-l'habitant(e) \t inhabitant
-l'identité \t identity
-important(e) \t important
-indépendant(e) \t independant
-insolite \t unusual
-la langue \t language
-loger \t to stay
-leur(s) \t (to) them, their
-le mois \t month
-le monde \t world
-le/la musicien(ne) \t musician
-l'objectif (m.) \t objective
-offrir \t to offer, to give
-organiser \t to organise
-l'ouest (m.) \t west
-partout \t everywhere
-le passion \t passion
-le paysage \t scenery
-se perdre \t to lose oneself, to get lost
-la/les personne(s) \t person/people
-la photographie \t photography
-proche \t near
-profiter de \t to enjoy
-le projet \t project
-le quartier \t area, neighbourhood
-se relaxer \t to relax
-rencontrer \t to meet
-rester \t to stay
-rêver \t to dream
-le sac à dos \t rucksack
-le séjour \t stay
-le temple \t temple
-le Togo \t Togo
-traverser \t to cross
-l'université (f.) \t university
-le Vietnam \t Vietnam
-vif/vive \t lively
-le village \t village
-vivant(e) \t lively
-y \t there`;
-            const NUM_UNITS = 13;
+l'âge (m.)	age
+l'an (m.)/année (f.)	year
+apprendre	to learn
+aujourd'hui	today
+autre (adj.)	other
+bien	good, well
+bonjour	good morning, good afternoon
+calme (adj.)	calm, quiet
+les Caraïbes (f.pl.)	Caribbean
+ce/cet/cette/ces	this, these
+chaud(e)	hot, warm
+cher/chère	expensive
+comme	such as, like, since
+comment	how
+la Corse	Corsica
+la côte	coast
+différent(e) (de)	different (from)
+dix	ten
+en hiver	in winter
+entre	between
+espérer que	to hope that
+être situé	to be situated
+l'euro (m.)	euro
+l'expérience (f.)	experience
+faire des promenades	to go for walks
+frais/fraîche	fresh
+la frontière	border
+le gateau	cake
+l'histoire (f.)	history, story
+l'hiver (m.)	winter
+il faisait froid	it was cold
+il faisait beau	it was nice (weather), it was good (weather)
+il y avait du vent	it was windy
+il y avait	there was, there were
+l'île (f.)	island
+intéressant(e)	interesting
+l'invitation (f.)	invitation
+le/la jeune	young person
+jeune (adj.)	young
+là	there
+là-bas	over there
+local(e)	local
+long(ue)	long
+le nord	north
+nouveau/nouvelle (adj.)	new
+la Nouvelle-Calédonie	New Caledonia
+l'océan Atlantique (m.)	Atlantic ocean
+l'océan Indien (m.)	Indian ocean
+l'océan Pacifique (m.)	Pacific ocean
+par contre	on the other hand
+le parc naturel	natural park
+parfait(e)	perfect
+parfois	sometimes
+pendant	during
+plusieurs	several
+le podcast	podcast
+populaire	popular
+préparer	to prepare
+qu'est-ce que	what
+quel(le)	what, which
+raconter	to tell
+la religion	religion
+retourner	to go back, to return
+souvent	often
+traditionel(le)	traditional
+très	very
+trouver	to find
+venir (de)	to come (from)
+vivre	to live
+vrai	true, real
+vraiment	really
+abandonner	to abandon/to give up
+acheter	to buy
+l'agriculture (f.)	agriculture
+une année sabbatique	gap year
+l'année sabbatique (f.)	gap year
+après	after
+arriver à	to succeed in
+l'Asie (f.)	Asia
+l'Australie (f.)	Australia
+aussi	also
+l'autre(s) (m./f.)	other
+avant (de)	before
+l'aventure (f.)	adventure
+le blog	blog
+le centre	centre
+chercher	to look for
+communiquer	to communicate
+comprendre	to understand
+contribuer (à)	to contribute (to)
+découvrir	to discover, to find out
+despuis	since
+la destination	destination
+le détail	detail
+direct(e)	direct
+donner	to give
+écrire	to write
+en même temps	at the same time
+ensemble	together
+les études (f.pl.)	studies
+évidemment	evidently, obviously
+l'examem	exam
+faire la découverte	to discover
+la ferme	farm
+le festival	festival
+gagner	to win, to earn
+l'habitant(e)	inhabitant
+l'identité	identity
+important(e)	important
+indépendant(e)	independant
+insolite	unusual
+la langue	language
+loger	to stay
+leur(s)	(to) them, their
+le mois	month
+le monde	world
+le/la musicien(ne)	musician
+l'objectif (m.)	objective
+offrir	to offer, to give
+organiser	to organise
+l'ouest (m.)	west
+partout	everywhere
+le passion	passion
+le paysage	scenery
+se perdre	to lose oneself, to get lost
+la/les personne(s)	person/people
+la photographie	photography
+proche	near
+profiter de	to enjoy
+le projet	project
+le quartier	area, neighbourhood
+se relaxer	to relax
+rencontrer	to meet
+rester	to stay
+rêver	to dream
+le sac à dos	rucksack
+le séjour	stay
+le temple	temple
+le Togo	Togo
+traverser	to cross
+l'université (f.)	university
+le Vietnam	Vietnam
+vif/vive	lively
+le village	village
+vivant(e)	lively
+y	there
+
+# Topic 7.2
+à	at, to
+à bientôt	see you soon
+arriver	to arrive
+la Belgique	Belgium
+le brouillard	fog
+dernier/dernière	last
+en plus	in addition
+l'Espagne (f.)	Spain
+faire chaud	to be hot
+froid(e)	cold
+génial(e)	great
+il faisait mauvais	it was bad weather
+jusque	until
+le livre	book
+le logement	accommodation
+(le) lundi	Monday
+(le) mardi	Tuesday
+le matin	morning
+oublier	to forget
+le/les parent(s) (m. pl.)	parent(s)
+le père	father
+le portable	mobile phone
+propre	clean, own
+quitter	to leave
+récemment	recently
+sortir	to go out
+réserver	to book
+le rêve	dream
+sans	without
+le sud	south
+sympa	nice
+la synagogue	synagogue
+tard	late
+tous les jours	every day
+vite	quick, fast, quickly
+accompagner	to accompany
+accueil	welcome
+accueillant(e)	welcoming
+l'ambiance (f.)	atmosphere
+au	at the, to the
+beau/bel/belle	beautiful
+central(e)	central
+célébré(e)	celebrated
+le chef (de cuisine)	chef
+choisir	to choose
+classique	classic
+le climat	climate
+colonisé(e)	colonised
+le déjeuner	lunch
+devenir	to become
+donc	so
+l'empire (m.)	empire
+l'endroit (m.)	place
+l'esclavage (m.)	slavery
+être en retard	to be late
+l'Europe (f.)	Europe
+la fête	party, celebration
+il n'y a pas	there is/are not
+la librairie	bookshop
+le lieu	place
+meilleur(e)	better
+le/la/les meilleur(e)(s)	best
+même si	even if
+mériter de	to deserve
+national(e)(s)/nationaux	national
+offrir	to offer
+par	by
+la partie	part
+le plat	dish
+portugais(e)	Portuguese
+présenter	to present
+prochain(e)	next
+que	that
+la réputation	reputation
+scolaire (adj.)	school
+le Sénégal	Senegal
+sénégalais(e)	Senegalese
+le siècle	century
+se situer	to be situated
+le spectacle	show
+tôt	early
+le/la touriste	tourist
+tout(e)	each
+la tradition	tradition
+unique	unique
+le/les vêtement(s) (m. pl.)	clothes
+voir	to see
+le vol	flight
+
+# Topic 8.1
+l'appli (f.)	app
+content(e)	happy
+le danger	danger
+de plus	besides, moreover
+devoir	to have to
+du/de la/des/de l'	some, of the
+facile	easy
+la façon	way, manner
+faire des progrès	to make progress
+hier	yesterday
+le jeu vidéo	video game
+maintenant	now
+mais	but
+mondial(e)	global
+ne... jamais	never
+l'ordinateur portable (m.)	laptop
+présent(e) (adj.)	present
+seulement	only
+le smartphone	smartphone
+la société	society
+le téléphone	phone
+toujours	always
+tout d'abord	first of all
+la vie quotidienne	daily life
+à mon avis	in my opinion
+adopter	to adopt
+alors	so, therefore
+améliorer	to improve
+appeler	to call
+s'arrêter	to stop oneself
+l'article (m.)	article
+au début	at the beginning
+augmenter	to increase
+aussi... que	as... as
+l'avis (m.)	opinion
+chatter	to chat
+cliquer	to click
+commencer	to start
+le commentaire	comment, commentary
+compliqué(e)	complicated
+la connaissance	knowledge
+le contenu	content
+créer	to create
+croire que	to believe that
+de temps en temps	from time to time
+le dialogue	dialogue
+la discussion	discussion
+discuter	to discuss
+divers	varied
+durable	sustainable
+l'environnement (m.)	environment
+faire de la publicité	to advertise
+haut	high
+moderne	modern
+ne... rien	nothing
+ne... personne	nobody
+le nombre	number
+numérique	digital
+l'outil (m.)	tool
+la personne	person
+plus (...) que	more (...) than
+le produit	product
+le profil	profile
+le public	public
+la publicité	advertisement
+puissant	powerful, strong
+quelle joie!	what a joy!
+quelques	some, a few
+qui	who
+réagir	to react
+recevoir	to receive
+régulier	regular
+régulièrement	regularly
+respecter	to respect
+savoir	to know
+la semaine	week
+suivre	to follow
+la vie	life
+
+# Topic 8.2
+à l'avenir	in the future
+l'anniversaire (m.)	birthday
+changer	to change
+la chanson	song
+complet/complète	complete
+cool	cool
+la dépendance	addiction
+en ce moment	at the moment
+enregistrer	to record
+envoyer	to send
+faire attention à	to be careful of, to pay attention to
+impossible	impossible
+inaccessible	inaccessible
+l'inactivité (f.)	inactivity
+incomplet/incomplète	incomplete
+l'indépendance (f.)	independence
+indifférent(e)	indifferent
+injuste	unfair
+presque	almost
+réduire	to reduce
+la sécurité	safety, security
+la technologie	technology
+à qui	to whom
+l'achat (m.)	purchase
+l'adresse (f.)	address
+âgé(e)	elderly
+l'année dernière (f.)	last year
+attaquer	to attack
+attentif/attentive	attentive
+l'attention (f.)	attention
+aussi bien que	as well as
+bancaire (adj.)	banking
+connaître	to know (a person (or place)), to know (a place)
+courant(e)	ordinary, habitual
+d'origine	of origin, from
+le détail personnel	(personal) detail, (personal) information
+le document	document
+également	equally, as well, too, also
+en effet	indeed
+en toute sécurité	safely
+ensuite	next
+essayer de	to try
+étrange	strange
+être victime de	to be victim of
+éviter	to avoid
+exister	to exist
+l'expert(e) (m./f.)	expert
+facilement	easily
+faciliter	to make easier, to facilitate
+faire des recherches	to do research
+fort(e)	strong
+la fraude	fraud
+il est facile de	it is easy to
+il faut	it's necessary to
+l'information personnelle (f.)	(personal) detail, (personal) information
+inquiet/inquiète	worried
+juste	fair, just, only
+le lien	link
+la main	hand
+malheureusement	unfortunately
+le mot de passe	password
+négatif/négative	negative
+nombreux/nombreuses	numerous
+notre/nos	our
+perdre	to lose (something)
+la personne	person
+personnel(le)	personal
+le pirate informatique	hacker
+positif/positive	positive
+la possibilité	possibility
+se protéger	to protect oneself
+quelque chose	something
+quotidien(ne)	daily
+réaliser que	to realise that
+la réponse	answer, response
+le risque	risk
+simplement	simply
+sûr	safe
+utiliser	to use
+vigilant	careful
+le virus	virus
+le vol d'identité	identity theft
+voler	to steal
+votre/vos	you (plural), you (polite)
+
+# Topic 9.1
+animal (adj.)	(from) animal(s), (of) animal(s)
+l'arbre (m.)	tree
+certain(e)(s)	some, certain
+le choix	choice
+la chose	thing
+couper	to cut
+la date	date
+la douche	shower
+droit	right
+l'énergie (f.)	energy
+faire une différence	to make a difference
+la génération	generation
+inquiétant(e)	worrying
+la journée	day
+se laver	to wash
+le mode de vie	way of life
+naturel(le)	natural
+novembre	November
+l'oxygène (m.)	oxygen
+par exemple	for example
+possible	possible
+je/le premier/première	first
+le produit ménager	household product
+le respect	respect
+la ressource	resource
+le savon	soap
+scientifique (adj.)	scientific
+selon	according to
+le soleil	sun
+le souci	worry
+la Terre	Earth
+végan	vegan
+le véganisme	veganism
+végétarien	vegetarian
+le végétarisme	vegetarianism
+le vent	wind
+l'air (m.)	air
+avoir le droit	to have the right
+la banlieue	suburbs
+cela	it, this, that
+le centre de recyclage	recycling centre
+circuler	to circulate
+commun	common
+le/les déchet(s) (m. pl.)	rubbish
+dommage!	what a shame!
+la durabilité	sustainability
+l'économie (f.)	economy
+encourager	to encourage
+expliquer (que)	to explain (that)
+faire du recyclage	to do recycling
+finir	to finish
+le gaz	gas
+la gestion	management
+loin	far
+le manque de	lack of
+ménager (adj.)	household
+le métro	underground (train)
+le modèle	model
+ne... ni... ni	neither... nor
+ne... pas encore	not yet
+ne... que	only
+le papier	paper
+permettre de	to allow
+polluer	to pollute
+la piste cyclable	cycle path
+principal(e)	main
+produire	to produce
+le programme	programme
+récent(e)	recent
+réussir à	to succeed in
+recycler	to recycle
+le réseau	network
+le reste	rest
+la tonne	ton
+transformer	to transform
+trier	to sort
+
+# Topic 9.2
+août	August
+avoid faim	to be hungry
+avoir le temps	to have (the) time
+beaucoup à fair	a lot to do
+buen sûr	of course
+la citadelle	citadel
+confortable	comfortable
+la couleur	colout
+délicieux/délicieuse	delicious
+la Dordogne	Dordogne
+en été	in summer
+en général	in general
+environ	about, thereabouts
+l'été (m.)	summer
+faire froid	to be cold
+faire les magasins	to go shopping
+idéal(e)	ideal
+joli(e)	pretty
+juillet	July
+médiéval(e)	medieval
+penser de	to think of
+le port	port
+quatorzième	fourteenth
+recommander	to recommend
+le/la seul(e)	the only...
+la région	region
+rien à faire	nothing to do
+le sud-ouest	South-West
+le théâtre	theatre
+vieux/vieil/vieille	old
+à la campagne	in the countryside
+actuel(le)	current
+l'air frais (m.)	fresh air
+apprécier de	to appreciate
+le bruit	noise
+la circulation	traffic
+donner sur	to overlook/give onto
+en ville	in town
+entendre	to hear
+être au soleil	to be in the sun
+faire du bruit	to make noise
+la gare	train station
+il n'y a jamais rien	there is never anything
+l'inconvénient (m.)	disadvantage, inconvenience
+la plupart du temps	most of the time
+nager	to swim, to go swimming
+la nuit	night
+pareil(le)	same
+pas loin de	not far from
+penser (que)	to think (that)
+peut-être	maybe
+plein de	lots of, full of
+plus tard	later
+plutôt	rather
+rapidement	quickly
+rester en forme	to stay fit
+tout(e) petit(e)	very small
+tranquille	quiet
+la tranquillité	tranquility
+le transport	transport`;
+            const NUM_UNITS = 18;
             const OPTIONS = {lang: "fr", id: "fr8652", name: "French GCSE (New)", all: false};
         </script>
         <script src="../../../scripts/lightdark.js"></script>
