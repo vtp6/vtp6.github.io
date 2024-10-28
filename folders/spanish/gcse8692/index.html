@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+    <head>
+        <link rel="stylesheet" href="../../../styles/fonts.css" />
+        <link rel="stylesheet" href="../../../styles/main.css" />
+        <link rel="stylesheet" href="../../../styles/folders.css" />
+        <title>Spanish GCSE (8692) | Vocabulary Testing Program 6</title>
+        <link rel="icon" type="image/png" href="../../../logos/logo-square.png"/>
+        <meta property="og:image" content="../../../logos/logo-banner.png" />
+        <meta property="og:image:width" content="1980" />
+        <meta property="og:image:height" content="1741" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="description" content="Study Spanish GCSE (new specification) on Vocabulary Testing Program 6." />
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="content">
+            <div id="settings-bar">
+                <!-- <span id="before-slider">Classic</span>
+                <label class="switch" id="switch-slider">
+                    <input type="checkbox" id="gamemode-checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span id="after-slider" class="not-selected">Match</span> -->
+                <select id="gamemode-selector"></select>
+                <button class="start-button" id="start-button" role="button" disabled="true">Start!</button>
+                <span id="high-score">
+                    <img class="high-score-image" />
+                    <span id="high-score-text"></span>
+                </span>
+                <p id="help-tip"></p>
+            </div>
+            <div class="flex-container" id="units-flex">
+                <div class="units-flexbox no-border" name="all">
+                    <input type="checkbox" class="folders-checkbox" />
+                    <span class="checkbox-label">All <i id="insert-length-here"></i></span>
+                </div>
+            </div>
+            <div id="margin"></div>
+        </div>
+        <div id="footer"></div>
+        <script>
+            const TERMS_LIST = `# Topic 1.1
+alegre	cheerful
+el/la amigo/a	friend
+animal	animal
+artístico/a	artistic
+bueno/a	good
+el/la chico/a	boy/girl
+las ciencias	science
+cinco	five
+la clase	class
+cuando	when
+deportivo/a	(of) sports
+dificil	difficult
+divertido/a	fun, enjoyable
+especialmente	especially
+estar	to be
+el/la estudiante	student
+fácil	easy
+feliz	happy
+fuerte	strong
+general	general
+gracioso/a	funny
+el grupo	group
+gustar	to like, to please
+hoy	today
+independiente	independent
+el instituto	secondary school
+listo/a	clever
+muy	very
+nervioso/a	nervous
+otro/a	other, another
+pensar	to think
+perezoso/a	lazy
+pero	but
+la persona	person
+la personalidad	personality
+poco/a	little, bit
+porque	because
+práctico/a	practical
+responsable	responsible
+ser	to be
+serio/a	serious
+simpático/a	nice, friendly
+la situación	situation
+trabajador(a)	hard-working
+tranquilo/a	quiet, peaceful
+el/la abuelo/a	grandfather/grandmother
+la actitud	attitude
+el/la actor/actriz	actor/actress
+agradable	pleasant
+alto/a	tall
+ambicioso/a	ambitious
+animado/a	lively
+el aspecto	aspect
+azul	blue
+bajo/a	short
+bonito/a	pretty, lovely
+buscar	to look for, search for
+capaz	capable
+la cara	face
+el carácter	character
+cómo	how
+la confianza	confidence, trust
+contento/a	happy, pleased, glad
+corto/a	short
+de momento	at the moment
+deber	to owe (must)
+delgado/a	slim, thin
+la diferencia	difference
+distinto/a	different
+dónde	where
+enojado/a	angry
+este/esta	this
+físico/a	physical
+las gafas	glasses
+gris	grey
+guapo/a	good-looking
+hacer	to do, make
+el/la hermanastro/a	stepbrother/stepsister
+el hombre	man
+interesante	interesting
+la isla	island
+largo/a	long
+llamarse	to be called
+la madrastra	stepmother
+marrón	brown
+moreno/a	brown, dark
+la mujer	woman/wife
+negro/a	black
+el/la niño/a	child, (little) boy, (little) girl
+nuevo/a	new
+el ojo	eye
+optimista	optimistic
+orgulloso/a	proud
+el padrastro	stepfather
+el papel	role, paper
+parecer	to seem
+el pelo	hair
+pequeño/a	small
+el/la perro/a	dog
+el personaje	character
+popular	popular
+positivo/a	positive
+principal	principal, main
+el programa	programme
+rubio/a	fair, blond(e)
+Sudamérica	South America
+el tatuaje	tattoo
+tener	to have
+triste	sad
+verde	green
+
+# Topic 1.2
+a veces	sometimes
+algo	something
+allí	there
+el año	year
+bien	well
+casarse	to get married
+el/la compañero/a	colleague, (school) friend
+común	common
+el contacto	contact
+creer	to think, to believe
+la definición	definition
+el día	day
+diferente	different
+divorciarse	to get divorced
+escuchar	to listen (to)
+el estadio	stadium
+fatal	terrible
+la frecuencia	frequency
+genial	great
+guardar	to keep
+hablar	to speak, talk
+hay	there is, there are
+la idea	idea
+levantarse	to get up
+llevarse bien con	to get on well with
+mejor	better, best
+la opinión	opinion
+paciente	patient
+parecerse a	to look like
+pasar	to pass, to spend
+pelear(se)	to fight
+poner(se)	to put on, to become
+preocupar(se)	to worry
+el problema	problem
+próximo/a	next
+qué	what
+raramente	rarely
+raro/a	strange, odd, rare
+la relación	relationship
+el sábado	Saturday
+el secreto	secret
+siempre	always
+tarde	late
+temprano	early
+el texto	text
+el tiempo	time, weather
+todo/a	all, every
+activo/a	active
+adoptado/a	adopted
+ahora	now
+ayudar	to help
+biológico/a	biological
+caer	to fall
+la calle	street
+el caramelo	sweet
+el cariño	affection
+la casa	house
+claro	clear, of course
+coger	to catch
+la combinación	combination
+la comida	food, meal
+compartir	to share
+completo/a	complete
+complicado/a	complicated
+comprensivo/a	understanding
+conocer	to know, to get to know
+cubano/a	Cuban
+dar	to give
+decidir	to decide
+el deporte	sport
+divorciado/a	divorced
+el domingo	Sunday
+el dormitorio	bedroom
+dos	two
+escoger	to choose
+estricto/a	strict
+extendido/a	extended
+la familia	family
+la familia reconstituida	step family
+familiar	(of the) family
+el fin de semana	weekend
+grande	big
+el/la hijo/a	son/daughter
+juntos/as	together
+la madre	mother
+mandar	to send
+el marido	husband
+mayor	older, bigger, main
+el mensaje	message
+el miembro	member
+mismo/a	same
+monoparental	single parent
+moderno/a	modern
+nosotros/as	we, us
+nuclear	nuclear
+numeroso/a	numerous, large
+el padre	father
+la pareja	couple, partner
+pasarlo bien	to have a good time
+el paseo	walk, stroll
+poder	to be able
+poner	to put
+el/la primo/a	cousin
+proteger	to protect
+el pueblo	village, town
+querer	to want, love
+salir	to leave, go out
+separado/a	separated
+el sexo	sex
+sin	without
+solo/a	only, alone
+la tele	TV, telly
+la tienda	shop, tent
+el/la tío/a	uncle/aunt
+típico/a	typical
+tradicional	traditional
+traer	to bring
+las vacaciones	holidays
+ver	to see, watch
+vez	time, occasion
+visitar	to visit`;
+            const NUM_UNITS = 18;
+            const OPTIONS = {lang: "es", id: "es8692", name: "Spanish GCSE (New)", all: false};
+        </script>
+        <script src="../../../scripts/lightdark.js"></script>
+        <script src="../../../scripts/header.js"></script>
+        <script src="../../../scripts/cookies.js"></script>
+        <script src="../../../scripts/footer.js"></script>
+        <script src="../../../scripts/misc.js"></script>
+        <script src="../../../scripts/folders-setup.js"></script>
+        <script src="../../../scripts/folders-misc.js"></script>
+        <script src="../../../scripts/folders-classic.js"></script>
+        <script src="../../../scripts/folders-match.js"></script>
+        <script src="../../../scripts/folders-start.js"></script>
+        <script async data-id="101454906" src="//static.getclicky.com/js"></script>
+    </body>
+</html>
