@@ -1,5 +1,5 @@
 let header_version = -1;
-const LOGO = "halloween";
+const LOGO = "banner";
 
 function add_header() {
     let screen_width = window.innerWidth;
