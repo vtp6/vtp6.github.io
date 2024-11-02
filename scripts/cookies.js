@@ -1,3 +1,6 @@
+const MAIN_BANNER = true;
+const BANNER_COOKIE = "vtp6NewLogo1";
+
 let cookies_button = document.createElement("div");
 cookies_button.innerHTML = `
     <h1 id="cookie-title">Welcome to the new VTP6</h1>
@@ -11,6 +14,18 @@ cookies_button.innerHTML = `
 `;
 cookies_button.id = "cookie-banner";
 
+let main_banner = document.createElement("div");
+main_banner.innerHTML = `
+    <h1 id="banner-title">New Logo Feedback</h1>
+    <p id="banner-text">
+        We've changed our logo and would like some feedback. Click the button below to
+        see the changes.
+    </p>
+    <input type="button" id="logo-button" value="See changes" /> &nbsp;
+    <input type="button" id="dismiss-banner" value="Dismiss" />
+`;
+main_banner.id = "main-banner";
+
 function get_cookies() {
     let str = document.cookie.split(";");
     let d = {};
@@ -23,16 +38,29 @@ function get_cookies() {
     return d;
 }
 
-function remove_banner() {
+function remove_cookies_banner() {
     cookies_button.remove();
     document.cookie = "cookiesAllowed=1;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
 }
 
+function remove_main_banner() {
+    main_banner.remove();
+    document.cookie = BANNER_COOKIE + "=1;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
+}
+
 if (!get_cookies()["cookiesAllowed"]) {
     document.body.appendChild(cookies_button);
-    document.getElementById("cookie-button").addEventListener("click", remove_banner);
+    document.getElementById("cookie-button").addEventListener("click", remove_cookies_banner);
 } else {
     document.cookie = "cookiesAllowed=1;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
+}
+
+if (!get_cookies()[BANNER_COOKIE]) {
+    document.body.appendChild(main_banner);
+    document.getElementById("dismiss-banner").addEventListener("click", remove_main_banner);
+    document.getElementById("logo-button").addEventListener("click", () => window.open("/new-logo/"));
+} else {
+    document.cookie = BANNER_COOKIE + "=1;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
 }
 
 function delete_cookies() {

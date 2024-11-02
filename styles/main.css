@@ -21,8 +21,9 @@ div#header {
     }
 
     img#banner-logo {
-        height: 100px;
-        max-height: 100px;
+        height: 60px;
+        padding: 20px;
+        max-height: 60px;
     }
 
     a.banner-link {
@@ -96,9 +97,35 @@ div#cookie-banner {
     text-align: center;
     padding: 10px;
     animation: slideUp 1s ease-out;
+    z-index: 1000;
 
     input#cookie-button {
-        background-color: #00703c;
+        color: white;
+        font-size: 20px;
+        padding: 5px;
+        border: 0px;
+    }
+}
+
+div#main-banner {
+    width: calc(100% - 20px);
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    text-align: center;
+    padding: 10px;
+    animation: slideUp 1s ease-out;
+    z-index: 999;
+
+    input#logo-button {
+        color: white;
+        font-size: 20px;
+        padding: 5px;
+        border: 0px;
+    }
+
+    input#dismiss-banner {
+        background-color: #ff474C;
         color: white;
         font-size: 20px;
         padding: 5px;
@@ -133,6 +160,14 @@ body.light-theme {
 
         input#cookie-button {
             background-color: #00703c;
+        }
+    }
+
+    div#main-banner {
+        background-color: lightgray;
+
+        input#logo-button {
+            background-color: #00c04b;
         }
     }
 
@@ -181,6 +216,14 @@ body.dark-theme {
 
         input#cookie-button {
             background-color: #128033;
+        }
+    }
+
+    div#main-banner {
+        background-color: #2a8c8c;
+
+        input#logo-button {
+            background-color: #00ab41;
         }
     }
 
