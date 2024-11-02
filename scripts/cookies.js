@@ -58,7 +58,7 @@ if (!get_cookies()["cookiesAllowed"]) {
 if (!get_cookies()[BANNER_COOKIE]) {
     document.body.appendChild(main_banner);
     document.getElementById("dismiss-banner").addEventListener("click", remove_main_banner);
-    document.getElementById("logo-button").addEventListener("click", () => remove_main_banner() && window.open("/new-logo/"));
+    document.getElementById("logo-button").addEventListener("click", () => {remove_main_banner(); window.open("/new-logo/");});
 } else {
     document.cookie = BANNER_COOKIE + "=1;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
 }
