@@ -1,4 +1,4 @@
-const MAIN_BANNER = true;
+const MAIN_BANNER = false;
 const BANNER_COOKIE = "vtp6NewLogo1";
 
 let cookies_button = document.createElement("div");
@@ -55,7 +55,7 @@ if (!get_cookies()["cookiesAllowed"]) {
     document.cookie = "cookiesAllowed=1;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
 }
 
-if (!get_cookies()[BANNER_COOKIE]) {
+if (!get_cookies()[BANNER_COOKIE] && MAIN_BANNER) {
     document.body.appendChild(main_banner);
     document.getElementById("dismiss-banner").addEventListener("click", remove_main_banner);
     document.getElementById("logo-button").addEventListener("click", () => {remove_main_banner(); window.open("/new-logo/");});
