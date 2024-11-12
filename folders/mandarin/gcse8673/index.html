@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+    <head>
+        <link rel="stylesheet" href="../../../styles/fonts.css" />
+        <link rel="stylesheet" href="../../../styles/main.css" />
+        <link rel="stylesheet" href="../../../styles/folders.css" />
+        <title>Mandarin GCSE (8673) | Vocabulary Testing Program 6</title>
+        <link rel="icon" type="image/png" href="../../../logos/logo-square.png"/>
+        <meta property="og:image" content="../../../logos/logo-banner.png" />
+        <meta property="og:image:width" content="1980" />
+        <meta property="og:image:height" content="1741" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="description" content="Study Mandarin GCSE (8673) on Vocabulary Testing Program 6." />
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="content">
+            <div id="settings-bar">
+                <!-- <span id="before-slider">Classic</span>
+                <label class="switch" id="switch-slider">
+                    <input type="checkbox" id="gamemode-checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span id="after-slider" class="not-selected">Match</span> -->
+                <select id="gamemode-selector"></select>
+                <button class="start-button" id="start-button" role="button" disabled="true">Start!</button>
+                <span id="high-score">
+                    <img class="high-score-image" />
+                    <span id="high-score-text"></span>
+                </span>
+                <p id="help-tip"></p>
+            </div>
+            <div class="flex-container" id="units-flex">
+                <div class="units-flexbox no-border" name="all">
+                    <input type="checkbox" class="folders-checkbox" />
+                    <span class="checkbox-label">All <i id="insert-length-here"></i></span>
+                </div>
+            </div>
+            <div id="margin"></div>
+        </div>
+        <div id="footer"></div>
+        <script>
+            const TERMS_LIST = `# General Vocab 1
+个	general measure word
+口	for members of the family
+本	for books
+张	for flat things
+只	for animals and birds
+件	for clothes and glasses
+杯	for cups
+碗	for bowls
+瓶	for bottles
+双	for pairs of
+条	for long things
+是	to be
+有	to have
+问	to ask
+吃	to eat
+喝	to drink
+知道	to know (a fact)/to be aware of (a person)
+认识	to know (a person)
+叫	to call/to be named
+学	to learn/to study
+懂/明白	to understand
+说	to say/speak
+要	to want
+想	to want to/to think
+觉得	to feel
+写	to write
+画	to draw/to paint
+住	to live
+坐	to sit
+玩	to play
+睡觉	to sleep
+用	to use
+希望	to hope
+来	to come
+去	to go
+回	to return
+买	to buy
+卖	to sell
+换	to change
+试	to try
+发	to send (an email)
+寄	to send (a letter)
+忘	to forget
+记得	to remember
+洗	to wash
+找	to look for/to find
+参观	to visit
+参加	to take part in
+穿	to wear (clothes)
+戴	to wear (accessories)
+好	good
+坏	bad
+快	quick
+慢	slow
+漂亮	beautiful
+难看	ugly
+有意思	interesting
+没意思	boring
+干净	clean
+脏	dirty
+忙	busy
+累	tired
+饿	hungry
+渴	thirsty
+高兴	happy
+好吃	delicious
+强	strong
+弱	weak
+旧/老	old
+新	new
+贵	expensive
+便宜	cheap
+一样	the same
+B跟/和 A 一样	B is the same as A
+B跟/和A 不一样	B is not the same as A
+B没有A 那么好	B is not as good as A
+比	to compare
+A比B好	A is better thanB
+比较好	quite good
+最好	best
+最坏/最差	worst
+更好	even better
+除了……以外……	apart from ...and also...
+虽然……但是……	although…but…
+要是/如果……就……	if ...then...
+又	……又…… both...and...
+越	……越…… more and more
+的时候	when
+因为……所以……	because…therefore...
+可是/但是	but
+不过	however
+而且	moreover
+……或者……	or... (statement)
+……还是 ……	or... (question)
+因此	because of this
+一边……	一边…… on the one hand…on the other hand...
+一……就……	as soon as …then…
+第一	firstly
+第二	secondly
+第	三 thirdly
+却	but
+不	not
+没有	has not
+不……了	no longer
+现金	cash
+块	kuai (spoken)
+元	yuan (written)
+毛	mao (spoken)
+角	jiao (written)
+零用钱	pocket money
+换钱	to change money
+
+# General Vocab 2
+什么时候	when?
+为什么	why?
+怎么样	how about it?
+什么	what?
+哪	which?
+谁	who?
+哪儿	where?
+多长	how long? (length)
+多久/多长时间	how long? (time)
+几岁	how old?
+多大	how old?
+几点	what time?
+多少/几	how much/many?
+怎么	how?
+从哪儿	where from?
+去哪儿	where to?
+和/跟谁一起	who with?
+星期几	what day of the week?
+几月几日	what month and what day?
+哪年	what year?
+你好	hello
+早上好	good morning
+晚上好	good evening
+你好吗	how are you?
+你属什么	what year were you born in?
+您贵姓	what is your name? (polite)
+你叫什么	what is your name?
+谢谢	thank you
+对不起/没关系	sorry/it's okay
+新年快乐	Happy New Year
+欢迎	welcome
+祝好	best wishes/good luck
+再见	goodbye
+干杯	cheers
+太好了	that's great!
+真糟糕	that's awful!
+喜欢	to like
+觉得/以为/想	to think/to feel
+非常好	excellent
+舒服	comfortable
+一定	definite(ly)/certain(ly)
+胡说	nonsense, rubbish
+同意	to agree
+反对	(to be) against/opposed to something
+比较喜欢	to prefer
+对……有兴趣	to be interested in...
+不对	that's not right/correct
+高兴/快乐	happy/glad/pleased
+相信	to believe
+恨	to hate
+有用	useful
+没有用	useless
+安全	safe
+重要	important
+希望	to wish
+季节	season
+春天	spring
+夏天	summer
+秋天	autumn
+冬天	winter
+年	year
+月	month
+日/号	day
+点	o'clock
+小时	hour
+分钟	minute
+半	half
+刻	quarter
+慢	to be slow
+快	to be fast
+晚	late
+早	early
+几点了	what time is it?
+星期一	Monday
+星期二	Tuesday
+星期三	Wednesday
+星期四	Thursday
+星期五	Friday
+星期六	Saturday
+星期日/星期天	Sunday
+早上	early morning
+上午	morning
+中午	midday
+下午	afternoon
+晚上	evening
+每天早上	every morning
+每天晚上	every evening
+每天	every day
+每个月	every month
+每年	every year
+今天	today
+明天	tomorrow
+昨天	yesterday
+前天	the day before yesterday
+后天	the day after tomorrow
+常常/经常	often
+快	soon
+最近	recently
+周末	weekend
+到底	in the end
+马上	immediately
+总是	always
+现在	now
+有时候	sometimes
+已经	already
+很少	seldom/rarely
+这儿	here
+那儿	there
+近	close by
+远	far
+上	on top of
+下	below
+往	towards
+对面	opposite
+后	behind
+前	in front
+里	inside
+外	outside
+中间	in the middle of
+旁边	next to
+离	away from
+左	left
+右	right
+附近	near by
+在	to be situated (in)
+斤	jin (old Chinese weight, 0.5kg)
+公斤	kilogram
+公里	kilometre
+米	metre
+公分	centimetre
+升	litre
+多	many
+少	few
+窄	narrow
+瘦	thin
+高	tall/high
+矮	short (height)
+一点	a little
+一些	some/a few
+差不多	about/roughly
+瓶	bottle
+杯	cup/glass
+关	to close
+开	to open
+入口	entrance (building)
+出口	exit (building)
+有人	occupied, engaged
+门票	entrance ticket
+免费	free
+
+# Theme 1F
+家	family
+爸爸	dad
+父亲	father
+妈妈	mum
+母亲	mother
+哥哥	older brother
+弟弟	younger brother
+姐姐	elder sister
+妹妹	younger sister
+儿子	son
+女儿	daughter
+奶奶	grandmother (paternal family)
+爷爷	grandfather (paternal family)
+孙子	grandson (paternal family)
+孙女	granddaughter (paternal family)
+阿姨	auntie (maternal family)
+叔叔	uncle (maternal family)
+结婚	married
+年纪	age
+岁	years old
+胖	fat
+瘦	thin
+聪明	clever
+友好	friendly
+安静	quiet
+亲切	kind
+美丽	pretty
+幽默	humorous
+有名	famous
+护照	passport
+参观	to visit
+笔友	pen friend
+孩子	child
+朋友	friend
+男孩	boy
+女孩	girl
+宠物	pet
+猫	cat
+狗	dog
+马	horse
+兔子	rabbit
+鸟	bird
+我	I/me
+你	you
+他	he/him
+她	she/her
+它	it
+我们	we
+你们	you (plural)
+他们	they
+我的	my/mine
+你的	your/yours
+他的	his
+她的	her/hers
+它的	its
+我们的	our/ours
+你们的	your/yours (pl)
+他们的	their/theirs
+头发	hair
+眼睛	eyes
+嘴	mouth
+耳朵	ears
+手	hand
+脚	foot
+客人	guest
+生日	birthday
+电话号码	telephone number
+地址	address
+我很喜欢	I like... (very much)
+我很讨厌	I can't stand.../I don't like...
+网站	website
+电脑	computer
+网页	web page
+上网	to go online
+电子邮件	email
+手机	mobile phone
+打电话	to make a telephone call
+用	to use
+打字	to type
+聊天	to chat
+网民	internet user
+网友	internet friend
+收	to receive
+发	to send
+计算器	calculator
+社交媒体/社交网站	social media
+踢足球	to play football
+打羽毛球	to play badminton
+玩滑板	to skateboard
+打太极拳	to practice taiqi
+跑步	to run
+爬山	to climb hills
+钓鱼	to go fishing
+游泳	to swim
+弹吉他	to play the guitar
+看小说	to read a novel
+遛狗	to walk a dog
+看电视	to watch TV
+听音乐	to listen to music
+交朋友	to make friends
+看电影	to watch a film
+看京剧	to watch Beijing opera
+去电影院	to go to the cinema
+唱歌	to sing
+跳舞	to dance
+请	to invite
+流行歌曲	pop song
+电视节目	TV programme
+电视剧	TV drama
+动画片	cartoon
+新闻	news
+购物中心	shopping centre
+赛马	horse racing
+名人	celebrity
+花钱	to spend money
+照相/拍照	to take a photo
+照片	photograph
+网吧	internet café
+有空	to have free time
+比赛	competition
+队员	team member
+参加	to participate
+买票	to buy a ticket
+杂志	magazine
+报纸	newspaper
+书	book
+爱好	hobby
+茶	tea
+咖啡	coffee
+牛奶	milk
+水	water
+汽水	fizzy drink
+果汁	fruit juice
+酒	wine
+汤	soup
+米饭	rice
+面条	noodles
+面包	bread
+牛肉	beef
+猪肉	pork
+鸡肉	chicken
+鱼	fish
+海鲜	seafood
+饺子	dumpling
+鸡蛋	egg
+肉	meat
+鸭肉	duck
+烤	roast
+蔬菜/青菜	vegetable
+蛋糕	cake
+水果	fruit
+早饭	breakfast
+午饭	lunch
+晚饭	dinner
+点心	snack/dim sum
+菜单	menu
+饭馆	restaurant
+咖啡厅	cafe
+点	to order food
+做饭	to cook food
+筷子	chopsticks
+春节/中国新年	Chinese New Year
+饺子	dumplings
+红包	red envelopes
+舞狮	lion dance
+舞龙	dragon dance
+中秋节	Mid-autumn festival
+月饼	moon cake
+圣诞节	Christmas
+收	to get/to receive
+感谢	to thank
+请	to invite
+邀请	invitation
+送礼物	to give a present
+节日	festival/celebration
+客人	guest
+礼物	present
+
+# Theme 1H
+亲戚	relatives
+未婚	unmarried
+离婚	divorced
+婚礼	wedding
+严肃	serious
+严格	strict
+有礼貌	polite
+身份证	identity card
+独生子	only child
+成人	adult/grown-up
+出生日期	date of birth
+出生地点	place of birth
+性别	sex/gender
+博客	blog
+下载	to download
+上载	to upload
+复制	to copy
+删除	to delete
+坏处	disadvantage
+好处	advantage
+浪费时间	waste time
+影响	influence/to affect
+练体操	to practice gymnastics
+去健身房	to go to the gym
+参观博物馆	to visit a museum
+滑雪	to ski
+滑冰	to ice skate
+弹钢琴	to play the piano
+乐器	musical instrument
+赛车	car racing
+写日记	to write a diary
+得奖牌	to win a medal
+演出	to perform
+成功	to succeed
+影迷	film fan
+鞭炮	firecrackers
+灯笼	lantern
+端午节	Dragon Boat Festival
+龙舟	dragon boat
+粽子	rice dumplings
+复活节	Easter
+
+# Theme 2F
+饭厅	dining room
+客厅	lounge
+书房	study
+卧室	bedroom
+厨房	kitchen
+厕所	toilet
+浴室	bathroom
+花园	garden
+桌子	table
+椅子	chair
+床	bed
+电视	TV
+电话	telephone
+门	door
+灯	light
+书架	bookcase
+电脑	computer
+冰箱	fridge
+洗衣机	washing machine
+炉子	cooker
+空调	air conditioning
+钟	clock
+银行	bank
+邮局	post office
+超市	supermarket
+电影院	cinema
+汽车站	bus stop
+公园	park
+体育馆	sports centre
+学校	school
+美术馆	art gallery
+动物园	zoo
+明信片	postcard
+城市	city
+海边	seaside
+农村	countryside
+山区	mountain area
+树	tree
+空气	air
+新鲜	fresh
+安静	quiet
+湖	lake
+河	river
+商店	shop
+苹果	apple
+桔子	orange
+衣服	clothes
+夹克/大衣	jacket
+衬衣	shirt
+裤子	trousers
+领带	tie
+裙子	skirt
+毛衣	sweater
+皮带	belt
+袜子	socks
+鞋	shoes
+帽子	hat
+颜色	colour
+黑	black
+白	white
+红	red
+黄	yellow
+蓝	blue
+绿	green
+橙	orange
+紫	purple
+粉红	pink
+灰	grey
+棕	brown
+抽烟/吸烟	to smoke
+烟	cigarette
+胖	fat
+瘦	thin
+健康	healthy
+交朋友	make friends
+男朋友	boyfriend
+女朋友	girlfriend
+爱	to love
+医院	hospital
+病	illness
+药	medicine
+疼	pain
+年轻	young
+结婚	marry
+网上约会	internet dating
+环境	environment
+垃圾	rubbish
+浪费	wastage
+失业	unemployed
+穷	poor
+富	rich
+人口	population
+增加	increase
+住房	housing
+小偷	thief
+社会	society
+生活	life
+有害的	harmful
+罪行	crime
+交通	traffic
+是阴天	overcast/cloudy
+有雾	foggy
+下雪	snow
+下大雪	heavy snow
+下雨	rain
+下小雨	showery
+有风	windy
+有云	cloudy
+凉快	cool
+热	hot
+暖和	warm
+冷	cold
+是晴天	bright/fine/clear/fair
+星	星 star
+月亮	moon
+气候	climate
+天气预报	weather forecast
+设备	equipment
+单人房	single room
+双人房	double room
+单程票	single ticket
+往返票	return ticket
+度假	to have a holiday
+旅行	to travel
+买纪念品	to buy souvenirs
+晒太阳	to sunbathe
+向右拐	turn right
+向左拐	turn left
+向前走	go ahead
+请问	。。。 excuse me, may I ask...?
+去	。。。怎么走 how do you get to...
+在旁边	beside
+汽车	car
+公共汽车	bus
+旅游车	coach
+飞机	plane
+火车	train
+地铁	underground
+船	ship
+出租车	taxi
+自行车	bike
+开车	to drive a car
+公	路 road
+十字路口	crossroads
+红绿灯	traffic lights
+见面	to meet
+等	to wait for
+英国	England
+中国	China
+法国	France
+德国	Germany
+美国	America
+台湾	Taiwan
+香港	Hong Kong
+新加坡	Singapore
+旅行袋	travel bag
+护照	passport
+安全带	seat belt
+地图	map
+故宫	Forbidden City
+鸟巢	Bird's Nest
+天安门	Tiananmen
+天坛	Temple of Heaven
+长城	Great Wall
+
+# Theme 2H
+博物馆	museum
+地铁站	underground station
+展览馆	exhibition hall/gallery
+郊区	suburb
+小镇	small town
+热闹	bustling
+吵	noisy
+浅	light (colour)/shallow
+深	dark (colour)/deep
+戒烟	to stop smoking
+饮食习惯	eating habits
+减肥	to lose weight
+超重	overweight
+针灸	acupuncture
+中药	Chinese medicine
+西药	Western medicine
+上瘾	to be addicted (to something)
+毒品	drugs
+谈恋爱	to date
+风险	risk/hazard
+污染	pollution/to pollute
+洪水	flooding
+乞丐	beggar
+战争	war
+饥饿	hunger
+全球变暖	global warming
+气候变化	climate change
+省钱	save money/economical
+方便	convenient
+麻烦	troublesome
+订飞机票	to book a flight ticket
+登记表	registration form
+暑假	summer holiday
+寒假	winter holiday
+站台	platform
+目的地	destination
+出发	departure
+到达	arrival
+丢	to lose
+欧洲	Europe
+亚洲	Asia
+非洲	Africa
+北美洲	North America
+南美洲	South America
+信用卡	credit card
+现金	cash
+迷路	to lose the way
+
+# Theme 3F
+老师	teacher
+学生	student
+科目	subject
+校长	headteacher
+作业	homework
+聪明	clever/intelligent
+教	to teach
+学	to learn
+课	lesson
+英文	English
+汉语	Chinese
+法文	French
+意大利语	Italian
+数学	Maths
+科学	Science
+美术	Art
+历史	History
+体育	PE
+音乐	Music
+地理	Geography
+手工	DT
+电脑	IT
+节	measure word for lessons
+礼堂	assembly hall
+教室	classroom
+办公室	office
+食堂	dining hall/canteen
+操场	playing field
+体育馆	stadium/gymnasium
+走廊	corridor
+图书馆	library
+卫生间/厕所	/洗手间 toilets
+休息	break time
+上学	to go to school
+放学	to finish school
+小学	primary school
+中学	secondary school
+校服	school uniform
+笔	pen
+毛笔	Chinese writing brush
+尺子	ruler
+橡皮	rubber
+书包	school bag
+钟	clock
+大学生	university student
+大学	university
+毕业	to graduate
+工作	to work/work
+社会实践	work experience
+申请	to apply for
+信	letter
+学期	term
+能力	skills
+名片	business card
+机会	opportunity
+同事	colleague
+广告	advert
+联系	to make contact
+工资	wage/salary
+理想	dream/ideal
+赚钱	to earn money
+目标	aim
+办公室	office
+家庭妇女	housewife
+厨师	chef/cook
+护士	nurse
+医生	doctor
+司机	driver
+科学家	scientist
+作家	writer
+售货员	shop assistant
+工程师	engineer
+服务员	waiter
+演员	actor
+
+# Theme 3H
+生物	Biology
+物理	Physics
+化学	Chemistry
+经济	Economics
+高考	university entrance exams/A-level exams
+压力	pressure
+兼职	part time job
+义工	voluntary work
+个人简历	CV
+流利	fluent
+背景	background
+面试	job interview
+面谈	to discuss face to face
+经验	experience
+职业	career
+警察	policeman
+兼职	part time job`;
+            const NUM_UNITS = 8;
+            const OPTIONS = {lang: "zh", id: "zh", name: "Mandarin GCSE", all: false};
+        </script>
+        <script src="../../../scripts/lightdark.js"></script>
+        <script src="../../../scripts/header.js"></script>
+        <script src="../../../scripts/cookies.js"></script>
+        <script src="../../../scripts/footer.js"></script>
+        <script src="../../../scripts/misc.js"></script>
+        <script src="../../../scripts/folders-setup.js"></script>
+        <script src="../../../scripts/folders-misc.js"></script>
+        <script src="../../../scripts/folders-classic.js"></script>
+        <script src="../../../scripts/folders-match.js"></script>
+        <script src="../../../scripts/folders-start.js"></script>
+        <script async data-id="101454906" src="//static.getclicky.com/js"></script>
+    </body>
+</html>

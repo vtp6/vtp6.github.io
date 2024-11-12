@@ -22,6 +22,8 @@ div.folders-flexbox {
     border: 3px solid;
     margin: 10px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 
     a.folders-link {
         width: 100%;
