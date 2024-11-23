@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" class="notranslate" translate="no">
+    <head>
+        <link rel="stylesheet" href="../../../styles/fonts.css" />
+        <link rel="stylesheet" href="../../../styles/main.css" />
+        <link rel="stylesheet" href="../../../styles/folders.css" />
+        <title>German GCSE (8662) | Vocabulary Testing Program 6</title>
+        <link rel="icon" type="image/png" href="../../../logos/logo-square.png"/>
+        <meta property="og:image" content="../../../logos/logo-banner.png" />
+        <meta property="og:image:width" content="1980" />
+        <meta property="og:image:height" content="1741" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta property="description" content="Study German GCSE (new specification) on Vocabulary Testing Program 6." />
+    </head>
+    <body>
+        <div id="header"></div>
+        <div id="content">
+            <div id="settings-bar">
+                <!-- <span id="before-slider">Classic</span>
+                <label class="switch" id="switch-slider">
+                    <input type="checkbox" id="gamemode-checkbox">
+                    <span class="slider"></span>
+                </label>
+                <span id="after-slider" class="not-selected">Match</span> -->
+                <select id="gamemode-selector"></select>
+                <button class="start-button" id="start-button" role="button" disabled="true">Start!</button>
+                <span id="high-score">
+                    <img class="high-score-image" />
+                    <span id="high-score-text"></span>
+                </span>
+                <p id="help-tip"></p>
+            </div>
+            <div class="flex-container" id="units-flex">
+                <div class="units-flexbox no-border" name="all">
+                    <input type="checkbox" class="folders-checkbox" />
+                    <span class="checkbox-label">All <i id="insert-length-here"></i></span>
+                </div>
+            </div>
+            <div id="margin"></div>
+        </div>
+        <div id="footer"></div>
+        <script>
+            const TERMS_LIST = `# Topic 1.1
+...Jahre alt	...years old
+bei uns	with us, at our house
+Cousin (m), Cousine (f)	cousin
+Einzelkind (nt)	only child
+Eltern (pl)	parents
+es gibt	there is, there are
+fahren	to go, to drive
+Film (m)	film
+Freund (m)	friend, boyfriend
+Freundin (f)	friend, girlfriend
+fünfzehn	fifteen
+Geschwister (pl)	siblings, sisters
+heißen	to be called
+Katze (f)	cat
+kein	no, not any
+Kind (nt)	child
+Kino (nt)	cinema
+manchmal	sometimes
+mein	my
+mit dem Auto	by car
+mit dem Bus	by bus
+Mutter (f)	mother
+Name (m)	name
+nicht weit von	not far from
+niedlich	cute
+oft	often
+Partner (m), Partnerin (f)	partner
+sechzehn	sixteen
+sehen	to see
+sehr	very
+siebzehn	seventeen
+sprechen	to speak
+treiben	to do (e.g. sport), to drive, to pursue
+Vater (m)	father
+vierzig	forty
+weit	far
+zusammen	together
+arbeiten	to work
+auf dem Land	in the countryside
+beginnen	to begin
+blau	blue
+die Schweiz	Switzerland
+draußen	outside
+dunkel	dark
+Farbe (f)	colour
+Ferien (pl)	holidays, school break
+freundlich	friendly
+genießen	to enjoy
+grau	grey
+hoffen	to hope
+im Moment	at the moment
+immer	always
+Kleidung (f)	clothes, clothing
+Klettern (nt)	climbing
+Konzert (nt)	concert
+Land (nt)	country, countryside
+lernen	to learn
+Lesen (nt)	reading
+Mädchen (nt)	girl
+mir	to me, me (indirect obj)
+musikalisch	musical
+rot	red
+schlafen	to sleep
+schön	beautiful
+schwarz	black
+Schwimmen (nt)	swimming
+verbringen	to spend (time)
+versuchen	to try
+Wochenende (nt)	weekend
+zwölf	twelve
+
+# Topic 1.2
+sich amüsieren	to enjoy oneself
+ausgehen	to go out
+denn	because
+dich	you, yourself (familiar singular direct object pronoun)
+sich duschen	to shower
+euch	you, yourself (familiar plural direct object pronoun)
+faul	lazy
+Freundin (m/f)	friend
+sich freuen auf	to look forward to
+gemein	mean
+getrennt	separated
+heiraten	to marry
+Hochzeit (f)	wedding
+Jahr (nt)	year
+jedes Wochenende	every weekend
+jetzt	now
+kennen	to know (people)
+langweilig	boring
+Lebenspartnerschaft (f), zivile Partnerschaft (f)	civil partnership
+ledig	single
+meistens	mostly
+mich	me, myself (direct object pronoun)
+mit wem	with whom
+Mutti (f)	Mum, Mummy
+nächstes Jahr	next year
+neunzehn	nineteen
+nie	never
+Partnerschaft (f)	partnership
+sich	himself/herself/yourself (formal)/themselves (direct object pronoun)
+streiten	to quarrel, to argue
+ungeduldig	impatient
+uns	us, ourselves (direct object pronoun)
+Vati (m)	Dad, Daddy
+verlobt	engaged
+Verlobte (m or f)	fiancé(e)
+verstehen	to understand
+sich verstehen mit	to get on with
+warum	why
+sich waschen	to wash (oneself)
+wer	who
+wie	how
+ab und zu	now and again
+aktiv	active
+allein	alone
+alles	everything
+ankommen	to arrive
+anrufen	to phone, to ring
+sich beschäftigen (mit)	to be busy (with), to be dealing (with)
+beschreiben	to describe
+Ehe (f)	marriage
+ehrlich	honest
+einander	each other
+einige	a few, some
+einkaufen	to shop
+sich entspannen	to relax
+erlauben	to allow
+etwas Positives	something positive
+Freiheit (f)	freedom
+Gruppe (f)	group
+heute	today
+Interesse (f)	interest
+jemand	someone
+kaum	hardly
+Kleinigkeit (f)	minor thing, trivial matter
+sich kümmern um	to take care of, to concern ourselves about
+leben	to live
+Leben (nt)	life
+miteinander	with each other
+Monat (m)	month
+morgen	tomorrow
+natürlich	natural, naturally, of course
+neu	new
+normalerweise	normally, usually
+nötig	necessary
+Person (f)	person
+positiv	positive
+Restaurant (nt)	restaurant
+schlecht	bad
+seit	since, for
+seit zwei Jahren	for two years, for 2 years, since two years, since 2 years
+selten	rare, rarely
+spät	late
+toll	great
+traurig	sad
+trinken	to drink
+Kaffee (m)	coffee
+über	about, above, over
+verantwortlich	responsible
+wenn	if, when, whenever
+wunderbar	wonderful
+zum Beispiel	for example
+zurück	back`;
+            const NUM_UNITS = 18;
+            const OPTIONS = {lang: "de", id: "de8662", name: "German GCSE (New)", all: false};
+        </script>
+        <script src="../../../scripts/lightdark.js"></script>
+        <script src="../../../scripts/header.js"></script>
+        <script src="../../../scripts/cookies.js"></script>
+        <script src="../../../scripts/footer.js"></script>
+        <script src="../../../scripts/misc.js"></script>
+        <script src="../../../scripts/folders-setup.js"></script>
+        <script src="../../../scripts/folders-misc.js"></script>
+        <script src="../../../scripts/folders-classic.js"></script>
+        <script src="../../../scripts/folders-match.js"></script>
+        <script src="../../../scripts/folders-start.js"></script>
+        <script async data-id="101454906" src="//static.getclicky.com/js"></script>
+    </body>
+</html>
