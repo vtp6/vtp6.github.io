@@ -5,17 +5,26 @@
         .snowflake {
             position: fixed;
             top: -10px;
-            color: white;
             font-size: 1em;
             font-family: Arial, sans-serif;
-            text-shadow: 0 0 5px rgba(255,255,255,0.7);
-            filter: drop-shadow(0 0 10px white);
             cursor: default;
             user-select: none;
             z-index: 999999;
             pointer-events: none;
             animation-timing-function: linear;
             animation-iteration-count: infinite;
+        }
+
+        body.dark-theme .snowflake {
+            color: white;
+            filter: drop-shadow(0 0 10px white);
+            text-shadow: 0 0 5px rgba(255,255,255,0.7);
+        }
+
+        body.light-theme .snowflake {
+            color: darkgray;
+            filter: drop-shadow(0 0 10px black);
+            text-shadow: 0 0 5px rgba(128,128,128,0.5);
         }
 
         @keyframes snowfall {
