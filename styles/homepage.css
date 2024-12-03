@@ -42,6 +42,50 @@ canvas#canvas {
     margin: 0;
 }
 
+.snowflake {
+    position: fixed;
+    top: -10px;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    cursor: default;
+    user-select: none;
+    z-index: 999999;
+    pointer-events: none;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+body.dark-theme .snowflake {
+    color: white;
+    filter: drop-shadow(0 0 10px white);
+    text-shadow: 0 0 5px rgba(255,255,255,0.7);
+}
+
+body.light-theme .snowflake {
+    color: darkgray;
+    filter: drop-shadow(0 0 10px black);
+    text-shadow: 0 0 5px rgba(128,128,128,0.5);
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(0vh) translateX(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) translateX(20px) rotate(360deg);
+    }
+}
+
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
 @media (max-width: 999px) {
     div#content {
         h1#main-header {
