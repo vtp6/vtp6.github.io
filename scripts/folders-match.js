@@ -163,11 +163,9 @@ function create_match_image() {
 }
 
 function set_match_high_score(score) {
-    let currenths = get_cookies()["vtp6HighScore_match"];
-    if (currenths === undefined || score < +currenths.slice(0, -1)) {
-        document.cookie =
-            `vtp6HighScore_match=${score.toFixed(1)}s;` +
-            `domain=vtp6.rujulnayak.com;path=/;max-age=31536000`;
+    let currenths = localStorage.getItem("vtp6HighScore_match");
+    if (currenths === null || score < +currenths.slice(0, -1)) {
+        localStorage.setItem("vtp6HighScore_match", score.toFixed(1) + "s");
         return true;
     } else {
         return false;

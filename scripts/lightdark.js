@@ -4,10 +4,23 @@ function get_cookies() {
     for (i = 0; i < str.length; i++) {
         if (str[i] === "") continue;
         let c = str[i].split("=");
-        d[c[0].trim()] = c[1].trim();
+        if (d[c[0].trim()] === undefined)
+            d[c[0].trim()] = c[1].trim();
     }
     return d;
 }
+
+
+// Port to local storage
+
+if (localStorage.length === 0) {
+    d = get_cookies();
+    for (key in d) {
+        if (key !== "cookiesAllowed" && key !== "vtp6NewLogo1")
+            localStorage.setItem(key, d[key]);
+    }
+}
+
 
 function switch_theme() {
     document.body.style.animation = "";
@@ -17,16 +30,16 @@ function switch_theme() {
         theme = "dark";
         document.body.classList.remove("light-theme");
         document.body.classList.add("dark-theme");
-        document.cookie = "vtp6Theme=dark;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
+        localStorage.setItem("vtp6Theme", "dark");
     } else {
         theme = "light";
         document.body.classList.remove("dark-theme");
         document.body.classList.add("light-theme");
-        document.cookie = "vtp6Theme=light;domain=vtp6.rujulnayak.com;path=/;max-age=31536000";
+        localStorage.setItem("vtp6Theme", "light");
     }
 }
 
-let theme = get_cookies()["vtp6Theme"];
+let theme = localStorage.getItem("vtp6Theme");
 
 if (theme === undefined || theme === "light") {
     theme = "light";

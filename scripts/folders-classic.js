@@ -457,11 +457,9 @@ function finish_legacy_game() {
 }
 
 function set_quickfire_high_score(score) {
-    let currenths = get_cookies()["vtp6HighScore_quick_fire"];
-    if (currenths === undefined || score > +currenths) {
-        document.cookie =
-            `vtp6HighScore_quick_fire=${score};` +
-            `domain=vtp6.rujulnayak.com;path=/;max-age=31536000`;
+    let currenths = localStorage.getItem("vtp6HighScore_quick_fire");
+    if (currenths === null || score > +currenths) {
+        localStorage.setItem("vtp6HighScore_quick_fire", score);
         return true;
     } else {
         return false;

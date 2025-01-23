@@ -1,3 +1,8 @@
+// As of 23rd Jan 2025, we've switched from cookies to local storage.
+// The code in this file is now no longer necessary.
+
+/*
+
 const MAIN_BANNER = false;
 const BANNER_COOKIE = "vtp6NewLogo1";
 
@@ -25,18 +30,6 @@ main_banner.innerHTML = `
     <input type="button" id="dismiss-banner" value="Dismiss" />
 `;
 main_banner.id = "main-banner";
-
-function get_cookies() {
-    let str = document.cookie.split(";");
-    let d = {};
-    for (i = 0; i < str.length; i++) {
-        if (str[i] === "") continue;
-        let c = str[i].split("=");
-        if (d[c[0].trim()] === undefined)
-            d[c[0].trim()] = c[1].trim();
-    }
-    return d;
-}
 
 function remove_cookies_banner() {
     cookies_button.remove();
@@ -70,3 +63,5 @@ function delete_cookies() {
         document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
     });
 }
+
+*/
