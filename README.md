@@ -29,6 +29,6 @@ Email any feedback or suggestions to **vtp6_feedback@outlook.com**.
 
 ***
 
-<sub>© Rujul Nayak 2023-24</sub>
+<sub>© Rujul Nayak 2023-25</sub>
 
 [VTP6]: https://vtp6.github.io/
