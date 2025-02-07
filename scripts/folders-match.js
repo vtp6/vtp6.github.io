@@ -9,6 +9,37 @@ let match_timer_id = 0;
 
 let completed_pairs = 0;
 
+function three_two_one_go() {
+    let countdown_text = document.createElement("h1");
+    countdown_text.innerHTML = "3";
+    countdown_text.id = "match-countdown";
+    document.getElementById("match-div").appendChild(countdown_text);
+
+    setTimeout(() => {
+        countdown_text.innerHTML = "2";
+        countdown_text.style.animation = "none";
+        countdown_text.offsetWidth;
+        countdown_text.style.animation = "threeTwoOne 1s";
+    }, 1000);
+
+    setTimeout(() => {
+        countdown_text.innerHTML = "1";
+        countdown_text.style.animation = "none";
+        countdown_text.offsetWidth;
+        countdown_text.style.animation = "threeTwoOne 1s";
+    }, 2000);
+
+    setTimeout(() => {
+        document.getElementById("timer-text").innerText = "0.0s";
+        match_timer_id = setInterval(() => {
+            document.getElementById("timer-text").innerText =
+                (++match_time / 10).toFixed(1) + "s";
+        }, 100);
+        [...document.querySelectorAll(".match-text-div.blur")].forEach(a => a.classList.remove("blur"));
+        countdown_text.remove();
+    }, 3000);
+}
+
 function folders_start_match(terms) {
     match_sample = random_sample(terms, 6);
 
@@ -19,13 +50,8 @@ function folders_start_match(terms) {
 
     timer_div = document.createElement("div");
     timer_div.id = "timer-div";
-    timer_div.innerHTML = `<span id="timer-text">0.0s</span>`;
+    timer_div.innerHTML = `<span id="timer-text">&nbsp;</span>`;
     match_div.appendChild(timer_div);
-
-    match_timer_id = setInterval(() => {
-        document.getElementById("timer-text").innerText =
-            (++match_time / 10).toFixed(1) + "s";
-    }, 100);
     
     match_pairs = zip(
         random_shuffle(match_sample.map(a => a[0])),
@@ -37,7 +63,7 @@ function folders_start_match(terms) {
         line_div.classList.add("match-line-div");
         pair.forEach((s, j) => {
             let text_div = document.createElement("div");
-            text_div.classList.add("match-text-div");
+            text_div.classList.add("match-text-div", "blur");
             text_div.id = "match-text-div-" + i + "-" + j;
             text_div.innerHTML = sanitise(s).replaceAll("(", "").replaceAll(")", "");
             line_div.appendChild(text_div);
@@ -47,6 +73,8 @@ function folders_start_match(terms) {
     });
 
     window.scrollTo(0, document.body.scrollHeight);
+
+    three_two_one_go();
 }
 
 function folders_match_input(event) {

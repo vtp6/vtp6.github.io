@@ -77,15 +77,20 @@ Object.keys(GAME_MODE_DESCRIPTIONS).forEach(key => {
     gms.appendChild(optn);
 });
 
+let last_game_mode = localStorage.getItem("vtp6GameMode");
+if (Object.keys(GAME_MODE_DESCRIPTIONS).includes(last_game_mode))
+    gms.value = last_game_mode;
+
 function update_help_tip() {
     document.getElementById("help-tip").innerHTML =
         `<i>${GAME_MODE_DESCRIPTIONS[gms.value]}</i> &nbsp; <a href="/help#game-mode">Help.</a>`;
     let high_score = localStorage.getItem(`vtp6HighScore_` + gms.value);
-    if (high_score !== undefined) {
+    if (high_score !== null) {
         document.getElementById("high-score-text").innerHTML = high_score;
     } else {
         document.getElementById("high-score-text").innerHTML = "N/A";
     }
+    localStorage.setItem("vtp6GameMode", gms.value);
 }
 
 gms.addEventListener("input", update_help_tip);
