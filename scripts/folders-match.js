@@ -35,7 +35,10 @@ function three_two_one_go() {
             document.getElementById("timer-text").innerText =
                 (++match_time / 10).toFixed(1) + "s";
         }, 100);
-        [...document.querySelectorAll(".match-text-div.blur")].forEach(a => a.classList.remove("blur"));
+        [...document.querySelectorAll(".match-text-div.blur")].forEach(a => {
+            a.classList.remove("blur");
+            a.addEventListener("click", folders_match_input);
+        });
         countdown_text.remove();
     }, 3000);
 }
@@ -67,7 +70,6 @@ function folders_start_match(terms) {
             text_div.id = "match-text-div-" + i + "-" + j;
             text_div.innerHTML = sanitise(s).replaceAll("(", "").replaceAll(")", "");
             line_div.appendChild(text_div);
-            text_div.addEventListener("click", folders_match_input);
         });
         match_div.appendChild(line_div);
     });
