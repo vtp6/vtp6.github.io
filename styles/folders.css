@@ -280,7 +280,7 @@ div#match-div {
             filter: blur(5px);
         }
 
-        div.match-text-div:active {
+        div.match-text-div:not(.blur):active {
             transform: scale(0.95);
         }
 
@@ -647,7 +647,7 @@ body.light-theme {
         }
     }
 
-    div.match-text-div:not(.selected):hover {
+    div.match-text-div:not(.selected):not(.blur):hover {
         background-color: lightgray;
     }
 
@@ -763,7 +763,7 @@ body.dark-theme {
         }
     }
 
-    div.match-text-div:not(.selected):hover {
+    div.match-text-div:not(.selected):not(.blur):hover {
         background-color: #444444;
     }
 
