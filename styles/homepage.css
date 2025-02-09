@@ -11,10 +11,58 @@ div#content {
 
         span#orange {
             color: #e97132;
+            transition: opacity 600ms;
+            opacity: 100%;
         }
 
         span#purple {
             color: #7030a0;
+            transition: opacity 600ms;
+            opacity: 100%;
+        }
+
+        img#big-logo {
+            animation: opacityIn 200ms;
+            position: absolute;
+            top: 30%;
+            right: 50%;
+            width: 200px;
+            transform: translate(+50%, -50%);
+            transition: right 500ms;
+        }
+
+        img#big-logo.move-right {
+            right: calc(50% - 350px + 100px);
+        }
+
+        img#big-logo.hidden {
+            opacity: 0%;
+            animation: opacityOut 200ms;
+        }
+
+        span#big-logo-text {
+            transition: opacity 200ms;
+            opacity: 0%;
+            font-family: Manrope, Helvetica, sans-serif;
+            position: absolute;
+            top: 30%;
+            left: calc(50% - 350px);
+            font-size: 200px;
+            transform: translateY(-50%);
+            background-image: linear-gradient(#8dc4f7, #40bcaf);
+            background-clip: text;
+            color: transparent;
+        }
+
+        span#big-logo-text.show {
+            opacity: 100%;
+            transition: opacity 500ms;
+        }
+    }
+
+    h1#main-header.hidden {
+        span#orange, span#purple {
+            opacity: 0%;
         }
     }
 
@@ -90,7 +138,21 @@ body.light-theme .snowflake {
     div#content {
         h1#main-header {
             font-size: 50px;
+
+            img#big-logo {
+                width: 100px;
+            }
+
+            img#big-logo.move-right {
+                right: calc(50% - 175px + 50px);
+            }
+
+            span#big-logo-text {
+                left: calc(50% - 175px);
+                font-size: 100px;
+            }
         }
+
         h2#main-text {
             font-size: 30px;
         }
@@ -124,4 +186,14 @@ body.dark-theme {
 @keyframes jump {
     0%, 100% {transform: none;}
     50% {transform: translate(10px, 0px);}
+}
+
+@keyframes opacityIn {
+    0% {opacity: 0%;}
+    100% {opacity: 100%;}
+}
+
+@keyframes opacityOut {
+    0% {opacity: 100%;}
+    100% {opacity: 0%;}
 }
