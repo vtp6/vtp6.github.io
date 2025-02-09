@@ -30,7 +30,7 @@ const THRESHOLD = 0.2; // 80% typo detection threshold
 
 function set_progress_bar_background(val) {
     document.getElementById("progress-bar")
-        .style.width = `${100 - val}%`;
+        .style.backgroundSize = `${val}% 21px, ${100 - val}% 21px`;
 }
 
 function new_question(reload=true) {
@@ -55,6 +55,7 @@ function new_question(reload=true) {
 function update_bar_text() {
     let total = correct + wrong;
     let percentage = correct / total * 100;
+    if (total === 0) percentage = 0;
     document.getElementById("progress-bar-text").innerHTML =
         `${correct}/${total} (${percentage.toPrecision(3)}%)`;
     set_progress_bar_background(percentage);
