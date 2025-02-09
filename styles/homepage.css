@@ -159,6 +159,12 @@ body.light-theme .snowflake {
     }
 }
 
+@media (min-width: 1500px) {
+    div#content h1#main-header {
+        font-size: 100px;
+    }
+}
+
 body.light-theme {
 
     h2#main-text {
