@@ -122,7 +122,7 @@ function check_input_classic() {
             textbox.classList.add("correct");
             split_answer = split_answer.filter(l =>
                 !l.map(remove_punctuation).map(q => q.toLowerCase())
-                .includes(remove_punctuation(userans))
+                .includes(remove_punctuation(userans).toLowerCase())
             );
             if (split_answer.length === 0) {
                 correct++;
@@ -247,7 +247,7 @@ function check_input_quickfire() {
             textbox.classList.add("correct");
             split_answer = split_answer.filter(l =>
                 !l.map(remove_punctuation).map(q => q.toLowerCase())
-                .includes(remove_punctuation(userans))
+                .includes(remove_punctuation(userans).toLowerCase())
             );
             if (split_answer.length === 0) {
                 correct++;
