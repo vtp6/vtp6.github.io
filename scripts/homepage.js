@@ -24,20 +24,20 @@ function increment() {
 }
 
 function animation() {
-    setTimeout(() => {
-        big_logo.classList.add("move-right");
-        logo_text.classList.add("show");
-    }, 500);
+    // setTimeout(() => {
+    //     big_logo.classList.add("move-right");
+    //     logo_text.classList.add("show");
+    // }, 500);
     setTimeout(() => {
         heading_h1.classList.remove("hidden");
         big_logo.classList.add("hidden");
-        logo_text.classList.remove("show");
+        // logo_text.classList.remove("show");
         increment();
-    }, 2000);
+    }, 1000);
     setTimeout(() => {
         big_logo.remove();
         logo_text.remove();
-    }, 2500);
+    }, 2000);
 }
 
 animation();

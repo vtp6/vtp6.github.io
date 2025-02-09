@@ -11,13 +11,13 @@ div#content {
 
         span#orange {
             color: #e97132;
-            transition: opacity 600ms;
+            transition: opacity 1000ms;
             opacity: 100%;
         }
 
         span#purple {
             color: #7030a0;
-            transition: opacity 600ms;
+            transition: opacity 1000ms;
             opacity: 100%;
         }
 
