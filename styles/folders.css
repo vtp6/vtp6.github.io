@@ -424,7 +424,27 @@ div#classic-div {
     }
 
     div#quickfire-timer-div {
-        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        h3#quickfire-timer {
+            float: right;
+            width: 60px;
+            margin: 0px 15px;
+        }
+
+        div#quickfire-timer-bar {
+            float: left;
+            width: calc((100% - 120px) * 1);
+            max-width: calc((100% - 120px) * 1);
+            height: 20px;
+            border-radius: 10px;
+            margin: 0px 15px;
+            transition: width 150ms;
+        }
     }
 }
 
@@ -685,6 +705,10 @@ body.light-theme {
             background-color: black;
         }
     }
+
+    div#quickfire-timer-div div#quickfire-timer-bar {
+        background-color: darkgray;
+    }
 }
 
 body.dark-theme {
@@ -809,6 +833,10 @@ body.dark-theme {
 
     #file-input input#input-upload:hover + label#upload-button {
         outline: 2px solid white;
+    }
+
+    div#quickfire-timer-div div#quickfire-timer-bar {
+        background-color: white;
     }
 }
 

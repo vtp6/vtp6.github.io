@@ -256,6 +256,10 @@ function check_input_quickfire() {
                 `;
                 new_question();
                 quickfire_timer += quickfire_increment;
+                document.getElementById("quickfire-timer-bar").style.width =
+                    `calc((100% - 120px) * ${quickfire_timer / (150 + OPTIONS["all"] * 100)})`;
+                document.getElementById("quickfire-timer-bar").style.backgroundColor =
+                    calc_colour(quickfire_timer / 50);
                 quickfire_increment = Math.max(quickfire_increment - 2, 5);
             } else {
                 let n = document.getElementById("classic-all-num");
@@ -282,6 +286,10 @@ function check_input_quickfire() {
                 <span class="green">Correct!</span>
             `;
             quickfire_timer += quickfire_increment;
+            document.getElementById("quickfire-timer-bar").style.width =
+                `calc((100% - 120px) * ${quickfire_timer / (150 + OPTIONS["all"] * 100)})`;
+            document.getElementById("quickfire-timer-bar").style.backgroundColor =
+                calc_colour(quickfire_timer / 50);
             quickfire_increment = Math.max(quickfire_increment - 2, 5);
         } else {
             wrong++;
@@ -626,6 +634,16 @@ function folders_start_legacy(terms) {
     new_question(false);
 }
 
+function calc_colour(num) {
+    if (document.body.classList.contains("light-theme")) {
+        if (num >= 1) return "darkgray";
+        return `rgb(${255 - num * 86}, ${num * 169}, ${num * 169})`;
+    } else {
+        if (num >= 1) return "white";
+        return `rgb(255, ${num * 255}, ${num * 255})`;
+    }
+}
+
 function folders_start_quickfire(terms) {
     full_terms_list = [...terms];
     randomised_terms = random_shuffle(terms);
@@ -633,6 +651,7 @@ function folders_start_quickfire(terms) {
     let classic_div = document.createElement("div");
     classic_div.innerHTML = `
         <div id="quickfire-timer-div">
+            <div id="quickfire-timer-bar"></div>
             <h3 id="quickfire-timer">&nbsp;</h3>
         </div>
         <h1 id="classic-question" class="quickfire-question">
@@ -664,6 +683,10 @@ function folders_start_quickfire(terms) {
     quickfire_timer_id = setInterval(() => {
         document.getElementById("quickfire-timer").innerText =
             (--quickfire_timer / 10).toFixed(1) + "s";
+        document.getElementById("quickfire-timer-bar").style.width =
+            `calc((100% - 120px) * ${quickfire_timer / (150 + OPTIONS["all"] * 100)})`;
+        document.getElementById("quickfire-timer-bar").style.backgroundColor =
+            calc_colour(quickfire_timer / 50);
         if (quickfire_timer <= 0) finish_quickfire_game();
     }, 100);
 
