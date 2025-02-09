@@ -388,6 +388,11 @@ div#classic-div {
             transform: translateY(-50%);
             margin: 0px;
         }
+
+        span#quickfire-score {
+            float: right;
+            margin-right: 25px;
+        }
     }
 
     button#finish-button, button#finish-button2 {

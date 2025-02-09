@@ -302,6 +302,8 @@ function check_input_quickfire() {
         }
         new_question();
     }
+
+    document.getElementById("quickfire-score").innerHTML = "" + correct;
 }
 
 function finish_classic_game() {
@@ -656,6 +658,7 @@ function folders_start_quickfire(terms) {
         </div>
         <h1 id="classic-question" class="quickfire-question">
             <span id="classic-question-text" class="quickfire-question-text"></span>
+            <span id="quickfire-score">0</span>
         </h1>
         <div id="input-div">
             <input type="text" id="classic-input" class="quickfire-input"
