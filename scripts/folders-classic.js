@@ -503,6 +503,8 @@ function finish_quickfire_game() {
         document.getElementById("wrong-table").appendChild(tr);
     });
 
+    update_help_tip();
+
     document.getElementById("classic-restart-button")
         .addEventListener("click", () => {
             document.getElementById("finish-div").remove();
