@@ -34,6 +34,10 @@ function animation() {
         logo_text.classList.remove("show");
         increment();
     }, 2000);
+    setTimeout(() => {
+        big_logo.remove();
+        logo_text.remove();
+    }, 2500);
 }
 
 animation();

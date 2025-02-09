@@ -24,7 +24,7 @@ div#content {
         img#big-logo {
             animation: opacityIn 200ms;
             position: absolute;
-            top: 30%;
+            top: 25%;
             right: 50%;
             width: 200px;
             transform: translate(+50%, -50%);
@@ -45,7 +45,7 @@ div#content {
             opacity: 0%;
             font-family: Manrope, Helvetica, sans-serif;
             position: absolute;
-            top: 30%;
+            top: 25%;
             left: calc(50% - 350px);
             font-size: 200px;
             transform: translateY(-50%);
