@@ -72,7 +72,7 @@ div.units-flexbox.no-border {
 div#folders-custom {
     margin-left: 50%;
     transform: translateX(-50%);
-    width: calc(50% - 34px);
+    width: calc(50% - 26px);
 }
 
 button.start-button {
@@ -487,7 +487,7 @@ div#finish-div {
     div#folders-custom {
         margin-left: 10px;
         transform: none;
-        width: calc(100% - 42px);
+        width: calc(100% - 26px);
     }
 
     div#content {
