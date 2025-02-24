@@ -603,6 +603,12 @@ button#upload-go-button {
     transform: translateX(-50%);
 }
 
+body.dark-theme, body.light-theme {
+    div#content div#custom-upload-box button#upload-go-button:not(:disabled):active {
+        transform: translateX(-50%) scale(0.9);
+    }
+}
+
 #file-format {
     appearance: none;
     border: 0;
@@ -623,6 +629,10 @@ button#upload-go-button {
         color: inherit;
         background-color: white;
     }
+}
+
+#file-help {
+    text-align: center;
 }
 
 @media (hover: none) {
