@@ -333,6 +333,11 @@ function finish_classic_game() {
                 </tr>
             </table>
         `;
+
+        if (wrongtbl.length > 0) finish_div.innerHTML += `
+            <button class="start-button" id="download-mistakes">Download Mistakes</button>
+        `;
+        
         finish_div.id = "finish-div";
         document.getElementById("content")
             .insertBefore(finish_div, document.getElementById("margin"));
@@ -345,6 +350,17 @@ function finish_classic_game() {
                 <td><em>${c}</em></td>
             `;
             document.getElementById("wrong-table").appendChild(tr);
+        });
+
+        document.getElementById("download-mistakes").addEventListener("click", () => {
+            let txt = wrongtbl.map(([a, b, _]) => a + "\t" + b).join("\n");
+            let link = document.createElement("a");
+            link.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(txt));
+            link.setAttribute("download", "mistakes.txt");
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
         });
 
         document.getElementById("classic-restart-button")
@@ -395,11 +411,16 @@ function finish_legacy_game() {
                 </tr>
             </table>
         `;
+
+        if (wrongtbl.length > 0) finish_div.innerHTML += `
+            <button class="start-button" id="download-mistakes">Download Mistakes</button>
+        `;
+        
         finish_div.id = "finish-div";
         document.getElementById("content")
             .insertBefore(finish_div, document.getElementById("margin"));
 
-        [...wrongtbl].forEach(row => {
+        wrongtbl.forEach(row => {
             let [a, b, c] = row;
             let tr = document.createElement("tr");
             tr.innerHTML = `
@@ -407,6 +428,17 @@ function finish_legacy_game() {
                 <td><em>${c}</em></td>
             `;
             document.getElementById("wrong-table").appendChild(tr);
+        });
+
+        document.getElementById("download-mistakes").addEventListener("click", () => {
+            let txt = wrongtbl.map(([a, b, _]) => a + "\t" + b).join("\n");
+            let link = document.createElement("a");
+            link.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(txt));
+            link.setAttribute("download", "mistakes.txt");
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
         });
 
         document.getElementById("classic-restart-button")
@@ -500,6 +532,11 @@ function finish_quickfire_game() {
             </tr>
         </table>
     `;
+
+    if (wrongtbl.length > 0) finish_div.innerHTML += `
+        <button class="start-button" id="download-mistakes">Download Mistakes</button>
+    `;
+    
     finish_div.id = "finish-div";
     document.getElementById("content")
         .insertBefore(finish_div, document.getElementById("margin"));
@@ -512,6 +549,17 @@ function finish_quickfire_game() {
             <td><em>${c}</em></td>
         `;
         document.getElementById("wrong-table").appendChild(tr);
+    });
+
+    document.getElementById("download-mistakes").addEventListener("click", () => {
+        let txt = wrongtbl.map(([a, b, _]) => a + "\t" + b).join("\n");
+        let link = document.createElement("a");
+        link.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(txt));
+        link.setAttribute("download", "mistakes.txt");
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
     });
 
     update_help_tip();

@@ -477,6 +477,10 @@ div#finish-div {
     div#score-div {
         text-align: center;
     }
+
+    button#download-mistakes {
+        margin-left: 0px;
+    }
 }
 
 @media (max-width: 999px) {
