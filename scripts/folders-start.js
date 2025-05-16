@@ -11,6 +11,8 @@ function folders_start_game() {
             .querySelectorAll("input[type=checkbox]:checked")
         ].map((inputbox) => inputbox.parentElement.getAttribute("name"));
 
+        document.getElementById("dl").style.display = "none";
+
         selected_terms = units.filter(
             lst => selected_units.includes(lst[0][1])
         ).map(arr => arr[1]).flat();

@@ -352,7 +352,7 @@ function finish_classic_game() {
             document.getElementById("wrong-table").appendChild(tr);
         });
 
-        document.getElementById("download-mistakes").addEventListener("click", () => {
+        document.getElementById("download-mistakes")?.addEventListener("click", () => {
             let txt = wrongtbl.map(([a, b, _]) => a + "\t" + b).join("\n");
             let link = document.createElement("a");
             link.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(txt));
@@ -368,6 +368,7 @@ function finish_classic_game() {
                 document.getElementById("finish-div").remove();
                 document.getElementById("settings-bar").hidden = false;
                 document.getElementById("units-flex").style.display = "flex";
+                document.getElementById("dl").style.display = "block";
 
                 full_terms_list = [];
                 randomised_terms = [];
@@ -430,7 +431,7 @@ function finish_legacy_game() {
             document.getElementById("wrong-table").appendChild(tr);
         });
 
-        document.getElementById("download-mistakes").addEventListener("click", () => {
+        document.getElementById("download-mistakes")?.addEventListener("click", () => {
             let txt = wrongtbl.map(([a, b, _]) => a + "\t" + b).join("\n");
             let link = document.createElement("a");
             link.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(txt));
@@ -446,6 +447,7 @@ function finish_legacy_game() {
                 document.getElementById("finish-div").remove();
                 document.getElementById("settings-bar").hidden = false;
                 document.getElementById("units-flex").style.display = "flex";
+                document.getElementById("dl").style.display = "block";
 
                 full_terms_list = [];
                 randomised_terms = [];
@@ -473,6 +475,7 @@ function finish_legacy_game() {
                 document.getElementById("finish-div").remove();
                 document.getElementById("settings-bar").hidden = false;
                 document.getElementById("units-flex").style.display = "flex";
+                document.getElementById("dl").style.display = "block";
 
                 full_terms_list = [];
                 randomised_terms = [];
@@ -495,6 +498,7 @@ function finish_legacy_game() {
                 folders_start_legacy([...mistakes]);
                 document.getElementById("settings-bar").hidden = true;
                 document.getElementById("units-flex").style.display = "none";
+                document.getElementById("dl").style.display = "none";
             })
     }
 }
@@ -551,7 +555,7 @@ function finish_quickfire_game() {
         document.getElementById("wrong-table").appendChild(tr);
     });
 
-    document.getElementById("download-mistakes").addEventListener("click", () => {
+    document.getElementById("download-mistakes")?.addEventListener("click", () => {
         let txt = wrongtbl.map(([a, b, _]) => a + "\t" + b).join("\n");
         let link = document.createElement("a");
         link.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(txt));
@@ -569,6 +573,7 @@ function finish_quickfire_game() {
             document.getElementById("finish-div").remove();
             document.getElementById("settings-bar").hidden = false;
             document.getElementById("units-flex").style.display = "flex";
+            document.getElementById("dl").style.display = "block";
 
             full_terms_list = [];
             randomised_terms = [];

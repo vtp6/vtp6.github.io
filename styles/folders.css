@@ -69,6 +69,17 @@ div.units-flexbox.no-border {
     width: 100%;
 }
 
+button#dl {
+    margin-top: 40px;
+    position: relative;
+    left: 50%;
+    transform: translateX(calc(-50% - 24px));
+}
+
+body div#content button#dl:active {
+    transform: translateX(calc(-50% - 24px));
+}
+
 div#folders-custom {
     margin-left: 50%;
     transform: translateX(-50%);
@@ -143,6 +154,7 @@ div#settings-bar {
     padding-top: 0px;
     width: 100%;
     box-sizing: border-box;
+    text-align: center;
 
     label.switch {
         position: relative;

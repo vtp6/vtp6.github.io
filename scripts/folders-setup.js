@@ -34,4 +34,19 @@ if (OPTIONS["lang"] !== "cs") {
     assert(units.length == NUM_UNITS, "Expected " + NUM_UNITS + " units, got " + units.length + ".");
 
     document.getElementById("insert-length-here").innerHTML = "(" + total + " terms)";
+
+    let download = document.createElement("button");
+    download.id = "dl";
+    download.classList.add("start-button");
+    download.innerHTML = "Download Files";
+    download.addEventListener("click", () => {
+        let a = document.createElement("a");
+        a.href = "data:text/plain;charset=utf-8," + encodeURIComponent(TERMS_LIST);
+        a.download = OPTIONS["name"] + " - VTP6.txt";
+        a.style.display = "none";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+    });
+    document.getElementById("content").insertBefore(download, document.getElementById("margin"));
 }
