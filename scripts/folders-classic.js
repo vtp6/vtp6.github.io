@@ -368,7 +368,7 @@ function finish_classic_game() {
                 document.getElementById("finish-div").remove();
                 document.getElementById("settings-bar").hidden = false;
                 document.getElementById("units-flex").style.display = "flex";
-                document.getElementById("dl").style.display = "block";
+                if (document.getElementById("dl")) document.getElementById("dl").style.display = "block";
 
                 full_terms_list = [];
                 randomised_terms = [];
@@ -447,7 +447,7 @@ function finish_legacy_game() {
                 document.getElementById("finish-div").remove();
                 document.getElementById("settings-bar").hidden = false;
                 document.getElementById("units-flex").style.display = "flex";
-                document.getElementById("dl").style.display = "block";
+                if (document.getElementById("dl")) document.getElementById("dl").style.display = "block";
 
                 full_terms_list = [];
                 randomised_terms = [];
@@ -475,7 +475,7 @@ function finish_legacy_game() {
                 document.getElementById("finish-div").remove();
                 document.getElementById("settings-bar").hidden = false;
                 document.getElementById("units-flex").style.display = "flex";
-                document.getElementById("dl").style.display = "block";
+                if (document.getElementById("dl")) document.getElementById("dl").style.display = "block";
 
                 full_terms_list = [];
                 randomised_terms = [];
@@ -498,7 +498,7 @@ function finish_legacy_game() {
                 folders_start_legacy([...mistakes]);
                 document.getElementById("settings-bar").hidden = true;
                 document.getElementById("units-flex").style.display = "none";
-                document.getElementById("dl").style.display = "none";
+                if (document.getElementById("dl")) document.getElementById("dl").style.display = "none";
             })
     }
 }
@@ -573,7 +573,7 @@ function finish_quickfire_game() {
             document.getElementById("finish-div").remove();
             document.getElementById("settings-bar").hidden = false;
             document.getElementById("units-flex").style.display = "flex";
-            document.getElementById("dl").style.display = "block";
+            if (document.getElementById("dl")) document.getElementById("dl").style.display = "block";
 
             full_terms_list = [];
             randomised_terms = [];
