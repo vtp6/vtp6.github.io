@@ -69,15 +69,23 @@ div.units-flexbox.no-border {
     width: 100%;
 }
 
-button#dl {
-    margin-top: 40px;
-    position: relative;
-    left: 50%;
-    transform: translateX(calc(-50% - 24px));
-}
+body div#content div#dl {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    vertical-align: middle;
+    margin-top: 50px;
 
-body div#content button#dl:active {
-    transform: translateX(calc(-50% - 24px));
+    button#dlbtn {
+        margin: 20px 10px;
+    }
+
+    select#fsel {
+        margin: 20px 10px;
+        border-radius: 24px;
+        height: 48px;
+        padding: 4px 20px 4px 8px;
+    }
 }
 
 div#folders-custom {
@@ -837,7 +845,7 @@ body.dark-theme {
         border: 3px solid white;
     }
 
-    div#settings-bar select#gamemode-selector {
+    div#settings-bar select#gamemode-selector, div#dl select#fsel {
         background-color: #333333;
         color: #e0f0f0;
     }

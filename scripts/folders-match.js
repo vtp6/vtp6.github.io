@@ -132,7 +132,7 @@ function folders_match_check_input() {
             document.getElementById("match-div").remove();
             document.getElementById("settings-bar").hidden = false;
             document.getElementById("units-flex").style.display = "flex";
-            if (document.getElementById("dl")) document.getElementById("dl").style.display = "block";
+            if (document.getElementById("dl")) document.getElementById("dl").style.display = "flex";
             
             match_sample = [];
             match_pairs = [];

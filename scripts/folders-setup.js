@@ -35,18 +35,38 @@ if (OPTIONS["lang"] !== "cs") {
 
     document.getElementById("insert-length-here").innerHTML = "(" + total + " terms)";
 
+    let dldiv = document.createElement("div");
+    dldiv.id = "dl";
+    document.getElementById("content").insertBefore(dldiv, document.getElementById("margin"));
+
+    let format_select = document.createElement("select");
+    format_select.id = "fsel";
+    format_select.innerHTML = `
+        <option value="vtp5">VTP5 Format</option>
+        <option value="vtp6" selected>VTP6 Format</option>
+    `;
+    dldiv.appendChild(format_select);
+
     let download = document.createElement("button");
-    download.id = "dl";
+    download.id = "dlbtn";
     download.classList.add("start-button");
-    download.innerHTML = "Download Files";
+    download.innerHTML = "Download";
     download.addEventListener("click", () => {
         let a = document.createElement("a");
-        a.href = "data:text/plain;charset=utf-8," + encodeURIComponent(TERMS_LIST);
-        a.download = OPTIONS["name"] + " - VTP6.txt";
         a.style.display = "none";
         document.body.appendChild(a);
-        a.click();
+        units.forEach(([[n, _], terms], ix) => {
+            setTimeout(() => {
+                if (document.getElementById("fsel").value == "vtp6")
+                    a.href = "data:text/plain;charset=utf-8," +
+                        encodeURIComponent(terms.map(([t, d]) => t + "\t" + d).join("\n"));
+                else a.href = "data:text/plain;charset=utf-8," +
+                        encodeURIComponent(terms.map(([t, d]) => t + "\n" + d).join("\n"));
+                a.download = OPTIONS["name"] + " " + n + " - VTP6.txt";
+                a.click();
+            }, 100 * ix);
+        });
         a.remove();
     });
-    document.getElementById("content").insertBefore(download, document.getElementById("margin"));
+    dldiv.appendChild(download);
 }

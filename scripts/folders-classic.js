@@ -368,7 +368,7 @@ function finish_classic_game() {
                 document.getElementById("finish-div").remove();
                 document.getElementById("settings-bar").hidden = false;
                 document.getElementById("units-flex").style.display = "flex";
-                if (document.getElementById("dl")) document.getElementById("dl").style.display = "block";
+                if (document.getElementById("dl")) document.getElementById("dl").style.display = "flex";
 
                 full_terms_list = [];
                 randomised_terms = [];
@@ -447,7 +447,7 @@ function finish_legacy_game() {
                 document.getElementById("finish-div").remove();
                 document.getElementById("settings-bar").hidden = false;
                 document.getElementById("units-flex").style.display = "flex";
-                if (document.getElementById("dl")) document.getElementById("dl").style.display = "block";
+                if (document.getElementById("dl")) document.getElementById("dl").style.display = "flex";
 
                 full_terms_list = [];
                 randomised_terms = [];
@@ -475,7 +475,7 @@ function finish_legacy_game() {
                 document.getElementById("finish-div").remove();
                 document.getElementById("settings-bar").hidden = false;
                 document.getElementById("units-flex").style.display = "flex";
-                if (document.getElementById("dl")) document.getElementById("dl").style.display = "block";
+                if (document.getElementById("dl")) document.getElementById("dl").style.display = "flex";
 
                 full_terms_list = [];
                 randomised_terms = [];
@@ -573,7 +573,7 @@ function finish_quickfire_game() {
             document.getElementById("finish-div").remove();
             document.getElementById("settings-bar").hidden = false;
             document.getElementById("units-flex").style.display = "flex";
-            if (document.getElementById("dl")) document.getElementById("dl").style.display = "block";
+            if (document.getElementById("dl")) document.getElementById("dl").style.display = "flex";
 
             full_terms_list = [];
             randomised_terms = [];
