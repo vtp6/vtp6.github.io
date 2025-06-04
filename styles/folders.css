@@ -719,7 +719,7 @@ body.dark-theme, body.light-theme {
     }
 }
 
-#file-help {
+.file-help {
     text-align: center;
 }
 
