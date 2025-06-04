@@ -102,3 +102,7 @@ upload_go.addEventListener("click", () => {
     document.getElementById("custom-upload-box").hidden = true;
     document.getElementById("settings-bar").hidden = false;
 });
+
+document.getElementById("all-defs-checkbox").addEventListener("input", ({target}) => {
+    OPTIONS["all"] = target.checked;
+});
