@@ -287,6 +287,20 @@ div#settings-bar {
     span#high-score {
         display: inline-block;
     }
+
+    div#swap-div {
+        cursor: pointer;
+    }
+
+    span.lang-circ {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: 32px;
+        min-width: 32px;
+        border-radius: 16px;
+        text-align: center;
+    }
 }
 
 img.high-score-image {
@@ -767,6 +781,10 @@ body.light-theme {
         }
     }
 
+    div#settings-bar span.lang-circ {
+        background-color: #00c8ff;
+    }
+
     span.not-selected {
         color: darkgray;
     }
@@ -858,6 +876,10 @@ body.dark-theme {
         span.slider:before {
             background-color: lightgray;
         }
+    }
+
+    div#settings-bar span.lang-circ {
+        background-color: #328b32;
     }
 
     span.not-selected {

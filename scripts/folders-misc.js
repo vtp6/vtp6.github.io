@@ -39,27 +39,6 @@ if (OPTIONS["lang"] !== "cs") {
     });
 }
 
-// function gamemode_checkbox_input() {
-//     if (document.getElementById("gamemode-checkbox").checked) {
-//         document.getElementById("before-slider").classList.add("not-selected");
-//         document.getElementById("after-slider").classList.remove("not-selected");
-//     } else {
-//         document.getElementById("after-slider").classList.add("not-selected");
-//         document.getElementById("before-slider").classList.remove("not-selected");
-//     }
-// }
-
-// document.getElementById("gamemode-checkbox").addEventListener("input", gamemode_checkbox_input);
-
-// document.getElementById("before-slider").addEventListener("click", () => {
-//     document.getElementById("gamemode-checkbox").checked = false;
-//     gamemode_checkbox_input();
-// });
-
-// document.getElementById("after-slider").addEventListener("click", () => {
-//     document.getElementById("gamemode-checkbox").checked = true;
-//     gamemode_checkbox_input();
-// });
 
 const GAME_MODE_DESCRIPTIONS = {
     classic: "Simply give the definition of each term that comes up. No clock, no high scores, no stress.",
@@ -96,3 +75,42 @@ function update_help_tip() {
 gms.addEventListener("input", update_help_tip);
 
 update_help_tip();
+
+
+function swap_langs() {
+    if (swapped) {
+        swapped = false;
+        OPTIONS["all"] = OPTIONS["origall"];
+        units = [...orig_units];
+    } else {
+        swapped = true;
+        OPTIONS["all"] = false;
+        units = orig_units.map(([a, b]) => [a, b.map(([t, d]) => [d, t.split(",")[0]])]);
+    }
+    [lc1.innerHTML, lc2.innerHTML] = [lc2.innerHTML, lc1.innerHTML];
+}
+
+let swapped;
+let orig_units;
+let lc1;
+let lc2;
+
+if (OPTIONS["lang"] !== "cs") {
+    swapped = false;
+    OPTIONS["origall"] = OPTIONS["all"];
+    orig_units = [...units];
+
+    let swap_div = document.createElement("div");
+    swap_div.id = "swap-div";
+    swap_div.innerHTML = `
+        Click to swap: &nbsp;
+        <span class="lang-circ" id="lang-circ-1">${OPTIONS["lang"]}</span>
+        &rarr; <span class="lang-circ" id="lang-circ-2">en</span>
+    `;
+    document.getElementById("settings-bar").appendChild(swap_div);
+
+    lc1 = document.getElementById("lang-circ-1");
+    lc2 = document.getElementById("lang-circ-2");
+
+    swap_div.addEventListener("click", swap_langs);
+}
