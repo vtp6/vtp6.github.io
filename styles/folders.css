@@ -303,6 +303,45 @@ div#settings-bar {
     }
 }
 
+div#warning {
+    background-color: #797553;
+    padding: 10px 20px;
+    text-align: center;
+    width: fit-content;
+    max-width: 75%;
+    margin: auto;
+    border-radius: 10px;
+    margin-bottom: 40px;
+
+    input#warning-dismiss {
+        background-color: #6b7280;
+        color: white;
+    }
+
+    input#warning-never {
+        background-color: #f76e89;
+        color: white;
+    }
+}
+
+input.banner-btn {
+    margin: 10px;
+    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 24px;
+    cursor: pointer;
+    border: none;
+    transition: filter 500ms;
+}
+
+input.banner-btn:hover {
+    filter: brightness(1.1);
+}
+
+input.banner-btn:active {
+    transform: scale(0.98);
+}
+
 img.high-score-image {
     content: url("../images/highscore.svg");
     height: 20px;
@@ -737,6 +776,10 @@ body.dark-theme, body.light-theme {
     text-align: center;
 }
 
+.hidden {
+    display: none !important;
+}
+
 @media (hover: none) {
     div#content div#match-div div.match-line-div div.match-text-div:not(.selected):hover {
         background-color: initial;
@@ -805,6 +848,14 @@ body.light-theme {
         background-color: #0093cb;
         color: beige;
         border: 3px solid black;
+    }
+
+    div#warning {
+        background-color: #f0e4db;
+    }
+
+    input.banner-btn {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     div#progress-bar-container {
@@ -934,6 +985,14 @@ body.dark-theme {
     div#settings-bar select#gamemode-selector, div#dl select#fsel {
         background-color: #333333;
         color: #e0f0f0;
+    }
+
+    div#warning {
+        background-color: #797553;
+    }
+
+    input.banner-btn {
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
     }
 
     div#classic-div {
