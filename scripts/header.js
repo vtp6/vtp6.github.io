@@ -1,5 +1,5 @@
 let header_version = -1;
-const LOGO = "banner";
+const LOGO = "christmas";
 
 function add_header() {
     let screen_width = window.innerWidth;
