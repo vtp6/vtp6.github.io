@@ -561,6 +561,31 @@ div#classic-div {
         }
     }
 
+    p#accents-label {
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 30px;
+    }
+
+    div#accents {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+
+        span.accent-button {
+            display: inline-block;
+            padding: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin: 0px 10px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid;
+            transition: background-color 200ms;
+        }
+    }
+
     button#square-finish-button {
         display: none;
     }
@@ -1004,6 +1029,20 @@ body.dark-theme {
             background-color: #111111;
             border-color: white;
             color: #e0f0f0;
+        }
+
+        div#accents {
+            span.accent-button {
+                background-color: #304050;
+            }
+
+            span.accent-button:hover {
+                background-color: #404060;
+            }
+
+            span.accent-button:active {
+                transform: scale(0.98);
+            }
         }
     }
 

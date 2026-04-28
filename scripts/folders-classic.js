@@ -618,6 +618,34 @@ function folders_start_classic(terms) {
             <button class="start-button" id="square-finish-button"><img id="finish-image" /></button>
         </div>
         <p id="typo-text">&nbsp;</p>
+        <p id="accents-label">Accents:</p>
+        <div id="accents">
+            <span class="accent-button" id="accent-de">🇩🇪</span>
+            <span class="accent-button" id="accent-fr">🇫🇷</span>
+            <span class="accent-button" id="accent-es">🇪🇸</span>
+            <span class="accent-button hidden" id="accent-back">&larr;</span>
+            <span class="accent-button accent-spanish hidden">á</span>
+            <span class="accent-button accent-french hidden">à</span>
+            <span class="accent-button accent-french hidden">â</span>
+            <span class="accent-button accent-german hidden">ä</span>
+            <span class="accent-button accent-french hidden">ç</span>
+            <span class="accent-button accent-french accent-spanish hidden">é</span>
+            <span class="accent-button accent-french hidden">è</span>
+            <span class="accent-button accent-french hidden">ê</span>
+            <span class="accent-button accent-french hidden">ë</span>
+            <span class="accent-button accent-spanish hidden">í</span>
+            <span class="accent-button accent-french hidden">î</span>
+            <span class="accent-button accent-french hidden">ï</span>
+            <span class="accent-button accent-spanish hidden">ñ</span>
+            <span class="accent-button accent-spanish hidden">ó</span>
+            <span class="accent-button accent-french hidden">ô</span>
+            <span class="accent-button accent-german hidden">ö</span>
+            <span class="accent-button accent-spanish hidden">ú</span>
+            <span class="accent-button accent-french hidden">ù</span>
+            <span class="accent-button accent-french hidden">û</span>
+            <span class="accent-button accent-german accent-french accent-spanish hidden">ü</span>
+            <span class="accent-button accent-german hidden">ß</span>
+        </div>
     `;
     classic_div.id = "classic-div";
     document.getElementById("content")
@@ -637,6 +665,46 @@ function folders_start_classic(terms) {
             check_input_classic();
         }
     });
+
+    document.getElementById("accent-de").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if ([...c.classList].includes("accent-german") || c.id === "accent-back") c.classList.remove("hidden");
+            else c.classList.add("hidden");
+        });
+    });
+
+    document.getElementById("accent-fr").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if ([...c.classList].includes("accent-french") || c.id === "accent-back") c.classList.remove("hidden");
+            else c.classList.add("hidden");
+        });
+    });
+
+    document.getElementById("accent-es").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if ([...c.classList].includes("accent-spanish") || c.id === "accent-back") c.classList.remove("hidden");
+            else c.classList.add("hidden");
+        });
+    });
+
+    document.getElementById("accent-back").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if (c.id === "" || c.id === "accent-back") c.classList.add("hidden");
+            else c.classList.remove("hidden");
+        });
+    });
+
+    [...document.getElementById("accents").querySelectorAll(
+        ".accent-german, .accent-french, .accent-spanish"
+    )].forEach(a => a.addEventListener("click", ({target}) => {
+        let inp = document.getElementById("classic-input");
+        if (inp.disabled === false) {
+            let [start, end] = [inp.selectionStart, inp.selectionEnd];
+            inp.value = inp.value.substring(0, start) + target.innerHTML + inp.value.substring(end);
+            inp.selectionEnd = start + 1;
+            inp.focus();
+        }
+    }));
 
     window.scrollTo(0, 0);
     new_question();
@@ -665,6 +733,33 @@ function folders_start_legacy(terms) {
             <button class="start-button" id="square-finish-button"><img id="finish-image" /></button>
         </div>
         <p id="typo-text">&nbsp;</p>
+        <p id="accents-label">Accents:</p>
+        <div id="accents">
+            <span class="accent-button" id="accent-de">🇩🇪</span>
+            <span class="accent-button" id="accent-fr">🇫🇷</span>
+            <span class="accent-button" id="accent-es">🇪🇸</span>
+            <span class="accent-button hidden" id="accent-back">&larr;</span>
+            <span class="accent-button accent-spanish hidden">á</span>
+            <span class="accent-button accent-french hidden">à</span>
+            <span class="accent-button accent-french hidden">â</span>
+            <span class="accent-button accent-german hidden">ä</span>
+            <span class="accent-button accent-french hidden">ç</span>
+            <span class="accent-button accent-french accent-spanish hidden">é</span>
+            <span class="accent-button accent-french hidden">è</span>
+            <span class="accent-button accent-french hidden">ê</span>
+            <span class="accent-button accent-french hidden">ë</span>
+            <span class="accent-button accent-spanish hidden">í</span>
+            <span class="accent-button accent-french hidden">î</span>
+            <span class="accent-button accent-french hidden">ï</span>
+            <span class="accent-button accent-spanish hidden">ó</span>
+            <span class="accent-button accent-french hidden">ô</span>
+            <span class="accent-button accent-german hidden">ö</span>
+            <span class="accent-button accent-spanish hidden">ú</span>
+            <span class="accent-button accent-french hidden">ù</span>
+            <span class="accent-button accent-french hidden">û</span>
+            <span class="accent-button accent-german accent-french accent-spanish hidden">ü</span>
+            <span class="accent-button accent-german hidden">ß</span>
+        </div>
     `;
     classic_div.id = "classic-div";
     document.getElementById("content")
@@ -684,6 +779,46 @@ function folders_start_legacy(terms) {
             check_input_legacy();
         }
     });
+
+    document.getElementById("accent-de").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if ([...c.classList].includes("accent-german") || c.id === "accent-back") c.classList.remove("hidden");
+            else c.classList.add("hidden");
+        });
+    });
+
+    document.getElementById("accent-fr").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if ([...c.classList].includes("accent-french") || c.id === "accent-back") c.classList.remove("hidden");
+            else c.classList.add("hidden");
+        });
+    });
+
+    document.getElementById("accent-es").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if ([...c.classList].includes("accent-spanish") || c.id === "accent-back") c.classList.remove("hidden");
+            else c.classList.add("hidden");
+        });
+    });
+
+    document.getElementById("accent-back").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if (c.id === "" || c.id === "accent-back") c.classList.add("hidden");
+            else c.classList.remove("hidden");
+        });
+    });
+
+    [...document.getElementById("accents").querySelectorAll(
+        ".accent-german, .accent-french, .accent-spanish"
+    )].forEach(a => a.addEventListener("click", ({target}) => {
+        let inp = document.getElementById("classic-input");
+        if (inp.disabled === false) {
+            let [start, end] = [inp.selectionStart, inp.selectionEnd];
+            inp.value = inp.value.substring(0, start) + target.innerHTML + inp.value.substring(end);
+            inp.selectionEnd = start + 1;
+            inp.focus();
+        }
+    }));
 
     window.scrollTo(0, 0);
     new_question(false);
@@ -720,6 +855,33 @@ function folders_start_quickfire(terms) {
                 spellcheck="false" />
         </div>
         <p id="typo-text">&nbsp;</p>
+        <p id="accents-label">Accents:</p>
+        <div id="accents">
+            <span class="accent-button" id="accent-de">🇩🇪</span>
+            <span class="accent-button" id="accent-fr">🇫🇷</span>
+            <span class="accent-button" id="accent-es">🇪🇸</span>
+            <span class="accent-button hidden" id="accent-back">&larr;</span>
+            <span class="accent-button accent-spanish hidden">á</span>
+            <span class="accent-button accent-french hidden">à</span>
+            <span class="accent-button accent-french hidden">â</span>
+            <span class="accent-button accent-german hidden">ä</span>
+            <span class="accent-button accent-french hidden">ç</span>
+            <span class="accent-button accent-french accent-spanish hidden">é</span>
+            <span class="accent-button accent-french hidden">è</span>
+            <span class="accent-button accent-french hidden">ê</span>
+            <span class="accent-button accent-french hidden">ë</span>
+            <span class="accent-button accent-spanish hidden">í</span>
+            <span class="accent-button accent-french hidden">î</span>
+            <span class="accent-button accent-french hidden">ï</span>
+            <span class="accent-button accent-spanish hidden">ó</span>
+            <span class="accent-button accent-french hidden">ô</span>
+            <span class="accent-button accent-german hidden">ö</span>
+            <span class="accent-button accent-spanish hidden">ú</span>
+            <span class="accent-button accent-french hidden">ù</span>
+            <span class="accent-button accent-french hidden">û</span>
+            <span class="accent-button accent-german accent-french accent-spanish hidden">ü</span>
+            <span class="accent-button accent-german hidden">ß</span>
+        </div>
     `;
     classic_div.id = "classic-div";
     document.getElementById("content")
@@ -745,6 +907,46 @@ function folders_start_quickfire(terms) {
             calc_colour(quickfire_timer / 50);
         if (quickfire_timer <= 0) finish_quickfire_game();
     }, 100);
+
+    document.getElementById("accent-de").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if ([...c.classList].includes("accent-german") || c.id === "accent-back") c.classList.remove("hidden");
+            else c.classList.add("hidden");
+        });
+    });
+
+    document.getElementById("accent-fr").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if ([...c.classList].includes("accent-french") || c.id === "accent-back") c.classList.remove("hidden");
+            else c.classList.add("hidden");
+        });
+    });
+
+    document.getElementById("accent-es").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if ([...c.classList].includes("accent-spanish") || c.id === "accent-back") c.classList.remove("hidden");
+            else c.classList.add("hidden");
+        });
+    });
+
+    document.getElementById("accent-back").addEventListener("click", () => {
+        [...document.getElementById("accents").children].forEach(c => {
+            if (c.id === "" || c.id === "accent-back") c.classList.add("hidden");
+            else c.classList.remove("hidden");
+        });
+    });
+
+    [...document.getElementById("accents").querySelectorAll(
+        ".accent-german, .accent-french, .accent-spanish"
+    )].forEach(a => a.addEventListener("click", ({target}) => {
+        let inp = document.getElementById("classic-input");
+        if (inp.disabled === false) {
+            let [start, end] = [inp.selectionStart, inp.selectionEnd];
+            inp.value = inp.value.substring(0, start) + target.innerHTML + inp.value.substring(end);
+            inp.selectionEnd = start + 1;
+            inp.focus();
+        }
+    }));
 
     window.scrollTo(0, 0);
     new_question();
