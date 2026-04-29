@@ -584,6 +584,10 @@ div#classic-div {
             border: 2px solid;
             transition: background-color 200ms;
         }
+
+        span.accent-button:active {
+            transform: scale(0.98);
+        }
     }
 
     button#square-finish-button {
@@ -887,6 +891,16 @@ body.light-theme {
         --other-colour: #ffffff;
     }
 
+    div#accents {
+        span.accent-button {
+            background-color: #dfefff;
+        }
+
+        span.accent-button:hover {
+            background-color: #efdfff;
+        }
+    }
+
     img#finish-image {
         content: url("../images/finish-light.svg");
     }
@@ -1038,10 +1052,6 @@ body.dark-theme {
 
             span.accent-button:hover {
                 background-color: #404060;
-            }
-
-            span.accent-button:active {
-                transform: scale(0.98);
             }
         }
     }

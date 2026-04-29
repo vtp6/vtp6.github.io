@@ -620,9 +620,9 @@ function folders_start_classic(terms) {
         <p id="typo-text">&nbsp;</p>
         <p id="accents-label">Accents:</p>
         <div id="accents">
-            <span class="accent-button" id="accent-de">🇩🇪</span>
-            <span class="accent-button" id="accent-fr">🇫🇷</span>
-            <span class="accent-button" id="accent-es">🇪🇸</span>
+            <span class="accent-button" id="accent-de">DE</span>
+            <span class="accent-button" id="accent-es">ES</span>
+            <span class="accent-button" id="accent-fr">FR</span>
             <span class="accent-button hidden" id="accent-back">&larr;</span>
             <span class="accent-button accent-spanish hidden">á</span>
             <span class="accent-button accent-french hidden">à</span>
@@ -671,6 +671,7 @@ function folders_start_classic(terms) {
             if ([...c.classList].includes("accent-german") || c.id === "accent-back") c.classList.remove("hidden");
             else c.classList.add("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     document.getElementById("accent-fr").addEventListener("click", () => {
@@ -678,6 +679,7 @@ function folders_start_classic(terms) {
             if ([...c.classList].includes("accent-french") || c.id === "accent-back") c.classList.remove("hidden");
             else c.classList.add("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     document.getElementById("accent-es").addEventListener("click", () => {
@@ -685,6 +687,7 @@ function folders_start_classic(terms) {
             if ([...c.classList].includes("accent-spanish") || c.id === "accent-back") c.classList.remove("hidden");
             else c.classList.add("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     document.getElementById("accent-back").addEventListener("click", () => {
@@ -692,6 +695,7 @@ function folders_start_classic(terms) {
             if (c.id === "" || c.id === "accent-back") c.classList.add("hidden");
             else c.classList.remove("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     [...document.getElementById("accents").querySelectorAll(
@@ -735,9 +739,9 @@ function folders_start_legacy(terms) {
         <p id="typo-text">&nbsp;</p>
         <p id="accents-label">Accents:</p>
         <div id="accents">
-            <span class="accent-button" id="accent-de">🇩🇪</span>
-            <span class="accent-button" id="accent-fr">🇫🇷</span>
-            <span class="accent-button" id="accent-es">🇪🇸</span>
+            <span class="accent-button" id="accent-de">DE</span>
+            <span class="accent-button" id="accent-es">ES</span>
+            <span class="accent-button" id="accent-fr">FR</span>
             <span class="accent-button hidden" id="accent-back">&larr;</span>
             <span class="accent-button accent-spanish hidden">á</span>
             <span class="accent-button accent-french hidden">à</span>
@@ -785,6 +789,7 @@ function folders_start_legacy(terms) {
             if ([...c.classList].includes("accent-german") || c.id === "accent-back") c.classList.remove("hidden");
             else c.classList.add("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     document.getElementById("accent-fr").addEventListener("click", () => {
@@ -792,6 +797,7 @@ function folders_start_legacy(terms) {
             if ([...c.classList].includes("accent-french") || c.id === "accent-back") c.classList.remove("hidden");
             else c.classList.add("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     document.getElementById("accent-es").addEventListener("click", () => {
@@ -799,6 +805,7 @@ function folders_start_legacy(terms) {
             if ([...c.classList].includes("accent-spanish") || c.id === "accent-back") c.classList.remove("hidden");
             else c.classList.add("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     document.getElementById("accent-back").addEventListener("click", () => {
@@ -806,6 +813,7 @@ function folders_start_legacy(terms) {
             if (c.id === "" || c.id === "accent-back") c.classList.add("hidden");
             else c.classList.remove("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     [...document.getElementById("accents").querySelectorAll(
@@ -857,9 +865,9 @@ function folders_start_quickfire(terms) {
         <p id="typo-text">&nbsp;</p>
         <p id="accents-label">Accents:</p>
         <div id="accents">
-            <span class="accent-button" id="accent-de">🇩🇪</span>
-            <span class="accent-button" id="accent-fr">🇫🇷</span>
-            <span class="accent-button" id="accent-es">🇪🇸</span>
+            <span class="accent-button" id="accent-de">DE</span>
+            <span class="accent-button" id="accent-es">ES</span>
+            <span class="accent-button" id="accent-fr">FR</span>
             <span class="accent-button hidden" id="accent-back">&larr;</span>
             <span class="accent-button accent-spanish hidden">á</span>
             <span class="accent-button accent-french hidden">à</span>
@@ -913,6 +921,7 @@ function folders_start_quickfire(terms) {
             if ([...c.classList].includes("accent-german") || c.id === "accent-back") c.classList.remove("hidden");
             else c.classList.add("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     document.getElementById("accent-fr").addEventListener("click", () => {
@@ -920,6 +929,7 @@ function folders_start_quickfire(terms) {
             if ([...c.classList].includes("accent-french") || c.id === "accent-back") c.classList.remove("hidden");
             else c.classList.add("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     document.getElementById("accent-es").addEventListener("click", () => {
@@ -927,6 +937,7 @@ function folders_start_quickfire(terms) {
             if ([...c.classList].includes("accent-spanish") || c.id === "accent-back") c.classList.remove("hidden");
             else c.classList.add("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     document.getElementById("accent-back").addEventListener("click", () => {
@@ -934,6 +945,7 @@ function folders_start_quickfire(terms) {
             if (c.id === "" || c.id === "accent-back") c.classList.add("hidden");
             else c.classList.remove("hidden");
         });
+        document.getElementById("classic-input").focus();
     });
 
     [...document.getElementById("accents").querySelectorAll(
