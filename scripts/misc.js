@@ -125,7 +125,7 @@ function remove_punctuation(string) {
                 (47 < ord && ord < 58) || 
                 (64 < ord && ord < 91) || 
                 (96 < ord && ord < 123)
-                || (ord > 127)) ? c : "";
+                || (ord > 127)) && c !== "…" ? c : "";
             }
         ).join("");
 }
